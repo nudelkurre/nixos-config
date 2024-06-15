@@ -1,0 +1,273 @@
+{ config, pkgs, lib, ... }:
+
+{
+    # Home Manager needs a bit of information about you and the paths it should
+    # manage.
+    home.username = "emil";
+    home.homeDirectory = "/home/emil";
+
+    # This value determines the Home Manager release that your configuration is
+    # compatible with. This helps avoid breakage when a new Home Manager release
+    # introduces backwards incompatible changes.
+    #
+    # You should not change this value, even if you update Home Manager. If you do
+    # want to update the value, then make sure to first check the Home Manager
+    # release notes.
+    home.stateVersion = "23.05"; # Please read the comment before changing.
+
+    imports = [
+        ./apps/alacritty.nix
+        ./apps/chromium.nix
+        ./apps/eww/eww.nix
+        ./apps/dunst.nix
+        ./apps/firefox.nix
+        ./apps/gnome-keyring.nix
+        ./apps/gtk.nix
+        ./apps/hyprlock.nix
+        ./apps/kitty/kitty.nix
+        ./apps/mangohud.nix
+        ./apps/mpv.nix
+        ./apps/obs.nix
+        ./apps/rofi.nix
+        ./apps/swaylock.nix
+        ./apps/syncthing.nix
+        ./apps/vscodium.nix
+        ./apps/wlsunset.nix
+
+        ./cli-tools
+
+        # ./wallpapers/wallpapers.nix
+
+        ./window-managers/hyprland.nix
+        ./window-managers/sway.nix
+    ];
+
+    # The home.packages option allows you to install Nix packages into your
+    # environment.
+    home.packages = with pkgs; [
+        blender-hip
+        cinnamon.nemo
+        unstable.freetube
+        gnome.seahorse
+        handbrake
+        hyprpaper
+        imv
+        jellyfin-media-player
+        kbfs
+        keybase
+        keybase-gui
+        lm_sensors
+        m4b-tool.m4b-tool-libfdk
+        mate.mate-polkit
+        mkvtoolnix
+        pavucontrol
+        scripts.video-dl
+        wl-clipboard
+
+        (pkgs.stdenv.mkDerivation rec {
+                pname = "pkg2zip";
+                version = "2.3";
+                src = pkgs.fetchurl {
+                    url = "https://github.com/lusid1/pkg2zip/archive/${version}.tar.gz";
+                    sha256 = "sha256-N4D3j9GCMI7XhUxpx6hcTG1Plx7jqw5Zj1htz37imhU=";
+                };
+
+                buildPhase = ''
+                    make CFLAGS="-DNDEBUG -O2 -Wno-format-truncation"
+                '';
+
+                installPhase = ''
+                    mkdir -p $out/bin
+                    install -Dm755 pkg2zip $out/bin/pkg2zip
+                '';
+            })
+    ];
+
+    qt = {
+        enable = true;
+        platformTheme.name = "gtk3";
+    };
+
+    rofi = {
+        border-color = "#f3c8f3";
+        lines = 25;
+    };
+
+    monitors = {
+        primary = "DP-1";
+        outputs = [
+            {
+                background = "${pkgs.mypkgs.wallpapers}/share/wallpapers/wallhaven-z8xqqo.jpg";
+                bg_style = "fill";
+                name = "DP-1";
+                width = 2560;
+                height = 1440;
+                refreshRate = 144;
+                x = 0;
+                y = 240;
+                transform = 0;
+                adaptive_sync = "on";
+                workspaces = [ "1" "2" "3" "4" "5" ];
+            }
+            {
+                background = "${pkgs.mypkgs.wallpapers}/share/wallpapers/wallhaven-qz2qld.jpg";
+                bg_style = "fill";
+                name = "HDMI-A-1";
+                width = 1920;
+                height = 1080;
+                refreshRate = 60;
+                x = 2560;
+                y = 0;
+                transform = 90;
+                adaptive_sync = "off";
+                workspaces = [ "6" "7" "8" "9" "10" ];
+            }
+        ];
+    };
+
+    fonts = {
+        name = "MonaspiceRn Nerd Font Mono";
+        size = 16;
+        fontconfig = {
+            enable = true;
+            defaultFonts = {
+                emoji = ["OpenMoji Color"];
+                monospace = ["MonaspiceAr Nerd Font Mono"];
+                sansSerif = ["MonaspiceAr Nerd Font"];
+                serif = ["MonaspiceXe Nerd Font"];
+            };
+        };
+    };
+
+    eww = {
+        enable = true;
+        main-color = "rgb(153, 51, 153)";
+        secondary-color = "rgba(107, 107, 107, 0.4)";
+        text-color = "rgb(255,255,255)";
+        icon-font = "MonaspiceRn Nerd Font Propo";
+        icon-size = 20;
+        bars = [
+            {
+                name = "main";
+                id = 0;
+                widgets = [
+                    "(workspace :monitor \"DP-1\")"
+                    "(spacer)"
+                    "(disk :mountpoint \"/\")"
+                    "(net :interface \"eth0\")"
+                    "(volume)"
+                    "(time :format \"%A %Y-%m-%d %H:%M:%S\" :icon \"\" :tz \"Europe/Stockholm\")"
+                ];
+            }
+            {
+                name = "secondary";
+                id = 1;
+                widgets = [
+                    "(workspace :monitor \"HDMI-A-1\")"
+                    "(spacer)"
+                    "(headset)"
+                    "(bt :device \"CC:98:8B:56:2F:A6\")"
+                    "(bt :device \"F4:6A:D7:48:65:39\")"
+                    "(cpu)"
+                    "(weather :iconsize 25)"
+                    "(time :format \"%H:%M:%S %Z\" :icon \"\" :tz \"Europe/Stockholm\")"
+                ];
+            }
+        ];
+        widgets = [
+            {
+                name = "weather";
+                id = 0;
+                x = 10;
+                y = 10;
+                width = 20;
+                modules = [
+                    "(weather-widget :iconsize 100)"
+                ];
+            }
+        ];
+    };
+
+    workspaces = [
+        {
+            name = "1";
+            programs = [ "Alacritty" "kitty" ];
+        }
+        {
+            name = "2";
+            programs = [ "firefox" ];
+        }
+        {
+            name = "3";
+            programs = [ "FreeTube" ];
+        }
+        {
+            name = "4";
+            programs = [  ];
+        }
+        {
+            name = "5";
+            programs = [ "steam" "gamescope" "com.usebottles.bottles" ];
+        }
+        {
+            name = "6";
+            programs = [  ];
+        }
+        {
+            name = "7";
+            programs = [ "Keybase" "discord" "chatterino" "com.chatterino.chatterino" ];
+        }
+        {
+            name = "8";
+            programs = [  ];
+        }
+        {
+            name = "9";
+            programs = [ "pavucontrol" "org.freedesktop.ryuukyu.Helvum" ];
+        }
+        {
+            name = "10";
+            programs = [ "VSCodium" ];
+        }
+    ];
+
+    xdg = {
+        mimeApps = {
+            enable = true;
+            defaultApplications = {
+                "x-scheme-handler/http" = "firefox.desktop";
+                "x-scheme-handler/https" = "firefox.desktop";
+                "x-scheme-handler/chrome" = "firefox.desktop";
+                "image/jpeg" = "imv-dir.desktop";
+                "image/png" = "imv-dir.desktop";
+                "text/x-python" = "codium.desktop";
+                "text/html" = "codium.desktop";
+                "video/mp4" = "mpv.desktop";
+                "video/x-matroska" = "mpv.desktop";
+            };
+        };
+        userDirs = {
+            enable = true;
+            createDirectories = true;
+        };
+    };
+
+    services = {
+        keybase.enable = true;
+        kbfs.enable = true;
+    };
+
+    # Home Manager is pretty good at managing dotfiles. The primary way to manage
+    # plain files is through 'home.file'.
+    home.file = {
+
+    };
+
+    home.sessionVariables = {
+        EDITOR = "nano";
+        MANGADEXDL_CONFIG_ENABLED = "1";
+    };
+
+    # Let Home Manager install and manage itself.
+    programs.home-manager.enable = true;
+}

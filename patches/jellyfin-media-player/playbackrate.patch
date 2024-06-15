@@ -1,0 +1,26 @@
+diff --git a/native/mpvVideoPlayer.js b/native/mpvVideoPlayer.js
+index 3da92e8..8ab3902 100644
+--- a/native/mpvVideoPlayer.js
++++ b/native/mpvVideoPlayer.js
+@@ -155,7 +155,7 @@
+                     const volume = this.getSavedVolume() * 100;
+                     this.setVolume(volume, false);
+
+-                    this.setPlaybackRate(1);
++                    this.setPlaybackRate(2);
+
+                     if (this._currentPlayOptions.fullscreen) {
+                         this.appRouter.showVideoOsd().then(this.onNavigatedToOsd);
+@@ -702,6 +702,12 @@
+         }, {
+             name: '2x',
+             id: 2.0
++        }, {
++            name: '2.5x',
++            id: 2.5
++        }, {
++            name: '3x',
++            id: 3.0
+         }];
+     }
+
