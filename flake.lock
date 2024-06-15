@@ -318,11 +318,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1718405413,
-        "narHash": "sha256-8FO9M9LESCseWbdhC9ILdxA5gXvItSJitJ7HpcWuXhc=",
+        "lastModified": 1718487545,
+        "narHash": "sha256-2R7ZBA0YXRIxLV6UQJMfHpZXKE0LXFZdhPNdtbYV3do=",
         "owner": "nudelkurre",
         "repo": "scripts",
-        "rev": "9475d3ab29cf16fa16b798d94a87fa559e8f3ae7",
+        "rev": "5d65c7eb552d38485e4e68a8ef5fb575a0a39eb8",
         "type": "github"
       },
       "original": {
