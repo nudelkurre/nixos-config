@@ -100,12 +100,12 @@ let
     ";
 
     scripts = [
-        "(deflisten wsdata :initial \"null\" `python scripts/workspaces`)"
-        "(deflisten volume-info :initial \"null\" `python scripts/volume`)"
-        "(deflisten diskinfo :initial \"null\" `python scripts/disk`)"
-        "(deflisten netinfo :initial \"null\" `python scripts/network`)"
-        "(deflisten bluetooth :initial \"null\" `python scripts/bluetooth`)"
-        "(deflisten weatherinfo :initial '{\"status\": \"failed\"}' `python scripts/weather Västerås`)"
+        "(deflisten wsdata :initial \"null\" `${pkgs.scripts.workspaces}/bin/workspaces`)"
+        "(deflisten volume-info :initial \"null\" `${pkgs.scripts.volume}/bin/volume`)"
+        "(deflisten diskinfo :initial \"null\" `${pkgs.scripts.disk}/bin/disk`)"
+        "(deflisten netinfo :initial \"null\" `${pkgs.scripts.network}/bin/network`)"
+        "(deflisten bluetooth :initial \"null\" `${pkgs.scripts.bluetooth}/bin/bluetooth`)"
+        "(deflisten weatherinfo :initial '{\"status\": \"failed\"}' `${pkgs.scripts.weather}/bin/weather Västerås`)"
         "(defpoll headset-level :initial \"0\" :interval \"5s\" `headsetcontrol -bc`)"
     ];
 
@@ -191,10 +191,10 @@ let
         )"
 
         "(defwidget workspace [monitor]
-            (eventbox :onscroll `python scripts/workspaces --change_workspace {}`
+            (eventbox :onscroll `${pkgs.scripts.workspaces}/bin/workspaces --change_workspace {}`
                 (box :class {wsdata?.[monitor] != \"null\" ? \"workspace-bar\" : \"\"}
                     (for w in {wsdata?.[monitor] != \"null\" ? wsdata[monitor] : []}
-                        (eventbox :onclick `python scripts/workspaces --goto_workspace $\{w['id']}`
+                        (eventbox :onclick `${pkgs.scripts.workspaces}/bin/workspaces --goto_workspace $\{w['id']}`
                             (box :class {w['active'] ? \"workspace active\" : \"workspace inactive\"} \"$\{w['name']} \")
                         )
                     )
@@ -204,9 +204,9 @@ let
 
         "(defwidget volume []
             (eventbox
-                    :onclick `python scripts/volume --mute`
-                    :onrightclick `python scripts/volume --change_default`
-                    :onscroll `python scripts/volume --change_volume {}`
+                    :onclick `${pkgs.scripts.volume}/bin/volume --mute`
+                    :onrightclick `${pkgs.scripts.volume}/bin/volume --change_default`
+                    :onscroll `${pkgs.scripts.volume}/bin/volume --change_volume {}`
                 (box :class {volume-info == \"null\" ? \"\" : \"widgets-box\"} :space-evenly false 
                     (box :class {volume-info == \"null\" ? \"\" : \"icons\"} {volume-info == \"null\" ? \"\" : \"$\{volume-info?.icon}\"})
                     (label :text {volume-info == \"null\" ? \"\" : \"$\{volume-info?.volume}\"})
@@ -272,7 +272,6 @@ in
 
         xdg.configFile."eww/eww.scss".text = styles;
 
-        xdg.configFile."eww/scripts".source = ./scripts;
         xdg.configFile."eww/images".source = ./images;
 
 
