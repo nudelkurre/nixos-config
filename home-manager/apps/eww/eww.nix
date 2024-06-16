@@ -177,9 +177,9 @@ let
 
     widget_modules = [
         "(defwidget net [interface]
-            (box :class {netinfo?.['$\{interface}'] != \"null\" ? \"widgets-box\" : \"empty\"} :space-evenly false
-                (box :class {netinfo?.['$\{interface}'] != \"null\" ? \"icons\" : \"\"} {netinfo?.['$\{interface}'] != \"null\" ? \"󰈀\" : \"\"})
-                (label :text {netinfo?.['$\{interface}'] != \"null\" ? \"$\{netinfo?.['$\{interface}']?.ip}\" : \"\"})
+            (box :class {netinfo?.['$\{interface}'] != \"null\" && netinfo?.['$\{interface}']?.connection == \"connected\" ? \"widgets-box\" : \"empty\"} :space-evenly false
+                (box :class {netinfo?.['$\{interface}'] != \"null\" && netinfo?.['$\{interface}']?.connection == \"connected\" ? \"icons\" : \"\"} {netinfo?.['$\{interface}']?.connection == \"connected\" ? \"󰈀\" : \"\"})
+                (label :text {netinfo?.['$\{interface}']?.connection == \"connected\" && netinfo?.['$\{interface}']?.ip != \"\" ? \"$\{netinfo?.['$\{interface}']?.ip}\" : \"\"})
             )
         )"
 
