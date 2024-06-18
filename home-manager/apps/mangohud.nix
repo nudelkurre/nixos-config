@@ -19,7 +19,6 @@
 
             fps_limit="60";
             font_size="20";
-            #background_alpha="0.6";
             background_color="000000";
             gpu_color="FFCCF6";
             cpu_color="FFCCF6";

@@ -21,7 +21,6 @@
         ./apps/syncthing.nix
         ./apps/swaylock.nix
         ./apps/vscodium.nix
-        # ./apps/waybar.nix
         ./apps/wlsunset.nix
 
         ./cli-tools

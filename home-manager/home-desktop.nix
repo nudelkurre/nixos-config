@@ -36,8 +36,6 @@
 
         ./cli-tools
 
-        # ./wallpapers/wallpapers.nix
-
         ./window-managers/hyprland.nix
         ./window-managers/sway.nix
     ];
