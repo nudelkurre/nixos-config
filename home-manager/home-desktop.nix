@@ -224,6 +224,7 @@
                 "x-scheme-handler/chrome" = "firefox.desktop";
                 "image/jpeg" = "imv-dir.desktop";
                 "image/png" = "imv-dir.desktop";
+                "inode/directory" = "nemo.desktop";
                 "text/x-python" = "codium.desktop";
                 "text/html" = "codium.desktop";
                 "video/mp4" = "mpv.desktop";
