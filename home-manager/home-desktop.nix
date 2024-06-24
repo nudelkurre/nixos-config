@@ -56,6 +56,7 @@
         kbfs
         keybase
         keybase-gui
+        kid3
         lm_sensors
         m4b-tool.m4b-tool-libfdk
         mypkgs.mangadex-downloader
