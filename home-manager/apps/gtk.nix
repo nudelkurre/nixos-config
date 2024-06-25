@@ -29,10 +29,12 @@
             };
         };
         theme = {
-            name = "Catppuccin-Frappe-Standard-Pink-Dark";
-            package = pkgs.catppuccin-gtk.override {
-                accents = [ "pink" ];
-                variant = "frappe";
+            name = "Colloid-Pink-Dark-Compact-Catppuccin";
+            package = pkgs.unstable.colloid-gtk-theme.override {
+                themeVariants = [ "pink" ];
+                colorVariants = [ "dark" ];
+                sizeVariants = [ "compact" ];
+                tweaks = [ "catppuccin" ];
             };
         };
         gtk2 = {
