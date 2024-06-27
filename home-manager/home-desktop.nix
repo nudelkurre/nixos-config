@@ -65,6 +65,7 @@
         pavucontrol
         mypkgs.pkg2zip
         scripts.video-dl
+        sqlitebrowser
         wl-clipboard
     ];
 
