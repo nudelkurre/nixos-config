@@ -136,7 +136,7 @@ let
                 :geometry (geometry
                                 :x \"0\"
                                 :y \"0\"
-                                :width \"100%\"
+                                :width \"${toString w.width}\"
                                 :anchor \"top center\"
                             )
                 :stacking \"fg\"

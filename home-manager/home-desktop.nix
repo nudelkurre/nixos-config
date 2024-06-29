@@ -136,6 +136,7 @@
             {
                 name = "main";
                 id = 0;
+                width = 2560;
                 widgets = [
                     "(workspace :monitor \"DP-1\")"
                     "(spacer)"
@@ -148,6 +149,7 @@
             {
                 name = "secondary";
                 id = 1;
+                width = 1080;
                 widgets = [
                     "(workspace :monitor \"HDMI-A-1\")"
                     "(spacer)"
