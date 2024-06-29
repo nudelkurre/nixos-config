@@ -98,9 +98,6 @@
             ];
 
             env = [
-                #"XCURSOR_THEME,Bibata-Modern-Pink"
-                #"XCURSOR_SIZE,32"
-                #"GTK_THEME,ChromeOS-Darker-UltraViolet"
                 "XDG_CURRENT_DESKTOP,Hyprland"
                 "XDG_SESSION_TYPE,wayland"
                 "XDG_SESSION_DESKTOP,Hyprland"
@@ -241,7 +238,6 @@
             misc = {
                 disable_hyprland_logo = true;
                 disable_splash_rendering = true;
-                # middle_click_paste = false;
                 focus_on_activate = true;
                 new_window_takes_over_fullscreen = "1";
             };
