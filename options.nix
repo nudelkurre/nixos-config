@@ -60,6 +60,12 @@ with lib;
                             example = [ "(workspace :monitor \"DP-1\")" ];
                             default = [ ];
                         };
+                        width = mkOption {
+                            type = types.int;
+                            example = 1000;
+                            default = 1000;
+                            description = "Width of widget in pixels";
+                        };
                     };
                 });
             };
