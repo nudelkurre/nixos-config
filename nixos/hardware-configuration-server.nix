@@ -8,7 +8,7 @@
     [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
-  boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "ohci_pci" "ehci_pci" "pata_atiixp" "usbhid" "usb_storage" "sd_mod" ];
+  boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "ohci_pci" "ehci_pci" "pata_atiixp" "usbhid" "usbcore" "usb_storage" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
@@ -23,20 +23,30 @@
       fsType = "vfat";
       options = ["umask=0077"];
     };
+    "/nfs" = {
+      device = "/dev/disk/by-label/files";
+      fstype = "ext4";
+    };
   };
+
+  environment.etc.crypttab.text = ''
+    files /dev/disk/by-label/encrypted_files /etc/crypto.key
+  '';
+
+  boot.initrd.systemd.mounts = [
+    {
+      what = "/dev/disk/by-label/Key";
+      where = "/key";
+      type = "ext4";
+    }
+  ];
 
   boot.initrd.luks.devices = {
     "encrypted" = {
       device = "/dev/disk/by-label/encrypted_root";
+      keyFile = "/key/key.bin";
     };
   };
-
-#  fileSystems."/nfs" =
-#    { device = "/dev/disk/by-uuid/e6e5c5a9-df61-4043-877c-47c22d0dfe17";
-#      fsType = "ext4";
-#    };
-
-#  boot.initrd.luks.devices."files".device = "/dev/disk/by-uuid/5662676f-9b6a-4db2-b0d5-7a9c636012d6";
 
   swapDevices = [ ];
 
