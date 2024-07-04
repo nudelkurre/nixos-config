@@ -25,7 +25,7 @@
     };
     "/nfs" = {
       device = "/dev/disk/by-label/files";
-      fstype = "ext4";
+      fsType = "ext4";
     };
   };
 
