@@ -15,13 +15,15 @@
     usePredictableInterfaceNames = false;
     enableIPv6 = true;
 
-    eth0 = {
-      ipv4.addresses = [
-        {
-          address = "172.16.0.12";
-          prefixLength = 24;
-        }
-      ];
+    interfaces = {
+      eth0 = {
+        ipv4.addresses = [
+          {
+            address = "172.16.0.12";
+            prefixLength = 24;
+          }
+        ];
+      };
     };
   };
   
