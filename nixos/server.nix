@@ -25,6 +25,8 @@
         ];
       };
     };
+    defaultGateway = "172.16.0.1";
+    nameservers = [ "172.16.0.12" "172.16.0.210" ];
   };
 
   users.users.emil.openssh.authorizedKeys.keys = [
