@@ -35,6 +35,18 @@
 
   # Enable the OpenSSH daemon.
   services = {
+    nfs = {
+      server = {
+        enable = true;
+        exports = ''
+          /nfs/docker/compose 172.16.0.132(rw,sync,no_subtree_check)
+          /nfs/Media  172.16.0.132(rw,sync,no_subtree_check)
+          /nfs/ROMS   172.16.0.132(rw,sync,no_subtree_check)
+          /nfs/ebooks 172.16.0.132(rw,sync,no_subtree_check)
+          /nfs/Manga  172.16.0.132(rw,sync,no_subtree_check)
+        '';
+      };
+    };
     openssh = {
       enable = true;
     };
