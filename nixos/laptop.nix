@@ -34,12 +34,6 @@
         };
     };
 
-    # Settings for zRam
-    zramSwap = {
-        enable = true;
-        memoryPercent = 75;
-    };
-
     # Settings for system services
     services = {
         dbus.enable = true;

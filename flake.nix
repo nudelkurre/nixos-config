@@ -82,6 +82,13 @@
                     ./nixos/hardware-configuration-laptop.nix
                 ];
             };
+            server = nixpkgs.lib.nixosSystem {
+                modules = [
+                    ./nixos/configuration-base.nix
+                    ./nixos/server.nix
+                    ./nixos/hardware-configuration-server.nix
+                ];
+            };
         };
         homeConfigurations = {
             "emil@desktop" = home-manager.lib.homeManagerConfiguration {

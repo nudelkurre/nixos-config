@@ -43,6 +43,12 @@
         keyMap = "sv-latin1";
     };
 
+    # Settings for zRam
+    zramSwap = {
+        enable = true;
+        memoryPercent = 75;
+    };
+
     # Settings used for polkit
     security = {
         polkit.enable = true;
@@ -103,6 +109,14 @@
     virtualisation = {
         docker = {
             enable = true;
+            daemon = {
+                settings = {
+                    dns = [
+                        "1.1.1.1"
+                        "1.0.0.1"
+                    ];
+                };
+            };
         };
     };
 
