@@ -2,11 +2,11 @@
 {
     wayland.windowManager.hyprland = {
         enable = true;
-        package = pkgs.hyprland.hyprland;
+        package = pkgs.unstable.hyprland;
         xwayland.enable = true;
         systemd.enable = true;
         plugins = [
-            pkgs.hy3.hy3
+            pkgs.unstable.hyprlandPlugins.hy3
         ];
         settings = {
             "$mod1" = "SUPER";
@@ -185,7 +185,6 @@
                 "col.inactive_border" = "rgba(595959aa)";
 
                 layout = "hy3";
-                cursor_inactive_timeout = "0";
             };
 
             decoration = {
@@ -225,7 +224,7 @@
 
             master = {
                 allow_small_split = false;
-                new_is_master = false;
+                new_status = "slave";
                 no_gaps_when_only = "0";
                 orientation = "left";
                 mfact = "0.5";
