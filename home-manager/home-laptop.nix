@@ -82,7 +82,7 @@
 
     fonts = {
         name = "MonaspiceRn Nerd Font Mono";
-        size = 12;
+        size = 13;
         fontconfig = {
             enable = true;
             defaultFonts = {
