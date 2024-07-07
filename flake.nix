@@ -16,21 +16,13 @@
             url = "github:sandreas/m4b-tool";
             inputs.nixpkgs.follows = "nixpkgs";
         };
-        hyprland = {
-            url = "github:hyprwm/Hyprland?ref=v0.40.0";
-            inputs.nixpkgs.follows = "nixpkgs-unstable";
-        };
-        hy3 = {
-            url = "github:outfoxxed/hy3?ref=hl0.40.0";
-            inputs.hyprland.follows = "hyprland";
-        };
         scripts = {
             url = "github:nudelkurre/scripts";
             inputs.nixpkgs.follows = "nixpkgs";
         };
     };
 
-    outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, firefox-addons, m4b-tool, hyprland, hy3, scripts, ... }: 
+    outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, firefox-addons, m4b-tool, scripts, ... }: 
     let
         system = "x86_64-linux";
         overlay-unstable = final: prev: {
@@ -41,12 +33,6 @@
         };
         firefox-addons-overlay = final: prev: {
             firefox-addons = firefox-addons.packages.${system};
-        };
-        hyprland-overlay = final: prev: {
-            hyprland = hyprland.packages.${system};
-        };
-        hy3-overlay = final: prev: {
-            hy3 = hy3.packages.${system};
         };
         mypkgs-overlay = final: prev: {
             mypkgs = self.packages.${system};
@@ -60,8 +46,6 @@
                 overlay-unstable
                 m4b-tool-overlay
                 firefox-addons-overlay
-                hyprland-overlay
-                hy3-overlay
                 mypkgs-overlay
                 scripts-overlay
             ];
@@ -94,7 +78,6 @@
             "emil@desktop" = home-manager.lib.homeManagerConfiguration {
                 inherit pkgs;
                 modules = [
-                    hyprland.homeManagerModules.default
                     ./home-manager/home-desktop.nix
                     ./options.nix
                 ];
