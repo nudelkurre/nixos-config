@@ -82,7 +82,7 @@
 
     fonts = {
         name = "MonaspiceRn Nerd Font Mono";
-        size = 12;
+        size = 13;
         fontconfig = {
             enable = true;
             defaultFonts = {
@@ -100,11 +100,12 @@
         secondary-color = "rgba(107, 107, 107, 0.4)";
         text-color = "rgb(255,255,255)";
         icon-font = "MonaspiceRn Nerd Font Propo";
-        icon-size = 14;
+        icon-size = 16;
         bars = [
             {
                 name = "main";
                 id = 0;
+                width = 1366;
                 widgets = [
                     "(workspace :monitor \"LVDS-1\")"
                     "(spacer)"
@@ -118,6 +119,7 @@
             {
                 name = "secondary";
                 id = 1;
+                width = 1280;
                 widgets = [
                     "(workspace :monitor \"HDMI-A-1\")"
                     "(spacer)"

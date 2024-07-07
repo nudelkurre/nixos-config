@@ -29,7 +29,6 @@
             enable = true;
             unmanaged = [
                 "eth0"
-                "tailscale0"
             ];
         };
     };
@@ -45,13 +44,6 @@
             alsa.enable = false;
             alsa.support32Bit = false;
             pulse.enable = true;
-        };
-        tailscale = {
-            enable = false;
-            extraUpFlags = [
-                "--accept-routes"
-            ];
-            useRoutingFeatures = "both";
         };
         upower = {
             enable = true;
