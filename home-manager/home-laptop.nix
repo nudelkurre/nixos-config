@@ -177,7 +177,7 @@
         }
         {
             name = "8";
-            programs = [  ];
+            programs = [ "VSCodium" ];
         }
         {
             name = "9";
@@ -185,7 +185,7 @@
         }
         {
             name = "10";
-            programs = [ "VSCodium" ];
+            programs = [  ];
         }
     ];
 
