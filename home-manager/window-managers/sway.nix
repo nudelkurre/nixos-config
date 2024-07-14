@@ -172,15 +172,15 @@ in
 
 
                 # Controlling spotify
-                "XF86AudioPlay" = "exec playerctl -i firefox play-pause";
-                "XF86AudioNext" = "exec playerctl -i firefox next";
-                "XF86AudioPrev" = "exec playerctl -i firefox previous";
+                "XF86AudioPlay" = "exec playerctl -i firefox-esr play-pause";
+                "XF86AudioNext" = "exec playerctl -i firefox-esr next";
+                "XF86AudioPrev" = "exec playerctl -i firefox-esr previous";
 
                 # Start Firefox
-                "${mod1}+${mod4}+f" = "exec firefox";
+                "${mod1}+${mod4}+f" = "exec firefox-esr";
 
                 # Start Firefox in private window
-                "${mod1}+${mod2}+${mod4}+f" = "exec firefox --private-window";
+                "${mod1}+${mod2}+${mod4}+f" = "exec firefox-esr --private-window";
 
                 # Take a screenshot
                 "Print" = "exec ${pkgs.grim}/bin/grim -g \"$(${pkgs.slurp}/bin/slurp)\"";

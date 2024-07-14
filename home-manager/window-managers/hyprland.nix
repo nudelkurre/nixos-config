@@ -68,14 +68,11 @@
                 "$mod1 $mod2 $mod4, R, exec,systemctl reboot"
 
                 # Start Firefox
-                "$mod1 $mod4, F, exec, firefox"
-                ", XF86HomePage, exec, firefox"
+                "$mod1 $mod4, F, exec, firefox-esr"
+                ", XF86HomePage, exec, firefox-esr"
 
                 # Start Firefox in private window
-                "$mod1 $mod2 $mod4, F, exec, firefox --private-window"
-
-                # Start Firefox CTF profile
-                "$mod1 $mod3, F, exec, firefox -P CTF"
+                "$mod1 $mod2 $mod4, F, exec, firefox-esr --private-window"
 
                 # Start jellyfin media player
                 "$mod1, code:90, exec, jellyfinmediaplayer"
