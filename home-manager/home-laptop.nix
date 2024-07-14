@@ -177,7 +177,7 @@
         }
         {
             name = "8";
-            programs = [  ];
+            programs = [ "VSCodium" ];
         }
         {
             name = "9";
@@ -185,7 +185,7 @@
         }
         {
             name = "10";
-            programs = [ "VSCodium" ];
+            programs = [  ];
         }
     ];
 
@@ -207,7 +207,7 @@
     # environment.
     home.packages = with pkgs; [
         cinnamon.nemo
-        freetube
+        unstable.freetube
         hyprpaper
         imv
         lm_sensors
