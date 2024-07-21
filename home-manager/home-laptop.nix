@@ -16,6 +16,7 @@
         ./apps/gtk.nix
         ./apps/hyprlock.nix
         ./apps/kitty/kitty.nix
+        ./apps/mangohud.nix
         ./apps/mpv.nix
         ./apps/rofi.nix
         ./apps/syncthing.nix

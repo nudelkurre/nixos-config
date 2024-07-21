@@ -101,6 +101,24 @@
     programs = {
         dconf.enable = true;
         light.enable = true;
+        gamemode = {
+            enable = true;
+        };
+        gamescope = {
+            enable = true;
+        };
+        steam = {
+            enable = true;
+            gamescopeSession = {
+                enable = true;
+                args = [
+                    "-h 720"
+                    "-f"
+                    "--filter linear"
+                    "--force-grab-cursor"
+                ];
+            };
+        };
     };
 
     security = {
