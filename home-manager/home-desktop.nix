@@ -221,15 +221,16 @@
         mimeApps = {
             enable = true;
             defaultApplications = {
-                "x-scheme-handler/http" = "firefox.desktop";
-                "x-scheme-handler/https" = "firefox.desktop";
-                "x-scheme-handler/chrome" = "firefox.desktop";
+                "x-scheme-handler/http" = "firefox-esr.desktop";
+                "x-scheme-handler/https" = "firefox-esr.desktop";
+                "x-scheme-handler/chrome" = "firefox-esr.desktop";
                 "image/jpeg" = "imv-dir.desktop";
                 "image/png" = "imv-dir.desktop";
                 "inode/directory" = "nemo.desktop";
                 "text/x-python" = "codium.desktop";
                 "text/html" = "codium.desktop";
                 "video/mp4" = "mpv.desktop";
+                "audio/x-m4b" = "mpv.desktop";
                 "video/x-matroska" = "mpv.desktop";
             };
         };
