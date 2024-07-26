@@ -45,7 +45,7 @@
     home.packages = with pkgs; [
         blender-hip
         cinnamon.nemo
-        unstable.freetube
+        mypkgs.freetube
         gnome.seahorse
         handbrake
         hyprpaper

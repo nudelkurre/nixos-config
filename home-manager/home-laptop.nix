@@ -208,7 +208,7 @@
     # environment.
     home.packages = with pkgs; [
         cinnamon.nemo
-        unstable.freetube
+        mypkgs.freetube
         hyprpaper
         imv
         lm_sensors
