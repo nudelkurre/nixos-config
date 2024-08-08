@@ -100,16 +100,17 @@
         ]
       },
       "locked": {
-        "lastModified": 1722229945,
-        "narHash": "sha256-7ybOu8FKZblpkmA8RRW4i9Ym/xgaa56QsYOx8HuC5Qo=",
+        "lastModified": 1722229572,
+        "narHash": "sha256-u9WWnw6Pwrei03XY5OBuQouK5JIzYRE1Bt3Uw5GIz4w=",
         "owner": "sandreas",
         "repo": "m4b-tool",
-        "rev": "cd50c438a858d2c401d21ad0e99bca8a393e4c45",
+        "rev": "5b0821449c529449a188bec521d51e00eefe52a2",
         "type": "github"
       },
       "original": {
         "owner": "sandreas",
         "repo": "m4b-tool",
+        "rev": "5b0821449c529449a188bec521d51e00eefe52a2",
         "type": "github"
       }
     },
