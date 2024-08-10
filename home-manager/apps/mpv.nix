@@ -1,6 +1,8 @@
+{pkgs, ...}:
 {
     programs.mpv = {
         enable = true;
+        package = pkgs.unstable.mpv;
         bindings = {
             "WHEEL_UP" = "seek 10";
             "WHEEL_DOWN" = "seek -10";
@@ -10,12 +12,20 @@
             "Shift+WHEEL_DOWN" = "add speed -0.5";
             "UP" = "seek 30";
             "DOWN" = "seek -30";
+            "Ctrl+LEFT" = "playlist-prev";
+            "Ctrl+RIGHT" = "playlist-next";
             "9" = "add volume -5";
             "0" = "add volume 5";
             "[" = "add speed -0.25";
             "]" = "add speed 0.25";
             "{" = "add speed -0.5";
             "}" = "add speed 0.5";
+            "Ctrl+r" = "cycle_values video-rotate 90 180 270 0";
+
+            "ESC" = "quit";
+            "q" = "quit";
+            "CLOSE_WIN" = "ignore";
+            "Q" = "ignore";
         };
         config = {
             hwdec = "vaapi";
