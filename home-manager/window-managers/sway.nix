@@ -237,6 +237,7 @@ in
                 { command = "${pkgs.udiskie}/bin/udiskie -a";}
                 { command = "dunst -conf ~/.config/dunst/dunstrc";}
                 { command = "eww daemon";}
+                { command = "systemctl --user import-environment PATH";}
                 (if config.monitors.primary != "" then [
                     {command = "${pkgs.xorg.xrandr}/bin/xrandr --output ${config.monitors.primary} --primary";}
                 ] else [])
