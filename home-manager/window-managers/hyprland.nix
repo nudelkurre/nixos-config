@@ -138,10 +138,12 @@
             windowrulev2 = lib.lists.flatten [
                 (map (w:
                     map (p:
-                        "workspace ${w.name}, class:${p}"
-                    )
-                (w.programs))
-                (config.workspaces))
+                        let
+                            wsfocus = (if p.focus then "workspace ${w.name}" else "workspace ${w.name} silent");
+                        in
+                        "${wsfocus}, class:${p.name}"
+                    )(w.programs)
+                )(config.workspaces))
                 "noanim, class:FreeTube"
                 "tile, title:^(Chatterino\\s\\d\\.\\d\\.\\d)"
                 "center, title:^(Chatterino Settings)"

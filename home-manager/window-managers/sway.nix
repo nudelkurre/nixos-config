@@ -15,6 +15,15 @@ let
     ws8 = "8";
     ws9 = "9";
     ws0 = "10";
+
+    wsf = lib.lists.flatten (builtins.map (w:
+        builtins.map (p:
+            let
+                wsfocus = (if p.focus then "for_window [app_id=\"${p.name}\"] focus\nfor_window [class=\"${p.name}\"] focus\n" else "");
+            in
+            "${wsfocus}"
+        )(w.programs)
+    )(config.workspaces));
 in
 {
     wayland.windowManager.sway = {
@@ -25,8 +34,8 @@ in
                 {
                     name = w.name;
                     value = lib.lists.flatten (map (p: [
-                        {app_id = p;}
-                        {class = p;}
+                        {app_id = p.name;}
+                        {class = p.name;}
                     ])
                     (w.programs));
                 })
@@ -278,11 +287,8 @@ in
             );
         };
         extraConfig = ''
-            for_window [app_id="Alacritty"] focus
-            for_window [app_id="firefox"] focus
-            for_window [class="firefox"] focus
+            ${lib.strings.concatStringsSep "" wsf}
             for_window [app_id="firefox"] opacity 1.0
-            for_window [class="FreeTube"] focus
             for_window [class="steam"] move to workspace ${ws5}
         '';
         extraSessionCommands = ''

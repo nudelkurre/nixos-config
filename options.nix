@@ -220,10 +220,26 @@ with lib;
                         example = "1";
                     };
                     programs = mkOption {
-                        type = types.listOf types.str;
-                        example = [ "firefox" ];
+                        type = types.listOf (types.submodule {
+                            options = {
+                                name = mkOption {
+                                    type = types.str;
+                                    example = "firefox";
+                                };
+                                focus = mkOption {
+                                    type = types.bool;
+                                    example = true;
+                                    default = false;
+                                };
+                            };
+                        });
                         default = [ ];
                     };
+                    # programs = mkOption {
+                    #     type = types.listOf types.str;
+                    #     example = [ "firefox" ];
+                    #     default = [ ];
+                    # };
                 };
             });
             default = [ ];
