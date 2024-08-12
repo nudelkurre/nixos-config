@@ -287,6 +287,7 @@ in
         '';
         extraSessionCommands = ''
         export XDG_SESSION_DESKTOP=sway
+        export NIXOS_OZONE_WL=1
         '';
         systemd.enable = true;
         wrapperFeatures = {

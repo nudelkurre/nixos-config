@@ -102,6 +102,7 @@
                 "QT_QPA_PLATFORM,wayland"
                 "SDL_VIDEODRIVER,wayland"
                 "CLUTTER_BACKEND,wayland"
+                "NIXOS_OZONE_WL,1"
             ];
 
             exec-once = lib.lists.flatten [
