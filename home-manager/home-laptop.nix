@@ -150,15 +150,22 @@
     workspaces = [
         {
             name = "1";
-            programs = [ "Alacritty" "kitty" ];
+            programs = [
+                {name ="Alacritty"; focus = true;}
+                {name ="kitty"; focus = true;}
+            ];
         }
         {
             name = "2";
-            programs = [ "firefox" ];
+            programs = [
+                {name = "firefox"; focus = true;}
+            ];
         }
         {
             name = "3";
-            programs = [ "FreeTube" ];
+            programs = [
+                {name = "FreeTube"; focus = true;}
+            ];
         }
         {
             name = "4";
@@ -166,7 +173,11 @@
         }
         {
             name = "5";
-            programs = [ "steam" "gamescope" "com.usebottles.bottles" ];
+            programs = [
+                {name = "steam";}
+                {name = "gamescope";}
+                {name = "com.usebottles.bottles";}
+            ];
         }
         {
             name = "6";
@@ -174,15 +185,25 @@
         }
         {
             name = "7";
-            programs = [ "Keybase" "discord" "chatterino" "com.chatterino.chatterino" ];
+            programs = [
+                {name = "Keybase";}
+                {name = "discord";}
+                {name = "chatterino";}
+                {name = "com.chatterino.chatterino";}
+            ];
         }
         {
             name = "8";
-            programs = [ "VSCodium" ];
+            programs = [
+                {name = "VSCodium";}
+            ];
         }
         {
             name = "9";
-            programs = [ "pavucontrol" "org.freedesktop.ryuukyu.Helvum" ];
+            programs = [
+                {name = "pavucontrol";}
+                {name = "org.freedesktop.ryuukyu.Helvum";}
+            ];
         }
         {
             name = "10";
