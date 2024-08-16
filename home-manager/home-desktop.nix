@@ -201,7 +201,7 @@
         {
             name = "5";
             programs = [
-                {name = "Steam";}
+                {name = "steam";}
                 {name = "gamescope";}
                 {name = "com.usebottles.bottles";}
             ];
@@ -234,6 +234,7 @@
             name = "10";
             programs = [
                 {name = "VSCodium"; focus = true;}
+                {name = "codium-url-handler"; focus = true;}
             ];
         }
     ];
