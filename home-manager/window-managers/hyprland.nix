@@ -2,11 +2,11 @@
 {
     wayland.windowManager.hyprland = {
         enable = true;
-        package = pkgs.unstable.hyprland;
+        package = pkgs.hyprland;
         xwayland.enable = true;
         systemd.enable = true;
         plugins = [
-            pkgs.unstable.hyprlandPlugins.hy3
+            pkgs.hyprlandPlugins.hy3
         ];
         settings = {
             "$mod1" = "SUPER";
