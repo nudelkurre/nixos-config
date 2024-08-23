@@ -46,6 +46,9 @@
             alsa.support32Bit = false;
             pulse.enable = true;
         };
+        pcscd = {
+            enable = true;
+        };
         upower = {
             enable = true;
         };
@@ -107,6 +110,10 @@
         };
         gamescope = {
             enable = true;
+        };
+        gnupg.agent = {
+            enable = true;
+            enableSSHSupport = true;
         };
         steam = {
             enable = true;

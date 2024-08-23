@@ -42,6 +42,9 @@
             alsa.support32Bit = false;
             pulse.enable = true;
         };
+        pcscd = {
+            enable = true;
+        };
         udev = {
             enable = true;
             packages = [
@@ -131,6 +134,10 @@
         };
         gamescope = {
             enable = true;
+        };
+        gnupg.agent = {
+            enable = true;
+            enableSSHSupport = true;
         };
         steam = {
             enable = true;
