@@ -15,6 +15,9 @@
     # release notes.
     home.stateVersion = "23.05"; # Please read the comment before changing.
 
+    # Allow to install unfree packages
+    nixpkgs.config.allowUnfree = true;
+
     imports = [
         ./apps/alacritty.nix
         ./apps/chromium.nix
