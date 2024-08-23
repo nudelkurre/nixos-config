@@ -37,6 +37,7 @@
     services = {
         dbus.enable = true;
         getty.autologinUser = "emil";
+        gnome.gnome-keyring.enable = true;
         flatpak.enable = true;
         udisks2.enable = true;
         pipewire = {
