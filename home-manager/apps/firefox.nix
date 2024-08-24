@@ -2,7 +2,7 @@
 {
     programs.firefox = {
         enable = true;
-        package = pkgs.firefox-esr-128;
+        package = pkgs.firefox-esr;
         profiles = {
             "Default-lw" = {
                 isDefault = true;
