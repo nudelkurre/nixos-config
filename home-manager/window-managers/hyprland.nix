@@ -148,7 +148,9 @@
                 "tile, title:^(Chatterino\\s\\d\\.\\d\\.\\d)"
                 "center, title:^(Chatterino Settings)"
                 "center, class:(chatterino), title:^(Open channel)"
+                "noinitialfocus, class:^(com.chatterino.chatterino), title:(Usercard)"
                 "float, title:^(Steam Settings)"
+                "move onscreen cursor, class:^(jellyfinmediaplayer), title:^(jellyfinmediaplayer)"
             ];
 
             workspace = lib.lists.flatten (map 
