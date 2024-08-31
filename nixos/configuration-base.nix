@@ -61,7 +61,7 @@
             emil = {
                 group = "emil";
                 isNormalUser = true;
-                extraGroups = [ "wheel" "video" "docker" "users" ]; # Enable ‘sudo’ for the user.
+                extraGroups = [ "wheel" "video" "docker" "users" "libvirtd" ]; # Enable ‘sudo’ for the user.
                 packages = with pkgs; [
                     
                 ];
@@ -117,6 +117,9 @@
                     ];
                 };
             };
+        };
+        libvirtd = {
+            enable = true;
         };
     };
 
