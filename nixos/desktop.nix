@@ -153,6 +153,9 @@
                 ];
             };
         };
+        virt-manager = {
+            enable = true;
+        };
     };
 
     security = {
