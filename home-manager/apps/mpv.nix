@@ -26,6 +26,7 @@
             "q" = "quit";
             "CLOSE_WIN" = "ignore";
             "Q" = "ignore";
+            "MBTN_MID" = "quit";
         };
         config = {
             hwdec = "vaapi";
