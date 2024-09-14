@@ -104,7 +104,7 @@ let
         "(deflisten volume-info :initial \"null\" `${pkgs.scripts.volume}/bin/volume`)"
         "(deflisten diskinfo :initial \"null\" `${pkgs.scripts.disk}/bin/disk`)"
         "(deflisten netinfo :initial \"null\" `${pkgs.scripts.network}/bin/network`)"
-        "(deflisten bluetooth :initial \"null\" `${pkgs.scripts.bluetooth}/bin/bluetooth`)"
+        "(deflisten bluetooth :initial \"{}\" `${pkgs.scripts.bluetooth}/bin/bluetooth --show-disconnected`)"
         "(deflisten weatherinfo :initial '{\"status\": \"failed\"}' `${pkgs.scripts.weather}/bin/weather Västerås`)"
         "(defpoll headset-level :initial \"0\" :interval \"5s\" `headsetcontrol -bc`)"
     ];
@@ -184,9 +184,12 @@ let
         )"
 
         "(defwidget disk [mountpoint]
-            (box :class {diskinfo?.['$\{mountpoint}'] != \"null\" ? \"widgets-box\" : \"\"} :space-evenly false 
-                (box :class {diskinfo?.['$\{mountpoint}'] != \"null\" ? \"icons\" : \"\"} {diskinfo?.['$\{mountpoint}'] != \"null\" ? \"\" : \"\"})
-                (label :text {diskinfo?.['$\{mountpoint}'] != \"null\" ? \"$\{diskinfo?.['$\{mountpoint}']?.fsused}iB/$\{diskinfo?.['$\{mountpoint}']?.fssize}iB $\{diskinfo?.['$\{mountpoint}']?.fsuse_pct}\" : \"\"})
+            (tooltip
+                (label :text {diskinfo?.['$\{mountpoint}'] != \"null\" ? \"$\{mountpoint} $\{diskinfo?.['$\{mountpoint}']?.fsused}iB/$\{diskinfo?.['$\{mountpoint}']?.fssize}iB\" : \"\"})
+                (box :class {diskinfo?.['$\{mountpoint}'] != \"null\" ? \"widgets-box\" : \"\"} :space-evenly false 
+                    (box :class {diskinfo?.['$\{mountpoint}'] != \"null\" ? \"icons\" : \"\"} {diskinfo?.['$\{mountpoint}'] != \"null\" ? \"\" : \"\"})
+                    (label :text {diskinfo?.['$\{mountpoint}'] != \"null\" ? \"$\{diskinfo?.['$\{mountpoint}']?.fsuse_pct}\" : \"\"})
+                )
             )
         )"
 
@@ -208,8 +211,13 @@ let
                     :onrightclick `${pkgs.scripts.volume}/bin/volume --change_default`
                     :onscroll `${pkgs.scripts.volume}/bin/volume --change_volume {}`
                 (box :class {volume-info == \"null\" ? \"\" : \"widgets-box\"} :space-evenly false 
-                    (box :class {volume-info == \"null\" ? \"\" : \"icons\"} {volume-info == \"null\" ? \"\" : \"$\{volume-info?.icon}\"})
-                    (label :text {volume-info == \"null\" ? \"\" : \"$\{volume-info?.volume}\"})
+                    (tooltip
+                        (label :text {volume-info == \"null\" ? \"\" : \"$\{volume-info?.name}\"})
+                        (box
+                            (box :class {volume-info == \"null\" ? \"\" : \"icons\"} {volume-info == \"null\" ? \"\" : \"$\{volume-info?.icon}\"})
+                            (label :text {volume-info == \"null\" ? \"\" : \"$\{volume-info?.volume}\"})
+                        )
+                    )
                 )
             )
         )"
@@ -228,17 +236,32 @@ let
             )
         )"
 
-        "(defwidget time [format icon tz]
-            (box :class \"widgets-box\" :space-evenly false
-                (box :class \"icons\" \"$\{icon}\")
-                (label :text \"$\{formattime(EWW_TIME, format, tz)}\")
+        "(defwidget time [tz]
+            (tooltip
+                (box :space-evenly false
+                    (label :class \"icons\" :text \"\")
+                    (label :text \"$\{formattime(EWW_TIME, \"%A %Y-%m-%d\", tz)}\")
+                )
+                (box :class \"widgets-box\" :space-evenly false
+                    (label :class \"icons\" :text \"\")
+                    (label :text \"$\{formattime(EWW_TIME, \"%H:%M:%S %Z\", tz)}\")
+                )
             )
         )"
 
-        "(defwidget bt [device]
-            (box :class {bluetooth?.['$\{device}'] != \"null\" ? \"widgets-box\" : \"\"} :space-evenly false
-                (box :class {bluetooth?.['$\{device}'] != \"null\" ? \"icons\" : \"\"} {bluetooth?.['$\{device}'] != \"null\" ? \"$\{bluetooth['$\{device}'].icon}\" : \"\"})
-                (label :text {bluetooth?.['$\{device}'] != \"null\" ? \"$\{bluetooth['$\{device}'].battery_level}\" : \"\"})
+        "(defwidget bt []
+            (box :space-evenly false
+                (for device in {jq(bluetooth, 'keys')}
+                    (box :class {bluetooth[device][\"connected\"] == \"yes\" ? \"widgets-box\" : \"\"}
+                        (tooltip
+                            (label :text {bluetooth[device][\"connected\"] == \"yes\" ? \"\$\{bluetooth[device]['name']}\" : \"\"})
+                            (box
+                                (label :class {bluetooth[device][\"connected\"] == \"yes\" ? \"icons\" : \"\"} :text {bluetooth[device][\"connected\"] == \"yes\" ? \"\$\{bluetooth[device]['icon']}\" : \"\"})
+                                (label :text {bluetooth[device][\"connected\"] == \"yes\" ? \"\$\{bluetooth[device]['battery_level']}\" : \"\"})
+                            )
+                        )
+                    )
+                )
             )
         )"
 
@@ -264,6 +287,10 @@ let
         "(defwidget spacer []
             (box :class \"spacer-box\" :hexpand true :vexpand true)
         )"
+
+        "(defwidget tray []
+            (systray :class \"widgets-box\" :icon-size ${toString cfg.icon-size} :space-evenly false)
+        )"
     ];
 in
 {
@@ -276,6 +303,7 @@ in
 
 
         xdg.configFile."eww/eww.yuck".text = ''
+        (include "./testing.yuck")
 ${lib.strings.concatStringsSep "\n" scripts}
 
 ${lib.strings.concatStringsSep "\n" bars_options}

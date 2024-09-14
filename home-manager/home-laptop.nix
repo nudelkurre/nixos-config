@@ -117,7 +117,7 @@
                     "(net :interface \"eth0\")"
                     "(net :interface \"wlan0\")"
                     "(volume)"
-                    "(time :format \"%A %Y-%m-%d %H:%M:%S\" :icon \"\" :tz \"Europe/Stockholm\")"
+                    "(time :tz \"Europe/Stockholm\")"
                 ];
             }
             {
@@ -128,11 +128,10 @@
                     "(workspace :monitor \"HDMI-A-1\")"
                     "(spacer)"
                     "(headset)"
-                    "(bt :device \"CC:98:8B:56:2F:A6\")"
-                    "(bt :device \"F4:6A:D7:48:65:39\")"
+                    "(bt)"
                     "(cpu)"
                     "(weather :iconsize 25)"
-                    "(time :format \"%H:%M:%S %Z\" :icon \"\" :tz \"Europe/Stockholm\")"
+                    "(time :tz \"Europe/Stockholm\")"
                 ];
             }
         ];
