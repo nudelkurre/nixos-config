@@ -207,16 +207,14 @@ let
 
         "(defwidget volume []
             (eventbox
-                    :onclick `${pkgs.scripts.volume}/bin/volume --mute`
-                    :onrightclick `${pkgs.scripts.volume}/bin/volume --change_default`
-                    :onscroll `${pkgs.scripts.volume}/bin/volume --change_volume {}`
-                (box :class {volume-info == \"null\" ? \"\" : \"widgets-box\"} :space-evenly false 
-                    (tooltip
-                        (label :text {volume-info == \"null\" ? \"\" : \"$\{volume-info?.name}\"})
-                        (box
-                            (box :class {volume-info == \"null\" ? \"\" : \"icons\"} {volume-info == \"null\" ? \"\" : \"$\{volume-info?.icon}\"})
-                            (label :text {volume-info == \"null\" ? \"\" : \"$\{volume-info?.volume}\"})
-                        )
+                :onclick `${pkgs.scripts.volume}/bin/volume --mute`
+                :onrightclick `${pkgs.scripts.volume}/bin/volume --change_default`
+                :onscroll `${pkgs.scripts.volume}/bin/volume --change_volume {}`
+                (tooltip
+                    (label :text {volume-info == \"null\" ? \"\" : \"$\{volume-info?.name}\"})
+                    (box :class {volume-info == \"null\" ? \"\" : \"widgets-box\"} :space-evenly false 
+                        (box :class {volume-info == \"null\" ? \"\" : \"icons\"} {volume-info == \"null\" ? \"\" : \"$\{volume-info?.icon}\"})
+                        (label :text {volume-info == \"null\" ? \"\" : \"$\{volume-info?.volume}\"})
                     )
                 )
             )
@@ -252,13 +250,11 @@ let
         "(defwidget bt []
             (box :space-evenly false
                 (for device in {jq(bluetooth, 'keys')}
-                    (box :class {bluetooth[device][\"connected\"] == \"yes\" ? \"widgets-box\" : \"\"}
-                        (tooltip
-                            (label :text {bluetooth[device][\"connected\"] == \"yes\" ? \"\$\{bluetooth[device]['name']}\" : \"\"})
-                            (box
-                                (label :class {bluetooth[device][\"connected\"] == \"yes\" ? \"icons\" : \"\"} :text {bluetooth[device][\"connected\"] == \"yes\" ? \"\$\{bluetooth[device]['icon']}\" : \"\"})
-                                (label :text {bluetooth[device][\"connected\"] == \"yes\" ? \"\$\{bluetooth[device]['battery_level']}\" : \"\"})
-                            )
+                    (tooltip
+                        (label :text {bluetooth[device][\"connected\"] == \"yes\" ? \"\$\{bluetooth[device]['name']}\" : \"\"})
+                        (box :class {bluetooth[device][\"connected\"] == \"yes\" ? \"widgets-box\" : \"\"} :space-evenly false
+                            (label :class {bluetooth[device][\"connected\"] == \"yes\" ? \"icons\" : \"\"} :text {bluetooth[device][\"connected\"] == \"yes\" ? \"\$\{bluetooth[device]['icon']}\" : \"\"})
+                            (label :text {bluetooth[device][\"connected\"] == \"yes\" ? \"\$\{bluetooth[device]['battery_level']}\" : \"\"})
                         )
                     )
                 )
