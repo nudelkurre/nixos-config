@@ -10,7 +10,7 @@
             golang.go
             jnoortheen.nix-ide
             ms-python.python
-            ritwickdey.liveserver
+            ms-dotnettools.csdevkit
         ];
         keybindings = [
             {
