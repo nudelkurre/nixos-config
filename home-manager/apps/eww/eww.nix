@@ -109,6 +109,11 @@ let
         "(defpoll headset-level :initial \"0\" :interval \"5s\" `headsetcontrol -bc`)"
     ];
 
+    variables = [
+        "(defvar diskexpander false)"
+        "(defvar timeexpander false)"
+    ];
+
     widget_windows = builtins.map
         (w:
             "(defwindow ${w.name}
@@ -184,11 +189,13 @@ let
         )"
 
         "(defwidget disk [mountpoint]
-            (tooltip
-                (label :text {diskinfo?.['$\{mountpoint}'] != \"null\" ? \"$\{mountpoint} $\{diskinfo?.['$\{mountpoint}']?.fsused}iB/$\{diskinfo?.['$\{mountpoint}']?.fssize}iB\" : \"\"})
-                (box :class {diskinfo?.['$\{mountpoint}'] != \"null\" ? \"widgets-box\" : \"\"} :space-evenly false 
+            (eventbox :onhover \"$\{EWW_CMD} update diskexpander=true\" :onhoverlost \"$\{EWW_CMD} update diskexpander=false\"
+                (box :class {diskinfo?.['$\{mountpoint}'] != \"null\" ? \"widgets-box\" : \"\"} :space-evenly false
                     (box :class {diskinfo?.['$\{mountpoint}'] != \"null\" ? \"icons\" : \"\"} {diskinfo?.['$\{mountpoint}'] != \"null\" ? \"\" : \"\"})
-                    (label :text {diskinfo?.['$\{mountpoint}'] != \"null\" ? \"$\{diskinfo?.['$\{mountpoint}']?.fsuse_pct}\" : \"\"})
+                    (label :text {diskinfo?.['$\{mountpoint}'] != \"null\" ? \"$\{diskinfo?.['$\{mountpoint}']?.fsuse_pct} \" : \"\"})
+                    (revealer :reveal diskexpander :transition \"slideleft\"
+                        (label :text {diskinfo?.['$\{mountpoint}'] != \"null\" ? \"$\{mountpoint} $\{diskinfo?.['$\{mountpoint}']?.fsused}iB/$\{diskinfo?.['$\{mountpoint}']?.fssize}iB\" : \"\"})
+                    )
                 )
             )
         )"
@@ -235,14 +242,13 @@ let
         )"
 
         "(defwidget time [tz]
-            (tooltip
-                (box :space-evenly false
-                    (label :class \"icons\" :text \"\")
-                    (label :text \"$\{formattime(EWW_TIME, \"%A %Y-%m-%d\", tz)}\")
-                )
+            (eventbox :onhover \"$\{EWW_CMD} update timeexpander=true\" :onhoverlost \"$\{EWW_CMD} update timeexpander=false\"
                 (box :class \"widgets-box\" :space-evenly false
                     (label :class \"icons\" :text \"\")
-                    (label :text \"$\{formattime(EWW_TIME, \"%H:%M:%S %Z\", tz)}\")
+                    (revealer :reveal timeexpander :transition \"slideleft\"
+                        (label :text \"$\{formattime(EWW_TIME, \"%A %Y-%m-%d\", tz)} \")
+                    )
+                    (label :text \"$\{formattime(EWW_TIME, \"%H:%M:%S\", tz)}\")
                 )
             )
         )"
@@ -299,8 +305,10 @@ in
 
 
         xdg.configFile."eww/eww.yuck".text = ''
-        (include "./testing.yuck")
+${if cfg.testing == true then "(include \"./testing.yuck\")" else ""}
 ${lib.strings.concatStringsSep "\n" scripts}
+
+${lib.strings.concatStringsSep "\n" variables}
 
 ${lib.strings.concatStringsSep "\n" bars_options}
 
