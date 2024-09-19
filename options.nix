@@ -13,6 +13,12 @@ with lib;
                     The eww package to install.
                 '';
             };
+            testing = mkOption {
+                type = types.bool;
+                description = "Include testing.yuck file inside eww config directory";
+                example = true;
+                default = false;
+            };
             main-color = mkOption {
                 type = types.str;
                 description = "CSS rgb value (HEX, RGB(), rgba()) to use as main color";
