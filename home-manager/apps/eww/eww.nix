@@ -112,6 +112,7 @@ let
     variables = [
         "(defvar diskexpander false)"
         "(defvar timeexpander false)"
+        "(defvar systrayexpander false)"
     ];
 
     widget_windows = builtins.map
@@ -172,8 +173,10 @@ let
                 modules = lib.strings.concatStringsSep "\n" b.widgets;
             in
             "(defwidget ${b.name}-bar []
-                (box :class \"bar-box\" :space-evenly false
-                    ${modules}
+                (eventbox :onhover \"$\{EWW_CMD} update systrayexpander=true\" :onhoverlost \"$\{EWW_CMD} update systrayexpander=false\"
+                    (box :class \"bar-box\" :space-evenly false
+                        ${modules}
+                    )
                 )
             )
             "
@@ -291,7 +294,9 @@ let
         )"
 
         "(defwidget tray []
-            (systray :class \"widgets-box\" :icon-size ${toString cfg.icon-size} :space-evenly false)
+            (revealer :reveal systrayexpander :transition \"slideleft\"
+                (systray :class \"widgets-box\" :icon-size ${toString cfg.icon-size} :space-evenly false)
+            )
         )"
     ];
 in
