@@ -101,7 +101,7 @@ let
 
     scripts = [
         "(deflisten wsdata :initial \"null\" `${pkgs.scripts.workspaces}/bin/workspaces`)"
-        "(deflisten volume-info :initial \"null\" `${pkgs.scripts.volume}/bin/volume`)"
+        "(deflisten volume-info :initial '{\"status\": \"error\"}' `${pkgs.scripts.volume}/bin/volume`)"
         "(deflisten diskinfo :initial \"null\" `${pkgs.scripts.disk}/bin/disk`)"
         "(deflisten netinfo :initial \"null\" `${pkgs.scripts.network}/bin/network`)"
         "(deflisten bluetooth :initial \"{}\" `${pkgs.scripts.bluetooth}/bin/bluetooth --show-disconnected`)"
@@ -221,10 +221,10 @@ let
                 :onrightclick `${pkgs.scripts.volume}/bin/volume --change_default`
                 :onscroll `${pkgs.scripts.volume}/bin/volume --change_volume {}`
                 (tooltip
-                    (label :text {volume-info == \"null\" ? \"\" : \"$\{volume-info?.name}\"})
-                    (box :class {volume-info == \"null\" ? \"\" : \"widgets-box\"} :space-evenly false 
-                        (box :class {volume-info == \"null\" ? \"\" : \"icons\"} {volume-info == \"null\" ? \"\" : \"$\{volume-info?.icon}\"})
-                        (label :text {volume-info == \"null\" ? \"\" : \"$\{volume-info?.volume}\"})
+                    (label :text {volume-info?.status == \"ok\" ? \"$\{volume-info?.name}\" : \"\"})
+                    (box :class {volume-info?.status == \"ok\" ? \"widgets-box\" : \"\"} :space-evenly false 
+                        (label :class {volume-info?.status == \"ok\" ? \"icons\" : \"\"} :text {volume-info?.status == \"ok\" ? \"$\{volume-info?.icon}\" : \"\"})
+                        (label :text {volume-info?.status == \"ok\" ? \"$\{volume-info?.volume}%\" : \"\"})
                     )
                 )
             )
