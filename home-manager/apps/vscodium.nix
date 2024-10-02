@@ -17,6 +17,11 @@
                 "key" = "ctrl+alt+t";
                 "command" = "workbench.action.terminal.new";
             }
+            {
+                "key" = "ctrl+shift+7";
+                "command" = "editor.action.commentLine";
+                "when" = "editorTextFocus && !editorReadonly";
+            }
         ];
         userSettings = {
             "editor.fontFamily" = "${config.fonts.name}";
