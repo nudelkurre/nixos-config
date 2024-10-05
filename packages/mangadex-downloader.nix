@@ -7,6 +7,10 @@ buildPythonPackage rec {
     sha256 = "sha256-RM1UCnU7/P913g7HfTCZp166/0msK3OkfExJd9BCpOs=";
   };
 
+  patches = [
+    ./mangadex-dl.patch
+  ];
+
   dependencies = with pkgs.python311Packages; [
     requests
     (
