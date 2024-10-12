@@ -193,8 +193,8 @@
             "DisableMasterPasswordCreation" = true;
             "DisablePocket" = true;
             "DisableSecurityBypass" = {
-                "InvalidCertificate" = true;
-                "SafeBrowsing" = true;
+                "InvalidCertificate" = false;
+                "SafeBrowsing" = false;
             };
             "DisableTelemetry" = true;
             "DownloadDirectory" = "${config.home.homeDirectory}/Downloads";
@@ -230,32 +230,32 @@
                     "Allow" = [];
                     "Block" = [];
                     "BlockNewRequests" = true;
-                    "Locked" = true;
+                    "Locked" = false;
                 };
                 "Microphone" = {
                     "Allow" = [];
                     "Block" = [];
                     "BlockNewRequests" = true;
-                    "Locked" = true;
+                    "Locked" = false;
                 };
                 "Location" = {
                     "Allow" = [];
                     "Block" = [];
                     "BlockNewRequests" = true;
-                    "Locked" = true;
+                    "Locked" = false;
                 };
                 "Notifications" = {
                     "Allow" = [];
                     "Block" = [];
                     "BlockNewRequests" = true;
-                    "Locked" = true;
+                    "Locked" = false;
                 };
                 "Autoplay" = {
                     "Allow" = ["https://www.twitch.tv" "https://clips.twitch.tv"];
                     "Block" = [];
                     "Default" = "block-audio-video";
                     "BlockNewRequests" = true;
-                    "Locked" = true;
+                    "Locked" = false;
                 };
                 "VirtualReality" = {
                     "Allow" = [];
@@ -266,7 +266,7 @@
             };
             "PictureInPicture" = {
                 "Enabled" = false;
-                "Locked" = true;
+                "Locked" = false;
             };
             "PopupBlocking" = {
                 "Allow" = [];
@@ -298,6 +298,7 @@
             "SearchEngines" = {
                 "Remove" = ["Google" "Amazon" "Bing" "Wikipedia"];
             };
+            "TranslateEnabled" = false;
             "UserMessaging" = {
                 "WhatsNew" = false;
                 "ExtensionRecommendations" = false;
