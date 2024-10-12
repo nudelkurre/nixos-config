@@ -207,6 +207,7 @@
                 {name = "steam";}
                 {name = "gamescope";}
                 {name = "com.usebottles.bottles";}
+                {name = "lutris";}
             ];
         }
         {
