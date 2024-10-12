@@ -309,4 +309,16 @@
             };
         };
     };
+    xdg.desktopEntries = {
+        "firefox-esr-private" = {
+            name = "Firefox ESR Private Window";
+            genericName = "Web Browser";
+            exec = "${config.programs.firefox.package}/bin/firefox-esr --private-window %U";
+            icon = "firefox-esr";
+            terminal = false;
+            categories = [ "Network" "WebBrowser" ];
+            mimeType = [ "text/html" "text/xml" "application/xhtml+xml" "application/vnd.mozilla.xul+xml" "x-scheme-handler/http" "x-scheme-handler/https" ];
+            noDisplay = true;
+        };
+    };
 }

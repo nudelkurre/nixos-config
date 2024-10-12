@@ -248,9 +248,9 @@
         mimeApps = {
             enable = true;
             defaultApplications = {
-                "x-scheme-handler/http" = "firefox-esr.desktop";
-                "x-scheme-handler/https" = "firefox-esr.desktop";
-                "x-scheme-handler/chrome" = "firefox-esr.desktop";
+                "x-scheme-handler/http" = "firefox-esr-private.desktop";
+                "x-scheme-handler/https" = "firefox-esr-private.desktop";
+                "x-scheme-handler/chrome" = "firefox-esr-private.desktop";
                 "image/jpeg" = "imv-dir.desktop";
                 "image/png" = "imv-dir.desktop";
                 "inode/directory" = "nemo.desktop";
