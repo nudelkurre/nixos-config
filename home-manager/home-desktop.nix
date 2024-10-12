@@ -63,6 +63,7 @@
         mypkgs.mangadex-downloader
         mate.mate-polkit
         mkvtoolnix
+        nodejs_22
         pavucontrol
         mypkgs.pkg2zip
         scripts.video-dl
