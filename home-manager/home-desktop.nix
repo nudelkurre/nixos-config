@@ -53,7 +53,6 @@
         handbrake
         hyprpaper
         imv
-        unstable.jellyfin-media-player
         kbfs
         keybase
         keybase-gui

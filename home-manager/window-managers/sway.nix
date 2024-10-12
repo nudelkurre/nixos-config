@@ -195,7 +195,7 @@ in
                 "Print" = "exec ${pkgs.grim}/bin/grim -g \"$(${pkgs.slurp}/bin/slurp)\"";
 
                 # Start jellyfin media player
-                "${mod1}+kp_0" = "exec jellyfinmediaplayer";
+                "${mod1}+kp_0" = "exec flatpak run com.github.iwalton3.jellyfin-media-player";
 
                 # Start FreeTube
                 "${mod1}+kp_1" = "exec freetube";
