@@ -85,6 +85,7 @@
         unrar
         unzip
         usbutils
+        xdg-utils
     ];
 
     # Set fonts to install
