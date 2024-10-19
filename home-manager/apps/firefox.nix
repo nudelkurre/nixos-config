@@ -96,6 +96,11 @@
                         icon = "circle";
                         id = 15;
                     };
+                    Blusky = {
+                        color = "blue";
+                        icon = "circle";
+                        id = 16;
+                    };
                 };
                 settings = {
                     "beacon.enabled" = false;
