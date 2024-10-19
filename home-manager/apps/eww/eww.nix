@@ -221,10 +221,10 @@ let
                 :onrightclick `${pkgs.scripts.volume}/bin/volume --change_default`
                 :onscroll `${pkgs.scripts.volume}/bin/volume --change_volume {}`
                 (tooltip
-                    (label :text {volume-info?.status == \"ok\" ? \"$\{volume-info?.name}\" : \"\"})
-                    (box :class {volume-info?.status == \"ok\" ? \"widgets-box\" : \"\"} :space-evenly false 
-                        (label :class {volume-info?.status == \"ok\" ? \"icons\" : \"\"} :text {volume-info?.status == \"ok\" ? \"$\{volume-info?.icon}\" : \"\"})
-                        (label :text {volume-info?.status == \"ok\" ? \"$\{volume-info?.volume}%\" : \"\"})
+                    (label :text {replace(jq(volume-info, '.status'), \"\\\"\", \"\") == \"ok\" ? \"$\{replace(jq(volume-info, '.name'), \"\\\"\", \"\")}\" : \"\"})
+                    (box :class {replace(jq(volume-info, '.status'), \"\\\"\", \"\") == \"ok\" ? \"widgets-box\" : \"\"} :space-evenly false 
+                        (label :class {replace(jq(volume-info, '.status'), \"\\\"\", \"\") == \"ok\" ? \"icons\" : \"\"} :text {replace(jq(volume-info, '.status'), \"\\\"\", \"\") == \"ok\" ? \"$\{replace(jq(volume-info, '.icon'), \"\\\"\", \"\")}\" : \"\"})
+                        (label :text {replace(jq(volume-info, '.status'), \"\\\"\", \"\") == \"ok\" ? \"$\{replace(jq(volume-info, '.volume'), \"\\\"\", \"\")}%\" : \"\"})
                     )
                 )
             )
