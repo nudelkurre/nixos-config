@@ -29,6 +29,14 @@
         };
     };
 
+    users = {
+        users = {
+            emil = {
+                extraGroups = ["kvm" "adbusers"];
+            };
+        };
+    };
+
     # Settings for system services
     services = {
         dbus.enable = true;
@@ -49,6 +57,7 @@
             enable = true;
             packages = [
                 pkgs.headsetcontrol
+                pkgs.android-udev-rules
             ];
         };
         upower = {
@@ -117,6 +126,7 @@
         };
         systemPackages = with pkgs; [
             amdgpu_top
+            android-studio
             headsetcontrol
             intel-gpu-tools
             libnotify
@@ -128,6 +138,7 @@
 
     # Programs to enable
     programs = {
+        adb.enable = true;
         dconf.enable = true;
         gamemode = {
             enable = true;
