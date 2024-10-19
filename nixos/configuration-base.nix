@@ -77,7 +77,6 @@
     # System packages to install
     environment.systemPackages = with pkgs; [
         dnsutils
-        ffmpeg-full
         file
         git
         nano
