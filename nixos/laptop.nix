@@ -25,11 +25,13 @@
             };
         };
 
-        networkmanager = {
+        wireless = {
             enable = true;
-            unmanaged = [
-                "eth0"
-            ];
+            networks = {};
+        };
+
+        networkmanager = {
+            enable = false;
         };
     };
 
