@@ -298,6 +298,13 @@ let
                 (systray :class \"widgets-box\" :icon-size ${toString cfg.icon-size} :space-evenly false)
             )
         )"
+
+        "(defwidget battery []
+            (box :class \"widgets-box\" :space-evenly false
+                (box :class \"icons\" \"󰁹\")
+                (label :text \"$\{EWW_BATTERY['BAT0'].capacity}%\")
+            )
+        )"
     ];
 in
 {
