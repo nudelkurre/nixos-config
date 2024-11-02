@@ -117,6 +117,7 @@
                     "(net :interface \"eth0\")"
                     "(net :interface \"wlan0\")"
                     "(volume)"
+                    "(battery)"
                     "(time :tz \"Europe/Stockholm\")"
                 ];
             }
