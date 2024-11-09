@@ -46,27 +46,21 @@
     # The home.packages option allows you to install Nix packages into your
     # environment.
     home.packages = with pkgs; [
-        blender-hip
         cinnamon.nemo
         mypkgs.freetube
         gnome.seahorse
-        handbrake
         hyprpaper
         imv
         kbfs
         keybase
         keybase-gui
-        kid3
         lm_sensors
-        m4b-tool.m4b-tool-libfdk
         mypkgs.mangadex-downloader
         mate.mate-polkit
-        mkvtoolnix
         nodejs_22
         pavucontrol
         mypkgs.pkg2zip
         scripts.video-dl
-        sqlitebrowser
         wl-clipboard
     ];
 
