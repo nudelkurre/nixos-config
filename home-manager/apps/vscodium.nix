@@ -11,6 +11,7 @@
             jnoortheen.nix-ide
             ms-python.python
             ms-dotnettools.csdevkit
+            james-yu.latex-workshop
         ];
         keybindings = [
             {
