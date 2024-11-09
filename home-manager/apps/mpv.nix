@@ -51,7 +51,6 @@
                 idlescreen = "yes";
                 scalewindowed = 1.0;
                 scalefullscreen = 1.0;
-                scaleforcedwindow = 2.0;
                 vidscale = "yes";
                 valign = 0.8;
                 halign = 0.0;
