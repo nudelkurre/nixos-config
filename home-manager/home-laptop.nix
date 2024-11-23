@@ -198,7 +198,7 @@
         {
             name = "8";
             programs = [
-                {name = "VSCodium";}
+                {name = "codium";}
             ];
         }
         {

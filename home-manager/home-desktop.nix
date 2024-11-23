@@ -231,8 +231,7 @@
         {
             name = "10";
             programs = [
-                {name = "VSCodium"; focus = true;}
-                {name = "codium-url-handler"; focus = true;}
+                {name = "codium"; focus = true;}
             ];
         }
     ];
