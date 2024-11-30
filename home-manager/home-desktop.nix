@@ -183,6 +183,7 @@
             name = "2";
             programs = [
                 {name = "firefox"; focus = true;}
+                {name = "chromium-browser"; focus = true;}
             ];
         }
         {
