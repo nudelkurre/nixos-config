@@ -87,7 +87,7 @@
             };
         };
         # Hardware accelerating
-        opengl = {
+        graphics = {
             enable = true;
             extraPackages = with pkgs; [
                 vaapiIntel
