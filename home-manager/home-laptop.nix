@@ -108,7 +108,7 @@
         bars = [
             {
                 name = "main";
-                id = 0;
+                id = "\"LVDS-1\"";
                 width = 1366;
                 widgets = [
                     "(workspace :monitor \"LVDS-1\")"
@@ -123,7 +123,7 @@
             }
             {
                 name = "secondary";
-                id = 1;
+                id = "\"HDMI-A-1\"";
                 width = 1280;
                 widgets = [
                     "(workspace :monitor \"HDMI-A-1\")"
@@ -139,7 +139,7 @@
         widgets = [
             {
                 name = "weather";
-                id = 0;
+                id = "\"LVDS-1\"";
                 x = 10;
                 y = 10;
                 width = 20;

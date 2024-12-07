@@ -127,10 +127,11 @@
         text-color = "rgb(255,255,255)";
         icon-font = "MonaspiceRn Nerd Font Propo";
         icon-size = 20;
+        testing = true;
         bars = [
             {
                 name = "main";
-                id = 0;
+                id = "\"DP-1\"";
                 width = 2560;
                 widgets = [
                     "(workspace :monitor \"DP-1\")"
@@ -144,7 +145,7 @@
             }
             {
                 name = "secondary";
-                id = 1;
+                id = "\"HDMI-A-1\"";
                 width = 1080;
                 widgets = [
                     "(workspace :monitor \"HDMI-A-1\")"
@@ -160,7 +161,7 @@
         widgets = [
             {
                 name = "weather";
-                id = 0;
+                id = "\"DP-1\"";
                 x = 10;
                 y = 10;
                 width = 20;
