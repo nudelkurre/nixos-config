@@ -118,7 +118,7 @@ let
     widget_windows = builtins.map
         (w:
             "(defwindow ${w.name}
-                :monitor ${toString w.id}
+                :monitor ${w.id}
                 :geometry (geometry
                                 :x \"${toString w.x}\"
                                 :y \"${toString w.y}\"
@@ -138,7 +138,7 @@ let
     windows_options = builtins.map
         (w:
             "(defwindow ${w.name}
-                :monitor ${toString w.id}
+                :monitor ${w.id}
                 :geometry (geometry
                                 :x \"0\"
                                 :y \"0\"

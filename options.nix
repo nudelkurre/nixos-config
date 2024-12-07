@@ -6,7 +6,7 @@ with lib;
             enable = mkEnableOption "eww";
             package = mkOption {
                 type = types.package;
-                default = pkgs.eww;
+                default = pkgs.eww-git.eww;
                 defaultText = literalExpression "pkgs.eww";
                 example = literalExpression "pkgs.eww";
                 description = ''
@@ -56,10 +56,10 @@ with lib;
                             description = "Set the name of the bar";
                         };
                         id = mkOption {
-                            type = types.int;
-                            example = 1;
-                            default = 0;
-                            description = "Monitor id to use";
+                            type = types.str;
+                            example = "1";
+                            default = "0";
+                            description = "Monitor id or name to use";
                         };
                         widgets = mkOption {
                             type = types.listOf types.str;
@@ -84,10 +84,10 @@ with lib;
                             description = "Set the name of the widget";
                         };
                         id = mkOption {
-                            type = types.int;
-                            example = 1;
-                            default = 0;
-                            description = "Monitor id to use";
+                            type = types.str;
+                            example = "1";
+                            default = "0";
+                            description = "Monitor id or name to use";
                         };
                         modules = mkOption {
                             type = types.listOf types.str;
