@@ -14,7 +14,6 @@
         };
         m4b-tool = {
             url = "github:sandreas/m4b-tool/5b0821449c529449a188bec521d51e00eefe52a2";
-            inputs.nixpkgs.follows = "nixpkgs";
         };
         scripts = {
             url = "github:nudelkurre/scripts";
