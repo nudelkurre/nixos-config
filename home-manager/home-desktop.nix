@@ -46,9 +46,9 @@
     # The home.packages option allows you to install Nix packages into your
     # environment.
     home.packages = with pkgs; [
-        cinnamon.nemo
+        nemo
         mypkgs.freetube
-        gnome.seahorse
+        seahorse
         hyprpaper
         imv
         kbfs
@@ -127,10 +127,11 @@
         text-color = "rgb(255,255,255)";
         icon-font = "MonaspiceRn Nerd Font Propo";
         icon-size = 20;
+        testing = true;
         bars = [
             {
                 name = "main";
-                id = 0;
+                id = "\"DP-1\"";
                 width = 2560;
                 widgets = [
                     "(workspace :monitor \"DP-1\")"
@@ -144,7 +145,7 @@
             }
             {
                 name = "secondary";
-                id = 1;
+                id = "\"HDMI-A-1\"";
                 width = 1080;
                 widgets = [
                     "(workspace :monitor \"HDMI-A-1\")"
@@ -160,7 +161,7 @@
         widgets = [
             {
                 name = "weather";
-                id = 0;
+                id = "\"DP-1\"";
                 x = 10;
                 y = 10;
                 width = 20;
@@ -268,12 +269,28 @@
     # Home Manager is pretty good at managing dotfiles. The primary way to manage
     # plain files is through 'home.file'.
     home.file = {
+        "m4b-merge" = {
+            enable = true;
+            executable = true;
+            target = ".local/bin/m4b-merge";
+            text = ''
+                #!/usr/bin/env bash
+                
+                IFS=$'\n'
 
+                for i in $(find . -type f -name "*.m4b" | cut -d "/" -f2 | sort -uV); do ${pkgs.m4b-tool.m4b-tool-libfdk}/bin/m4b-tool split $i/*.m4b --output-dir=Splitted/$i --no-conversion -v && ${pkgs.m4b-tool.m4b-tool-libfdk}/bin/m4b-tool merge Splitted/$i/*.m4b --output-file=$1/$i/$i.m4b --no-conversion -v && rm -r Splitted; done
+
+                for i in $(find . -type f -name "*.m4a" | cut -d "/" -f2 | sort -uV); do ${pkgs.m4b-tool.m4b-tool-libfdk}/bin/m4b-tool merge $i/*.m4a --output-file=$1/$i/$i.m4b -v; done
+
+                for i in $(find . -type f -name "*.mp3" | cut -d "/" -f2 | sort -uV); do ${pkgs.m4b-tool.m4b-tool-libfdk}/bin/m4b-tool merge $i/*.mp3 --output-file=$1/$i/$i.m4b -v; done
+            '';
+        };
     };
 
     home.sessionVariables = {
         EDITOR = "nano";
         MANGADEXDL_CONFIG_ENABLED = "1";
+        PATH = "$PATH:$HOME/.local/bin";
     };
 
     # Let Home Manager install and manage itself.

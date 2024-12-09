@@ -2,10 +2,10 @@
     description = "A very basic flake";
 
     inputs = {
-        nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
+        nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
         nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
         home-manager = {
-            url = "github:nix-community/home-manager/release-24.05";
+            url = "github:nix-community/home-manager/release-24.11";
             inputs.nixpkgs.follows = "nixpkgs";
         };
         firefox-addons = {
@@ -14,15 +14,17 @@
         };
         m4b-tool = {
             url = "github:sandreas/m4b-tool/5b0821449c529449a188bec521d51e00eefe52a2";
-            inputs.nixpkgs.follows = "nixpkgs";
         };
         scripts = {
             url = "github:nudelkurre/scripts";
             inputs.nixpkgs.follows = "nixpkgs";
         };
+        eww = {
+            url = "github:elkowar/eww";
+        };
     };
 
-    outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, firefox-addons, m4b-tool, scripts, ... }: 
+    outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, firefox-addons, m4b-tool, scripts, eww, ... }: 
     let
         system = "x86_64-linux";
         overlay-unstable = final: prev: {
@@ -40,6 +42,9 @@
         scripts-overlay = final: prev: {
             scripts = scripts.packages.${system};
         };
+        eww-overlay = final: prev: {
+            eww-git = eww.packages.${system};
+        };
         pkgs = import nixpkgs {
             inherit system;
             overlays = [
@@ -48,6 +53,7 @@
                 firefox-addons-overlay
                 mypkgs-overlay
                 scripts-overlay
+                eww-overlay
             ];
         };
     in {

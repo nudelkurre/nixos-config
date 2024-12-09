@@ -105,15 +105,14 @@
         # Disable Intel SGX
         cpu.intel.sgx.provision.enable = false;
         # Hardware accelerating
-        opengl = {
+        graphics = {
             enable = true;
+            enable32Bit = true;
             extraPackages = with pkgs; [
                 intel-vaapi-driver
                 intel-media-driver
                 rocmPackages.clr.icd
             ];
-            driSupport = true;
-            driSupport32Bit = true;
         };
         # Drivers for Xbox Series X|S controller
         xpadneo.enable = true;

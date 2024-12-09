@@ -197,10 +197,6 @@
                 fullscreen_opacity = "1.0";
                 dim_inactive = false;
                 dim_strength = "0.5";
-                "drop_shadow" = true;
-                "shadow_range" = "4";
-                "shadow_render_power" = "1";
-                "col.shadow" = "rgba(101010ee)";
 
                 blur = {
                     enabled = true;
@@ -221,13 +217,11 @@
                 preserve_split = true;
                 smart_split = false;
                 smart_resizing = true;
-                no_gaps_when_only = "0";
             };
 
             master = {
                 allow_small_split = false;
                 new_status = "slave";
-                no_gaps_when_only = "0";
                 orientation = "left";
                 mfact = "0.5";
             };
