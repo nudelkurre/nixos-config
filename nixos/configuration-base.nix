@@ -86,6 +86,7 @@
         unzip
         usbutils
         xdg-utils
+        zip
     ];
 
     # Set fonts to install
