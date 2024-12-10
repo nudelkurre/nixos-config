@@ -61,6 +61,7 @@
         pavucontrol
         mypkgs.pkg2zip
         scripts.video-dl
+        texliveMedium
         wl-clipboard
     ];
 
