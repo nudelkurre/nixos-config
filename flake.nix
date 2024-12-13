@@ -102,5 +102,20 @@
             freetube = pkgs.callPackage packages/freetube.nix {};
             pkg2zip = pkgs.callPackage packages/pkg2zip.nix {};
         };
+
+        apps.x86_64-linux = {
+            mangadex-downloader = {
+                type = "app";
+                program = "${self.packages.x86_64-linux.mangadex-downloader}/bin/mangadex-downloader";
+            };
+            freetube = {
+                type = "app";
+                program = "${self.packages.x86_64-linux.freetube}/bin/freetube";
+            };
+            pkg2zip = {
+                type = "app";
+                program = "${self.packages.x86_64-linux.pkg2zip}/bin/pkg2zip";
+            };
+        };
     };
 }
