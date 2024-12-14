@@ -47,7 +47,7 @@ in
                 font = "${config.fonts.name} Bold 12";
             };
             "element-icon" = {
-                size = mkLiteral "24px";
+                size = mkLiteral "32px";
                 margin = mkLiteral "0 10px 0 0";
             };
             "element.normal.normal, element.alternate.normal, element.normal.urgent, element.alternate.urgent, element.normal.active, element.alternate.active" = {
