@@ -72,7 +72,7 @@
 
     rofi = {
         border-color = "#f3c8f3";
-        lines = 25;
+        lines = 23;
     };
 
     monitors = {
