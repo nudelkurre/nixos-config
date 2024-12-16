@@ -114,6 +114,11 @@
                 rocmPackages.clr.icd
             ];
         };
+        # Driver for drawing tablet
+        opentabletdriver = {
+            enable = true;
+            daemon.enable = true;
+        };
         # Drivers for Xbox Series X|S controller
         xpadneo.enable = true;
     };
