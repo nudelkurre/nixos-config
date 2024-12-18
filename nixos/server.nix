@@ -51,6 +51,7 @@
 
   users.users.emil.openssh.authorizedKeys.keys = [
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIINWKyIwExthLlL6WFZbnQCtiziwlMZxHB5XBuEYrsob emil@desktop"
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINCZWLXnhQrNgPPBvXKqHNmpupG3IHw7Bq4cJOa87fJA emil@laptop"
   ];
   
   # List packages installed in system profile. To search, run:
