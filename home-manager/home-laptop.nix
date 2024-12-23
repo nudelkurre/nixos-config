@@ -239,6 +239,7 @@
         lm_sensors
         mate.mate-polkit
         pavucontrol
+        wireguard-tools
         wl-clipboard
     ];
 
