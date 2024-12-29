@@ -41,6 +41,35 @@
         getty.autologinUser = "emil";
         gnome.gnome-keyring.enable = true;
         flatpak.enable = true;
+        logind = {
+            lidSwitch = "ignore";
+            lidSwitchDocked = "ignore";
+            lidSwitchExternalPower = "ignore";
+            extraConfig = ''
+                HandleLidSwitch=ignore
+            '';
+        };
+        tlp = {
+            enable = true;
+            settings = {
+                START_CHARGE_THRESH_BAT0 = "75";
+                STOP_CHARGE_THRESH_BAT0 = "80";
+
+                CPU_DRIVER_OPMODE_ON_AC = "passive";
+                CPU_DRIVER_OPMODE_ON_BAT = "passive";
+                CPU_SCALING_GOVERNOR_ON_AC = "performance";
+                CPU_SCALING_GOVERNOR_ON_BAT = "schedutil";
+                CPU_SCALING_MIN_FREQ_ON_AC = "800000";
+                CPU_SCALING_MAX_FREQ_ON_AC = "2600000";
+                CPU_SCALING_MIN_FREQ_ON_BAT = "800000";
+                CPU_SCALING_MAX_FREQ_ON_BAT = "2600000";
+                CPU_BOOST_ON_AC = "1";
+                CPU_BOOST_ON_BAT = "0";
+
+                DEVICES_TO_DISABLE_ON_LAN_CONNECT = "wifi";
+                DEVICES_TO_ENABLE_ON_LAN_CONNECT = "wifi";
+            };
+        };
         udisks2.enable = true;
         pipewire = {
             enable = true;
