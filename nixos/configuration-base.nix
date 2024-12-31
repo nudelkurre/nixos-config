@@ -26,11 +26,6 @@
         initrd.systemd.enable = true;
     };
 
-    # Set cpu governor to performance
-    powerManagement = {
-        cpuFreqGovernor = "performance";
-    };
-
     # Set expreimental flags to use flakes
     nix.settings.experimental-features = [ "nix-command" "flakes" ];
 

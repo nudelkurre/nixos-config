@@ -80,6 +80,14 @@
     openssh = {
       enable = true;
     };
+    tlp = {
+            enable = true;
+            settings = {
+                CPU_SCALING_GOVERNOR_ON_AC = "schedutil";
+
+                NMI_WATCHDOG = "1";
+            };
+        };
   };
 
   # This option defines the first version of NixOS you have installed on this particular machine,
