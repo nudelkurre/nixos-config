@@ -1,13 +1,133 @@
 {config, pkgs, ...}:
 {
+    nixpkgs.config.allowUnfree = true;
+
     boot = {
+        loader = {
+            systemd-boot.enable = false;
+            efi.canTouchEfiVariables = true;
+            grub = {
+                enable = true;
+                device = "nodev";
+                efiSupport = true;
+                useOSProber = true;
+            };
+        };
         kernelParams = [
             "nosgx"
+            "quiet"
+            #"loglevel=0"
         ];
+        initrd.systemd.enable = true;
         # Settings for plymouth splash screen
         plymouth = {
             enable = true;
         };
+    };
+
+    # Set expreimental flags to use flakes
+    nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
+    # Set your time zone.
+    time.timeZone = "Europe/Stockholm";
+
+    # Select internationalisation properties.
+    i18n.defaultLocale = "en_US.UTF-8";
+    console = {
+        keyMap = "sv-latin1";
+    };
+
+    # Settings for zRam
+    zramSwap = {
+        enable = true;
+        memoryPercent = 75;
+    };
+
+    # Settings used for polkit
+    security = {
+        polkit.enable = true;
+        rtkit.enable = true;
+    }; 
+
+    # Define a user account. Don't forget to set a password with ‘passwd’.
+    users = {
+        users = {
+            emil = {
+                group = "emil";
+                isNormalUser = true;
+                extraGroups = [ "wheel" "video" "docker" "users" "libvirtd" "kvm" "adbusers" ]; # Enable ‘sudo’ for the user.
+                packages = with pkgs; [
+                    
+                ];
+            };
+        };
+        groups = {
+            emil = {
+                gid = 1000;
+            };
+        };
+    };
+
+    # System packages to install
+    environment.systemPackages = with pkgs; [
+        amdgpu_top
+        android-studio
+        dnsutils
+        file
+        git
+        headsetcontrol
+        intel-gpu-tools
+        libnotify
+        libva-utils
+        mesa-demos
+        nano
+        htop
+        p7zip
+        pulseaudio
+        unrar
+        unzip
+        usbutils
+        xdg-utils
+        zip
+    ];
+
+    # Set fonts to install
+    fonts = {
+        fontDir = {
+            enable = true;
+            decompressFonts = true;
+        };
+        packages = with pkgs; [
+            freefont_ttf
+            monaspace
+            noto-fonts
+            noto-fonts-cjk-sans
+            noto-fonts-emoji
+            openmoji-black
+            openmoji-color
+            (nerdfonts.override { fonts = [ "Noto" "Monaspace" ]; })
+        ];
+    };
+
+    virtualisation = {
+        docker = {
+            enable = true;
+            daemon = {
+                settings = {
+                    dns = [
+                        "1.1.1.1"
+                        "1.0.0.1"
+                    ];
+                };
+            };
+        };
+        libvirtd = {
+            enable = true;
+        };
+    };
+
+    documentation = {
+        doc.enable = false;
     };
 
     # Network settings
@@ -25,14 +145,6 @@
                         22000
                     ];
                 };
-            };
-        };
-    };
-
-    users = {
-        users = {
-            emil = {
-                extraGroups = ["kvm" "adbusers"];
             };
         };
     };
@@ -143,23 +255,6 @@
         xpadneo.enable = true;
     };
 
-    # System pakages to install
-    environment = {
-        sessionVariables = {
-            
-        };
-        systemPackages = with pkgs; [
-            amdgpu_top
-            android-studio
-            headsetcontrol
-            intel-gpu-tools
-            libnotify
-            libva-utils
-            mesa-demos
-            pulseaudio
-        ];
-    };
-
     # Programs to enable
     programs = {
         adb.enable = true;
@@ -230,6 +325,13 @@
             pkgs.xdg-desktop-portal-gtk
         ];
         xdgOpenUsePortal = true;
-    }; 
+    };
 
+    # This value determines the NixOS release from which the default
+    # settings for stateful data, like file locations and database versions
+    # on your system were taken. It's perfectly fine and recommended to leave
+    # this value at the release version of the first install of this system.
+    # Before changing this value read the documentation for this option
+    # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
+    system.stateVersion = "23.05"; # Did you read the comment?
 }

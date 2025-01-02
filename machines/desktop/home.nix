@@ -19,28 +19,28 @@
     nixpkgs.config.allowUnfree = true;
 
     imports = [
-        ./apps/alacritty.nix
-        ./apps/chromium.nix
-        ./apps/eww/eww.nix
-        ./apps/dunst.nix
-        ./apps/firefox.nix
-        ./apps/gnome-keyring.nix
-        ./apps/gtk.nix
-        ./apps/hyprlock.nix
-        ./apps/kitty/kitty.nix
-        ./apps/mangohud.nix
-        ./apps/mpv.nix
-        ./apps/obs.nix
-        ./apps/rofi.nix
-        ./apps/swaylock.nix
-        ./apps/syncthing.nix
-        ./apps/vscodium.nix
-        ./apps/wlsunset.nix
+        ../../home-manager/apps/alacritty.nix
+        ../../home-manager/apps/chromium.nix
+        ../../home-manager/apps/eww/eww.nix
+        ../../home-manager/apps/dunst.nix
+        ../../home-manager/apps/firefox.nix
+        ../../home-manager/apps/gnome-keyring.nix
+        ../../home-manager/apps/gtk.nix
+        ../../home-manager/apps/hyprlock.nix
+        ../../home-manager/apps/kitty/kitty.nix
+        ../../home-manager/apps/mangohud.nix
+        ../../home-manager/apps/mpv.nix
+        ../../home-manager/apps/obs.nix
+        ../../home-manager/apps/rofi.nix
+        ../../home-manager/apps/swaylock.nix
+        ../../home-manager/apps/syncthing.nix
+        ../../home-manager/apps/vscodium.nix
+        ../../home-manager/apps/wlsunset.nix
 
-        ./cli-tools
+        ../../home-manager/cli-tools
 
-        ./window-managers/hyprland.nix
-        ./window-managers/sway.nix
+        ../../home-manager/window-managers/hyprland.nix
+        ../../home-manager/window-managers/sway.nix
     ];
 
     # The home.packages option allows you to install Nix packages into your
