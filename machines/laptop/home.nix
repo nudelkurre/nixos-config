@@ -7,27 +7,27 @@
     home.homeDirectory = "/home/emil";
 
     imports = [
-        ./apps/alacritty.nix
-        ./apps/chromium.nix
-        ./apps/dunst.nix
-        ./apps/eww/eww.nix
-        ./apps/firefox.nix
-        ./apps/gnome-keyring.nix
-        ./apps/gtk.nix
-        ./apps/hyprlock.nix
-        ./apps/kitty/kitty.nix
-        ./apps/mangohud.nix
-        ./apps/mpv.nix
-        ./apps/rofi.nix
-        ./apps/syncthing.nix
-        ./apps/swaylock.nix
-        ./apps/vscodium.nix
-        ./apps/wlsunset.nix
+        ../../apps/desktop/alacritty.nix
+        ../../apps/desktop/chromium.nix
+        ../../apps/utils/dunst.nix
+        ../../apps/desktop/eww/eww.nix
+        ../../apps/desktop/firefox.nix
+        ../../apps/utils/gnome-keyring.nix
+        ../../apps/utils/gtk.nix
+        ../../apps/utils/hyprlock.nix
+        ../../apps/desktop/kitty/kitty.nix
+        ../../apps/utils/mangohud.nix
+        ../../apps/desktop/mpv.nix
+        ../../apps/desktop/rofi.nix
+        ../../apps/utils/syncthing.nix
+        ../../apps/utils/swaylock.nix
+        ../../apps/desktop/vscodium.nix
+        ../../apps/utils/wlsunset.nix
 
-        ./cli-tools
+        ../../apps/cli-tools
 
-        ./window-managers/hyprland.nix
-        ./window-managers/sway.nix
+        ../../apps/window-managers/hyprland.nix
+        ../../apps/window-managers/sway.nix
     ];
 
     # This value determines the Home Manager release that your configuration is
