@@ -3,8 +3,8 @@
     programs.obs-studio = {
         enable = true;
         plugins = with pkgs.obs-studio-plugins; [
-            obs-vkcapture
             obs-vintage-filter
+            obs-vkcapture
             wlrobs
         ];
     };

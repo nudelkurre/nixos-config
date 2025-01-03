@@ -27,7 +27,6 @@ let
 in
 {
     wayland.windowManager.sway = {
-        enable = true;
         config = {
             assigns = (
                 builtins.listToAttrs (builtins.map (w:
@@ -47,21 +46,21 @@ in
             bindkeysToCode = false;
             colors = {
                 focused = {
-                    border = "#33ccff";
                     background = "#285577";
-                    text = "#ffffff";
-                    indicator = "#993399";
+                    border = "#33ccff";
                     childBorder = "#33ccff";
+                    indicator = "#993399";
+                    text = "#ffffff";
                 };
             };
             floating = {
-                titlebar = false;
                 criteria = [
                     {app_id = "zenity";}
                     {window_role = "pop-up";}
                     {window_role = "task_dialog";}
                 ];
                 modifier = "${mod1}";
+                titlebar = false;
             };
             focus = {
                 followMouse = "yes";
@@ -75,23 +74,23 @@ in
                 smartGaps = true;
             };
             input = {
+                "1003:34842:Atmel_Atmel_maXTouch_Digitizer" = {
+                    events = "disabled";
+                };
                 "1133:50478:Logitech_USB_Receiver" = {
                     xkb_layout = "se(nodeadkeys)";
                     xkb_numlock = "enable";
                 };
+                "2:14:ETPS/2_Elantech_Touchpad" = {
+                    accel_profile = "flat";
+                    events = "disabled_on_external_mouse";
+                    pointer_accel = "0.5";
+                    scroll_factor = "0.3";
+                    scroll_method = "two_finger";
+                    tap = "enable";
+                };
                 "type:keyboard" = {
                     xkb_layout = "se(nodeadkeys)";
-                };
-                "1003:34842:Atmel_Atmel_maXTouch_Digitizer" = {
-                    events = "disabled";
-                };
-                "2:14:ETPS/2_Elantech_Touchpad" = {
-                    tap = "enable";
-                    scroll_method = "two_finger";
-                    scroll_factor = "0.3";
-                    events = "disabled_on_external_mouse";
-                    accel_profile = "flat";
-                    pointer_accel = "0.5";
                 };
             };
             keybindings = {
@@ -208,30 +207,30 @@ in
             };
             modes = {
                 resize = {
-                    Left = "resize shrink width 10 px or 10 ppt";
                     Down = "resize grow height 10 px or 10 ppt";
-                    Up = "resize shrink height 10 px or 10 ppt";
+                    Left = "resize shrink width 10 px or 10 ppt";
                     Right = "resize grow width 10 px or 10 ppt";
+                    Up = "resize shrink height 10 px or 10 ppt";
 
                     # back to normal: Enter or Escape
-                    Return = "mode \"default\"";
                     Escape = "mode \"default\"";
+                    Return = "mode \"default\"";
                 };
             };
             output = (
                 builtins.listToAttrs (builtins.map (m: 
                 let
-                    resolution = "${toString m.width}x${toString m.height}@${toString m.refreshRate}Hz";
-                    position = "${toString m.x} ${toString m.y}";
                     background = "${m.background} ${m.bg_style}";
+                    position = "${toString m.x} ${toString m.y}";
+                    resolution = "${toString m.width}x${toString m.height}@${toString m.refreshRate}Hz";
                 in
                 {
                     name = m.name;
                     value = {
-                        bg = background;
-                        resolution = resolution;
-                        pos = position;
                         adaptive_sync = m.adaptive_sync;
+                        bg = background;
+                        pos = position;
+                        resolution = resolution;
                         transform = "${toString m.transform}";
                     };
                 })
@@ -286,16 +285,19 @@ in
                 )(config.monitors.outputs)
             );
         };
+        enable = true;
         extraConfig = ''
             ${lib.strings.concatStringsSep "" wsf}
             for_window [app_id="firefox"] opacity 1.0
             for_window [class="steam"] move to workspace ${ws5}
         '';
         extraSessionCommands = ''
-        export XDG_SESSION_DESKTOP=sway
-        export NIXOS_OZONE_WL=1
+            export XDG_SESSION_DESKTOP=sway
+            export NIXOS_OZONE_WL=1
         '';
-        systemd.enable = true;
+        systemd = {
+            enable = true;
+        };
         wrapperFeatures = {
             base = true;
             gtk = true;

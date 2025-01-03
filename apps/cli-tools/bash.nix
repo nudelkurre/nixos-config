@@ -1,19 +1,12 @@
 {pkgs, ...}:
 {
     programs.bash = {
-        enable = true;
-        enableCompletion = true;
-        historyControl = [ "ignoredups" ];
         bashrcExtra = ''
 PS1="\\w> "
         '';
-        sessionVariables = {
-            
-        };
-        shellAliases = {
-            mv = "mv -v";
-            cp = "cp -v";
-        };
+        enable = true;
+        enableCompletion = true;
+        historyControl = [ "ignoredups" ];
         historyIgnore = [
             "ls"
             "cd"
@@ -22,5 +15,12 @@ PS1="\\w> "
             "Hyprland"
             "nix"
         ];
+        sessionVariables = {
+            
+        };
+        shellAliases = {
+            mv = "mv -v";
+            cp = "cp -v";
+        };
     };
 }

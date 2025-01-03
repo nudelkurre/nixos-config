@@ -5,30 +5,30 @@
     programs.vscode = {
         enable = true;
         enableUpdateCheck = false;
-        package = pkgs.unstable.vscodium;
         extensions = with pkgs.vscode-extensions; [
             golang.go
-            jnoortheen.nix-ide
-            ms-python.python
-            ms-dotnettools.csdevkit
             james-yu.latex-workshop
+            jnoortheen.nix-ide
+            ms-dotnettools.csdevkit
+            ms-python.python
         ];
         keybindings = [
             {
-                "key" = "ctrl+alt+t";
                 "command" = "workbench.action.terminal.new";
+                "key" = "ctrl+alt+t";
             }
             {
-                "key" = "ctrl+shift+7";
                 "command" = "editor.action.commentLine";
+                "key" = "ctrl+shift+7";
                 "when" = "editorTextFocus && !editorReadonly";
             }
         ];
+        package = pkgs.unstable.vscodium;
         userSettings = {
             "editor.fontFamily" = "${config.fonts.name}";
-            "workbench.colorTheme" = "Default Dark";
-            "editor.tabSize" = 4;
             "editor.insertSpaces" = true;
+            "editor.tabSize" = 4;
+            "workbench.colorTheme" = "Default Dark";
         };
     };
 }

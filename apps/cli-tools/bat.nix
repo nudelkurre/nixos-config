@@ -1,8 +1,8 @@
 {
     programs.bat = {
-        enable = true;
         config = {
 
         };
+        enable = true;
     };
 }

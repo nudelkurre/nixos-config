@@ -5,7 +5,9 @@ let
     ];
 in
 {
-    home.packages = with pkgs; [
-        (python311.withPackages my-python-packages)
-    ];
+    home = {
+        packages = with pkgs; [
+            (python311.withPackages my-python-packages)
+        ];
+    };
 }

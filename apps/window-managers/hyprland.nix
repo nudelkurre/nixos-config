@@ -3,8 +3,6 @@
     wayland.windowManager.hyprland = {
         enable = true;
         package = pkgs.hyprland;
-        xwayland.enable = true;
-        systemd.enable = true;
         plugins = [
             pkgs.hyprlandPlugins.hy3
         ];
@@ -13,6 +11,11 @@
             "$mod2" = "CTRL";
             "$mod3" = "ALT";
             "$mod4" = "SHIFT";
+
+            animations = {
+                enabled = false;
+                first_launch_animation = false;
+            };
 
             bind = [
                 "$mod1, RETURN, exec, kitty"
@@ -94,15 +97,42 @@
                 "$mod1, mouse:273, resizewindow"
             ];
 
+            binds = {
+                workspace_center_on = 1;
+            };
+
+            decoration = {
+                active_opacity = "1.0";
+                blur = {
+                    enabled = true;
+                    new_optimizations = true;
+                    passes = "1";
+                    size = "3";
+                };
+                dim_inactive = false;
+                dim_strength = "0.5";
+                fullscreen_opacity = "1.0";
+                inactive_opacity = "1.0";
+                rounding = "10";
+            };
+
+            dwindle = {
+                force_split = "2";
+                preserve_split = true;
+                pseudotile = false;
+                smart_resizing = true;
+                smart_split = false;
+            };
+
             env = [
-                "XDG_CURRENT_DESKTOP,Hyprland"
-                "XDG_SESSION_TYPE,wayland"
-                "XDG_SESSION_DESKTOP,Hyprland"
+                "CLUTTER_BACKEND,wayland"
                 "GDK_BACKEND,wayland"
+                "NIXOS_OZONE_WL,1"
                 "QT_QPA_PLATFORM,wayland"
                 "SDL_VIDEODRIVER,wayland"
-                "CLUTTER_BACKEND,wayland"
-                "NIXOS_OZONE_WL,1"
+                "XDG_CURRENT_DESKTOP,Hyprland"
+                "XDG_SESSION_DESKTOP,Hyprland"
+                "XDG_SESSION_TYPE,wayland"
             ];
 
             exec-once = lib.lists.flatten [
@@ -123,6 +153,48 @@
                 "hyprpaper"
             ];
 
+            general = {
+                "border_size" = "3";
+                "col.active_border" = "rgba(33ccffee) rgba(ff00ddee) 45deg";
+                "col.inactive_border" = "rgba(595959aa)";
+                "gaps_in" = "2";
+                "gaps_out" = "5";
+                "layout" = "hy3";
+                "no_border_on_floating" = false;
+            };
+
+            gestures = {
+                "workspace_swipe" = "off";
+            };
+
+            input = {
+                "follow_mouse" = "1";
+                "kb_layout" = "se";
+                "kb_model" = "";
+                "kb_options" = "";
+                "kb_rules" = "";
+                "kb_variant" = "nodeadkeys";
+                "numlock_by_default" = true;
+                touchpad = {
+                    "natural_scroll" = "no";
+                };
+                "sensitivity" = "0";
+            };
+
+            master = {
+                allow_small_split = false;
+                mfact = "0.5";
+                new_status = "slave";
+                orientation = "left";
+            };
+
+            misc = {
+                disable_hyprland_logo = true;
+                disable_splash_rendering = true;
+                focus_on_activate = true;
+                new_window_takes_over_fullscreen = "1";
+            };
+
             monitor = map
                 (m:
                     let
@@ -135,6 +207,16 @@
                 )
                 (config.monitors.outputs);
 
+            plugin = {
+                hy3 = {
+                    autotile = {
+                        enable = false;
+                        workspaces = "not:2";
+                    };
+                    no_gaps_when_only = 1;
+                };
+            };
+
             windowrulev2 = lib.lists.flatten [
                 (map (w:
                     map (p:
@@ -144,13 +226,13 @@
                         "${wsfocus}, class:${p.name}"
                     )(w.programs)
                 )(config.workspaces))
-                "noanim, class:FreeTube"
-                "tile, title:^(Chatterino\\s\\d\\.\\d\\.\\d)"
-                "center, title:^(Chatterino Settings)"
                 "center, class:(chatterino), title:^(Open channel)"
-                "noinitialfocus, class:^(com.chatterino.chatterino), title:(Usercard)"
+                "center, title:^(Chatterino Settings)"
                 "float, title:^(Steam Settings)"
                 "move onscreen cursor, class:^(jellyfinmediaplayer), title:^(jellyfinmediaplayer)"
+                "noanim, class:FreeTube"
+                "noinitialfocus, class:^(com.chatterino.chatterino), title:(Usercard)"
+                "tile, title:^(Chatterino\\s\\d\\.\\d\\.\\d)"
             ];
 
             workspace = lib.lists.flatten (map 
@@ -160,106 +242,27 @@
                     )(m.workspaces)
                 )(config.monitors.outputs)
             );
-
-            input = {
-                "kb_layout" = "se";
-                "kb_variant" = "nodeadkeys";
-                "kb_model" = "";
-                "kb_options" = "";
-                "kb_rules" = "";
-                "numlock_by_default" = true;
-
-                "follow_mouse" = "1";
-
-                touchpad = {
-                    "natural_scroll" = "no";
-                };
-
-                "sensitivity" = "0";
-            };
-
-            general = {
-                "gaps_in" = "2";
-                "gaps_out" = "5";
-                "border_size" = "3";
-                "no_border_on_floating" = false;
-                "col.active_border" = "rgba(33ccffee) rgba(ff00ddee) 45deg";
-                "col.inactive_border" = "rgba(595959aa)";
-
-                layout = "hy3";
-            };
-
-            decoration = {
-                rounding = "10";
-
-                active_opacity = "1.0";
-                inactive_opacity = "1.0";
-                fullscreen_opacity = "1.0";
-                dim_inactive = false;
-                dim_strength = "0.5";
-
-                blur = {
-                    enabled = true;
-                    size = "3";
-                    passes = "1";
-                    new_optimizations = true;
-                };
-            };
-
-            animations = {
-                enabled = false;
-                first_launch_animation = false;
-            };
-
-            dwindle = {
-                pseudotile = false;
-                force_split = "2";
-                preserve_split = true;
-                smart_split = false;
-                smart_resizing = true;
-            };
-
-            master = {
-                allow_small_split = false;
-                new_status = "slave";
-                orientation = "left";
-                mfact = "0.5";
-            };
-
-            gestures = {
-                "workspace_swipe" = "off";
-            };
-
-            misc = {
-                disable_hyprland_logo = true;
-                disable_splash_rendering = true;
-                focus_on_activate = true;
-                new_window_takes_over_fullscreen = "1";
-            };
-
-            binds = {
-                workspace_center_on = 1;
-            };
-
-            plugin = {
-                hy3 = {
-                    no_gaps_when_only = 1;
-
-                    autotile = {
-                        enable = false;
-                        workspaces = "not:2";
-                    };
-                };
+        };
+        systemd = {
+            enable = true;
+        };
+        xwayland = {
+            enable = true;
+        };
+    };
+    xdg = {
+        configFile = {
+            "hypr/hyprpaper.conf" = {
+                text = 
+                    lib.strings.concatStringsSep "\n" (map (m:
+                        "preload = ${m.background}"
+                    )(config.monitors.outputs)) + "\n" +
+                    lib.strings.concatStringsSep "\n" (map (m:
+                        "wallpaper = ${m.name},${m.background}"
+                    )(config.monitors.outputs)) + "\n" +
+                    ''splash = false'';
             };
         };
     };
-    xdg.configFile."hypr/hyprpaper.conf".text = 
-        lib.strings.concatStringsSep "\n" (map (m:
-            "preload = ${m.background}"
-        )(config.monitors.outputs)) + "\n" +
-        lib.strings.concatStringsSep "\n" (map (m:
-            "wallpaper = ${m.name},${m.background}"
-        )(config.monitors.outputs)) + "\n" +
-        ''splash = false'';
 
 }
