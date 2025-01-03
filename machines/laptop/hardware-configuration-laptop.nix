@@ -4,17 +4,24 @@
 { config, lib, pkgs, modulesPath, ... }:
 
 {
-    imports =
-        [ (modulesPath + "/installer/scan/not-detected.nix")
-        ];
-
-    boot.initrd.availableKernelModules = [ "xhci_pci" "ehci_pci" "ahci" "sd_mod" ];
-    boot.initrd.kernelModules = [ ];
-    boot.kernelModules = [ "kvm-intel" ];
-    boot.extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback ];
-    boot.extraModprobeConfig = ''
-        options v4l2loopback devices=1 video_nr=1 card_label="OBS CAM" exclusive_caps=1
-    '';
+    boot = {
+        extraModprobeConfig = ''
+            options v4l2loopback devices=1 video_nr=1 card_label="OBS CAM" exclusive_caps=1
+        '';
+        extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback ];
+        initrd = {
+            availableKernelModules = [ "xhci_pci" "ehci_pci" "ahci" "sd_mod" ];
+            kernelModules = [ ];
+            luks = {
+                devices = {
+                    "encrypted" = {
+                        device = "/dev/disk/by-label/encrypted";
+                    };
+                };
+            };
+        };
+        kernelModules = [ "kvm-intel" ];
+    };
 
     fileSystems = {
         "/" = {
@@ -27,17 +34,26 @@
             options = ["umask=0077"];
         };
     };
-
-    boot.initrd.luks.devices = {
-        "encrypted" = {
-            device = "/dev/disk/by-label/encrypted";
+    
+    hardware = {
+        cpu = {
+            intel = {
+                updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+            };
         };
     };
 
+    imports =
+        [ (modulesPath + "/installer/scan/not-detected.nix")
+        ];
+
+    networking = {
+        useDHCP = lib.mkDefault true;
+    };
+
+    nixpkgs = {
+        hostPlatform = lib.mkDefault "x86_64-linux";
+    };
+
     swapDevices = [ ];
-
-    networking.useDHCP = lib.mkDefault true;
-
-    nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-    hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }
