@@ -4,13 +4,13 @@ let
     cfg = config.eww;
 
     styles = "
-        $startColor: ${cfg.secondary-color};
-        $mainColor: ${cfg.main-color};
-        $text-color: ${cfg.text-color};
+        $startColor: ${cfg.colors.secondary};
+        $mainColor: ${cfg.colors.main};
+        $text-color: ${cfg.colors.text};
         $font: '${config.fonts.name}';
         $font-size: ${toString config.fonts.size}px;
-        $icon-font: '${cfg.icon-font}';
-        $icon-size: ${toString cfg.icon-size}px;
+        $icon-font: '${cfg.icons.font}';
+        $icon-size: ${toString cfg.icons.size}px;
         $icon-glow: 0 0 4px rgb(200, 255, 255);
         $background-linear: linear-gradient(0deg, $startColor, $mainColor);
         $margins: 0px 4px 0px 4px;

@@ -3,63 +3,19 @@ with lib;
 {
     options = {
         eww = {
-            enable = mkEnableOption "eww";
-            package = mkOption {
-                type = types.package;
-                default = pkgs.eww-git.eww;
-                defaultText = literalExpression "pkgs.eww";
-                example = literalExpression "pkgs.eww";
-                description = ''
-                    The eww package to install.
-                '';
-            };
-            testing = mkOption {
-                type = types.bool;
-                description = "Include testing.yuck file inside eww config directory";
-                example = true;
-                default = false;
-            };
-            main-color = mkOption {
-                type = types.str;
-                description = "CSS rgb value (HEX, RGB(), rgba()) to use as main color";
-                example = "#B3F2FF";
-                default = "#B3F2FF";
-            };
-            secondary-color = mkOption {
-                type = types.str;
-                description = "CSS rgb value (HEX, RGB(), rgba()) to use as secondary color";
-                example = "rgba(107, 107, 107, 0.4)";
-                default = "rgba(107, 107, 107, 0.4)";
-            };
-            text-color = mkOption {
-                type = types.str;
-                description = "CSS rgb value (HEX, RGB()) to use as text color";
-                example = "#FFFFFF";
-                default = "#FFFFFF";
-            };
-            icon-font = mkOption {
-                type = types.str;
-                example = "NotoMono Nerd Font";
-                default = "NotoMono Nerd Font";
-            };
-            icon-size = mkOption {
-                type = types.int;
-                example = 18;
-                default = 18;
-            };
             bars = mkOption {
                 type = types.listOf (types.submodule {
                     options = {
-                        name = mkOption {
-                            type = types.str;
-                            example = "mainbar";
-                            description = "Set the name of the bar";
-                        };
                         id = mkOption {
                             type = types.str;
                             example = "1";
                             default = "0";
                             description = "Monitor id or name to use";
+                        };
+                        name = mkOption {
+                            type = types.str;
+                            example = "mainbar";
+                            description = "Set the name of the bar";
                         };
                         widgets = mkOption {
                             type = types.listOf types.str;
@@ -75,13 +31,71 @@ with lib;
                     };
                 });
             };
+            colors = {
+                main = mkOption {
+                    type = types.str;
+                    description = "CSS rgb value (HEX, RGB(), rgba()) to use as main color";
+                    example = "#B3F2FF";
+                    default = "#B3F2FF";
+                };
+                secondary = mkOption {
+                    type = types.str;
+                    description = "CSS rgb value (HEX, RGB(), rgba()) to use as secondary color";
+                    example = "rgba(107, 107, 107, 0.4)";
+                    default = "rgba(107, 107, 107, 0.4)";
+                };
+                text = mkOption {
+                    type = types.str;
+                    description = "CSS rgb value (HEX, RGB()) to use as text color";
+                    example = "#FFFFFF";
+                    default = "#FFFFFF";
+                };
+            };
+            enable = mkEnableOption "eww";
+            icons = {
+                font = mkOption {
+                    type = types.str;
+                    example = "NotoMono Nerd Font";
+                    default = "NotoMono Nerd Font";
+                };
+                size = mkOption {
+                    type = types.int;
+                    example = 18;
+                    default = 18;
+                };
+            };
+            
+            package = mkOption {
+                type = types.package;
+                default = pkgs.eww-git.eww;
+                defaultText = literalExpression "pkgs.eww";
+                example = literalExpression "pkgs.eww";
+                description = ''
+                    The eww package to install.
+                '';
+            };
+            
+            testing = mkOption {
+                type = types.bool;
+                description = "Include testing.yuck file inside eww config directory";
+                example = true;
+                default = false;
+            };
+            
             widgets = mkOption {
                 type = types.listOf (types.submodule {
                     options = {
-                        name = mkOption {
+                        anchor = mkOption {
                             type = types.str;
-                            example = "mainbar";
-                            description = "Set the name of the widget";
+                            example = "top right";
+                            default = "top right";
+                            description = "Set anchor point for widget";
+                        };
+                        height = mkOption {
+                            type = types.int;
+                            example = 1;
+                            default = 0;
+                            description = "Height of widget in percent of screen";
                         };
                         id = mkOption {
                             type = types.str;
@@ -94,6 +108,17 @@ with lib;
                             example = [ "(workspace :monitor \"DP-1\")" ];
                             default = [ ];
                         };
+                        name = mkOption {
+                            type = types.str;
+                            example = "mainbar";
+                            description = "Set the name of the widget";
+                        };
+                        width = mkOption {
+                            type = types.int;
+                            example = 1;
+                            default = 0;
+                            description = "Width of widget in percent of screen";
+                        };
                         x = mkOption {
                             type = types.int;
                             example = 10;
@@ -105,24 +130,6 @@ with lib;
                             example = 10;
                             default = 0;
                             description = "Position in y";
-                        };
-                        width = mkOption {
-                            type = types.int;
-                            example = 1;
-                            default = 0;
-                            description = "Width of widget in percent of screen";
-                        };
-                        height = mkOption {
-                            type = types.int;
-                            example = 1;
-                            default = 0;
-                            description = "Height of widget in percent of screen";
-                        };
-                        anchor = mkOption {
-                            type = types.str;
-                            example = "top right";
-                            default = "top right";
-                            description = "Set anchor point for widget";
                         };
                     };
                 });

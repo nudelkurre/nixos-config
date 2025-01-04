@@ -32,13 +32,17 @@
                 width = 1080;
             }
         ];
+        colors = {
+            main = "rgb(153, 51, 153)";
+            secondary = "rgba(107, 107, 107, 0.4)";
+            text = "rgb(255,255,255)";
+        };
         enable = true;
-        icon-font = "MonaspiceRn Nerd Font Propo";
-        icon-size = 20;
-        main-color = "rgb(153, 51, 153)";
-        secondary-color = "rgba(107, 107, 107, 0.4)";
+        icons = {
+            font = "MonaspiceRn Nerd Font Propo";
+            size = 20;
+        };
         testing = true;
-        text-color = "rgb(255,255,255)";
         widgets = [
             {
                 id = "\"DP-1\"";

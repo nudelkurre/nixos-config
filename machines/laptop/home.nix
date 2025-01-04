@@ -33,12 +33,16 @@
                 width = 1280;
             }
         ];
+        color = {
+            main = "rgb(153, 51, 153)";
+            secondary = "rgba(107, 107, 107, 0.4)";
+            text = "rgb(255,255,255)";
+        };
         enable = true;
-        icon-font = "MonaspiceRn Nerd Font Propo";
-        icon-size = 16;
-        main-color = "rgb(153, 51, 153)";
-        secondary-color = "rgba(107, 107, 107, 0.4)";
-        text-color = "rgb(255,255,255)";
+        icons = {
+            font = "MonaspiceRn Nerd Font Propo";
+            size = 16;
+        };
         widgets = [
             {
                 id = "\"LVDS-1\"";
