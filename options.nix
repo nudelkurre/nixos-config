@@ -148,14 +148,14 @@ with lib;
             };
         };
         monitors = {
-            primary = mkOption {
-                type = types.str;
-                example = "DP-1";
-                default = "";
-            };
             outputs = mkOption {
                 type = types.listOf (types.submodule {
                     options = {
+                        adaptive_sync = mkOption {
+                            type = types.enum [ "on" "off" ];
+                            example = "on";
+                            default = "off";
+                        };
                         background = mkOption {
                             type = types.str;
                             default = "#000000";
@@ -164,27 +164,13 @@ with lib;
                             type = types.str;
                             default = "solid_color";
                         };
-                        name = mkOption {
-                            type = types.str;
-                            example = "DP-1";
-                        };
-                        width = mkOption {
-                            type = types.int;
-                            example = 1920;
-                        };
                         height = mkOption {
                             type = types.int;
                             example = 1080;
                         };
-                        x = mkOption {
-                            type = types.int;
-                            example = 0;
-                            default = 0;
-                        };
-                        y = mkOption {
-                            type = types.int;
-                            example = 0;
-                            default = 0;
+                        name = mkOption {
+                            type = types.str;
+                            example = "DP-1";
                         };
                         refreshRate = mkOption {
                             type = types.int;
@@ -196,33 +182,47 @@ with lib;
                             example = 0;
                             default = 0;
                         };
-                        adaptive_sync = mkOption {
-                            type = types.enum [ "on" "off" ];
-                            example = "on";
-                            default = "off";
+                        width = mkOption {
+                            type = types.int;
+                            example = 1920;
                         };
                         workspaces = mkOption {
                             type = types.listOf types.str;
                             example = ["1" "2"];
                             default = [ ];
                         };
+                        x = mkOption {
+                            type = types.int;
+                            example = 0;
+                            default = 0;
+                        };
+                        y = mkOption {
+                            type = types.int;
+                            example = 0;
+                            default = 0;
+                        };
                     };
                 });
                 default = [ ];
             };
+            primary = mkOption {
+                type = types.str;
+                example = "DP-1";
+                default = "";
+            };
         };
         rofi = {
-            lines = mkOption {
-                type = types.int;
-                description = "Number of rows to use in rofi";
-                example = 15;
-                default = 10;
-            };
             border-color = mkOption {
                 type = types.str;
                 description = "Color to use on borders of rofi";
                 example = "#ffffff";
                 default = "#ffffff";
+            };
+            lines = mkOption {
+                type = types.int;
+                description = "Number of rows to use in rofi";
+                example = 15;
+                default = 10;
             };
         };
         workspaces = mkOption {
@@ -235,24 +235,19 @@ with lib;
                     programs = mkOption {
                         type = types.listOf (types.submodule {
                             options = {
-                                name = mkOption {
-                                    type = types.str;
-                                    example = "firefox";
-                                };
                                 focus = mkOption {
                                     type = types.bool;
                                     example = true;
                                     default = false;
                                 };
+                                name = mkOption {
+                                    type = types.str;
+                                    example = "firefox";
+                                };
                             };
                         });
                         default = [ ];
                     };
-                    # programs = mkOption {
-                    #     type = types.listOf types.str;
-                    #     example = [ "firefox" ];
-                    #     default = [ ];
-                    # };
                 };
             });
             default = [ ];
