@@ -295,7 +295,7 @@ let
 
         "(defwidget tray []
             (revealer :reveal systrayexpander :transition \"slideleft\"
-                (systray :class \"widgets-box\" :icon-size ${toString cfg.icon-size} :space-evenly false)
+                (systray :class \"widgets-box\" :icon-size ${toString cfg.icons.size} :space-evenly false)
             )
         )"
 
