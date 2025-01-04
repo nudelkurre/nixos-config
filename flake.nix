@@ -60,23 +60,20 @@
         nixosConfigurations = {
             desktop = nixpkgs.lib.nixosSystem {
                 modules = [
-                    ./nixos/configuration-base.nix
-                    ./nixos/desktop.nix
-                    ./nixos/hardware-configuration-desktop.nix
+                    ./machines/desktop/configuration.nix
+                    ./machines/desktop/hardware-configuration-desktop.nix
                 ];
             };
             laptop = nixpkgs.lib.nixosSystem {
                 modules = [
-                    ./nixos/configuration-base.nix
-                    ./nixos/laptop.nix
-                    ./nixos/hardware-configuration-laptop.nix
+                    ./machines/laptop/configuration.nix
+                    ./machines/laptop/hardware-configuration-laptop.nix
                 ];
             };
             server = nixpkgs.lib.nixosSystem {
                 modules = [
-                    ./nixos/configuration-base.nix
-                    ./nixos/server.nix
-                    ./nixos/hardware-configuration-server.nix
+                    ./machines/server/configuration.nix
+                    ./machines/server/hardware-configuration-server.nix
                 ];
             };
         };
@@ -84,14 +81,14 @@
             "emil@desktop" = home-manager.lib.homeManagerConfiguration {
                 inherit pkgs;
                 modules = [
-                    ./home-manager/home-desktop.nix
+                    ./machines/desktop/home.nix
                     ./options.nix
                 ];
             };
             "emil@laptop" = home-manager.lib.homeManagerConfiguration {
                 inherit pkgs;
                 modules = [
-                    ./home-manager/home-laptop.nix
+                    ./machines/laptop/home.nix
                     ./options.nix
                 ];
             };
