@@ -20,7 +20,7 @@
             inputs.nixpkgs.follows = "nixpkgs";
         };
         eww = {
-            url = "github:elkowar/eww";
+            url = "github:elkowar/eww/6ee166707fb644d501a6d9151a491d07916ca4ed";
         };
     };
 
