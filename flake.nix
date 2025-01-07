@@ -81,6 +81,7 @@
             "emil@desktop" = home-manager.lib.homeManagerConfiguration {
                 inherit pkgs;
                 modules = [
+                    ./apps
                     ./machines/desktop/home.nix
                     ./options.nix
                 ];

@@ -127,32 +127,6 @@
         username = "emil";
     };
 
-
-    imports = [
-        ../../apps/desktop/alacritty.nix
-        ../../apps/desktop/chromium.nix
-        ../../apps/desktop/eww/eww.nix
-        ../../apps/utils/dunst.nix
-        ../../apps/desktop/firefox.nix
-        ../../apps/utils/gnome-keyring.nix
-        ../../apps/utils/gtk.nix
-        ../../apps/utils/hyprlock.nix
-        ../../apps/desktop/kitty/kitty.nix
-        ../../apps/utils/mangohud.nix
-        ../../apps/desktop/mpv.nix
-        ../../apps/desktop/obs.nix
-        ../../apps/desktop/rofi.nix
-        ../../apps/utils/swaylock.nix
-        ../../apps/utils/syncthing.nix
-        ../../apps/desktop/vscodium.nix
-        ../../apps/utils/wlsunset.nix
-
-        ../../apps/cli-tools
-
-        ../../apps/window-managers/hyprland.nix
-        ../../apps/window-managers/sway.nix
-    ];
-
     monitors = {
         outputs = [
             {
