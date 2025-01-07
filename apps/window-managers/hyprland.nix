@@ -1,5 +1,10 @@
 {pkgs, config, lib, ...}:
 {
+    home = {
+        packages = lib.optionals (config.wayland.windowManager.hyprland.enable == true) [
+            pkgs.hyprpaper
+        ];
+    };
     wayland.windowManager.hyprland = {
         enable = true;
         package = pkgs.hyprland;
@@ -253,6 +258,7 @@
     xdg = {
         configFile = {
             "hypr/hyprpaper.conf" = {
+                enable = config.wayland.windowManager.hyprland.enable;
                 text = 
                     lib.strings.concatStringsSep "\n" (map (m:
                         "preload = ${m.background}"
@@ -260,9 +266,8 @@
                     lib.strings.concatStringsSep "\n" (map (m:
                         "wallpaper = ${m.name},${m.background}"
                     )(config.monitors.outputs)) + "\n" +
-                    ''splash = false'';
+                        ''splash = false'';
             };
         };
     };
-
 }

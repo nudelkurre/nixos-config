@@ -97,7 +97,6 @@
             nemo
             mypkgs.freetube
             seahorse
-            hyprpaper
             imv
             kbfs
             keybase
