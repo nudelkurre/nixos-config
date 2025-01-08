@@ -77,7 +77,7 @@ in
                 "1003:34842:Atmel_Atmel_maXTouch_Digitizer" = {
                     events = "disabled";
                 };
-                "1133:50478:Logitech_USB_Receiver" = {
+                "1133:16388:Logitech_K360" = {
                     xkb_layout = "se(nodeadkeys)";
                     xkb_numlock = "enable";
                 };
