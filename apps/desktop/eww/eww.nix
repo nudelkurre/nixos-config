@@ -308,7 +308,7 @@ let
     ];
 in
 {
-    config = mkIf config.eww.enable {
+    config = mkIf ! config.disable.eww {
         home.packages = [ cfg.package ];
 
         xdg.configFile."eww/eww.scss".text = styles;

@@ -1,6 +1,7 @@
+{pkgs, config, ...}:
 {
     programs.eza = {
-        enable = true;
+        enable = ! config.disable.eza;
         extraOptions = [
             "--header"
             "--group"

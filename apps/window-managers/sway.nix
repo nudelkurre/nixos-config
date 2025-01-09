@@ -285,7 +285,7 @@ in
                 )(config.monitors.outputs)
             );
         };
-        enable = true;
+        enable = ! config.disable.sway;
         extraConfig = ''
             ${lib.strings.concatStringsSep "" wsf}
             for_window [app_id="firefox"] opacity 1.0

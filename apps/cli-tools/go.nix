@@ -1,6 +1,7 @@
+{pkgs, config, ...}:
 {
     programs.go = {
-        enable = true;
+        enable = ! config.disable.go;
         goBin = ".local/bin.go";
         goPath = "go";
     };

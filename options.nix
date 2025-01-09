@@ -2,6 +2,133 @@
 with lib;
 {
     options = {
+        disable = {
+            alacritty = mkOption {
+                type = types.bool;
+                default = false;
+                example = true;
+            };
+            bash = mkOption {
+                type = types.bool;
+                default = false;
+                example = true;
+            };
+            bat = mkOption {
+                type = types.bool;
+                default = false;
+                example = true;
+            };
+            chromium = mkOption {
+                type = types.bool;
+                default = false;
+                example = true;
+            };
+            dunst = mkOption {
+                type = types.bool;
+                default = false;
+                example = true;
+            };
+            eww = mkOption {
+                type = types.bool;
+                default = false;
+                example = true;
+            };
+            eza = mkOption {
+                type = types.bool;
+                default = false;
+                example = true;
+            };
+            firefox = mkOption {
+                type = types.bool;
+                default = false;
+                example = true;
+            };
+            git = mkOption {
+                type = types.bool;
+                default = false;
+                example = true;
+            };
+            gnome-keyring = mkOption {
+                type = types.bool;
+                default = false;
+                example = true;
+            };
+            go = mkOption {
+                type = types.bool;
+                default = false;
+                example = true;
+            };
+            gtk = mkOption {
+                type = types.bool;
+                default = false;
+                example = true;
+            };
+            hyprland = mkOption {
+                type = types.bool;
+                default = false;
+                example = true;
+            };
+            kitty = mkOption {
+                type = types.bool;
+                default = false;
+                example = true;
+            };
+            mangohud = mkOption {
+                type = types.bool;
+                default = false;
+                example = true;
+            };
+            mpv = mkOption {
+                type = types.bool;
+                default = false;
+                example = true;
+            };
+            nano = mkOption {
+                type = types.bool;
+                default = false;
+                example = true;
+            };
+            obs = mkOption {
+                type = types.bool;
+                default = false;
+                example = true;
+            };
+            python = mkOption {
+                type = types.bool;
+                default = false;
+                example = true;
+            };
+            rofi = mkOption {
+                type = types.bool;
+                default = false;
+                example = true;
+            };
+            ssh = mkOption {
+                type = types.bool;
+                default = false;
+                example = true;
+            };
+            sway = mkOption {
+                type = types.bool;
+                default = false;
+                example = true;
+            };
+            syncthing = mkOption {
+                type = types.bool;
+                default = false;
+                example = true;
+            };
+            vscodium = mkOption {
+                type = types.bool;
+                default = false;
+                example = true;
+            };
+            wlsunset = mkOption {
+                type = types.bool;
+                default = false;
+                example = true;
+            };
+        };
         eww = {
             bars = mkOption {
                 type = types.listOf (types.submodule {

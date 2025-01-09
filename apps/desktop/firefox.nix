@@ -1,7 +1,7 @@
 {pkgs, config, lib, inputs, firefox-addons, ...}:
 {
     programs.firefox = {
-        enable = true;
+        enable = ! config.disable.firefox;
         package = pkgs.firefox-esr;
         policies = {
             "CaptivePortal" = false;

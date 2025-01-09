@@ -1,6 +1,7 @@
+{pkgs, config, ...}:
 {
     home.file.".nanorc" = {
-        enable = true;
+        enable = ! config.disable.nano;
         text = ''
             set atblanks
             set autoindent

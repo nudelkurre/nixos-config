@@ -1,7 +1,7 @@
-{pkgs, ...}:
+{pkgs, obs, ...}:
 {
     programs.obs-studio = {
-        enable = true;
+        enable = ! config.disable.obs;
         plugins = with pkgs.obs-studio-plugins; [
             obs-vintage-filter
             obs-vkcapture

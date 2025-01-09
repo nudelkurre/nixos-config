@@ -3,7 +3,7 @@
 
 {
     programs.vscode = {
-        enable = true;
+        enable = ! config.disable.vscodium;
         enableUpdateCheck = false;
         extensions = with pkgs.vscode-extensions; [
             golang.go

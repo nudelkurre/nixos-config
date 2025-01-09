@@ -1,8 +1,9 @@
+{pkgs, config, ...}:
 {
     programs.bat = {
         config = {
 
         };
-        enable = true;
+        enable = ! config.disable.bat;
     };
 }

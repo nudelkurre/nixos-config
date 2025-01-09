@@ -4,7 +4,7 @@ let
 in
 {
     programs.rofi = {
-        enable = true;
+        enable = ! config.disable.rofi;
         extraConfig = {
             disable-history = mkLiteral "true";
             drun-display-format = "{name}";

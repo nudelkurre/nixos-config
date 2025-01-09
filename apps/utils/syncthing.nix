@@ -1,6 +1,6 @@
 {
     services.syncthing = {
-        enable = true;
+        enable = ! config.disable.sybcthing;
         tray = {
             enable = false;
         };

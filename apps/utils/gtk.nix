@@ -1,7 +1,7 @@
 {pkgs, config, ...}:
 {
     home.pointerCursor = {
-        gtk.enable = true;
+        gtk.enable = ! config.disable.gtk;
         name = "${config.gtk.cursorTheme.name}";
         package = config.gtk.cursorTheme.package;
         size = config.gtk.cursorTheme.size;

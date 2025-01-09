@@ -6,7 +6,7 @@
         ];
     };
     wayland.windowManager.hyprland = {
-        enable = true;
+        enable = ! config.disable.hyprland;
         package = pkgs.hyprland;
         plugins = [
             pkgs.hyprlandPlugins.hy3

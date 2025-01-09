@@ -1,10 +1,10 @@
-{pkgs, ...}:
+{pkgs, config, ...}:
 {
     programs.bash = {
         bashrcExtra = ''
 PS1="\\w> "
         '';
-        enable = true;
+        enable = ! config.disable.bash;
         enableCompletion = true;
         historyControl = [ "ignoredups" ];
         historyIgnore = [

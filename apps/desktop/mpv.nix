@@ -1,4 +1,4 @@
-{pkgs, ...}:
+{pkgs, config, ...}:
 {
     programs.mpv = {
         bindings = {
@@ -33,7 +33,7 @@
             volume = "60";
             fullscreen = true;
         };
-        enable = true;
+        enable = ! config.disable.mpv;
         package = pkgs.unstable.mpv;
         scriptOpts = {
             osc = {
