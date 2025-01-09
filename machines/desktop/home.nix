@@ -1,6 +1,9 @@
 { config, pkgs, lib, ... }:
 
 {
+    disable = {
+        hyprland = true;
+    };
     eww = {
         bars = [
             {
