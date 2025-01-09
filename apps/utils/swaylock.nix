@@ -1,7 +1,7 @@
 {pkgs, config, ...}:
 {
   programs.swaylock = {
-    enable = true;
+    enable = config.wayland.windowManager.sway.enable;
     settings = {
       color = "000000";
       font = "${config.fonts.name}";
