@@ -1,3 +1,4 @@
+{pkgs, config, ...}:
 {
     services.wlsunset = {
         enable = ! config.disable.wlsunset;

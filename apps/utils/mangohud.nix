@@ -1,4 +1,4 @@
-{pkgs, ...}:
+{pkgs, config, ...}:
 {
     programs.mangohud = {
         enable = ! config.disable.mangohud;

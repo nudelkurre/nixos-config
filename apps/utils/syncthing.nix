@@ -1,6 +1,7 @@
+{pkgs, config, ...}:
 {
     services.syncthing = {
-        enable = ! config.disable.sybcthing;
+        enable = ! config.disable.syncthing;
         tray = {
             enable = false;
         };

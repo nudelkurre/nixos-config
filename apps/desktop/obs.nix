@@ -1,4 +1,4 @@
-{pkgs, obs, ...}:
+{pkgs, config, ...}:
 {
     programs.obs-studio = {
         enable = ! config.disable.obs;
