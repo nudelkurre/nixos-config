@@ -135,7 +135,61 @@
                 "Locked" = true;
             };
             "SearchEngines" = {
-                "Remove" = ["Google" "Amazon" "Bing" "Wikipedia"];
+                "Add" = [
+                    {
+                        "Name" = "Gog";
+                        "URLTemplate" = "https://www.gog.com/en/games?query={searchTerms}&hideDLCs=true";
+                        "Method" = "GET";
+                        "IconURL" = "https://store-static-modular.gog-statics.com/en/assets/favicons/favicon.ico";
+                        "Alias" = "@gog";
+                        "Description" = "Gog store";
+                    }
+                    {
+                        "Name" = "HowLongToBeat";
+                        "URLTemplate" = "https://howlongtobeat.com/?q={searchTerms}";
+                        "Method" = "GET";
+                        "IconsURL" = "https://howlongtobeat.com/img/icons/favicon-16x16.png";
+                        "Alias" = "@hltb";
+                        "Description" = "Search for time to beat a game";
+                    }
+                    {
+                        "Name" = "Nixos options";
+                        "URLTemplate" = "https://search.nixos.org/options?query={searchTerms}";
+                        "Method" = "GET";
+                        "IconsURL" = "https://search.nixos.org/favicon.png";
+                        "Alias" = "@no";
+                        "Description" = "Search for nixos options";
+                    }
+                    {
+                        "Name" = "Nixos packages";
+                        "URLTemplate" = "https://search.nixos.org/packages?query={searchTerms}";
+                        "Method" = "GET";
+                        "IconsURL" = "https://search.nixos.org/favicon.png";
+                        "Alias" = "@np";
+                        "Description" = "Search for nixos packages";
+                    }                
+                    {
+                        "Name" = "Startpage";
+                        "URLTemplate" = "https://www.startpage.com/sp/search";
+                        "Method" = "POST";
+                        "IconURL" = "https://www.startpage.com/sp/cdn/favicons/favicon-16x16-gradient.png";
+                        "Alias" = "@sp";
+                        "Description" = "Startpage search";
+                        "PostData" = "query={searchTerms}";
+                        "SuggestURLTemplate" = "https://www.startpage.com/osuggestions?q={searchTerms}";
+                    }
+                    {
+                        "Name" = "Steam";
+                        "URLTemplate" = "https://store.steampowered.com/search/?term={searchTerms}";
+                        "Method" = "GET";
+                        "IconURL" = "https://store.steampowered.com/favicon.ico";
+                        "Alias" = "@steam";
+                        "Description" = "Steam store";
+                    }
+
+                ];
+                "Default" = "DuckDuckGo";
+                "Remove" = ["Google" "Amazon" "Bing" "Wikipedia (en)" "Ecosia"];
             };
             "TranslateEnabled" = false;
             "UserMessaging" = {
@@ -243,10 +297,6 @@
                 ];
                 id = 0;
                 isDefault = true;
-                search = {
-                    default = "DuckDuckGo";
-                    force = true;
-                };
                 settings = {
                     "beacon.enabled" = false;
                     "browser.aboutConfig.showWarning" = false;
