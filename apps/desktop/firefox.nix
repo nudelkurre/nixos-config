@@ -28,6 +28,22 @@
                 "Fingerprinting" = true;
                 "Exceptions" = [];
             };
+            "Extensions" = {
+                "Install" = [];
+                "Uninstall" = [
+                    "amazon@search.mozilla.org"
+                    "bing@search.mozilla.org"
+                    "google@search.mozilla.org"
+                    "wikipedia@search.mozilla.org"
+                ];
+                "Locked" = [
+                    "{446900e4-71c2-419f-a6a7-df9c091e268b}"
+                    "@testpilot-containers"
+                    "floccus@handmadeideas.org"
+                    "uBlock0@raymondhill.net"
+                    "{aecec67f-0d10-4fa7-b7c7-609a2db280cf}"
+                ];
+            };
             "FirefoxHome" = {
                 "Search" = true;
                 "TopSites" = false;
