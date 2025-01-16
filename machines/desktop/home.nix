@@ -101,9 +101,6 @@
             mypkgs.freetube
             seahorse
             imv
-            kbfs
-            keybase
-            keybase-gui
             lm_sensors
             mypkgs.mangadex-downloader
             mate.mate-polkit
@@ -186,15 +183,6 @@
     rofi = {
         border-color = "#f3c8f3";
         lines = 23;
-    };
-
-    services = {
-        keybase = {
-            enable = true;
-        };
-        kbfs = {
-            enable = true;
-        };
     };
 
     workspaces = [
