@@ -33,7 +33,7 @@
                 width = 1280;
             }
         ];
-        color = {
+        colors = {
             main = "rgb(153, 51, 153)";
             secondary = "rgba(107, 107, 107, 0.4)";
             text = "rgb(255,255,255)";
