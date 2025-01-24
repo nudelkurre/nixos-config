@@ -255,6 +255,7 @@
         mimeApps = {
             enable = true;
             defaultApplications = {
+                "application/pdf" = "firefox-esr.desktop";
                 "audio/x-m4b" = "mpv.desktop";
                 "image/jpeg" = "imv-dir.desktop";
                 "image/png" = "imv-dir.desktop";
