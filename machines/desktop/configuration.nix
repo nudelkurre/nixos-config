@@ -241,6 +241,24 @@
                 support32Bit = false;
             };
             enable = true;
+            extraConfig = {
+                pipewire = {
+                    "91-null-sinks" = {
+                        "context.objects" = [
+                            {
+                                factory = "adapter";
+                                args = {
+                                    "factory.name" = "support.null-audio-sink";
+                                    "node.name" = "Null Output";
+                                    "node.description" = "Null Output";
+                                    "media.class" = "Audio/Sink";
+                                    "audio.position" = "FL,FR";
+                                };
+                            }
+                        ];
+                    };
+                };
+            };
             pulse = {
                 enable = true;
             };
