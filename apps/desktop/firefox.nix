@@ -137,6 +137,15 @@
             "SearchEngines" = {
                 "Add" = [
                     {
+                        "Name" = "Duckduckgo";
+                        "URLTemplate" = "https://duckduckgo.com/";
+                        "Method" = "POST";
+                        "Alias" = "@ddg";
+                        "Description" = "DuckDuckGo search";
+                        "PostData" = "q={searchTerms}&kz=1&kae=d&ks=m&kf=-1&kp=-2&kw=s&ko=1&kaf=1&kac=-1&km=l";
+                        "IconUrl" = "https://duckduckgo.com/favicon.ico";
+                    }
+                    {
                         "Name" = "Gog";
                         "URLTemplate" = "https://www.gog.com/en/games?query={searchTerms}&hideDLCs=true";
                         "Method" = "GET";
@@ -188,8 +197,8 @@
                     }
 
                 ];
-                "Default" = "DuckDuckGo";
-                "Remove" = ["Google" "Amazon" "Bing" "Wikipedia (en)" "Ecosia"];
+                "Default" = "Startpage";
+                "Remove" = ["DuckDuckGo" "Google" "Amazon" "Bing" "Wikipedia (en)" "Ecosia"];
             };
             "TranslateEnabled" = false;
             "UserMessaging" = {
