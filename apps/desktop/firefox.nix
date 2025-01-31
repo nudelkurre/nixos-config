@@ -148,7 +148,7 @@
                         "Name" = "HowLongToBeat";
                         "URLTemplate" = "https://howlongtobeat.com/?q={searchTerms}";
                         "Method" = "GET";
-                        "IconsURL" = "https://howlongtobeat.com/img/icons/favicon-16x16.png";
+                        "IconURL" = "https://howlongtobeat.com/img/icons/favicon-16x16.png";
                         "Alias" = "@hltb";
                         "Description" = "Search for time to beat a game";
                     }
@@ -156,7 +156,7 @@
                         "Name" = "Nixos options";
                         "URLTemplate" = "https://search.nixos.org/options?query={searchTerms}";
                         "Method" = "GET";
-                        "IconsURL" = "https://search.nixos.org/favicon.png";
+                        "IconURL" = "https://search.nixos.org/favicon.png";
                         "Alias" = "@no";
                         "Description" = "Search for nixos options";
                     }
@@ -164,7 +164,7 @@
                         "Name" = "Nixos packages";
                         "URLTemplate" = "https://search.nixos.org/packages?query={searchTerms}";
                         "Method" = "GET";
-                        "IconsURL" = "https://search.nixos.org/favicon.png";
+                        "IconURL" = "https://search.nixos.org/favicon.png";
                         "Alias" = "@np";
                         "Description" = "Search for nixos packages";
                     }                
