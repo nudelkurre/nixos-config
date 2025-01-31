@@ -143,7 +143,7 @@
                         "Alias" = "@ddg";
                         "Description" = "DuckDuckGo search";
                         "PostData" = "q={searchTerms}&kz=1&kae=d&ks=m&kf=-1&kp=-2&kw=s&ko=1&kaf=1&kac=-1&km=l";
-                        "IconUrl" = "https://duckduckgo.com/favicon.ico";
+                        "IconURL" = "https://duckduckgo.com/favicon.ico";
                     }
                     {
                         "Name" = "Gog";
