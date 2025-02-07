@@ -11,6 +11,8 @@
             jnoortheen.nix-ide
             ms-dotnettools.csdevkit
             ms-python.python
+            catppuccin.catppuccin-vsc
+            catppuccin.catppuccin-vsc-icons
         ];
         keybindings = [
             {
@@ -28,7 +30,8 @@
             "editor.fontFamily" = "${config.fonts.name}";
             "editor.insertSpaces" = true;
             "editor.tabSize" = 4;
-            "workbench.colorTheme" = "Default Dark";
+            "workbench.colorTheme" = "Catppuccin Frappé";
+            "workbench.iconTheme" = "catppuccin-frappe";
         };
     };
 }
