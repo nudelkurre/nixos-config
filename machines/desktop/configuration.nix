@@ -18,6 +18,7 @@
                 device = "nodev";
                 efiSupport = true;
                 enable = true;
+                theme = "${pkgs.catppuccin-grub}";
                 useOSProber = true;
             };
             systemd-boot = {
@@ -27,6 +28,12 @@
         # Settings for plymouth splash screen
         plymouth = {
             enable = true;
+            theme = "catppuccin-frappe";
+            themePackages = [ 
+                (pkgs.catppuccin-plymouth.override {
+                    variant = "frappe";
+                })
+            ];
         };
     };
 
