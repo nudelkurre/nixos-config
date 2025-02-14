@@ -178,11 +178,15 @@ in
                 # exit sway (logs you out of your X session)
                 "${mod1}+${mod4}+e" = "exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'";
 
+                # Controlling media
+                "XF86AudioPlay" = "exec ${pkgs.playerctl}/bin/playerctl play-pause";
+                "XF86AudioNext" = "exec ${pkgs.playerctl}/bin/playerctl next";
+                "XF86AudioPrev" = "exec ${pkgs.playerctl}/bin/playerctl previous";
 
-                # Controlling spotify
-                "XF86AudioPlay" = "exec playerctl -i firefox-esr play-pause";
-                "XF86AudioNext" = "exec playerctl -i firefox-esr next";
-                "XF86AudioPrev" = "exec playerctl -i firefox-esr previous";
+                # Change volume
+                "XF86AudioRaiseVolume" = "exec ${pkgs.wireplumber}/bin/wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+";
+                "XF86AudioLowerVolume" = "exec ${pkgs.wireplumber}/bin/wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-";
+                "XF86AudioMute" = "exec ${pkgs.wireplumber}/bin/wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
 
                 # Start Firefox
                 "${mod1}+${mod4}+f" = "exec firefox-esr";
