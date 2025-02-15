@@ -84,7 +84,7 @@
             lm_sensors
             mate.mate-polkit
             mypkgs.freetube
-            nemo
+            nemo-with-extensions
             pavucontrol
             wireguard-tools
             wl-clipboard
