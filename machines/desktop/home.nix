@@ -104,7 +104,6 @@
             lm_sensors
             mypkgs.mangadex-downloader
             mate.mate-polkit
-            nodejs_22
             pavucontrol
             mypkgs.pkg2zip
             scripts.video-dl
