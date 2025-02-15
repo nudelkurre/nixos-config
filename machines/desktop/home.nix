@@ -97,7 +97,7 @@
         };
         homeDirectory = "/home/emil";
         packages = with pkgs; [
-            nemo
+            nemo-with-extensions
             mypkgs.freetube
             seahorse
             imv
