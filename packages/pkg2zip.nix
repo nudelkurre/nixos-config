@@ -1,10 +1,10 @@
 {pkgs, lib, stdenv, fetchurl, ...}:
 stdenv.mkDerivation rec {
   pname = "pkg2zip";
-  version = "2.3";
+  version = "2.6";
   src = fetchurl {
     url = "https://github.com/lusid1/pkg2zip/archive/${version}.tar.gz";
-    sha256 = "sha256-N4D3j9GCMI7XhUxpx6hcTG1Plx7jqw5Zj1htz37imhU=";
+    sha256 = "sha256-qql3Cm/ThGdFnW41rKKoMlcyJHp5o75NXF/nneK12I8=";
   };
 
   buildPhase = ''
