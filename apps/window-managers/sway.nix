@@ -179,9 +179,9 @@ in
                 "${mod1}+${mod4}+e" = "exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'";
 
                 # Controlling media
-                "XF86AudioPlay" = "exec ${pkgs.playerctl}/bin/playerctl play-pause";
-                "XF86AudioNext" = "exec ${pkgs.playerctl}/bin/playerctl next";
-                "XF86AudioPrev" = "exec ${pkgs.playerctl}/bin/playerctl previous";
+                "XF86AudioPlay" = "exec ${pkgs.playerctl}/bin/playerctl -i firefox play-pause";
+                "XF86AudioNext" = "exec ${pkgs.playerctl}/bin/playerctl -i firefox next";
+                "XF86AudioPrev" = "exec ${pkgs.playerctl}/bin/playerctl -i firefox previous";
 
                 # Change volume
                 "XF86AudioRaiseVolume" = "exec ${pkgs.wireplumber}/bin/wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+";
