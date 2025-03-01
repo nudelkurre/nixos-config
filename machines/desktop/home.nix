@@ -255,7 +255,9 @@
             enable = true;
             defaultApplications = {
                 "application/pdf" = "firefox-esr.desktop";
+                "audio/mpeg" = "mpv.desktop";
                 "audio/x-m4b" = "mpv.desktop";
+                "audio/x-vorbis+ogg" = "mpv.desktop";
                 "image/jpeg" = "imv-dir.desktop";
                 "image/png" = "imv-dir.desktop";
                 "inode/directory" = "nemo.desktop";
