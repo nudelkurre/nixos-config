@@ -1,7 +1,9 @@
 { config, pkgs, lib, ... }:
 let
-    browser = "floorp.desktop";
+    browser = "floorp-private.desktop";
+    image_viewer = "imv-dir.desktop";
     media_player = "mpv.desktop";
+    text_editor = "codium.desktop";
 in
 {
     disable = {
@@ -274,11 +276,11 @@ in
                 "audio/mpeg" = media_player;
                 "audio/x-m4b" = media_player;
                 "audio/x-vorbis+ogg" = media_player;
-                "image/jpeg" = "imv-dir.desktop";
-                "image/png" = "imv-dir.desktop";
+                "image/jpeg" = image_viewer;
+                "image/png" = image_viewer;
                 "inode/directory" = "nemo.desktop";
-                "text/html" = "codium.desktop";
-                "text/x-python" = "codium.desktop";
+                "text/html" = text_editor;
+                "text/x-python" = text_editor;
                 "video/mp4" = media_player;
                 "video/x-matroska" = media_player;
                 "x-scheme-handler/http" = browser;
