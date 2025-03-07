@@ -2,6 +2,7 @@
 {
     programs.floorp = {
         enable = true;
+        package = pkgs.unstable.floorp;
         profiles = {
             "Default" = {
                 containers = {
