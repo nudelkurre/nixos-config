@@ -207,7 +207,7 @@ in
                 "${mod1}+kp_2" = "exec nemo";
 
                 # Open Steam
-                "${mod1}+kp_5" = "exec steam";
+                "${mod1}+kp_5" = "exec steam --no-minimize-to-tray";
             };
             modes = {
                 resize = {
