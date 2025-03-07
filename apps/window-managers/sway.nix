@@ -179,20 +179,20 @@ in
                 "${mod1}+${mod4}+e" = "exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'";
 
                 # Controlling media
-                "XF86AudioPlay" = "exec ${pkgs.playerctl}/bin/playerctl -i firefox play-pause";
-                "XF86AudioNext" = "exec ${pkgs.playerctl}/bin/playerctl -i firefox next";
-                "XF86AudioPrev" = "exec ${pkgs.playerctl}/bin/playerctl -i firefox previous";
+                "XF86AudioPlay" = "exec ${pkgs.playerctl}/bin/playerctl -i firefox,floorp play-pause";
+                "XF86AudioNext" = "exec ${pkgs.playerctl}/bin/playerctl -i firefox,floorp next";
+                "XF86AudioPrev" = "exec ${pkgs.playerctl}/bin/playerctl -i firefox,floorp previous";
 
                 # Change volume
                 "XF86AudioRaiseVolume" = "exec ${pkgs.wireplumber}/bin/wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+";
                 "XF86AudioLowerVolume" = "exec ${pkgs.wireplumber}/bin/wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-";
                 "XF86AudioMute" = "exec ${pkgs.wireplumber}/bin/wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
 
-                # Start Firefox
-                "${mod1}+${mod4}+f" = "exec firefox-esr";
+                # Start Floorp
+                "${mod1}+${mod4}+f" = "exec floorp";
 
-                # Start Firefox in private window
-                "${mod1}+${mod2}+${mod4}+f" = "exec firefox-esr --private-window";
+                # Start Floorp in private window
+                "${mod1}+${mod2}+${mod4}+f" = "exec floorp --private-window";
 
                 # Take a screenshot
                 "Print" = "exec ${pkgs.grim}/bin/grim -g \"$(${pkgs.slurp}/bin/slurp)\"";
