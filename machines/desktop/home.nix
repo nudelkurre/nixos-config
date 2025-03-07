@@ -1,5 +1,8 @@
 { config, pkgs, lib, ... }:
-
+let
+    browser = "floorp.desktop";
+    media_player = "mpv.desktop";
+in
 {
     disable = {
         hyprland = true;
@@ -197,6 +200,7 @@
             programs = [
                 {name = "chromium-browser"; focus = true;}
                 {name = "firefox"; focus = true;}
+                {name = "floorp"; focus = true;}
             ];
         }
         {
@@ -266,20 +270,20 @@
         mimeApps = {
             enable = true;
             defaultApplications = {
-                "application/pdf" = "firefox-esr.desktop";
-                "audio/mpeg" = "mpv.desktop";
-                "audio/x-m4b" = "mpv.desktop";
-                "audio/x-vorbis+ogg" = "mpv.desktop";
+                "application/pdf" = browser;
+                "audio/mpeg" = media_player;
+                "audio/x-m4b" = media_player;
+                "audio/x-vorbis+ogg" = media_player;
                 "image/jpeg" = "imv-dir.desktop";
                 "image/png" = "imv-dir.desktop";
                 "inode/directory" = "nemo.desktop";
                 "text/html" = "codium.desktop";
                 "text/x-python" = "codium.desktop";
-                "video/mp4" = "mpv.desktop";
-                "video/x-matroska" = "mpv.desktop";
-                "x-scheme-handler/http" = "firefox-esr-private.desktop";
-                "x-scheme-handler/https" = "firefox-esr-private.desktop";
-                "x-scheme-handler/chrome" = "firefox-esr-private.desktop";
+                "video/mp4" = media_player;
+                "video/x-matroska" = media_player;
+                "x-scheme-handler/http" = browser;
+                "x-scheme-handler/https" = browser;
+                "x-scheme-handler/chrome" = browser;
             };
         };
         userDirs = {
