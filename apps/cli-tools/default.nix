@@ -2,6 +2,7 @@
   imports = [
     ./bash.nix
     ./bat.nix
+    ./cmus.nix
     ./eza.nix
     ./git.nix
     ./go.nix
