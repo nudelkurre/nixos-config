@@ -98,6 +98,7 @@
             mangadex-downloader = pkgs.python311Packages.callPackage packages/mangadex-dl/mangadex-downloader.nix {};
             freetube = pkgs.callPackage packages/freetube.nix {};
             pkg2zip = pkgs.callPackage packages/pkg2zip.nix {};
+            ngb = pkgs.python3Packages.callPackage packages/ngb.nix {};
         };
 
         apps.x86_64-linux = {
@@ -112,6 +113,10 @@
             pkg2zip = {
                 type = "app";
                 program = "${self.packages.x86_64-linux.pkg2zip}/bin/pkg2zip";
+            };
+            ngb = {
+                type = "app";
+                program = "${self.packages.x86_64-linux.ngb}/bin/ngb";
             };
         };
     };
