@@ -8,11 +8,11 @@
             frametime=false;
             cpu_temp=true;
             cpu_mhz=true;
-            cpu_power=true;
+            cpu_power=false;
             gpu_temp=true;
-            gpu_power=true;
-            gpu_name=true;
-            throttling_status=true;
+            gpu_power=false;
+            gpu_name=false;
+            throttling_status=false;
             vram=true;
             ram=true;
             gamemode=true;
