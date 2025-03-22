@@ -21,9 +21,12 @@
         eww = {
             url = "github:elkowar/eww/6ee166707fb644d501a6d9151a491d07916ca4ed";
         };
+        ngb = {
+            url = "path:/home/emil/repos/ngb/0.1.0";
+        };
     };
 
-    outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, firefox-addons, m4b-tool, scripts, eww, ... }: 
+    outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, firefox-addons, m4b-tool, scripts, eww, ngb, ... }: 
     let
         system = "x86_64-linux";
         overlay-unstable = final: prev: {
@@ -53,6 +56,7 @@
                 mypkgs-overlay
                 scripts-overlay
                 eww-overlay
+                ngb.overlay
             ];
         };
     in {
@@ -83,6 +87,7 @@
                     ./apps
                     ./machines/desktop/home.nix
                     ./options.nix
+                    ngb.outputs.homeManagerModules.ngb
                 ];
             };
             "emil@laptop" = home-manager.lib.homeManagerConfiguration {
@@ -98,7 +103,6 @@
             mangadex-downloader = pkgs.python311Packages.callPackage packages/mangadex-dl/mangadex-downloader.nix {};
             freetube = pkgs.callPackage packages/freetube.nix {};
             pkg2zip = pkgs.callPackage packages/pkg2zip.nix {};
-            ngb = pkgs.python3Packages.callPackage packages/ngb.nix {};
         };
 
         apps.x86_64-linux = {
@@ -113,10 +117,6 @@
             pkg2zip = {
                 type = "app";
                 program = "${self.packages.x86_64-linux.pkg2zip}/bin/pkg2zip";
-            };
-            ngb = {
-                type = "app";
-                program = "${self.packages.x86_64-linux.ngb}/bin/ngb";
             };
         };
     };
