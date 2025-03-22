@@ -248,28 +248,10 @@ in
             startup = lib.lists.flatten [
                 { command = "${pkgs.udiskie}/bin/udiskie -a";}
                 { command = "dunst -conf ~/.config/dunst/dunstrc";}
-                { command = "eww daemon";}
                 { command = "systemctl --user import-environment PATH";}
                 (if config.monitors.primary != "" then [
                     {command = "${pkgs.xorg.xrandr}/bin/xrandr --output ${config.monitors.primary} --primary";}
                 ] else [])
-                (builtins.map
-                    (b:
-                        {
-                            command = "eww open ${b.name}";
-                        }
-                    )
-                    (config.eww.bars)
-                )
-                (builtins.map
-                    (w:
-                        {
-                            command = "eww open ${w.name}";
-                        }
-                    )
-                    (config.eww.widgets)
-                )
-                { command = "eww reload"; always = true;}
             ];
             window = {
                 border = 1;

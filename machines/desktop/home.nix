@@ -9,62 +9,7 @@ in
     disable = {
         hyprland = true;
     };
-    eww = {
-        bars = [
-            {
-                id = "\"DP-1\"";
-                name = "main";
-                widgets = [
-                    "(workspace :monitor \"DP-1\")"
-                    "(spacer)"
-                    "(disk :mountpoint \"/\")"
-                    "(net :interface \"eth0\")"
-                    "(volume)"
-                    "(time :tz \"Europe/Stockholm\")"
-                    "(tray)"
-                ];
-                width = 2560;
-            }
-            {
-                id = "\"HDMI-A-1\"";
-                name = "secondary";
-                widgets = [
-                    "(workspace :monitor \"HDMI-A-1\")"
-                    "(spacer)"
-                    "(headset)"
-                    "(bt)"
-                    "(cpu)"
-                    "(weather :iconsize 25)"
-                    "(time :tz \"Europe/Stockholm\")"
-                ];
-                width = 1080;
-            }
-        ];
-        colors = {
-            main = "rgb(153, 51, 153)";
-            secondary = "rgba(107, 107, 107, 0.4)";
-            text = "rgb(255,255,255)";
-        };
-        enable = true;
-        icons = {
-            font = "MonaspiceRn Nerd Font Propo";
-            size = 20;
-        };
-        testing = true;
-        widgets = [
-            {
-                id = "\"DP-1\"";
-                modules = [
-                    "(weather-widget :iconsize 100)"
-                ];
-                name = "weather";
-                width = 20;
-                x = 10;
-                y = 10;
-            }
-        ];
-    };
-
+    
     fonts = {
         fontconfig = {
             defaultFonts = {
