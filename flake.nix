@@ -18,15 +18,12 @@
         scripts = {
             url = "github:nudelkurre/scripts";
         };
-        eww = {
-            url = "github:elkowar/eww/6ee166707fb644d501a6d9151a491d07916ca4ed";
-        };
         ngb = {
-            url = "path:/home/emil/repos/ngb/0.1.0";
+            url = "github:nudelkurre/ngb/0.1.0";
         };
     };
 
-    outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, firefox-addons, m4b-tool, scripts, eww, ngb, ... }: 
+    outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, firefox-addons, m4b-tool, scripts, ngb, ... }: 
     let
         system = "x86_64-linux";
         overlay-unstable = final: prev: {
@@ -44,9 +41,6 @@
         scripts-overlay = final: prev: {
             scripts = scripts.packages.${system};
         };
-        eww-overlay = final: prev: {
-            eww-git = eww.packages.${system};
-        };
         pkgs = import nixpkgs {
             inherit system;
             overlays = [
@@ -55,7 +49,6 @@
                 firefox-addons-overlay
                 mypkgs-overlay
                 scripts-overlay
-                eww-overlay
                 ngb.overlay
             ];
         };
