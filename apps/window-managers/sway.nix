@@ -252,6 +252,7 @@ in
                 (if config.monitors.primary != "" then [
                     {command = "${pkgs.xorg.xrandr}/bin/xrandr --output ${config.monitors.primary} --primary";}
                 ] else [])
+                { command = "${pkgs.ngb}/bin/ngb";}
             ];
             window = {
                 border = 1;
