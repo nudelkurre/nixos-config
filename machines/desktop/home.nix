@@ -120,6 +120,110 @@ in
         home-manager = {
             enable = true;
         };
+        ngb = {
+            enable = true;
+            settings = {
+                bars = [
+                    {
+                        "output" = "DP-1";
+                        "widgets" = {
+                            "center" = [];
+                            "left" = [
+                                {
+                                    "config" = {
+                                        "monitor" = "DP-1";
+                                        "names" = {
+                                            "1" = "";
+                                            "2" = "";
+                                            "3" = "";
+                                            "4" = "";
+                                            "5" = "";
+                                        };
+                                    };
+                                "module" = "workspace";
+                                }
+                            ];
+                            "right" = [
+                                {
+                                    "config" = {
+                                        "mountpoint" = "/";
+                                    };
+                                    "module" = "disk";
+                                }
+                                {
+                                    "config" = {
+                                        "interface" = "eth0";
+                                    };
+                                    "module" = "network";
+                                }
+                                {
+                                    "config" = {};
+                                    "module" = "volume";
+                                }
+                                {
+                                    "config" = {
+                                        "timeformat_normal" = "%H:%M:%S";
+                                        "timeformat_revealer" = "%A %Y-%m-%d";
+                                    };
+                                    "module" = "clock";
+                                }
+                            ];
+                        };
+                    }
+                    {
+                        "output" = "HDMI-A-1";
+                        "widgets" = {
+                            "center" = [];
+                            "left" = [
+                                {
+                                    "config" = {
+                                        "monitor" = "HDMI-A-1";
+                                        "names" = {
+                                            "6" = "";
+                                            "7" = "";
+                                            "8" = "";
+                                            "9" = "󰓃";
+                                            "10" = "";
+                                        };
+                                    };
+                                    "module" = "workspace";
+                                }
+                            ];
+                            "right" = [
+                                {
+                                    "config" = {};
+                                    "module" = "bluetooth";
+                                }
+                                {
+                                    "config" = {};
+                                    "module" = "headset";
+                                }
+                                {
+                                    "config" = {};
+                                    "module" = "cpu";
+                                }
+                                {
+                                    "config" = {
+                                        "city" = "Västerås";
+                                        "icon_size" = 20;
+                                    };
+                                    "module" = "weather";
+                                }
+                                {
+                                    "config" = {
+                                        "timeformat_normal" = "%H:%M:%S";
+                                        "timeformat_revealer" = "%Y-%m-%d";
+                                    };
+                                    "module" = "clock";
+                                }
+                            ];
+                        };
+                    }
+                ];
+                "icon_size" = 20;
+                "spacing" = 5;
+            };
+        };
     };
 
     qt = {
@@ -214,6 +318,7 @@ in
                 mimeType = ["x-scheme-handler/steam" "x-scheme-handler/steamlink"];
             };
         };
+        enable = true;
         mimeApps = {
             enable = true;
             defaultApplications = {
