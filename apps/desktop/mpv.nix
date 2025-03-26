@@ -18,6 +18,7 @@
             "]" = "add speed 0.25";
             "{" = "add speed -0.5";
             "}" = "add speed 0.5";
+            "Shift+BS" = "set speed 2";
             "Ctrl+r" = "cycle_values video-rotate 90 180 270 0";
 
             "ESC" = "quit";
@@ -27,11 +28,13 @@
             "MBTN_MID" = "quit";
         };
         config = {
+            fullscreen = true;
+            gpu-context = "wayland";
             hwdec = "vaapi";
-            gpu-context = "waylandvk";
+            vo="gpu";
             volume-max = "100";
             volume = "60";
-            fullscreen = true;
+            ytdl-format="bestvideo[height<=1080]+bestaudio/best";
         };
         enable = ! config.disable.mpv;
         package = pkgs.unstable.mpv;
