@@ -58,6 +58,7 @@ in
                     {app_id = "zenity";}
                     {window_role = "pop-up";}
                     {window_role = "task_dialog";}
+                    {app_id = "^floorp$"; title = "^Extension: \\(Bitwarden Password Manager\\) - Bitwarden — Ablaze Floorp$";}
                 ];
                 modifier = "${mod1}";
                 titlebar = false;
@@ -275,7 +276,6 @@ in
         enable = ! config.disable.sway;
         extraConfig = ''
             ${lib.strings.concatStringsSep "" wsf}
-            for_window [app_id="firefox"] opacity 1.0
             for_window [class="steam"] move to workspace ${ws5}
         '';
         extraSessionCommands = ''
