@@ -19,7 +19,7 @@
             url = "github:nudelkurre/scripts";
         };
         ngb = {
-            url = "github:nudelkurre/ngb/0.1.0";
+            url = "github:nudelkurre/ngb";
         };
     };
 
