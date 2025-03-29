@@ -117,15 +117,16 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1743195540,
-        "narHash": "sha256-AxZ96Lv2QFP4WCO7AA9ZMwX8zGOL/Ktn5dM8nLNJwuY=",
+        "lastModified": 1743278582,
+        "narHash": "sha256-l0JQiLdfU059bbT7UCGT0HkZbNsATrp/o5NFDtmEYzE=",
         "owner": "nudelkurre",
         "repo": "ngb",
-        "rev": "53ce4c62d4375d9202faa6de7ac797749f0577e5",
+        "rev": "7f366b7461d456639287b02601f707263a764dc7",
         "type": "github"
       },
       "original": {
         "owner": "nudelkurre",
+        "ref": "0.1.3",
         "repo": "ngb",
         "type": "github"
       }
@@ -194,22 +195,6 @@
         "type": "github"
       }
     },
-    "nixpkgs_4": {
-      "locked": {
-        "lastModified": 1738142207,
-        "narHash": "sha256-NGqpVVxNAHwIicXpgaVqJEJWeyqzoQJ9oc8lnK9+WC4=",
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "9d3ae807ebd2981d593cddd0080856873139aa40",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nixos",
-        "ref": "nixos-unstable",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "root": {
       "inputs": {
         "firefox-addons": "firefox-addons",
@@ -224,7 +209,9 @@
     "scripts": {
       "inputs": {
         "flake-utils": "flake-utils_3",
-        "nixpkgs": "nixpkgs_4"
+        "nixpkgs": [
+          "nixpkgs-unstable"
+        ]
       },
       "locked": {
         "lastModified": 1742335489,
