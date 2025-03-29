@@ -17,9 +17,10 @@
         };
         scripts = {
             url = "github:nudelkurre/scripts";
+            inputs.nixpkgs.follows = "nixpkgs-unstable";
         };
         ngb = {
-            url = "github:nudelkurre/ngb";
+            url = "github:nudelkurre/ngb/0.1.3";
         };
     };
 
