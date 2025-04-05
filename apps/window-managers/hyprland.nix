@@ -75,12 +75,12 @@
                 # Reboot
                 "$mod1 $mod2 $mod4, R, exec,systemctl reboot"
 
-                # Start Firefox
-                "$mod1 $mod4, F, exec, firefox-esr"
-                ", XF86HomePage, exec, firefox-esr"
+                # Start Floorp
+                "$mod1 $mod4, F, exec, floorp"
+                ", XF86HomePage, exec, floorp"
 
-                # Start Firefox in private window
-                "$mod1 $mod2 $mod4, F, exec, firefox-esr --private-window"
+                # Start Floorp in private window
+                "$mod1 $mod2 $mod4, F, exec, floorp --private-window"
 
                 # Start jellyfin media player
                 "$mod1, code:90, exec, flatpak run com.github.iwalton3.jellyfin-media-player"
