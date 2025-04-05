@@ -5,11 +5,7 @@ let
     media_player = "mpv.desktop";
     text_editor = "codium.desktop";
 in
-{
-    disable = {
-        hyprland = true;
-    };
-    
+{    
     fonts = {
         fontconfig = {
             defaultFonts = {

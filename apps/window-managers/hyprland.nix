@@ -83,7 +83,7 @@
                 "$mod1 $mod2 $mod4, F, exec, firefox-esr --private-window"
 
                 # Start jellyfin media player
-                "$mod1, code:90, exec, jellyfinmediaplayer"
+                "$mod1, code:90, exec, flatpak run com.github.iwalton3.jellyfin-media-player"
 
                 # Start FreeTube
                 "$mod1, code:87, exec, freetube"
@@ -141,19 +141,7 @@
             ];
 
             exec-once = lib.lists.flatten [
-                "eww daemon"
-                (builtins.map
-                    (b:
-                        "eww open ${b.name}"
-                    )
-                    (config.eww.bars)
-                )
-                (builtins.map
-                    (w:
-                        "eww open ${w.name}"
-                    )
-                    (config.eww.widgets)
-                )
+                "${pkgs.ngb}/bin/ngb"
                 "dunst"
                 "hyprpaper"
             ];
