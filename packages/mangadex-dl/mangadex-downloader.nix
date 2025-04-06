@@ -11,7 +11,7 @@ buildPythonPackage rec {
     ./mangadex-dl.patch
   ];
 
-  dependencies = with pkgs.python311Packages; [
+  dependencies = with pkgs.python3Packages; [
     requests
     (
       buildPythonPackage rec {

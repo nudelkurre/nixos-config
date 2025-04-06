@@ -94,7 +94,7 @@
         };
         packages.x86_64-linux = {
             wallpapers = pkgs.callPackage packages/wallpapers {};
-            mangadex-downloader = pkgs.python311Packages.callPackage packages/mangadex-dl/mangadex-downloader.nix {};
+            mangadex-downloader = pkgs.python3Packages.callPackage packages/mangadex-dl/mangadex-downloader.nix {};
             freetube = pkgs.callPackage packages/freetube.nix {};
             pkg2zip = pkgs.callPackage packages/pkg2zip.nix {};
         };
