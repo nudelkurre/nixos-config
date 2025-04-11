@@ -9,15 +9,16 @@
             cpu_temp=true;
             cpu_mhz=true;
             cpu_power=false;
-            gpu_temp=true;
+            gpu_stats=false; # Causes stuttering in game if enabled
+            gpu_temp=false;
             gpu_power=false;
             gpu_name=false;
             throttling_status=false;
-            vram=true;
+            vram=false;
             ram=true;
             gamemode=true;
 
-            fps_limit="60";
+            fps_limit="60,30,0";
             font_size="20";
             background_color="000000";
             gpu_color="FFCCF6";
