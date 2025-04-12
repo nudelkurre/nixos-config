@@ -62,7 +62,7 @@
 
     # Select internationalisation properties.
     i18n = {
-        defaultLocale = "en_US.UTF-8";
+        defaultLocale = "en_DK.UTF-8";
     };
 
     # networking.hostName = "nixos"; # Define your hostname.
