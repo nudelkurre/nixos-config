@@ -100,7 +100,9 @@
                         "widgets" = {
                             "center" = [
                                 {
-                                    "config" = {};
+                                    "config" = {
+                                        "city" = "Västerås";
+                                    };
                                     "module" = "weather";
                                 }
                             ];
