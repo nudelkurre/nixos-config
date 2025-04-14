@@ -252,8 +252,11 @@
         }
     ];
 
-    xdg.userDirs = {
-        createDirectories = true;
+    xdg = {
         enable = true;
+        userDirs = {
+            createDirectories = true;
+            enable = true;
+        };
     };
 }
