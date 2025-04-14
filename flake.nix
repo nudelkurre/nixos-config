@@ -20,7 +20,7 @@
             inputs.nixpkgs.follows = "nixpkgs-unstable";
         };
         ngb = {
-            url = "github:nudelkurre/ngb/0.2.1";
+            url = "github:nudelkurre/ngb/0.2.2";
         };
     };
 
