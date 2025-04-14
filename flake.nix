@@ -87,8 +87,10 @@
             "emil@laptop" = home-manager.lib.homeManagerConfiguration {
                 inherit pkgs;
                 modules = [
+                    ./apps
                     ./machines/laptop/home.nix
                     ./options.nix
+                    ngb.outputs.homeManagerModules.ngb
                 ];
             };
         };
