@@ -1,62 +1,6 @@
 { config, pkgs, ... }:
 
 {
-    eww = {
-        bars = [
-            {
-                id = "\"LVDS-1\"";
-                name = "main";
-                widgets = [
-                    "(workspace :monitor \"LVDS-1\")"
-                    "(spacer)"
-                    "(disk :mountpoint \"/\")"
-                    "(net :interface \"eth0\")"
-                    "(net :interface \"wlan0\")"
-                    "(volume)"
-                    "(battery)"
-                    "(time :tz \"Europe/Stockholm\")"
-                ];
-                width = 1366;
-            }
-            {
-                id = "\"HDMI-A-1\"";
-                name = "secondary";
-                widgets = [
-                    "(workspace :monitor \"HDMI-A-1\")"
-                    "(spacer)"
-                    "(headset)"
-                    "(bt)"
-                    "(cpu)"
-                    "(weather :iconsize 25)"
-                    "(time :tz \"Europe/Stockholm\")"
-                ];
-                width = 1280;
-            }
-        ];
-        colors = {
-            main = "rgb(153, 51, 153)";
-            secondary = "rgba(107, 107, 107, 0.4)";
-            text = "rgb(255,255,255)";
-        };
-        enable = true;
-        icons = {
-            font = "MonaspiceRn Nerd Font Propo";
-            size = 16;
-        };
-        widgets = [
-            {
-                id = "\"LVDS-1\"";
-                modules = [
-                    "(weather-widget :iconsize 100)"
-                ];
-                name = "weather";
-                width = 20;
-                x = 10;
-                y = 10;
-            }
-        ];
-    };
-
     fonts = {
         fontconfig = {
             enable = true;
@@ -103,30 +47,6 @@
         username = "emil";
     };
 
-    imports = [
-        ../../apps/desktop/alacritty.nix
-        ../../apps/desktop/chromium.nix
-        ../../apps/utils/dunst.nix
-        ../../apps/desktop/eww/eww.nix
-        ../../apps/desktop/firefox.nix
-        ../../apps/utils/gnome-keyring.nix
-        ../../apps/utils/gtk.nix
-        ../../apps/utils/hyprlock.nix
-        ../../apps/desktop/kitty/kitty.nix
-        ../../apps/utils/mangohud.nix
-        ../../apps/desktop/mpv.nix
-        ../../apps/desktop/rofi.nix
-        ../../apps/utils/syncthing.nix
-        ../../apps/utils/swaylock.nix
-        ../../apps/desktop/vscodium.nix
-        ../../apps/utils/wlsunset.nix
-
-        ../../apps/cli-tools
-
-        ../../apps/window-managers/hyprland.nix
-        ../../apps/window-managers/sway.nix
-    ];
-
     monitors = {
         outputs = [
             {
@@ -170,6 +90,81 @@
     programs = {
         home-manager = {
             enable = true;
+        };
+        ngb = {
+            enable = true;
+            settings = {
+                bars = [
+                    {
+                        "output" = "LVDS-1";
+                        "widgets" = {
+                            "center" = [
+                                {
+                                    "config" = {};
+                                    "module" = "weather";
+                                }
+                            ];
+                            "left" = [
+                                {
+                                    "config" = {
+                                        "monitor" = "all";
+                                        "names" = {
+                                            "1" = "";
+                                            "2" = "";
+                                            "3" = "";
+                                            "4" = "";
+                                            "5" = "";
+                                            "6" = "";
+                                            "7" = "";
+                                            "8" = "";
+                                            "9" = "󰓃";
+                                            "10" = "";
+                                        };
+                                    };
+                                "module" = "workspace";
+                                }
+                            ];
+                            "right" = [
+                                {
+                                    "config" = {
+                                        "mountpoint" = "/";
+                                    };
+                                    "module" = "disk";
+                                }
+                                {
+                                    "config" = {};
+                                    "module" = "cpu";
+                                }
+                                {
+                                    "config" = {
+                                        "interface" = "eth0";
+                                    };
+                                    "module" = "network";
+                                }
+                                {
+                                    "config" = {
+                                        "interface" = "wlan0";
+                                    };
+                                    "module" = "network";
+                                }
+                                {
+                                    "config" = {};
+                                    "module" = "volume";
+                                }
+                                {
+                                    "config" = {
+                                        "timeformat_normal" = "%H:%M:%S";
+                                        "timeformat_revealer" = "%A %Y-%m-%d";
+                                    };
+                                    "module" = "clock";
+                                }
+                            ];
+                        };
+                    }
+                ];
+                "icon_size" = 20;
+                "spacing" = 5;
+            };
         };
     };
 
