@@ -97,6 +97,17 @@
                 vaapiIntel
             ];
         };
+        # Driver for drawing tablet
+        opentabletdriver = {
+            daemon = {
+                enable = true;
+            };
+            enable = true;
+        };
+        # Drivers for Xbox Series X|S controller
+        xpadneo = {
+            enable = true;
+        };
     };
 
     # Select internationalisation properties.
