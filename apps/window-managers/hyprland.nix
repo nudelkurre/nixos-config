@@ -184,7 +184,7 @@
             misc = {
                 disable_hyprland_logo = true;
                 disable_splash_rendering = true;
-                focus_on_activate = true;
+                focus_on_activate = false;
                 new_window_takes_over_fullscreen = "1";
             };
 
