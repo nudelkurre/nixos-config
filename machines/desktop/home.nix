@@ -158,6 +158,7 @@ in
                                 }
                                 {
                                     "config" = {
+                                        "show_revealer" = true;
                                         "timeformat_normal" = "%H:%M:%S";
                                         "timeformat_revealer" = "%A %Y-%m-%d";
                                     };
