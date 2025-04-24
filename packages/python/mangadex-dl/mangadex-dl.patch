@@ -1,0 +1,12 @@
+diff --git a/mangadex_downloader/language.py b/mangadex_downloader/language.py
+index fcf5746..0f635df 100644
+--- a/mangadex_downloader/language.py
++++ b/mangadex_downloader/language.py
+@@ -74,6 +74,7 @@ class Language(Enum):
+     Tamil = 'ta' #:
+     Azerbaijani = 'az' #:
+     Slovak = 'sk' #:
++    Georgian = 'ka' #:
+ 
+     # Other language
+     Other = None #:
