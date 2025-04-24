@@ -10,6 +10,7 @@ buildPythonPackage rec {
   dependencies = with pkgs.python3Packages; [
     requests
     dnspython
+    httpx
   ];
 
   doCheck = false;
