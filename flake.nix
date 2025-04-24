@@ -97,6 +97,7 @@
         packages.x86_64-linux = {
             wallpapers = pkgs.callPackage packages/wallpapers {};
             mangadex-downloader = pkgs.python3Packages.callPackage packages/python/mangadex-dl/mangadex-downloader.nix {};
+            requests-doh = pkgs.python3Packages.callPackage packages/python/requests-doh.nix {};
             freetube = pkgs.callPackage packages/freetube.nix {};
             pkg2zip = pkgs.callPackage packages/pkg2zip.nix {};
         };
