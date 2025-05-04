@@ -11,6 +11,7 @@
             jnoortheen.nix-ide
             ms-dotnettools.csdevkit
             ms-python.python
+            naumovs.color-highlight
             catppuccin.catppuccin-vsc
             catppuccin.catppuccin-vsc-icons
         ];
