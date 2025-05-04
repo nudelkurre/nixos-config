@@ -34,7 +34,7 @@
             vo="gpu";
             volume-max = "100";
             volume = "60";
-            ytdl-format="bv*[height<=1080]+ba";
+            ytdl-format="bv*[height<=1080][vcodec~='^((he|a)vc|h26[45])']+ba";
         };
         enable = ! config.disable.mpv;
         package = pkgs.unstable.mpv;
