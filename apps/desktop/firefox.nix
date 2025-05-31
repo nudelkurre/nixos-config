@@ -296,14 +296,16 @@
                     };
                 };
                 containersForce = true;
-                extensions = with pkgs.firefox-addons; [
-                    ublock-origin
-                    bitwarden
-                    violentmonkey
-                    floccus
-                    sponsorblock
-                    multi-account-containers
-                ];
+                extensions = {
+                    packages = with pkgs.firefox-addons; [
+                        ublock-origin
+                        bitwarden
+                        violentmonkey
+                        floccus
+                        sponsorblock
+                        multi-account-containers
+                    ];
+                };
                 id = 0;
                 isDefault = true;
                 settings = {
