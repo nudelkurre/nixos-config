@@ -2,10 +2,10 @@
     description = "A very basic flake";
 
     inputs = {
-        nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
+        nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
         nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
         home-manager = {
-            url = "github:nix-community/home-manager/release-24.11";
+            url = "github:nix-community/home-manager/release-25.05";
             inputs.nixpkgs.follows = "nixpkgs";
         };
         firefox-addons = {
@@ -57,6 +57,13 @@
         nixosConfigurations = {
             desktop = nixpkgs.lib.nixosSystem {
                 modules = [
+                    {
+                        nixpkgs.overlays = [
+                            (final: prev: {
+                                unstable = nixpkgs-unstable.legacyPackages.${prev.system};
+                            })
+                        ];
+                    }
                     ./machines/desktop/configuration.nix
                     ./machines/desktop/hardware-configuration-desktop.nix
                 ];
