@@ -189,6 +189,10 @@
                 enableSSHSupport = true;
             };
         };
+        niri = {
+            enable = true;
+            package = pkgs.unstable.niri;
+        };
         steam = {
             enable = true;
             gamescopeSession = {
