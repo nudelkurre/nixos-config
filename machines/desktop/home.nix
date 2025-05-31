@@ -272,6 +272,7 @@ in
             programs = [
                 {name = "com.usebottles.bottles";}
                 {name = "gamescope";}
+                {name = "heroic";}
                 {name = "lutris";}
                 {name = "steam";}
             ];
