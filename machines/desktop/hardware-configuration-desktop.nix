@@ -55,7 +55,7 @@
         "/home/emil/roms" = {
             device = "172.16.0.12:/nfs/ROMS";
             fsType = "nfs";
-            options = [ "ro" "x-systemd.automount" "noauto" ];
+            options = [ "rw" "x-systemd.automount" "noauto" ];
         };
     };
 

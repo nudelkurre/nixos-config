@@ -81,7 +81,8 @@
         packages = with pkgs; [
             freefont_ttf
             monaspace
-            (nerdfonts.override { fonts = [ "Noto" "Monaspace" ]; })
+            nerd-fonts.monaspace
+            nerd-fonts.noto
             noto-fonts
             noto-fonts-cjk-sans
             noto-fonts-emoji
@@ -187,6 +188,10 @@
                 enable = true;
                 enableSSHSupport = true;
             };
+        };
+        niri = {
+            enable = true;
+            package = pkgs.unstable.niri;
         };
         steam = {
             enable = true;

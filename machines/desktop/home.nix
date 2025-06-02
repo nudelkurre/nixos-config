@@ -235,6 +235,12 @@ in
         lines = 23;
     };
 
+    services = {
+        swww = {
+            enable = true;
+        };
+    };
+
     workspaces = [
         {
             name = "1";
@@ -266,6 +272,7 @@ in
             programs = [
                 {name = "com.usebottles.bottles";}
                 {name = "gamescope";}
+                {name = "heroic";}
                 {name = "lutris";}
                 {name = "steam";}
             ];
