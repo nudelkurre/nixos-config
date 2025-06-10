@@ -24,6 +24,17 @@ let
             "${wsfocus}"
         )(w.programs)
     )(config.workspaces));
+
+    # Generate keybinds specified in config.keybinds inside home-manager config
+    # and will then get appended to keybinds in sway config
+    keybinds = builtins.foldl' (acc: attr:
+    let
+        modKeys = (if attr.mod != [] then lib.strings.concatStringsSep "+" attr.mod else "");
+        keymod = (if modKeys != "" then "${modKeys}+${attr.key}" else "${attr.key}");
+        program = "exec ${attr.program}";
+    in
+    acc // { "${keymod}" = program; }
+    ) {} config.keybindings;
 in
 {
     wayland.windowManager.sway = {
@@ -178,38 +189,7 @@ in
                 "${mod1}+${mod4}+r" = "reload";
                 # exit sway (logs you out of your X session)
                 "${mod1}+${mod4}+e" = "exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'";
-
-                # Controlling media
-                "XF86AudioPlay" = "exec ${pkgs.playerctl}/bin/playerctl -i firefox,floorp play-pause";
-                "XF86AudioNext" = "exec ${pkgs.playerctl}/bin/playerctl -i firefox,floorp next";
-                "XF86AudioPrev" = "exec ${pkgs.playerctl}/bin/playerctl -i firefox,floorp previous";
-
-                # Change volume
-                "XF86AudioRaiseVolume" = "exec ${pkgs.wireplumber}/bin/wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+";
-                "XF86AudioLowerVolume" = "exec ${pkgs.wireplumber}/bin/wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-";
-                "XF86AudioMute" = "exec ${pkgs.wireplumber}/bin/wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
-
-                # Start Floorp
-                "${mod1}+${mod4}+f" = "exec floorp";
-
-                # Start Floorp in private window
-                "${mod1}+${mod2}+${mod4}+f" = "exec floorp --private-window";
-
-                # Take a screenshot
-                "Print" = "exec ${pkgs.grim}/bin/grim -g \"$(${pkgs.slurp}/bin/slurp)\"";
-
-                # Start jellyfin media player
-                "${mod1}+kp_0" = "exec flatpak run com.github.iwalton3.jellyfin-media-player";
-
-                # Start FreeTube
-                "${mod1}+kp_1" = "exec freetube";
-
-                # Open file browser
-                "${mod1}+kp_2" = "exec nemo";
-
-                # Open Steam
-                "${mod1}+kp_5" = "exec steam --no-minimize-to-tray";
-            };
+            } // keybinds;
             modes = {
                 resize = {
                     Down = "resize grow height 10 px or 10 ppt";

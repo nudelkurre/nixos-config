@@ -22,7 +22,7 @@
                 first_launch_animation = false;
             };
 
-            bind = [
+            bind = lib.lists.flatten [
                 "$mod1, RETURN, exec, kitty"
                 "$mod3, F4, killactive"
                 "$mod1 $mod4, E, exit"
@@ -75,26 +75,16 @@
                 # Reboot
                 "$mod1 $mod2 $mod4, R, exec,systemctl reboot"
 
-                # Start Floorp
-                "$mod1 $mod4, F, exec, floorp"
-                ", XF86HomePage, exec, floorp"
-
-                # Start Floorp in private window
-                "$mod1 $mod2 $mod4, F, exec, floorp --private-window"
-
-                # Start jellyfin media player
-                "$mod1, code:90, exec, flatpak run com.github.iwalton3.jellyfin-media-player"
-
-                # Start FreeTube
-                "$mod1, code:87, exec, freetube"
-
-                # Open file browser
-                "$mod1, code:88, exec, nemo"
-
-                # Open Steam
-                "$mod1, code:84, exec, steam"
-
-                ", Print, exec, ${pkgs.grim}/bin/grim -g \"$(${pkgs.slurp}/bin/slurp)\""
+                # Generate keybinds specified in config.keybinds inside home-manager config
+                # and will then get appended to keybinds in hyprland config
+                (map (attr:
+                let
+                    modKeys = (if attr.mod != [] then lib.strings.concatStringsSep " " (map lib.strings.toUpper attr.mod) else "");
+                    keymod = (if modKeys != "" then "${modKeys}, ${attr.key}" else ", ${attr.key}");
+                    program = "${attr.program}";
+                in
+                "${keymod}, exec, ${program}"
+                )(config.keybindings))
             ];
 
             bindm = [
