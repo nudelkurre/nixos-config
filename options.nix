@@ -141,6 +141,27 @@ with lib;
                 default = 16;
             };
         };
+        keybindings = mkOption {
+            type = types.listOf (types.submodule {
+                options = {
+                    program = mkOption {
+                        type = types.str;
+                        example = "firefox";
+                        description = "Program to run on key bind";
+                    };
+                    key = mkOption {
+                        type = types.str;
+                        example = "f";
+                        description = "Key to use for key bind";
+                    };
+                    mod = mkOption {
+                        type = types.listOf types.str;
+                        default = [];
+                        description = "List of mod keys to use";
+                    };
+                };
+            });
+        };
         monitors = {
             outputs = mkOption {
                 type = types.listOf (types.submodule {

@@ -47,6 +47,60 @@
         username = "emil";
     };
 
+    keybindings = [
+        # Controlling media
+        {
+            key = "XF86AudioPlay";
+            program = "${pkgs.playerctl}/bin/playerctl -i firefox,floorp play-pause";
+        }
+        {
+            key = "XF86AudioNext";
+            program = "${pkgs.playerctl}/bin/playerctl -i firefox,floorp next";
+        }
+        {
+            key = "XF86AudioPrev";
+            program = "${pkgs.playerctl}/bin/playerctl -i firefox,floorp previous";
+        }
+        
+        # Change volume
+        {
+            key = "XF86AudioRaiseVolume";
+            program = "${pkgs.wireplumber}/bin/wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+";
+        }
+        {
+            key = "XF86AudioLowerVolume";
+            program = "${pkgs.wireplumber}/bin/wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-";
+        }
+        {
+            key = "XF86AudioMute";
+            program = "${pkgs.wireplumber}/bin/wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
+        }
+
+        # Start Floorp
+        {
+            mod = ["Mod4" "Shift"];
+            key = "f";
+            program = "floorp";
+        }
+        {
+            key = "XF86HomePage";
+            program = "floorp";
+        }
+
+        # Start Floorp in private window
+        {
+            mod = ["Mod4" "Ctrl" "Shift"];
+            key = "f";
+            program = "floorp --private-window";
+        }
+
+        # Take a screenshot
+        {
+            key = "Print";
+            program = "${pkgs.grim}/bin/grim -g \"$(${pkgs.slurp}/bin/slurp)\"";
+        }
+    ];
+
     monitors = {
         outputs = [
             {
