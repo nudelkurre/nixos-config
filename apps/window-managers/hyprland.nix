@@ -1,4 +1,29 @@
 {pkgs, config, lib, ...}:
+let
+    keyCodes = {
+        "kp_0" = "code:90";
+        "kp_1" = "code:87";
+        "kp_2" = "code:88";
+        "kp_3" = "code:89";
+        "kp_4" = "code:83";
+        "kp_5" = "code:84";
+        "kp_6" = "code:85";
+        "kp_7" = "code:79";
+        "kp_8" = "code:80";
+        "kp_9" = "code:81";
+        "kp_divide" = "code:106";
+        "kp_multiply" = "code:63";
+        "kp_subtract" = "code:82";
+        "kp_add" = "code:86";
+        "kp_enter" = "code:104";
+        "kp_separator" = "code:91";
+    };
+    replaceKeys = str:
+        if builtins.hasAttr str keyCodes then
+            keyCodes.${str}
+        else
+            str;
+in
 {
     home = {
         packages = lib.optionals (config.wayland.windowManager.hyprland.enable == true) [
@@ -80,7 +105,7 @@
                 (map (attr:
                 let
                     modKeys = (if attr.mod != [] then lib.strings.concatStringsSep " " (map lib.strings.toUpper attr.mod) else "");
-                    keymod = (if modKeys != "" then "${modKeys}, ${attr.key}" else ", ${attr.key}");
+                    keymod = (if modKeys != "" then "${modKeys}, ${replaceKeys attr.key}" else ", ${replaceKeys attr.key}");
                     program = "${attr.program}";
                 in
                 "${keymod}, exec, ${program}"
