@@ -310,6 +310,35 @@
 
     xdg = {
         enable = true;
+        # Enable xdg-desktop-portal
+        portal = {
+            config = {
+                common = {
+                    default = [
+                        "gtk"
+                    ];
+                };
+                hyprland = {
+                    default = [
+                        "gtk"
+                        "hyprland"
+                    ];
+                };
+                sway = {
+                    default = [
+                        "gtk"
+                        "wlr"
+                    ];
+                };
+            };
+            enable = true;
+            extraPortals = [
+                pkgs.xdg-desktop-portal-gtk
+                pkgs.xdg-desktop-portal-hyprland
+                pkg.xdg-desktop-portal-wlr
+            ];
+            xdgOpenUsePortal = true;
+        };
         userDirs = {
             createDirectories = true;
             enable = true;

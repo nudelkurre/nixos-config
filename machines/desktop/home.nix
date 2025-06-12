@@ -424,6 +424,35 @@ in
                 "x-scheme-handler/chrome" = browser;
             };
         };
+        # Enable xdg-desktop-portal
+        portal = {
+            config = {
+                common = {
+                    default = [
+                        "gtk"
+                    ];
+                };
+                hyprland = {
+                    default = [
+                        "gtk"
+                        "hyprland"
+                    ];
+                };
+                sway = {
+                    default = [
+                        "gtk"
+                        "wlr"
+                    ];
+                };
+            };
+            enable = true;
+            extraPortals = [
+                pkgs.xdg-desktop-portal-gtk
+                pkgs.xdg-desktop-portal-hyprland
+                pkgs.xdg-desktop-portal-wlr
+            ];
+            xdgOpenUsePortal = true;
+        };
         userDirs = {
             createDirectories = true;
             enable = true;

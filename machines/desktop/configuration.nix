@@ -389,36 +389,6 @@
         };
     };
 
-    # Enable xdg-desktop-portal
-    xdg.portal = {
-        config = {
-            common = {
-                default = [
-                    "gtk"
-                ];
-            };
-            hyprland = {
-                default = [
-                    "gtk"
-                    "hyprland"
-                ];
-            };
-            sway = {
-                default = [
-                    "gtk"
-                    "wlr"
-                ];
-            };
-        };
-        enable = true;
-        extraPortals = [
-            pkgs.xdg-desktop-portal-gtk
-            pkgs.xdg-desktop-portal-hyprland
-        ];
-        wlr.enable = true;
-        xdgOpenUsePortal = true;
-    };
-
     # Settings for zRam
     zramSwap = {
         enable = true;
