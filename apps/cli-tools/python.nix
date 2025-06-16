@@ -9,7 +9,7 @@ in
     config = mkIf (config.disable.python != true) {
         home = {
             packages = with pkgs; [
-                (python311.withPackages my-python-packages)
+                (python3.withPackages my-python-packages)
             ];
         };
     };
