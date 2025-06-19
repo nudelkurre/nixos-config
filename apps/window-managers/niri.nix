@@ -1,22 +1,6 @@
 {pkgs, config, lib, ...}:
 let
     keyCodes = {
-        "kp_0" = "code:90";
-        "kp_1" = "code:87";
-        "kp_2" = "code:88";
-        "kp_3" = "code:89";
-        "kp_4" = "code:83";
-        "kp_5" = "code:84";
-        "kp_6" = "code:85";
-        "kp_7" = "code:79";
-        "kp_8" = "code:80";
-        "kp_9" = "code:81";
-        "kp_divide" = "code:106";
-        "kp_multiply" = "code:63";
-        "kp_subtract" = "code:82";
-        "kp_add" = "code:86";
-        "kp_enter" = "code:104";
-        "kp_separator" = "code:91";
         "Mod4" = "Mod";
     };
     replaceKeys = str: 
@@ -30,13 +14,21 @@ let
         in
         builtins.foldl' replaceSubstring str keys;
 
+    splitProgram = inputProgram:
+        let
+            splitProgram = lib.strings.splitString " " inputProgram;
+            quotedProgram = map (s: ''"'' + s + ''"'') splitProgram;
+            appendedProgram = builtins.concatStringsSep " " quotedProgram;
+        in
+            appendedProgram;
+
     keybinds = lib.strings.concatStringsSep "\n\t" (map (attr:
         let
             modKeys = (if attr.mod != [] then lib.strings.concatStringsSep "+" attr.mod else "");
             keymod = (if modKeys != "" then "${modKeys}+${attr.key}" else "${attr.key}");
-            program = "${attr.program}";
+            program = "${splitProgram attr.program}";
         in
-        "${replaceKeys keymod} { spawn ${program}; }"
+        ''${replaceKeys keymod} { spawn ${program}; }''
         )(config.keybindings));
 
     outputs = lib.strings.concatStringsSep "\n" (map
@@ -326,13 +318,6 @@ binds {
     // You can also use a shell. Do this if you need pipes, multiple commands, etc.
     // Note: the entire command goes as a single argument in the end.
     // Mod+T { spawn "bash" "-c" "notify-send hello && exec alacritty"; }
-
-    // Example volume keys mappings for PipeWire & WirePlumber.
-    // The allow-when-locked=true property makes them work even when the session is locked.
-    XF86AudioRaiseVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1+"; }
-    XF86AudioLowerVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1-"; }
-    XF86AudioMute        allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
-    XF86AudioMicMute     allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"; }
 
     Mod+Q { close-window; }
 
