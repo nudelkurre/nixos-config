@@ -212,7 +212,7 @@
             };
         };
         profiles = {
-            "Default-lw" = {
+            "Default" = {
                 containers = {
                     Twitch = {
                         color = "purple";
@@ -302,7 +302,6 @@
                         bitwarden
                         violentmonkey
                         floccus
-                        sponsorblock
                         multi-account-containers
                     ];
                 };
