@@ -48,6 +48,10 @@ let
             ''
         )
         (config.monitors.outputs));
+    
+    cfg.keyboard = config.input.keyboard;
+    cfg.mouse = config.input.mouse;
+    cfg.touchpad = config.input.touchpad;
 in
 {
     home.packages = [pkgs.unstable.niri];
@@ -60,44 +64,29 @@ input {
             // For more information, see xkeyboard-config(7).
 
             // For example:
-            layout "se(nodeadkeys)"
+            // layout "se(nodeadkeys)"
+            layout "${(if cfg.keyboard.variant != "" then "${cfg.keyboard.language}(${cfg.keyboard.variant})" else "${cfg.keyboard.language}")}"
             // options "compose:ralt"
         }
-        numlock
+        ${(if cfg.keyboard.numlock then "numlock" else "")}
     }
 
     // Next sections include libinput settings.
     // Omitting settings disables them, or leaves them at their default values.
+    ${(if cfg.touchpad.enable then ''
     touchpad {
-        off
-        // tap
-        // dwt
-        // dwtp
-        // drag-lock
-        // natural-scroll
-        // accel-speed 0.2
-        // accel-profile "flat"
-        // scroll-method "two-finger"
-        // disabled-on-external-mouse
-    }
-
+            on
+        ${(if cfg.touchpad.natural-scroll then "natural-scroll" else "")}
+        ${(if cfg.touchpad.scroll-method != "" then "scroll-method cfg.touchpad.scroll-method" else "")}
+        ${(if cfg.touchpad.disable-on-mouse then "disabled-on-external-mouse" else "")}
+        }
+    '' else "")}
+    ${(if cfg.mouse.enable then ''
     mouse {
-        // off
-        // natural-scroll
-        // accel-speed 0.2
-        // accel-profile "flat"
-        // scroll-method "no-scroll"
-    }
-
-    trackpoint {
-        off
-        // natural-scroll
-        // accel-speed 0.2
-        // accel-profile "flat"
-        // scroll-method "on-button-down"
-        // scroll-button 273
-        // middle-emulation
-    }
+            on
+            ${(if cfg.mouse.natural-scroll then "natural-scroll" else "")}
+        }
+    '' else "")}
 
     // Uncomment this to make the mouse warp to the center of newly focused windows.
     // warp-mouse-to-focus

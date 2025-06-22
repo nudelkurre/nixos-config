@@ -72,6 +72,18 @@ in
         username = "emil";
     };
 
+    input = {
+        keyboard = {
+            language = "se";
+            variant = "nodeadkeys";
+            numlock = true;
+        };
+        mouse = {
+            enable = true;
+            natural-scroll = false;
+        };
+    };
+
     keybindings = [
         # Controlling media
         {
