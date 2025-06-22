@@ -95,15 +95,14 @@
                         violentmonkey
                         floccus
                         multi-account-containers
-                        umatrix
                     ];
                 };
                 id = 0;
                 isDefault = true;
                 search = {
-                    default = "Startpage";
+                    default = "Startpage ";
                     engines = {
-                        "Duckduckgo" = {
+                        "DuckDuckGo " = {
                             definedAliases = [ "@ddg" ];
                             description = "DuckDuckGo search";
                             icon = "https://duckduckgo.com/favicon.ico";
@@ -192,7 +191,7 @@
                                 template = "https://howlongtobeat.com/";
                             }];
                         };
-                        "Nixos options" = {
+                        "Nixos Options" = {
                             definedAliases = [ "@no" ];
                             description = "Search for nixos options";
                             icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
@@ -207,7 +206,7 @@
                                 template = "https://search.nixos.org/options";
                             }];
                         };
-                        "Nixos packages" = {
+                        "Nixos Packages" = {
                             definedAliases = [ "@np" ];
                             description = "Search for nixos packages";
                             icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
@@ -222,7 +221,7 @@
                                 template = "https://search.nixos.org/packages";
                             }];
                         };
-                        "Startpage" = {
+                        "Startpage " = {
                             definedAliases = [ "@sp" ];
                             description = "Startpage search";
                             icon = "https://www.startpage.com/sp/cdn/favicons/favicon-16x16-gradient.png";
@@ -255,15 +254,15 @@
                     };
                     force = true;
                     order = [
-                        "DuckDuckGo"
+                        "DuckDuckGo "
                         "Gog"
                         "HowLongToBeat"
                         "Nixos Options"
                         "Nixos Packages"
-                        "Startpage"
+                        "Startpage "
                         "Steam"
                     ];
-                    privateDefault = "Startpage";
+                    privateDefault = "Startpage ";
                 };
                 userChrome = ''
                     #alltabs-button {
