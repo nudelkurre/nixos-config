@@ -374,15 +374,19 @@
 
     virtualisation = {
         docker = {
-            daemon = {
-                settings = {
-                    dns = [
-                        "1.1.1.1"
-                        "1.0.0.1"
-                    ];
+            enable = false;
+            rootless = {
+                daemon = {
+                    settings = {
+                        dns = [
+                            "1.1.1.1"
+                            "1.0.0.1"
+                        ];
+                    };
                 };
+                enable = true;
+                setSocketVariable = true;
             };
-            enable = true;
         };
         libvirtd = {
             enable = true;
