@@ -131,12 +131,6 @@ in
             program = "floorp --private-window";
         }
 
-        # Take a screenshot
-        {
-            key = "Print";
-            program = "${pkgs.grim}/bin/grim -g \"$(${pkgs.slurp}/bin/slurp)\"";
-        }
-
         # Start jellyfin media player
         {
             mod = ["Mod4"];

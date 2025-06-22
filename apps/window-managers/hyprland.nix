@@ -102,6 +102,9 @@ in
                 # Reboot
                 "$mod1 $mod2 $mod4, R, exec,systemctl reboot"
 
+                # Printscreen
+                ", Print, exec, ${pkgs.grim}/bin/grim -g \"$(${pkgs.slurp}/bin/slurp)\""
+
                 # Generate keybinds specified in config.keybinds inside home-manager config
                 # and will then get appended to keybinds in hyprland config
                 (map (attr:

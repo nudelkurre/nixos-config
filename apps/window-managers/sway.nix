@@ -188,6 +188,10 @@ in
                 "${mod1}+${mod4}+r" = "reload";
                 # exit sway (logs you out of your X session)
                 "${mod1}+${mod4}+e" = "exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'";
+
+                # Printscreen
+                "Print" = "${pkgs.grim}/bin/grim -g \"$(${pkgs.slurp}/bin/slurp)\"";
+
             } // keybinds;
             modes = {
                 resize = {
