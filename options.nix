@@ -141,6 +141,68 @@ with lib;
                 default = 16;
             };
         };
+        input = {
+            keyboard = {
+                language = mkOption {
+                    type = types.str;
+                    example = "se";
+                    description = "Set the language for keyboard layout";
+                    default = "se";
+                };
+                numlock = mkOption {
+                    type = types.bool;
+                    example = true;
+                    description = "Set numlock to active";
+                    default = false;
+                };
+                variant = mkOption {
+                    type = types.str;
+                    example = "nodeadkeys";
+                    description = "Set variant of keyboard layout";
+                    default = "";
+                };
+            };
+            mouse = {
+                enable = mkOption {
+                    type = types.bool;
+                    example = true;
+                    description = "Enable mouse";
+                    default = false;
+                };
+                natural-scroll = mkOption {
+                    type = types.bool;
+                    example = true;
+                    description = "Enable natural scroll";
+                    default = false;
+                };
+            };
+            touchpad = {
+                disable-on-mouse = mkOption {
+                    type = types.bool;
+                    example = true;
+                    description = "Disable if external mouse is connected";
+                    default = false;
+                };
+                enable = mkOption {
+                    type = types.bool;
+                    example = true;
+                    description = "Enable touchpad";
+                    default = false;
+                };
+                natural-scroll = mkOption {
+                    type = types.bool;
+                    example = true;
+                    description = "Enable natural scroll";
+                    default = false;
+                };
+                scroll-method = mkOption {
+                    type = types.str;
+                    example = "two-finger";
+                    description = "Set scroll method";
+                    default = "";
+                };
+            };
+        };
         keybindings = mkOption {
             type = types.listOf (types.submodule {
                 options = {

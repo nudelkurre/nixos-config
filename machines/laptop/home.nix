@@ -47,6 +47,22 @@
         username = "emil";
     };
 
+    input = {
+        keyboard = {
+            language = "se";
+            variant = "nodeadkeys";
+            numlock = false;
+        };
+        mouse = {
+            enable = true;
+            natural-scroll = false;
+        };
+        touchpad = {
+            enable = true;
+            scroll-method = "two-finger"
+        };
+    };
+
     keybindings = [
         # Controlling media
         {

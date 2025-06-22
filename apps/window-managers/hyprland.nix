@@ -23,6 +23,8 @@ let
             keyCodes.${str}
         else
             str;
+
+    cfg.keyboard = config.input.keyboard;
 in
 {
     home = {
@@ -177,12 +179,12 @@ in
 
             input = {
                 "follow_mouse" = "1";
-                "kb_layout" = "se";
+                "kb_layout" = "${cfg.keyboard.language}";
                 "kb_model" = "";
                 "kb_options" = "";
                 "kb_rules" = "";
-                "kb_variant" = "nodeadkeys";
-                "numlock_by_default" = true;
+                "kb_variant" = "${cfg.keyboard.variant}";
+                "numlock_by_default" = cfg.keyboard.numlock;
                 touchpad = {
                     "natural_scroll" = "no";
                 };

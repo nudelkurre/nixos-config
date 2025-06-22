@@ -16,6 +16,8 @@ let
     ws9 = "9";
     ws0 = "10";
 
+    cfg.keyboard = config.input.keyboard;
+
     wsf = lib.lists.flatten (builtins.map (w:
         builtins.map (p:
             let
@@ -89,10 +91,6 @@ in
                 "1003:34842:Atmel_Atmel_maXTouch_Digitizer" = {
                     events = "disabled";
                 };
-                "1133:16388:Logitech_K360" = {
-                    xkb_layout = "se(nodeadkeys)";
-                    xkb_numlock = "enable";
-                };
                 "2:14:ETPS/2_Elantech_Touchpad" = {
                     accel_profile = "flat";
                     events = "disabled_on_external_mouse";
@@ -102,7 +100,8 @@ in
                     tap = "enable";
                 };
                 "type:keyboard" = {
-                    xkb_layout = "se(nodeadkeys)";
+                    xkb_layout = (if cfg.keyboard.variant != "" then "${cfg.keyboard.language}(${cfg.keyboard.variant})" else "${cfg.keyboard.language}");
+                    xkb_numlock = (if cfg.keyboard.numlock then "enable" else "disable");
                 };
             };
             keybindings = {
