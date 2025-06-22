@@ -6,7 +6,6 @@
         ./hyprlock.nix
         ./mangohud.nix
         ./swaylock.nix
-        ./syncthing.nix
         ./wlsunset.nix
     ];
 }
