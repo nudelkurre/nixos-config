@@ -392,6 +392,22 @@
         };
     };
 
+    xdg = {
+        portal = {
+            config = {
+                common = {
+                    default = [
+                        "gtk"
+                    ];
+                };
+            };
+            enable = true;
+            extraPortals = [
+                pkgs.xdg-desktop-portal-gtk
+            ];
+        };
+    };
+
     # Settings for zRam
     zramSwap = {
         enable = true;
