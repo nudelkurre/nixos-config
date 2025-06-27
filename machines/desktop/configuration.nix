@@ -51,7 +51,6 @@
     environment = {
         systemPackages = with pkgs; [
             amdgpu_top
-            android-studio
             dnsutils
             file
             git
@@ -60,7 +59,6 @@
             intel-gpu-tools
             libnotify
             libva-utils
-            mesa-demos
             nano
             p7zip
             pulseaudio
