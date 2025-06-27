@@ -39,22 +39,22 @@
         };
         "/home/emil/docker-compose" = {
             device = "172.16.0.12:/nfs/docker/compose";
-            fsType = "nfs";
+            fsType = "nfs4";
             options = [ "rw" "x-systemd.automount" "noauto" ];
         };
         "/home/emil/Manga" = {
             device = "172.16.0.12:/nfs/Manga";
-            fsType = "nfs";
+            fsType = "nfs4";
             options = [ "rw" "x-systemd.automount" "noauto" ];
         };
         "/home/emil/Media" = {
             device = "172.16.0.12:/nfs/Media";
-            fsType = "nfs";
+            fsType = "nfs4";
             options = [ "rw" "x-systemd.automount" "noauto" ];
         };
         "/home/emil/roms" = {
             device = "172.16.0.12:/nfs/ROMS";
-            fsType = "nfs";
+            fsType = "nfs4";
             options = [ "rw" "x-systemd.automount" "noauto" ];
         };
     };
