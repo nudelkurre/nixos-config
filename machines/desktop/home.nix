@@ -192,6 +192,14 @@ in
         primary = "DP-1";
     };
 
+    nix = {
+        gc = {
+            automatic = true;
+            frequency = "weekly";
+            options = "--delete-older-than 7d";
+        };
+    };
+
     # Allow to install unfree packages
     nixpkgs = {
         config = {
