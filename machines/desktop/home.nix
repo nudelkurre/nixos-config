@@ -1,6 +1,6 @@
 { config, pkgs, lib, ... }:
 let
-    browser = "floorp-private.desktop";
+    browser = "firefox-private.desktop";
     image_viewer = "imv-dir.desktop";
     media_player = "mpv.desktop";
     text_editor = "codium.desktop";
@@ -113,22 +113,22 @@ in
             program = "${pkgs.wireplumber}/bin/wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
         }
 
-        # Start Floorp
+        # Start firefox-esr
         {
             mod = ["Mod4" "Shift"];
             key = "f";
-            program = "floorp";
+            program = "firefox-esr";
         }
         {
             key = "XF86HomePage";
-            program = "floorp";
+            program = "firefox-esr";
         }
 
-        # Start Floorp in private window
+        # Start firefox-esr in private window
         {
             mod = ["Mod4" "Ctrl" "Shift"];
             key = "f";
-            program = "floorp --private-window";
+            program = "firefox-esr --private-window";
         }
 
         # Start jellyfin media player
