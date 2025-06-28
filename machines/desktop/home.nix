@@ -1,6 +1,6 @@
 { config, pkgs, lib, ... }:
 let
-    browser = "firefox-private.desktop";
+    browser = "firefox-esr-private.desktop";
     image_viewer = "imv-dir.desktop";
     media_player = "mpv.desktop";
     text_editor = "codium.desktop";
