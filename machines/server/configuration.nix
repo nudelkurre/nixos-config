@@ -75,21 +75,11 @@
         firewall = {
             enable = true;
             allowedTCPPorts = [
-                111
                 2049
-                4000
-                4001
-                4002
                 5900
-                20048
             ];
             allowedUDPPorts = [
-                111
-                2049
-                4000
-                4001
-                4002
-                20048
+                
             ];
         };
         hostName = "server";
@@ -144,9 +134,6 @@
                     /nfs/Media  172.16.0.132(rw,sync,no_subtree_check)
                     /nfs/ROMS   172.16.0.132(rw,sync,no_subtree_check)
                 '';
-                lockdPort = 4001;
-                mountdPort = 4002;
-                statdPort = 4000;
             };
         };
         openssh = {
