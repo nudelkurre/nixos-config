@@ -5,24 +5,22 @@ in
 {
     programs.rofi = {
         enable = ! config.disable.rofi;
+        cycle = false;
         extraConfig = {
             disable-history = mkLiteral "true";
             drun-display-format = "{name}";
+            drun-match-fields = "name";
             fixed-num-lines = mkLiteral "false";
             hover-select = mkLiteral "false";
             icon-theme = "${config.gtk.iconTheme.name}";
-            location = mkLiteral "1";
-            modes = "drun";
-            monitor = mkLiteral "1";
-            rows = mkLiteral "5";
-            scroll-method = mkLiteral "1";
-            scrollbar = mkLiteral "false";
+            scroll-method = mkLiteral "0";
             show-icons = mkLiteral "true";
             sort = mkLiteral "true";
             sorting-method = "fzf";
             
         };
         location = "top-left";
+        modes = [ "drun" ];
         package = pkgs.rofi-wayland;
         terminal = "kitty";
         theme = {
