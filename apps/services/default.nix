@@ -1,0 +1,5 @@
+{
+    imports = [
+        ./gotify-desktop.nix
+    ];
+}
