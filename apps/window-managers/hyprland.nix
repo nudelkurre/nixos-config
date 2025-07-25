@@ -208,17 +208,17 @@ in
                 new_window_takes_over_fullscreen = "1";
             };
 
-            monitor = map
-                (m:
-                    let
-                        resolution = "${toString m.width}x${toString m.height}@${toString m.refreshRate}";
-                        position = "${toString m.x}x${toString m.y}";
-                        transform = {"0" = "0"; "90"= "3"; "180" = "2"; "270" = "1";};
-                        vrr = {"off" = "0"; "on" = "2";};
-                    in
-                    "${m.name},${resolution},${position},1,transform,${transform.${toString m.transform}},vrr,${vrr.${m.adaptive_sync}}"
-                )
-                (config.monitors.outputs);
+            # monitor = map
+            #     (m:
+            #         let
+            #             resolution = "${toString m.width}x${toString m.height}@${toString m.refreshRate}";
+            #             position = "${toString m.x}x${toString m.y}";
+            #             transform = {"0" = "0"; "90"= "3"; "180" = "2"; "270" = "1";};
+            #             vrr = {"off" = "0"; "on" = "2";};
+            #         in
+            #         "${m.name},${resolution},${position},1,transform,${transform.${toString m.transform}},vrr,${vrr.${m.adaptive_sync}}"
+            #     )
+            #     (config.monitors.outputs);
 
             plugin = {
                 hy3 = {

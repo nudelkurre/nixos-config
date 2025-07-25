@@ -327,12 +327,6 @@ in
         lines = 23;
     };
 
-    services = {
-        swww = {
-            enable = true;
-        };
-    };
-
     workspaces = [
         {
             name = "1";
