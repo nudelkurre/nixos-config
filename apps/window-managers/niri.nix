@@ -142,7 +142,6 @@ input {
         }
     '')}
 
-    warp-mouse-to-focus
     focus-follows-mouse
 
     mod-key "Super"
@@ -221,9 +220,16 @@ animations {
     off
 }
 
+gestures {
+    hot-corners {
+        off
+    }
+}
+
 environment {
     XDG_CURRENT_DESKTOP "niri"
     NIXOS_OZONE_WL "1"
+    DISPLAY ":0"
 }
 
 ${workspaceOutput}
@@ -231,7 +237,7 @@ ${workspaceOutput}
 ${workspacePrograms}
 
 binds {
-    Mod+Shift+7 { show-hotkey-overlay; }
+    Mod+F1 { show-hotkey-overlay; }
 
     Mod+F2 { toggle-overview; }
 
@@ -250,10 +256,6 @@ binds {
     Mod+Ctrl+Down  { move-window-down; }
     Mod+Ctrl+Up    { move-window-up; }
     Mod+Ctrl+Right { move-column-right; }
-    Mod+Ctrl+H     { move-column-left; }
-    Mod+Ctrl+J     { move-window-down; }
-    Mod+Ctrl+K     { move-window-up; }
-    Mod+Ctrl+L     { move-column-right; }
 
     Mod+Home { focus-column-first; }
     Mod+End  { focus-column-last; }
@@ -280,22 +282,22 @@ binds {
     Mod+8 { focus-workspace "8"; }
     Mod+9 { focus-workspace "9"; }
     Mod+0 { focus-workspace "10"; }
-    Mod+Ctrl+1 { move-window-to-workspace "1"; }
-    Mod+Ctrl+2 { move-window-to-workspace "2"; }
-    Mod+Ctrl+3 { move-window-to-workspace "3"; }
-    Mod+Ctrl+4 { move-window-to-workspace "4"; }
-    Mod+Ctrl+5 { move-window-to-workspace "5"; }
-    Mod+Ctrl+6 { move-window-to-workspace "6"; }
-    Mod+Ctrl+7 { move-window-to-workspace "7"; }
-    Mod+Ctrl+8 { move-window-to-workspace "8"; }
-    Mod+Ctrl+9 { move-window-to-workspace "9"; }
-    Mod+Ctrl+0 { move-window-to-workspace "10"; }
+    Mod+Shift+1 { move-window-to-workspace "1"; }
+    Mod+Shift+2 { move-window-to-workspace "2"; }
+    Mod+Shift+3 { move-window-to-workspace "3"; }
+    Mod+Shift+4 { move-window-to-workspace "4"; }
+    Mod+Shift+5 { move-window-to-workspace "5"; }
+    Mod+Shift+6 { move-window-to-workspace "6"; }
+    Mod+Shift+7 { move-window-to-workspace "7"; }
+    Mod+Shift+8 { move-window-to-workspace "8"; }
+    Mod+Shift+9 { move-window-to-workspace "9"; }
+    Mod+Shift+0 { move-window-to-workspace "10"; }
 
     // The following binds move the focused window in and out of a column.
     // If the window is alone, they will consume it into the nearby column to the side.
     // If the window is already in a column, they will expel it out.
-    Mod+Shift+8  { consume-or-expel-window-left; }
-    Mod+Shift+9 { consume-or-expel-window-right; }
+    Mod+Ctrl+8  { consume-or-expel-window-left; }
+    Mod+Ctrl+9 { consume-or-expel-window-right; }
 
     Mod+R { switch-preset-column-width; }
     Mod+Shift+R { switch-preset-window-height; }
@@ -323,10 +325,15 @@ binds {
     ${keybinds}
 }
 
+hotkey-overlay {
+    skip-at-startup
+}
+
 overview {
-    zoom 0.25
+    zoom 0.5
 }
 
 spawn-at-startup "${pkgs.dbus}/bin/dbus-update-activation-environment" "--systemd" "DISPLAY" "WAYLAND_DISPLAY" "SWAYSOCK" "XDG_CURRENT_DESKTOP" "XDG_SESSION_TYPE" "NIXOS_OZONE_WL" "XCURSOR_THEME" "XCURSOR_SIZE"
+spawn-at-startup "${pkgs.xwayland-satellite}/bin/xwayland-satellite"
     '';
 }
