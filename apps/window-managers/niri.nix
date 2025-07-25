@@ -94,9 +94,17 @@ let
     cfg.touchpad = config.input.touchpad;
 in
 {
-    home.packages = [pkgs.unstable.niri];
-    xdg.configFile."niri/config.kdl" = {
-        text = ''
+    home.packages = [pkgs.niri];
+    systemd.user.targets."niri-session" = {
+        Unit = {
+            After = "graphical-session-pre.target";
+            BindsTo = "graphical-session.target";
+            Description = "niri compositor session";
+            Documentation = ["man:systemd.special(7)"];
+            Wants = "graphical-session-pre.target";
+        };
+    };
+    xdg.configFile."niri/config.kdl".text = ''
 input {
     keyboard {
         xkb {
@@ -140,8 +148,6 @@ input {
     mod-key "Super"
     mod-key-nested "Alt"
 }
-
-${outputs}
 
 layout {
     gaps 5
@@ -227,11 +233,13 @@ ${workspacePrograms}
 binds {
     Mod+Shift+7 { show-hotkey-overlay; }
 
+    Mod+F2 { toggle-overview; }
+
     Mod+Return { spawn "alacritty"; }
     Mod+D { spawn "rofi" "-show"; }
     Mod+L { spawn "swaylock"; }
 
-    Alt+F4 { close-window; }
+    Alt+F4 hotkey-overlay-title=null { close-window; }
 
     Mod+Left  { focus-column-left; }
     Mod+Down  { focus-window-down; }
@@ -314,6 +322,11 @@ binds {
     // Generated keybinds
     ${keybinds}
 }
-        '';
-    };
+
+overview {
+    zoom 0.25
+}
+
+spawn-at-startup "${pkgs.dbus}/bin/dbus-update-activation-environment" "--systemd" "DISPLAY" "WAYLAND_DISPLAY" "SWAYSOCK" "XDG_CURRENT_DESKTOP" "XDG_SESSION_TYPE" "NIXOS_OZONE_WL" "XCURSOR_THEME" "XCURSOR_SIZE"
+    '';
 }
