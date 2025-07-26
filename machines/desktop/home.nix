@@ -113,6 +113,22 @@ in
             program = "${pkgs.wireplumber}/bin/wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
         }
 
+        # Shutdown
+        {
+            mod = ["Mod4" "Shift"];
+            key = "s";
+            program = "systemctl poweroff";
+            overlay-title = "Shutdown";
+        }
+
+        # Reboot
+        {
+            mod = ["Mod4" "Ctrl" "Shift"];
+            key = "r";
+            program = "systemctl reboot";
+            overlay-title = "Reboot";
+        }
+
         # Start firefox-esr
         {
             mod = ["Mod4" "Shift"];

@@ -111,12 +111,6 @@ in
                 # Lock screen
                 "${mod1}+l" = "exec swaylock";
 
-                # Shutdown
-                "${mod1}+${mod4}+s" = "exec systemctl poweroff";
-
-                # Reboot
-                "${mod1}+${mod2}+${mod4}+r" = "exec systemctl reboot";
-
                 # kill focused window
                 "${mod3}+F4" = "kill";
 

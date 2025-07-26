@@ -96,12 +96,6 @@ in
                 # Lock screen
                 "$mod1, L, exec, hyprlock"
 
-                # Shutdown
-                "$mod1 $mod4, S, exec, systemctl poweroff"
-
-                # Reboot
-                "$mod1 $mod2 $mod4, R, exec,systemctl reboot"
-
                 # Printscreen
                 ", Print, exec, ${pkgs.grim}/bin/grim -g \"$(${pkgs.slurp}/bin/slurp)\""
 
