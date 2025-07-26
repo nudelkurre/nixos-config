@@ -197,6 +197,7 @@ in
                 workspaces = [ "1" "2" "3" "4" "5" ];
                 x = 0;
                 y = 240;
+                orientation = "horizontal";
             }
             {
                 adaptive_sync = "off";
@@ -210,6 +211,7 @@ in
                 workspaces = [ "6" "7" "8" "9" "10" ];
                 x = 2560;
                 y = 0;
+                orientation = "vertical";
             }
         ];
         primary = "DP-1";
