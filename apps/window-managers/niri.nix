@@ -275,6 +275,12 @@ window-rule {
     block-out-from "screen-capture"
 }
 
+window-rule {
+    match title="Steam Settings" app-id="steam"
+    open-floating true
+    open-focused true
+}
+
 binds {
     Mod+F1 { show-hotkey-overlay; }
 
