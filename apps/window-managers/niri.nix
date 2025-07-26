@@ -276,6 +276,12 @@ window-rule {
 }
 
 window-rule {
+    match app-id="pcsx2-qt"
+    exclude title=r#"^PCSX2 v\d+\.\d+\.\d+$"#
+    open-floating true
+}
+
+window-rule {
     match title="Steam Settings" app-id="steam"
     open-floating true
     open-focused true
