@@ -356,6 +356,12 @@
                         "hyprland"
                     ];
                 };
+                niri = {
+                    default = [
+                        "gtk"
+                        "gnome"
+                    ];
+                };
                 sway = {
                     default = [
                         "gtk"
@@ -365,6 +371,7 @@
             };
             enable = true;
             extraPortals = [
+                pkgs.xdg-desktop-portal-gnome
                 pkgs.xdg-desktop-portal-gtk
                 pkgs.xdg-desktop-portal-hyprland
                 pkg.xdg-desktop-portal-wlr
