@@ -221,6 +221,12 @@ with lib;
                         default = [];
                         description = "List of mod keys to use";
                     };
+                    overlay-title = mkOption {
+                        type = types.str;
+                        default = "";
+                        example = "Launch firefox";
+                        description = "Set a custom title for niri overlay";
+                    };
                 };
             });
         };

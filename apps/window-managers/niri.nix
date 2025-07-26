@@ -37,8 +37,9 @@ let
             modKeys = (if attr.mod != [] then lib.strings.concatStringsSep "+" attr.mod else "");
             keymod = (if modKeys != "" then "${modKeys}+${attr.key}" else "${attr.key}");
             program = "${splitProgram attr.program}";
+            title = (if attr.overlay-title != "" then " hotkey-overlay-title=\"${attr.overlay-title}\" " else "");
         in
-        ''${replaceKeys keymod} { spawn ${program}; }''
+        ''${replaceKeys keymod}${title} { spawn ${program}; }''
         )(config.keybindings));
 
     outputs = lib.strings.concatStringsSep "\n" (map
@@ -142,7 +143,7 @@ input {
         }
     '')}
 
-    focus-follows-mouse
+    focus-follows-mouse max-scroll-amount="25%"
 
     mod-key "Super"
     mod-key-nested "Alt"
@@ -151,7 +152,8 @@ input {
 layout {
     gaps 5
 
-    center-focused-column "never"
+    center-focused-column "on-overflow"
+    always-center-single-column
 
     preset-column-widths {
         proportion 0.33333
@@ -170,8 +172,13 @@ layout {
     }
     
     focus-ring {
-        width 2
+        width 4
         active-gradient from="#33ccffee" to="#ff00ddee" angle=45 relative-to="workspace-view"
+        inactive-gradient from="#33ccff33" to="#ff00dd33" angle=45 relative-to="workspace-view"
+    }
+
+    border {
+        off
     }
     
     shadow {
@@ -209,6 +216,19 @@ layout {
         // You can also change the shadow color and opacity.
         color "#0007"
     }
+
+    tab-indicator {
+        width 4
+        gap 8
+        gaps-between-tabs 4
+        corner-radius 10
+        hide-when-single-tab
+        length total-proportion=1.0
+        position "left"
+        place-within-column
+        active-gradient from="#33ccffee" to="#ff00ddee" angle=0
+        inactive-gradient from="#33ccff33" to="#ff00dd33" angle=0
+    }
 }
 
 prefer-no-csd
@@ -235,6 +255,25 @@ environment {
 ${workspaceOutput}
 
 ${workspacePrograms}
+
+window-rule {
+    match app-id="Alacritty"
+    match app-id="nemo"
+    default-column-width {
+        proportion 0.5;
+    }
+}
+
+window-rule {
+    match title="Bitwarden"
+    open-floating true
+    open-focused true
+
+    default-window-height { proportion 0.75; }
+    default-column-width { proportion 0.5; }
+
+    block-out-from "screen-capture"
+}
 
 binds {
     Mod+F1 { show-hotkey-overlay; }
@@ -293,6 +332,10 @@ binds {
     Mod+Shift+9 { move-window-to-workspace "9"; }
     Mod+Shift+0 { move-window-to-workspace "10"; }
 
+    // Change focus om workspace by scroll up or down
+    Mod+WheelScrollDown cooldown-ms=150 { focus-workspace-down; }
+    Mod+WheelScrollUp   cooldown-ms=150 { focus-workspace-up; }
+
     // The following binds move the focused window in and out of a column.
     // If the window is alone, they will consume it into the nearby column to the side.
     // If the window is already in a column, they will expel it out.
@@ -335,5 +378,6 @@ overview {
 
 spawn-at-startup "${pkgs.dbus}/bin/dbus-update-activation-environment" "--systemd" "DISPLAY" "WAYLAND_DISPLAY" "SWAYSOCK" "XDG_CURRENT_DESKTOP" "XDG_SESSION_TYPE" "NIXOS_OZONE_WL" "XCURSOR_THEME" "XCURSOR_SIZE"
 spawn-at-startup "${pkgs.xwayland-satellite}/bin/xwayland-satellite"
+spawn-at-startup "${pkgs.ngb}/bin/ngb"
     '';
 }
