@@ -134,10 +134,12 @@ in
             mod = ["Mod4" "Shift"];
             key = "f";
             program = "firefox-esr";
+            overlay-title = "Launch firefox";
         }
         {
             key = "XF86HomePage";
             program = "firefox-esr";
+            overlay-title = "Launch firefox";
         }
 
         # Start firefox-esr in private window
@@ -145,6 +147,7 @@ in
             mod = ["Mod4" "Ctrl" "Shift"];
             key = "f";
             program = "firefox-esr --private-window";
+            overlay-title = "Launch firefox private window";
         }
 
         # Start jellyfin media player
@@ -152,6 +155,7 @@ in
             mod = ["Mod4"];
             key = "kp_0";
             program = "flatpak run com.github.iwalton3.jellyfin-media-player";
+            overlay-title = "Launch jellyfin media player";
         }
 
         # Start FreeTube
@@ -159,6 +163,7 @@ in
             mod = ["Mod4"];
             key = "kp_1";
             program = "freetube";
+            overlay-title = "Launch FreeTube";
         }
 
         # Open file browser
@@ -166,6 +171,7 @@ in
             mod = ["Mod4"];
             key = "kp_2";
             program = "nemo";
+            overlay-title = "Launch file browser";
         }
 
         # Open Steam
@@ -173,6 +179,7 @@ in
             mod = ["Mod4"];
             key = "kp_5";
             program = "steam --no-minimize-to-tray";
+            overlay-title = "Launch Steam";
         }
     ];
 
