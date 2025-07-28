@@ -9,7 +9,7 @@
             text = lib.strings.concatStringsSep "\n" (map
             (m:
                 ''
-                    swww img -o ${m.name} --resize=crop --transition-type=random "$(find ${pkgs.mypkgs.wallpapers}/share/wallpapers/${m.orientation} -maxdepth 1 -type f | shuf -n 1)"
+                    swww img -o ${m.name} --resize=crop --transition-type=fade "$(find ${pkgs.mypkgs.wallpapers}/share/wallpapers/${m.orientation} -maxdepth 1 -type f | shuf -n 1)"
                 ''
             )
             (config.monitors.outputs));
