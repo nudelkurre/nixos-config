@@ -72,6 +72,7 @@ in
                     {window_role = "pop-up";}
                     {window_role = "task_dialog";}
                     {app_id = "^floorp$"; title = "^Extension: \\(Bitwarden Password Manager\\) - Bitwarden — Ablaze Floorp$";}
+                    {app_id = "^firefox$"; title = "^Extension: \\(Bitwarden Password Manager\\) - Bitwarden — Mozilla Firefox$";}
                 ];
                 modifier = "${mod1}";
                 titlebar = false;
