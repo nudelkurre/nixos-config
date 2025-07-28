@@ -101,11 +101,11 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1753472472,
-        "narHash": "sha256-rjMFmezaOnoSaguo3/EYNqHXen0g5aupSG9BPI3SNfk=",
+        "lastModified": 1753706000,
+        "narHash": "sha256-Ph4vas0ixlkmfao9PFyz6OgCbg/K8hVnakRMab8n0Bs=",
         "owner": "nudelkurre",
         "repo": "ngb",
-        "rev": "7ac1413943745efcefd472e59f4bd3aa71374531",
+        "rev": "0207202d1b3671b0c4ef8ea7f8729ad0dc58baea",
         "type": "github"
       },
       "original": {
