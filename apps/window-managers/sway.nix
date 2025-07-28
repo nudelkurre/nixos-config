@@ -233,6 +233,7 @@ in
                 ] else [])
                 { command = "${pkgs.ngb}/bin/ngb";}
                 { command = "swww-background"; always = true;}
+                { command = "kanshi"; always = true;}
             ];
             window = {
                 border = 1;
