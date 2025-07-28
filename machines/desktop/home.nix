@@ -55,6 +55,8 @@ in
             scripts.video-dl
             texliveMedium
             wl-clipboard
+            jq
+            socat
         ];
         sessionVariables = {
             EDITOR = "nano";
