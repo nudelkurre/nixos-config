@@ -303,11 +303,17 @@ binds {
 
     Alt+F4 hotkey-overlay-title=null { close-window; }
 
+    // Focus windows
     Mod+Left  { focus-column-left; }
     Mod+Down  { focus-window-down; }
     Mod+Up    { focus-window-up; }
     Mod+Right { focus-column-right; }
+    Mod+WheelScrollUp { focus-window-up; }
+    Mod+WheelScrollDown { focus-window-down; }
+    Mod+MouseForward { focus-column-right; }
+    Mod+MouseBack { focus-column-left; }
 
+    // Move windows
     Mod+Ctrl+Left  { move-column-left; }
     Mod+Ctrl+Down  { move-window-down; }
     Mod+Ctrl+Up    { move-window-up; }
@@ -350,8 +356,8 @@ binds {
     Mod+Shift+0 { move-window-to-workspace "10"; }
 
     // Change focus om workspace by scroll up or down
-    Mod+WheelScrollDown cooldown-ms=150 { focus-workspace-down; }
-    Mod+WheelScrollUp   cooldown-ms=150 { focus-workspace-up; }
+    Mod+Shift+WheelScrollDown { focus-workspace-down; }
+    Mod+Shift+WheelScrollUp { focus-workspace-up; }
 
     // The following binds move the focused window in and out of a column.
     // If the window is alone, they will consume it into the nearby column to the side.
