@@ -280,7 +280,8 @@ window-rule {
 }
 
 window-rule {
-    match title="Steam Settings" app-id="steam"
+    match app-id="steam"
+    exclude title=r#"^Steam$"#
     open-floating true
     open-focused true
 }
