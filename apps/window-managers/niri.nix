@@ -152,8 +152,7 @@ input {
 layout {
     gaps 5
 
-    center-focused-column "on-overflow"
-    always-center-single-column
+    center-focused-column "never"
 
     preset-column-widths {
         proportion 0.5
