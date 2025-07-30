@@ -238,6 +238,11 @@ animations {
     off
 }
 
+cursor {
+    xcursor-theme "${config.gtk.cursorTheme.name}"
+    xcursor-size ${toString config.gtk.cursorTheme.size}
+}
+
 gestures {
     hot-corners {
         off
