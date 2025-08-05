@@ -233,8 +233,43 @@ prefer-no-csd
 screenshot-path "~/Pictures/Screenshots/Screenshot_%Y-%m-%d_%H-%M-%S.png"
 
 animations {
-    // Uncomment to turn off all animations.
-    off
+    workspace-switch {
+        off
+    }
+
+    window-open {
+        off
+    }
+
+    window-close {
+        off
+    }
+
+    horizontal-view-movement {
+        off
+    }
+
+    window-movement {
+        off
+    }
+
+    window-resize {
+        duration-ms 150
+        curve "ease-out-expo"
+    }
+
+    config-notification-open-close {
+        off
+    }
+
+    screenshot-ui-open {
+        off
+    }
+
+    overview-open-close {
+        duration-ms 250
+        curve "ease-out-expo"
+    }
 }
 
 cursor {
