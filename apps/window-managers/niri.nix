@@ -160,6 +160,8 @@ layout {
 
     center-focused-column "never"
 
+    default-column-display "tabbed"
+
     preset-column-widths {
         proportion 0.5
         proportion 1.0
