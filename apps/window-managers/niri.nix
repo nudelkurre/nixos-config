@@ -420,6 +420,7 @@ binds {
     Mod+Shift+R { switch-preset-window-height; }
     Mod+Ctrl+R { reset-window-height; }
     Mod+F { fullscreen-window; }
+    Mod+Ctrl+F { toggle-windowed-fullscreen; }
 
     // Change column width
     Mod+Alt+Left { set-column-width "-5%"; }
