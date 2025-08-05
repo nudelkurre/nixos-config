@@ -93,6 +93,12 @@ let
     cfg.keyboard = config.input.keyboard;
     cfg.mouse = config.input.mouse;
     cfg.touchpad = config.input.touchpad;
+
+    color1 = "#33ccff";
+    color2 = "#ff96ff";
+    opacity_active = "ee";
+    opacity_inactive = "33";
+    color_angle = "45";
 in
 {
     home.packages = [pkgs.niri];
@@ -170,8 +176,12 @@ layout {
     
     focus-ring {
         width 4
-        active-gradient from="#33ccffee" to="#ff00ddee" angle=45 relative-to="workspace-view"
-        inactive-gradient from="#33ccff33" to="#ff00dd33" angle=45 relative-to="workspace-view"
+        active-gradient from="${color1}${opacity_active}" to="${color2}${opacity_active}" angle=${color_angle} relative-to="workspace-view"
+        inactive-gradient from="${color1}${opacity_inactive}" to="${color2}${opacity_inactive}" angle=${color_angle} relative-to="workspace-view"
+    }
+
+    insert-hint {
+        gradient from="${color1}" to="${color2}" angle=${color_angle}
     }
 
     border {
@@ -223,8 +233,8 @@ layout {
         length total-proportion=1.0
         position "left"
         place-within-column
-        active-gradient from="#33ccffee" to="#ff00ddee" angle=0
-        inactive-gradient from="#33ccff33" to="#ff00dd33" angle=0
+        active-gradient from="${color1}${opacity_active}" to="${color2}${opacity_active}" angle=0
+        inactive-gradient from="${color1}${opacity_inactive}" to="${color2}${opacity_inactive}" angle=0
     }
 }
 
