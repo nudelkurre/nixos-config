@@ -227,8 +227,8 @@ layout {
     }
 
     tab-indicator {
-        width 4
-        gap 8
+        width 8
+        gap 4
         gaps-between-tabs 4
         corner-radius 10
         hide-when-single-tab
