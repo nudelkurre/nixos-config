@@ -14,7 +14,7 @@
                 format = "<b>%s</b>\\n%b";
                 frame_color = "#000000";
                 frame_width = 1;
-                height = 300;
+                height = "(0, 500)";
                 hide_duplicate_count = "false";
                 history_length = 20;
                 horizontal_padding = 8;
