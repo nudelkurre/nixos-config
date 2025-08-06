@@ -1,5 +1,10 @@
 {pkgs, config, ...}:
 {
+    dconf.settings = {
+        "org/gnome/desktop/interface" = {
+            color-scheme = "prefer-dark";
+        };
+    };
     home.pointerCursor = {
         gtk.enable = ! config.disable.gtk;
         name = "${config.gtk.cursorTheme.name}";

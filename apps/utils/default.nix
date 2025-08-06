@@ -2,10 +2,10 @@
     imports = [
         ./dunst.nix
         ./gnome-keyring.nix
-        ./gtk.nix
         ./hyprlock.nix
         ./mangohud.nix
         ./swaylock.nix
+        ./theme.nix
         ./wlsunset.nix
     ];
 }
