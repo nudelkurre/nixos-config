@@ -388,6 +388,7 @@ in
                 {name = "heroic";}
                 {name = "lutris";}
                 {name = "steam";}
+                {name = "pcsx2-qt";}
             ];
         }
         {
