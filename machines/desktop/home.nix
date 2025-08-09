@@ -378,7 +378,9 @@ in
         }
         {
             name = "4";
-            programs = [  ];
+            programs = [
+                {name = ".virt-manager-wrapped";}
+            ];
         }
         {
             name = "5";
