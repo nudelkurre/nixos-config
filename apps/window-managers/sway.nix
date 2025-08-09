@@ -106,8 +106,6 @@ in
                 };
             };
             keybindings = {
-                # start a terminal
-                "${mod1}+Return" = "exec ${pkgs.alacritty}/bin/alacritty";
 
                 # Lock screen
                 "${mod1}+l" = "exec swaylock";
@@ -117,9 +115,6 @@ in
 
                 # Resize mode
                 "${mod1}+r" = "mode \"resize\"";
-
-                # start dmenu (a program launcher)
-                "${mod1}+d" = "exec rofi -show";
 
                 # change focus
                 "${mod3}+Tab" = "focus right";

@@ -131,6 +131,22 @@ in
             overlay-title = "Reboot";
         }
 
+        # Open rofi
+        {
+            mod = ["Mod4"];
+            key = "d";
+            program = "rofi -show";
+            overlay-title = "Open rofi";
+        }
+
+        # Open terminal
+        {
+            mod = ["Mod4"];
+            key = "Return";
+            program = "alacritty";
+            overlay-title = "Open terminal window";
+        }
+
         # Start firefox-esr
         {
             mod = ["Mod4" "Shift"];

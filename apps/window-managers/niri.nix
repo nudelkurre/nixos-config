@@ -348,9 +348,6 @@ binds {
 
     Mod+F2 { toggle-overview; }
 
-    Mod+Return { spawn "alacritty"; }
-    Mod+D { spawn "rofi" "-show"; }
-    Mod+L { spawn "swaylock"; }
 
     Alt+F4 hotkey-overlay-title=null { close-window; }
 

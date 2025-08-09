@@ -50,14 +50,12 @@ in
             };
 
             bind = lib.lists.flatten [
-                "$mod1, RETURN, exec, kitty"
                 "$mod3, F4, killactive"
                 "$mod1 $mod4, E, exit"
                 "$mod1 $mod4, SPACE, togglefloating"
                 "$mod1, F, fullscreen"
                 "$mod1, J, togglesplit"
                 "$mod1, J, layoutmsg, orientationcycle left top"
-                "$mod1, D, exec, rofi -show"
 
                 # Move focus with mainMod + arrow keys
                 "$mod1, left, movefocus, l"
