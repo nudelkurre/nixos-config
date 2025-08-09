@@ -75,8 +75,9 @@
         firewall = {
             enable = true;
             allowedTCPPorts = [
-                2049
-                5900
+                2049 # NFSv4
+                5900 # Spice virt-manager
+                5901 # VNC virt-manager
             ];
             allowedUDPPorts = [
                 
