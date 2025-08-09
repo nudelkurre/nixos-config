@@ -348,6 +348,7 @@ binds {
 
     Mod+F2 { toggle-overview; }
 
+    Mod+L hotkey-overlay-title="Lock screen" { spawn "swaylock"; }
 
     Alt+F4 hotkey-overlay-title=null { close-window; }
 
