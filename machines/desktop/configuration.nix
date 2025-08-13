@@ -55,7 +55,6 @@
             file
             git
             headsetcontrol
-            htop
             intel-gpu-tools
             libnotify
             libva-utils
