@@ -443,6 +443,30 @@ in
 
     xdg = {
         desktopEntries = {
+            Alacritty = {
+                name = "alacritty";
+                noDisplay = true;
+            };
+            "amdgpu_top" = {
+                name = "AMDGPU TOP";
+                noDisplay = true;
+            };
+            "amdgpu_top-tui" = {
+                name = "AMDGPU TOP";
+                noDisplay = true;
+            };
+            btop = {
+                name = "btop";
+                noDisplay = true;
+            };
+            kitty = {
+                name = "kitty";
+                noDisplay = true;
+            };
+            mpv = {
+                name = "mpv";
+                noDisplay = true;
+            };
             steam = {
                 name = "Steam";
                 comment = "Application for managing and playing games on Steam";
