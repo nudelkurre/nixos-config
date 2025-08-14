@@ -33,6 +33,18 @@
                     "editor.fontFamily" = "${config.fonts.name}";
                     "editor.insertSpaces" = true;
                     "editor.tabSize" = 4;
+                    "nix.enableLanguageServer" = true;
+                    "nix.serverPath" = "${pkgs.nil}/bin/nil";
+                    "nix.serverSettings" = {
+                        "nil" = {
+                            "formatting" = {
+                                command = [
+                                    "${pkgs.nixfmt-rfc-style}/bin/nixfmt"
+                                    "--indent=4"
+                                ];
+                            };
+                        };
+                    };
                     "workbench.colorTheme" = "Catppuccin Frappé";
                     "workbench.iconTheme" = "catppuccin-frappe";
                 };
