@@ -59,7 +59,7 @@
         };
         touchpad = {
             enable = true;
-            scroll-method = "two-finger"
+            scroll-method = "two-finger";
         };
     };
 
