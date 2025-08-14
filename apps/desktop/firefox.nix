@@ -375,6 +375,17 @@
                     .titlebar-buttonbox {
                         display: none;
                     }
+
+                    .wrapper {
+                        padding: 0px 0px !important;;
+                    }
+
+                    #sidebar-main {
+                        margin-left: -8px !important;
+                        margin-right: -8px !important;
+                        margin-top: 0px !important;
+                        margin-bottom: 0px !important;
+                    }
                 '';
             };
         };
