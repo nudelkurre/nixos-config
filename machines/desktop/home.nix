@@ -483,6 +483,7 @@ in
             enable = true;
             defaultApplications = {
                 "application/pdf" = browser;
+                "audio/flac" = media_player;
                 "audio/mpeg" = media_player;
                 "audio/x-m4b" = media_player;
                 "audio/x-vorbis+ogg" = media_player;
