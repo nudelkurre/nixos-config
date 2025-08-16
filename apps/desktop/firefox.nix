@@ -1,32 +1,36 @@
-{pkgs, config, lib, inputs, firefox-addons, ...}:
+{pkgs, config, lib, ...}:
 {
     programs.firefox = {
         enable = ! config.disable.firefox;
-        package = pkgs.firefox-esr;
+        package = pkgs.firefox;
         policies = {
             "CaptivePortal" = false;
             "Cookies" = {
                 "Behavior" = "reject-foreign";
                 "BehaviorPrivateBrowsing" = "reject-foreign";
                 "Locked" = true;
-                "RejectTracker" = true;
             };
             "DisableFirefoxAccounts" = true;
             "DisableFirefoxStudies" = true;
+            "DisableFormHistory" = true;
             "DisableMasterPasswordCreation" = true;
-            "DisablePocket" = true;
-            "DisableSecurityBypass" = {
-                "InvalidCertificate" = false;
-                "SafeBrowsing" = false;
-            };
+            "DisablePasswordReveal" = true;
+            "DisableSetDesktopBackground" = true;
+            "DisableSystemAddonUpdate" = true;
             "DisableTelemetry" = true;
+            "DontCheckDefaultBrowser" = true;
             "DownloadDirectory" = "${config.home.homeDirectory}/Downloads";
             "EnableTrackingProtection" = {
                 "Value" = true;
                 "Locked" = true;
                 "Cryptomining" = true;
                 "Fingerprinting" = true;
+                "EmailTracking" = true;
                 "Exceptions" = [];
+            };
+            "EncryptedMediaExtensions" = {
+                "Enabled" = false;
+                "Locked" = true;
             };
             "Extensions" = {
                 "Install" = [];
@@ -42,6 +46,7 @@
                     "floccus@handmadeideas.org"
                     "uBlock0@raymondhill.net"
                     "{aecec67f-0d10-4fa7-b7c7-609a2db280cf}"
+                    "jordanlinkwarden@gmail.com"
                 ];
             };
             "FirefoxHome" = {
@@ -50,19 +55,27 @@
                 "SponsoredTopSites" = false;
                 "Highlights" = false;
                 "Pocket" = false;
+                "Stories" = false;
                 "SponsoredPocket" = false;
+                "SponsoredStories" = false;
                 "Snippets" = false;
                 "Locked" = true;
             };
             "Homepage" = {
+                "URL" = "about:home";
                 "Locked" = true;
                 "StartPage" = "homepage-locked";
+            };
+            "HttpsOnlyMode" = "force_enabled";
+            "InstallAddonsPermission" = {
+                "Default" = false;
             };
             "NetworkPrediction" = false;
             "NewTabPage" = true;
             "NoDefaultBookmarks" = true;
             "OfferToSaveLogins" = false;
-            "OfferToSaveLoginsDefault" = false;
+            "OverrideFirstRunPage" = "";
+            "OverridePostUpdatePage" = "";
             "PasswordManagerEnabled" = false;
             "Permissions" = {
                 "Camera" = {
@@ -120,6 +133,18 @@
                 "browser.fixup.domainsuffixwhitelist.lan" = {
                     "Value" = true;
                     "Status" = "default";
+                };
+                "browser.ml.enabled" = {
+                    "Value" = false;
+                    "Status" = "locked";
+                };
+                "browser.ml.chat.enabled" = {
+                    "Value" = false;
+                    "Status" = "locked";
+                };
+                "extensions.ml.enabled" = {
+                    "Value" = false;
+                    "Status" = "locked";
                 };
             };
             "PromptForDownloadLocation" = true;
@@ -197,7 +222,8 @@
                     }
 
                 ];
-                "Default" = "Startpage";
+                "Default" = "Duckduckgo";
+                "PreventInstalls" = true;
                 "Remove" = ["DuckDuckGo" "Google" "Amazon" "Bing" "Wikipedia (en)" "Ecosia"];
             };
             "TranslateEnabled" = false;
@@ -208,6 +234,7 @@
                 "UrlbarInterventions" = false;
                 "SkipOnboarding" = false;
                 "MoreFromMozilla" = false;
+                "FirefoxLabs" = false;
                 "Locked" = true;
             };
         };
@@ -356,7 +383,7 @@
                     }
 
                     .tab-context-line {
-                        width: 100%;
+                        width: 100% !important;
                         height: 100% !important;
                         background-color: color-mix(in srgb, var(--identity-icon-color) 30%, transparent) !important;
                         margin: 0 !important;
@@ -386,18 +413,22 @@
                         margin-top: 0px !important;
                         margin-bottom: 0px !important;
                     }
+
+                    #sidebar-button {
+                        display: none;
+                    }
                 '';
             };
         };
     };
     xdg.desktopEntries = {
-        "firefox-esr-private" = {
+        "firefox-private" = {
             categories = [ "Network" "WebBrowser" ];
-            exec = "${config.programs.firefox.package}/bin/firefox-esr --private-window %U";
+            exec = "${config.programs.firefox.package}/bin/firefox --private-window %U";
             genericName = "Web Browser";
-            icon = "firefox-esr";
+            icon = "firefox";
             mimeType = [ "text/html" "text/xml" "application/xhtml+xml" "application/vnd.mozilla.xul+xml" "x-scheme-handler/http" "x-scheme-handler/https" ];
-            name = "Firefox ESR Private Window";
+            name = "Firefox Private Window";
             noDisplay = true;
             terminal = false;
         };

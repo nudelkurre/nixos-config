@@ -1,6 +1,6 @@
 { config, pkgs, lib, ... }:
 let
-    browser = "firefox-esr-private.desktop";
+    browser = "firefox-private.desktop";
     image_viewer = "imv-dir.desktop";
     media_player = "mpv.desktop";
     text_editor = "codium.desktop";
@@ -147,24 +147,24 @@ in
             overlay-title = "Open terminal window";
         }
 
-        # Start firefox-esr
+        # Start firefox
         {
             mod = ["Mod4" "Shift"];
             key = "f";
-            program = "firefox-esr";
+            program = "firefox";
             overlay-title = "Launch firefox";
         }
         {
             key = "XF86HomePage";
-            program = "firefox-esr";
+            program = "firefox";
             overlay-title = "Launch firefox";
         }
 
-        # Start firefox-esr in private window
+        # Start firefox in private window
         {
             mod = ["Mod4" "Ctrl" "Shift"];
             key = "f";
-            program = "firefox-esr --private-window";
+            program = "firefox --private-window";
             overlay-title = "Launch firefox private window";
         }
 
