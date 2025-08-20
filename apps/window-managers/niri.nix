@@ -333,8 +333,8 @@ window-rule {
 window-rule {
     match app-id="steam"
     exclude title=r#"^Steam$"#
+    exclude app-id="steam" title=r#"^notificationtoasts_\d+_desktop$"#
     open-floating true
-    open-focused true
 }
 
 window-rule {
