@@ -1,4 +1,9 @@
-{pkgs, config, lib, ...}:
+{
+    pkgs,
+    config,
+    lib,
+    ...
+}:
 let
     mod1 = "Mod4";
     mod2 = "Ctrl";
@@ -18,40 +23,51 @@ let
 
     cfg.keyboard = config.input.keyboard;
 
-    wsf = lib.lists.flatten (builtins.map (w:
-        builtins.map (p:
-            let
-                wsfocus = (if p.focus then "for_window [app_id=\"${p.name}\"] focus\nfor_window [class=\"${p.name}\"] focus\n" else "");
-            in
-            "${wsfocus}"
-        )(w.programs)
-    )(config.workspaces));
+    wsf = lib.lists.flatten (
+        builtins.map (
+            w:
+            builtins.map (
+                p:
+                let
+                    wsfocus = (
+                        if p.focus then
+                            "for_window [app_id=\"${p.name}\"] focus\nfor_window [class=\"${p.name}\"] focus\n"
+                        else
+                            ""
+                    );
+                in
+                "${wsfocus}"
+            ) (w.programs)
+        ) (config.workspaces)
+    );
 
     # Generate keybinds specified in config.keybinds inside home-manager config
     # and will then get appended to keybinds in sway config
-    keybinds = builtins.foldl' (acc: attr:
-    let
-        modKeys = (if attr.mod != [] then lib.strings.concatStringsSep "+" attr.mod else "");
-        keymod = (if modKeys != "" then "${modKeys}+${attr.key}" else "${attr.key}");
-        program = "exec ${attr.program}";
-    in
-    acc // { "${keymod}" = program; }
-    ) {} config.keybindings;
+    keybinds = builtins.foldl' (
+        acc: attr:
+        let
+            modKeys = (if attr.mod != [ ] then lib.strings.concatStringsSep "+" attr.mod else "");
+            keymod = (if modKeys != "" then "${modKeys}+${attr.key}" else "${attr.key}");
+            program = "exec ${attr.program}";
+        in
+        acc // { "${keymod}" = program; }
+    ) { } config.keybindings;
 in
 {
     wayland.windowManager.sway = {
         config = {
             assigns = (
-                builtins.listToAttrs (builtins.map (w:
-                {
-                    name = w.name;
-                    value = lib.lists.flatten (map (p: [
-                        {app_id = p.name;}
-                        {class = p.name;}
-                    ])
-                    (w.programs));
-                })
-                (config.workspaces))
+                builtins.listToAttrs (
+                    builtins.map (w: {
+                        name = w.name;
+                        value = lib.lists.flatten (
+                            map (p: [
+                                { app_id = p.name; }
+                                { class = p.name; }
+                            ]) (w.programs)
+                        );
+                    }) (config.workspaces)
+                )
             );
             bars = [
 
@@ -68,11 +84,17 @@ in
             };
             floating = {
                 criteria = [
-                    {app_id = "zenity";}
-                    {window_role = "pop-up";}
-                    {window_role = "task_dialog";}
-                    {app_id = "^floorp$"; title = "^Extension: \\(Bitwarden Password Manager\\) - Bitwarden — Ablaze Floorp$";}
-                    {app_id = "^firefox$"; title = "^Extension: \\(Bitwarden Password Manager\\) - Bitwarden — Mozilla Firefox$";}
+                    { app_id = "zenity"; }
+                    { window_role = "pop-up"; }
+                    { window_role = "task_dialog"; }
+                    {
+                        app_id = "^floorp$";
+                        title = "^Extension: \\(Bitwarden Password Manager\\) - Bitwarden — Ablaze Floorp$";
+                    }
+                    {
+                        app_id = "^firefox$";
+                        title = "^Extension: \\(Bitwarden Password Manager\\) - Bitwarden — Mozilla Firefox$";
+                    }
                 ];
                 modifier = "${mod1}";
                 titlebar = false;
@@ -81,7 +103,7 @@ in
                 followMouse = "yes";
                 newWindow = "none";
             };
-            fonts = {};
+            fonts = { };
             gaps = {
                 inner = 5;
                 outer = -5;
@@ -101,7 +123,12 @@ in
                     tap = "enable";
                 };
                 "type:keyboard" = {
-                    xkb_layout = (if cfg.keyboard.variant != "" then "${cfg.keyboard.language}(${cfg.keyboard.variant})" else "${cfg.keyboard.language}");
+                    xkb_layout = (
+                        if cfg.keyboard.variant != "" then
+                            "${cfg.keyboard.language}(${cfg.keyboard.variant})"
+                        else
+                            "${cfg.keyboard.language}"
+                    );
                     xkb_numlock = (if cfg.keyboard.numlock then "enable" else "disable");
                 };
             };
@@ -177,12 +204,14 @@ in
                 # reload the configuration file
                 "${mod1}+${mod4}+r" = "reload";
                 # exit sway (logs you out of your X session)
-                "${mod1}+${mod4}+e" = "exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'";
+                "${mod1}+${mod4}+e" =
+                    "exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'";
 
                 # Printscreen
                 "Print" = "${pkgs.grim}/bin/grim -g \"$(${pkgs.slurp}/bin/slurp)\"";
 
-            } // keybinds;
+            }
+            // keybinds;
             modes = {
                 resize = {
                     Down = "resize grow height 10 px or 10 ppt";
@@ -201,15 +230,26 @@ in
                 };
             };
             startup = lib.lists.flatten [
-                { command = "${pkgs.udiskie}/bin/udiskie -a";}
-                { command = "dunst -conf ~/.config/dunst/dunstrc";}
-                { command = "systemctl --user import-environment PATH";}
-                (if config.monitors.primary != "" then [
-                    {command = "${pkgs.xorg.xrandr}/bin/xrandr --output ${config.monitors.primary} --primary";}
-                ] else [])
-                { command = "${pkgs.ngb}/bin/ngb";}
-                { command = "swww-background"; always = true;}
-                { command = "kanshi"; always = true;}
+                { command = "${pkgs.udiskie}/bin/udiskie -a"; }
+                { command = "dunst -conf ~/.config/dunst/dunstrc"; }
+                { command = "systemctl --user import-environment PATH"; }
+                (
+                    if config.monitors.primary != "" then
+                        [
+                            { command = "${pkgs.xorg.xrandr}/bin/xrandr --output ${config.monitors.primary} --primary"; }
+                        ]
+                    else
+                        [ ]
+                )
+                { command = "${pkgs.ngb}/bin/ngb"; }
+                {
+                    command = "swww-background";
+                    always = true;
+                }
+                {
+                    command = "kanshi";
+                    always = true;
+                }
             ];
             window = {
                 border = 1;
@@ -218,18 +258,17 @@ in
             };
             workspaceAutoBackAndForth = false;
             workspaceLayout = "default";
-            workspaceOutputAssign = lib.lists.flatten (map 
-                (m:
-                    map (w:
-                        {
-                            output = m.name;
-                            workspace = w;
-                        }
-                    )(m.workspaces)
-                )(config.monitors.outputs)
+            workspaceOutputAssign = lib.lists.flatten (
+                map (
+                    m:
+                    map (w: {
+                        output = m.name;
+                        workspace = w;
+                    }) (m.workspaces)
+                ) (config.monitors.outputs)
             );
         };
-        enable = ! config.disable.sway;
+        enable = !config.disable.sway;
         extraConfig = ''
             ${lib.strings.concatStringsSep "" wsf}
             for_window [class="steam"] move to workspace ${ws5}

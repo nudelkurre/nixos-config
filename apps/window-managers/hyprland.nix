@@ -1,4 +1,9 @@
-{pkgs, config, lib, ...}:
+{
+    pkgs,
+    config,
+    lib,
+    ...
+}:
 let
     keyCodes = {
         "kp_0" = "code:90";
@@ -18,11 +23,7 @@ let
         "kp_enter" = "code:104";
         "kp_separator" = "code:91";
     };
-    replaceKeys = str:
-        if builtins.hasAttr str keyCodes then
-            keyCodes.${str}
-        else
-            str;
+    replaceKeys = str: if builtins.hasAttr str keyCodes then keyCodes.${str} else str;
 
     cfg.keyboard = config.input.keyboard;
 in
@@ -33,7 +34,7 @@ in
         ];
     };
     wayland.windowManager.hyprland = {
-        enable = ! config.disable.hyprland;
+        enable = !config.disable.hyprland;
         package = pkgs.hyprland;
         plugins = [
             pkgs.hyprlandPlugins.hy3
@@ -99,14 +100,19 @@ in
 
                 # Generate keybinds specified in config.keybinds inside home-manager config
                 # and will then get appended to keybinds in hyprland config
-                (map (attr:
-                let
-                    modKeys = (if attr.mod != [] then lib.strings.concatStringsSep " " (map lib.strings.toUpper attr.mod) else "");
-                    keymod = (if modKeys != "" then "${modKeys}, ${replaceKeys attr.key}" else ", ${replaceKeys attr.key}");
-                    program = "${attr.program}";
-                in
-                "${keymod}, exec, ${program}"
-                )(config.keybindings))
+                (map (
+                    attr:
+                    let
+                        modKeys = (
+                            if attr.mod != [ ] then lib.strings.concatStringsSep " " (map lib.strings.toUpper attr.mod) else ""
+                        );
+                        keymod = (
+                            if modKeys != "" then "${modKeys}, ${replaceKeys attr.key}" else ", ${replaceKeys attr.key}"
+                        );
+                        program = "${attr.program}";
+                    in
+                    "${keymod}, exec, ${program}"
+                ) (config.keybindings))
             ];
 
             bindm = [
@@ -211,14 +217,16 @@ in
             };
 
             windowrulev2 = lib.lists.flatten [
-                (map (w:
-                    map (p:
+                (map (
+                    w:
+                    map (
+                        p:
                         let
                             wsfocus = (if p.focus then "workspace ${w.name}" else "workspace ${w.name} silent");
                         in
                         "${wsfocus}, class:${p.name}"
-                    )(w.programs)
-                )(config.workspaces))
+                    ) (w.programs)
+                ) (config.workspaces))
                 "center, class:(chatterino), title:^(Open channel)"
                 "center, title:^(Chatterino Settings)"
                 "float, title:^(Steam Settings)"
@@ -228,12 +236,8 @@ in
                 "tile, title:^(Chatterino\\s\\d\\.\\d\\.\\d)"
             ];
 
-            workspace = lib.lists.flatten (map 
-                (m:
-                    map (w:
-                        "name:${w},monitor:${m.name}"
-                    )(m.workspaces)
-                )(config.monitors.outputs)
+            workspace = lib.lists.flatten (
+                map (m: map (w: "name:${w},monitor:${m.name}") (m.workspaces)) (config.monitors.outputs)
             );
         };
         systemd = {
@@ -247,14 +251,14 @@ in
         configFile = {
             "hypr/hyprpaper.conf" = {
                 enable = config.wayland.windowManager.hyprland.enable;
-                text = 
-                    lib.strings.concatStringsSep "\n" (map (m:
-                        "preload = ${m.background}"
-                    )(config.monitors.outputs)) + "\n" +
-                    lib.strings.concatStringsSep "\n" (map (m:
-                        "wallpaper = ${m.name},${m.background}"
-                    )(config.monitors.outputs)) + "\n" +
-                        ''splash = false'';
+                text =
+                    lib.strings.concatStringsSep "\n" (map (m: "preload = ${m.background}") (config.monitors.outputs))
+                    + "\n"
+                    + lib.strings.concatStringsSep "\n" (
+                        map (m: "wallpaper = ${m.name},${m.background}") (config.monitors.outputs)
+                    )
+                    + "\n"
+                    + ''splash = false'';
             };
         };
     };
