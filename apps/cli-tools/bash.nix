@@ -1,10 +1,10 @@
-{pkgs, config, ...}:
+{ config, ... }:
 {
     programs.bash = {
         bashrcExtra = ''
-PS1="\[\e[1;32m\][\u@\h:\w]\$\[\e[0m\] "
+            PS1="\[\e[1;32m\][\u@\h:\w]\$\[\e[0m\] "
         '';
-        enable = ! config.disable.bash;
+        enable = !config.disable.bash;
         enableCompletion = true;
         historyControl = [ "ignoredups" ];
         historyIgnore = [
@@ -16,7 +16,7 @@ PS1="\[\e[1;32m\][\u@\h:\w]\$\[\e[0m\] "
             "nix"
         ];
         sessionVariables = {
-            
+
         };
         shellAliases = {
             mv = "mv -v";
