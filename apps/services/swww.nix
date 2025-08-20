@@ -1,18 +1,23 @@
-{pkgs, config, lib, ...}:
+{
+    pkgs,
+    config,
+    lib,
+    ...
+}:
 {
     home.file = {
         "swww-background" = {
             enable = true;
             executable = true;
             target = ".local/bin/swww-background";
-            text = ''#!/usr/bin/env bash
-            '' + lib.strings.concatStringsSep "\n" (map
-            (m:
-                ''
+            text = ''
+                #!/usr/bin/env bash
+            ''
+            + lib.strings.concatStringsSep "\n" (
+                map (m: ''
                     ${config.services.swww.package}/bin/swww img -o ${m.name} --resize=crop --transition-type=fade "$(find ${pkgs.mypkgs.wallpapers}/share/wallpapers/${m.orientation} -maxdepth 1 -type f | shuf -n 1)"
-                ''
-            )
-            (config.monitors.outputs));
+                '') (config.monitors.outputs)
+            );
         };
     };
     services.swww = {
@@ -34,7 +39,7 @@
         timers = {
             bgchange = {
                 Install = {
-                    WantedBy = ["timers.target"];
+                    WantedBy = [ "timers.target" ];
                 };
                 Timer = {
                     OnCalendar = "*-*-* *:0/15:*";
@@ -46,3 +51,4 @@
             };
         };
     };
+}
