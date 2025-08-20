@@ -1,18 +1,18 @@
-{ config, pkgs, lib, ... }:
+{ pkgs, ... }:
 let
     browser = "firefox-private.desktop";
     image_viewer = "imv-dir.desktop";
     media_player = "mpv.desktop";
     text_editor = "codium.desktop";
 in
-{    
+{
     fonts = {
         fontconfig = {
             defaultFonts = {
-                emoji = ["OpenMoji Color"];
-                monospace = ["MonaspiceAr Nerd Font Mono"];
-                sansSerif = ["MonaspiceAr Nerd Font"];
-                serif = ["MonaspiceXe Nerd Font"];
+                emoji = [ "OpenMoji Color" ];
+                monospace = [ "MonaspiceAr Nerd Font Mono" ];
+                sansSerif = [ "MonaspiceAr Nerd Font" ];
+                serif = [ "MonaspiceXe Nerd Font" ];
             };
             enable = true;
         };
@@ -30,7 +30,7 @@ in
                 target = ".local/bin/m4b-merge";
                 text = ''
                     #!/usr/bin/env bash
-                    
+
                     IFS=$'\n'
 
                     for i in $(find . -type f -name "*.m4b" | cut -d "/" -f2 | sort -uV); do ${pkgs.m4b-tool.m4b-tool-libfdk}/bin/m4b-tool split $i/*.m4b --output-dir=Splitted/$i --no-conversion -v && ${pkgs.m4b-tool.m4b-tool-libfdk}/bin/m4b-tool merge Splitted/$i/*.m4b --output-file=$1/$i/$i.m4b --no-conversion -v && rm -r Splitted; done
@@ -101,7 +101,7 @@ in
             key = "XF86AudioPrev";
             program = "${pkgs.playerctl}/bin/playerctl -i firefox,floorp previous";
         }
-        
+
         # Change volume
         {
             key = "XF86AudioRaiseVolume";
@@ -118,7 +118,10 @@ in
 
         # Shutdown
         {
-            mod = ["Mod4" "Shift"];
+            mod = [
+                "Mod4"
+                "Shift"
+            ];
             key = "s";
             program = "systemctl poweroff";
             overlay-title = "Shutdown";
@@ -126,7 +129,11 @@ in
 
         # Reboot
         {
-            mod = ["Mod4" "Ctrl" "Shift"];
+            mod = [
+                "Mod4"
+                "Ctrl"
+                "Shift"
+            ];
             key = "r";
             program = "systemctl reboot";
             overlay-title = "Reboot";
@@ -134,7 +141,7 @@ in
 
         # Open rofi
         {
-            mod = ["Mod4"];
+            mod = [ "Mod4" ];
             key = "d";
             program = "rofi -show";
             overlay-title = "Open rofi";
@@ -142,7 +149,7 @@ in
 
         # Open terminal
         {
-            mod = ["Mod4"];
+            mod = [ "Mod4" ];
             key = "Return";
             program = "alacritty";
             overlay-title = "Open terminal window";
@@ -150,7 +157,10 @@ in
 
         # Start firefox
         {
-            mod = ["Mod4" "Shift"];
+            mod = [
+                "Mod4"
+                "Shift"
+            ];
             key = "f";
             program = "firefox";
             overlay-title = "Launch firefox";
@@ -163,7 +173,11 @@ in
 
         # Start firefox in private window
         {
-            mod = ["Mod4" "Ctrl" "Shift"];
+            mod = [
+                "Mod4"
+                "Ctrl"
+                "Shift"
+            ];
             key = "f";
             program = "firefox --private-window";
             overlay-title = "Launch firefox private window";
@@ -171,7 +185,7 @@ in
 
         # Start jellyfin media player
         {
-            mod = ["Mod4"];
+            mod = [ "Mod4" ];
             key = "kp_0";
             program = "flatpak run com.github.iwalton3.jellyfin-media-player";
             overlay-title = "Launch jellyfin media player";
@@ -179,7 +193,7 @@ in
 
         # Start FreeTube
         {
-            mod = ["Mod4"];
+            mod = [ "Mod4" ];
             key = "kp_1";
             program = "freetube";
             overlay-title = "Launch FreeTube";
@@ -187,7 +201,7 @@ in
 
         # Open file browser
         {
-            mod = ["Mod4"];
+            mod = [ "Mod4" ];
             key = "kp_2";
             program = "nemo";
             overlay-title = "Launch file browser";
@@ -195,7 +209,7 @@ in
 
         # Open Steam
         {
-            mod = ["Mod4"];
+            mod = [ "Mod4" ];
             key = "kp_5";
             program = "steam --no-minimize-to-tray";
             overlay-title = "Launch Steam";
@@ -213,7 +227,13 @@ in
                 refreshRate = 144;
                 transform = 0;
                 width = 2560;
-                workspaces = [ "1" "2" "3" "4" "5" ];
+                workspaces = [
+                    "1"
+                    "2"
+                    "3"
+                    "4"
+                    "5"
+                ];
                 x = 0;
                 y = 240;
                 orientation = "horizontal";
@@ -227,7 +247,13 @@ in
                 refreshRate = 60;
                 transform = 90;
                 width = 1920;
-                workspaces = [ "6" "7" "8" "9" "10" ];
+                workspaces = [
+                    "6"
+                    "7"
+                    "8"
+                    "9"
+                    "10"
+                ];
                 x = 2560;
                 y = 0;
                 orientation = "vertical";
@@ -263,7 +289,7 @@ in
                     {
                         "output" = "DP-1";
                         "widgets" = {
-                            "center" = [];
+                            "center" = [ ];
                             "left" = [
                                 {
                                     "config" = {
@@ -276,7 +302,7 @@ in
                                             "5" = "";
                                         };
                                     };
-                                "module" = "workspace";
+                                    "module" = "workspace";
                                 }
                             ];
                             "right" = [
@@ -293,7 +319,7 @@ in
                                     "module" = "network";
                                 }
                                 {
-                                    "config" = {};
+                                    "config" = { };
                                     "module" = "volume";
                                 }
                                 {
@@ -310,7 +336,7 @@ in
                     {
                         "output" = "HDMI-A-1";
                         "widgets" = {
-                            "center" = [];
+                            "center" = [ ];
                             "left" = [
                                 {
                                     "config" = {
@@ -328,11 +354,11 @@ in
                             ];
                             "right" = [
                                 {
-                                    "config" = {};
+                                    "config" = { };
                                     "module" = "headset";
                                 }
                                 {
-                                    "config" = {};
+                                    "config" = { };
                                     "module" = "cpu";
                                 }
                                 {
@@ -375,69 +401,90 @@ in
         {
             name = "1";
             programs = [
-                {name = "Alacritty"; focus = true;}
-                {name = "kitty"; focus = true;}
+                {
+                    name = "Alacritty";
+                    focus = true;
+                }
+                {
+                    name = "kitty";
+                    focus = true;
+                }
             ];
         }
         {
             name = "2";
             programs = [
-                {name = "chromium-browser"; focus = true;}
-                {name = "firefox"; focus = true;}
-                {name = "floorp"; focus = true;}
+                {
+                    name = "chromium-browser";
+                    focus = true;
+                }
+                {
+                    name = "firefox";
+                    focus = true;
+                }
+                {
+                    name = "floorp";
+                    focus = true;
+                }
             ];
         }
         {
             name = "3";
             programs = [
-                {name = "FreeTube"; focus = true;}
+                {
+                    name = "FreeTube";
+                    focus = true;
+                }
             ];
         }
         {
             name = "4";
             programs = [
-                {name = ".virt-manager-wrapped";}
+                { name = ".virt-manager-wrapped"; }
             ];
         }
         {
             name = "5";
             programs = [
-                {name = "com.usebottles.bottles";}
-                {name = "gamescope";}
-                {name = "heroic";}
-                {name = "lutris";}
-                {name = "steam";}
-                {name = "pcsx2-qt";}
+                { name = "com.usebottles.bottles"; }
+                { name = "gamescope"; }
+                { name = "heroic"; }
+                { name = "lutris"; }
+                { name = "steam"; }
+                { name = "pcsx2-qt"; }
             ];
         }
         {
             name = "6";
-            programs = [  ];
+            programs = [ ];
         }
         {
             name = "7";
             programs = [
-                {name = "chatterino";}
-                {name = "com.chatterino.chatterino";}
-                {name = "discord";}
-                {name = "Keybase";}
+                { name = "chatterino"; }
+                { name = "com.chatterino.chatterino"; }
+                { name = "discord"; }
+                { name = "Keybase"; }
             ];
         }
         {
             name = "8";
-            programs = [  ];
+            programs = [ ];
         }
         {
             name = "9";
             programs = [
-                {name = "org.freedesktop.ryuukyu.Helvum";}
-                {name = "pavucontrol";}
+                { name = "org.freedesktop.ryuukyu.Helvum"; }
+                { name = "pavucontrol"; }
             ];
         }
         {
             name = "10";
             programs = [
-                {name = "codium"; focus = true;}
+                {
+                    name = "codium";
+                    focus = true;
+                }
             ];
         }
     ];
@@ -475,8 +522,15 @@ in
                 icon = "steam";
                 terminal = false;
                 type = "Application";
-                categories = ["Network" "FileTransfer" "Game"];
-                mimeType = ["x-scheme-handler/steam" "x-scheme-handler/steamlink"];
+                categories = [
+                    "Network"
+                    "FileTransfer"
+                    "Game"
+                ];
+                mimeType = [
+                    "x-scheme-handler/steam"
+                    "x-scheme-handler/steamlink"
+                ];
             };
         };
         enable = true;
