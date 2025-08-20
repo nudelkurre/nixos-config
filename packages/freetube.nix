@@ -1,50 +1,49 @@
 {
-  stdenv,
-  lib,
-  fetchurl,
-  appimageTools,
-  makeWrapper,
-  electron,
-  nixosTests,
+    stdenv,
+    fetchurl,
+    appimageTools,
+    makeWrapper,
+    electron,
+    nixosTests,
 }:
 
 stdenv.mkDerivation rec {
-  pname = "freetube";
-  version = "0.23.7";
+    pname = "freetube";
+    version = "0.23.7";
 
-  src = fetchurl {
-    url = "https://github.com/FreeTubeApp/FreeTube/releases/download/v${version}-beta/freetube-${version}-beta-amd64.AppImage";
-    hash = "sha256-aanBrQS74RIR0w15BIUfgdL3Dv/oM2PBu7ATZMPxzbo=";
-  };
+    src = fetchurl {
+        url = "https://github.com/FreeTubeApp/FreeTube/releases/download/v${version}-beta/freetube-${version}-beta-amd64.AppImage";
+        hash = "sha256-aanBrQS74RIR0w15BIUfgdL3Dv/oM2PBu7ATZMPxzbo=";
+    };
 
-  passthru.tests = nixosTests.freetube;
+    passthru.tests = nixosTests.freetube;
 
-  appimageContents = appimageTools.extractType2 { inherit pname version src; };
+    appimageContents = appimageTools.extractType2 { inherit pname version src; };
 
-  dontUnpack = true;
-  dontConfigure = true;
-  dontBuild = true;
+    dontUnpack = true;
+    dontConfigure = true;
+    dontBuild = true;
 
-  nativeBuildInputs = [ makeWrapper ];
+    nativeBuildInputs = [ makeWrapper ];
 
-  installPhase = ''
-    runHook preInstall
+    installPhase = ''
+        runHook preInstall
 
-    mkdir -p $out/bin $out/share/${pname} $out/share/applications $out/share/icons/hicolor/scalable/apps
+        mkdir -p $out/bin $out/share/${pname} $out/share/applications $out/share/icons/hicolor/scalable/apps
 
-    cp -a ${appimageContents}/{locales,resources} $out/share/${pname}
-    cp -a ${appimageContents}/freetube.desktop $out/share/applications/${pname}.desktop
-    cp -a ${appimageContents}/usr/share/icons/hicolor/scalable/freetube.svg $out/share/icons/hicolor/scalable/apps
+        cp -a ${appimageContents}/{locales,resources} $out/share/${pname}
+        cp -a ${appimageContents}/freetube.desktop $out/share/applications/${pname}.desktop
+        cp -a ${appimageContents}/usr/share/icons/hicolor/scalable/freetube.svg $out/share/icons/hicolor/scalable/apps
 
-    substituteInPlace $out/share/applications/${pname}.desktop \
-      --replace 'Exec=AppRun' 'Exec=${pname}'
+        substituteInPlace $out/share/applications/${pname}.desktop \
+          --replace 'Exec=AppRun' 'Exec=${pname}'
 
-    runHook postInstall
-  '';
+        runHook postInstall
+    '';
 
-  postFixup = ''
-    makeWrapper ${electron}/bin/electron $out/bin/${pname} \
-      --add-flags $out/share/${pname}/resources/app.asar \
-      --add-flags "\''${NIXOS_OZONE_WL:+\''${WAYLAND_DISPLAY:+--enable-features=UseOzonePlatform --ozone-platform=wayland}}"
-  '';
+    postFixup = ''
+        makeWrapper ${electron}/bin/electron $out/bin/${pname} \
+          --add-flags $out/share/${pname}/resources/app.asar \
+          --add-flags "\''${NIXOS_OZONE_WL:+\''${WAYLAND_DISPLAY:+--enable-features=UseOzonePlatform --ozone-platform=wayland}}"
+    '';
 }
