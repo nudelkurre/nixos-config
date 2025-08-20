@@ -1,4 +1,4 @@
-{options, pkgs, lib, ...}:
+{ lib, ... }:
 with lib;
 {
     options = {
@@ -204,94 +204,107 @@ with lib;
             };
         };
         keybindings = mkOption {
-            type = types.listOf (types.submodule {
-                options = {
-                    program = mkOption {
-                        type = types.str;
-                        example = "firefox";
-                        description = "Program to run on key bind";
+            type = types.listOf (
+                types.submodule {
+                    options = {
+                        program = mkOption {
+                            type = types.str;
+                            example = "firefox";
+                            description = "Program to run on key bind";
+                        };
+                        key = mkOption {
+                            type = types.str;
+                            example = "f";
+                            description = "Key to use for key bind";
+                        };
+                        mod = mkOption {
+                            type = types.listOf types.str;
+                            default = [ ];
+                            description = "List of mod keys to use";
+                        };
+                        overlay-title = mkOption {
+                            type = types.str;
+                            default = "";
+                            example = "Launch firefox";
+                            description = "Set a custom title for niri overlay";
+                        };
                     };
-                    key = mkOption {
-                        type = types.str;
-                        example = "f";
-                        description = "Key to use for key bind";
-                    };
-                    mod = mkOption {
-                        type = types.listOf types.str;
-                        default = [];
-                        description = "List of mod keys to use";
-                    };
-                    overlay-title = mkOption {
-                        type = types.str;
-                        default = "";
-                        example = "Launch firefox";
-                        description = "Set a custom title for niri overlay";
-                    };
-                };
-            });
+                }
+            );
         };
         monitors = {
             outputs = mkOption {
-                type = types.listOf (types.submodule {
-                    options = {
-                        adaptive_sync = mkOption {
-                            type = types.enum [ "on" "off" ];
-                            example = "on";
-                            default = "off";
+                type = types.listOf (
+                    types.submodule {
+                        options = {
+                            adaptive_sync = mkOption {
+                                type = types.enum [
+                                    "on"
+                                    "off"
+                                ];
+                                example = "on";
+                                default = "off";
+                            };
+                            background = mkOption {
+                                type = types.str;
+                                default = "#000000";
+                            };
+                            bg_style = mkOption {
+                                type = types.str;
+                                default = "solid_color";
+                            };
+                            height = mkOption {
+                                type = types.int;
+                                example = 1080;
+                            };
+                            name = mkOption {
+                                type = types.str;
+                                example = "DP-1";
+                            };
+                            refreshRate = mkOption {
+                                type = types.int;
+                                example = 60;
+                                default = 60;
+                            };
+                            transform = mkOption {
+                                type = types.int;
+                                example = 0;
+                                default = 0;
+                            };
+                            width = mkOption {
+                                type = types.int;
+                                example = 1920;
+                            };
+                            workspaces = mkOption {
+                                type = types.listOf types.str;
+                                example = [
+                                    "1"
+                                    "2"
+                                ];
+                                default = [ ];
+                            };
+                            x = mkOption {
+                                type = types.int;
+                                example = 0;
+                                default = 0;
+                            };
+                            y = mkOption {
+                                type = types.int;
+                                example = 0;
+                                default = 0;
+                            };
+                            orientation = mkOption {
+                                type = types.enum [
+                                    "horizontal"
+                                    "vertical"
+                                ];
+                                example = "vertical";
+                                default = "horizontal";
+                                description = "Specify orientation for use with background";
+                            };
                         };
-                        background = mkOption {
-                            type = types.str;
-                            default = "#000000";
-                        };
-                        bg_style = mkOption {
-                            type = types.str;
-                            default = "solid_color";
-                        };
-                        height = mkOption {
-                            type = types.int;
-                            example = 1080;
-                        };
-                        name = mkOption {
-                            type = types.str;
-                            example = "DP-1";
-                        };
-                        refreshRate = mkOption {
-                            type = types.int;
-                            example = 60;
-                            default = 60;
-                        };
-                        transform = mkOption {
-                            type = types.int;
-                            example = 0;
-                            default = 0;
-                        };
-                        width = mkOption {
-                            type = types.int;
-                            example = 1920;
-                        };
-                        workspaces = mkOption {
-                            type = types.listOf types.str;
-                            example = ["1" "2"];
-                            default = [ ];
-                        };
-                        x = mkOption {
-                            type = types.int;
-                            example = 0;
-                            default = 0;
-                        };
-                        y = mkOption {
-                            type = types.int;
-                            example = 0;
-                            default = 0;
-                        };
-                        orientation = mkOption {
-                            type = types.enum [ "horizontal" "vertical" ];
-                            example = "vertical";
-                            default = "horizontal";
-                            description = "Specify orientation for use with background";
-                        };
-                    };
-                });
+                    }
+                );
                 default = [ ];
             };
             primary = mkOption {
@@ -315,30 +328,34 @@ with lib;
             };
         };
         workspaces = mkOption {
-            type = types.listOf (types.submodule {
-                options = {
-                    name = mkOption {
-                        type = types.str;
-                        example = "1";
+            type = types.listOf (
+                types.submodule {
+                    options = {
+                        name = mkOption {
+                            type = types.str;
+                            example = "1";
+                        };
+                        programs = mkOption {
+                            type = types.listOf (
+                                types.submodule {
+                                    options = {
+                                        focus = mkOption {
+                                            type = types.bool;
+                                            example = true;
+                                            default = false;
+                                        };
+                                        name = mkOption {
+                                            type = types.str;
+                                            example = "firefox";
+                                        };
+                                    };
+                                }
+                            );
+                            default = [ ];
+                        };
                     };
-                    programs = mkOption {
-                        type = types.listOf (types.submodule {
-                            options = {
-                                focus = mkOption {
-                                    type = types.bool;
-                                    example = true;
-                                    default = false;
-                                };
-                                name = mkOption {
-                                    type = types.str;
-                                    example = "firefox";
-                                };
-                            };
-                        });
-                        default = [ ];
-                    };
-                };
-            });
+                }
+            );
             default = [ ];
         };
     };
