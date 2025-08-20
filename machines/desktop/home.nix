@@ -57,6 +57,7 @@ in
             wl-clipboard
             jq
             socat
+            python3Minimal
         ];
         sessionVariables = {
             EDITOR = "nano";
