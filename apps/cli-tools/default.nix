@@ -8,7 +8,6 @@
         ./git.nix
         ./go.nix
         ./nano.nix
-        ./python.nix
         ./ssh.nix
     ];
 }
