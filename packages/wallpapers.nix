@@ -3,7 +3,7 @@ stdenv.mkDerivation {
   pname = "wallpapers";
   version = "2025-08-20";
   src = fetchGit {
-    url = "ssh://git@git.nudelkurre.com:2222/nudelkurre/Wallpapers.git";
+    url = "https://git.nudelkurre.com/nudelkurre/Wallpapers.git";
     rev = "88ac60fd46f5689af0e03408f01b1386b605c8d2";
   };
 
