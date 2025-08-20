@@ -102,7 +102,7 @@
             };
         };
         packages.x86_64-linux = {
-            wallpapers = pkgs.callPackage packages/wallpapers {};
+            wallpapers = pkgs.callPackage packages/wallpapers.nix {};
             mangadex-downloader = pkgs.python3Packages.callPackage packages/python/mangadex-dl/mangadex-downloader.nix {};
             requests-doh = pkgs.python3Packages.callPackage packages/python/requests-doh.nix {};
             freetube = pkgs.callPackage packages/freetube.nix {};
