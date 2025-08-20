@@ -2,7 +2,7 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ config, lib, pkgs, ... }:
+{ pkgs, ... }:
 
 {
     # Set bootloader config
@@ -79,9 +79,7 @@
                 5900 # Spice virt-manager
                 5901 # VNC virt-manager
             ];
-            allowedUDPPorts = [
-                
-            ];
+            allowedUDPPorts = [ ];
         };
         hostName = "server";
         interfaces = {
@@ -96,7 +94,10 @@
                 };
             };
         };
-        nameservers = [ "1.1.1.1" "1.0.0.1" ];
+        nameservers = [
+            "1.1.1.1"
+            "1.0.0.1"
+        ];
         usePredictableInterfaceNames = false;
     };
 
@@ -108,7 +109,10 @@
             options = "--delete-older-than 14d";
         };
         settings = {
-            experimental-features = [ "nix-command" "flakes" ];
+            experimental-features = [
+                "nix-command"
+                "flakes"
+            ];
         };
     };
 
@@ -189,12 +193,15 @@
         };
         users = {
             emil = {
-                extraGroups = [ "wheel" "video" "docker" "users" "libvirtd" ]; # Enable ‘sudo’ for the user.
+                extraGroups = [
+                    "wheel"
+                    "video"
+                    "docker"
+                    "users"
+                    "libvirtd"
+                ]; # Enable ‘sudo’ for the user.
                 group = "emil";
                 isNormalUser = true;
-                packages = with pkgs; [
-
-                ];
                 openssh = {
                     authorizedKeys = {
                         keys = [
@@ -230,4 +237,3 @@
         memoryPercent = 75;
     };
 }
-
