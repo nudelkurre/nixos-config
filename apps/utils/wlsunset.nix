@@ -1,7 +1,7 @@
-{pkgs, config, ...}:
+{ config, ... }:
 {
     services.wlsunset = {
-        enable = ! config.disable.wlsunset;
+        enable = !config.disable.wlsunset;
         latitude = "59.6";
         longitude = "16.5";
         temperature = {

@@ -1,4 +1,4 @@
-{pkgs, config, ...}:
+{ pkgs, config, ... }:
 {
     dconf.settings = {
         "org/gnome/desktop/interface" = {
@@ -6,7 +6,7 @@
         };
     };
     home.pointerCursor = {
-        gtk.enable = ! config.disable.gtk;
+        gtk.enable = !config.disable.gtk;
         name = "${config.gtk.cursorTheme.name}";
         package = config.gtk.cursorTheme.package;
         size = config.gtk.cursorTheme.size;
@@ -58,10 +58,10 @@
             extraConfig = {
                 gtk-application-prefer-dark-theme = true;
                 gtk-button-images = true;
-                gtk-decoration-layout = icon:minimize,maximize,close;
+                gtk-decoration-layout = "icon:minimize,maximize,close";
                 gtk-enable-animations = true;
                 gtk-menu-images = true;
-                gtk-modules = window-decorations-gtk-module:colorreload-gtk-module;
+                gtk-modules = "window-decorations-gtk-module:colorreload-gtk-module";
                 gtk-primary-button-warps-slider = false;
                 gtk-toolbar-style = 3;
                 gtk-xft-dpi = 98304;
@@ -70,7 +70,7 @@
         gtk4 = {
             extraConfig = {
                 gtk-application-prefer-dark-theme = true;
-                gtk-decoration-layout = icon:minimize,maximize,close;
+                gtk-decoration-layout = "icon:minimize,maximize,close";
                 gtk-enable-animations = true;
                 gtk-primary-button-warps-slider = false;
                 gtk-xft-dpi = 98304;
