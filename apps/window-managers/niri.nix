@@ -42,25 +42,6 @@ let
         ''${replaceKeys keymod}${title} { spawn ${program}; }''
         )(config.keybindings));
 
-    outputs = lib.strings.concatStringsSep "\n" (map
-        (m:
-            let
-                refreshrate = {"144" = "143.856"; "120" = "119.881"; "60" = "60";};
-                resolution = "${toString m.width}x${toString m.height}@${refreshrate.${toString m.refreshRate}}";
-                transform = {"0" = "normal"; "90"= "270"; "180" = "180"; "270" = "90";};
-                vrr = {"off" = ""; "on" = "variable-refresh-rate";};
-            in
-            ''output "${m.name}" {
-                mode "${resolution}"
-                scale 1
-                transform "${transform.${toString m.transform}}"
-                position x=${toString m.x} y=${toString m.y}
-                ${vrr.${m.adaptive_sync}}
-            }
-            ''
-        )
-        (config.monitors.outputs));
-
     workspaceOutput = lib.strings.concatStringsSep "\n" (lib.lists.flatten (builtins.map (m:
         builtins.map (w:
             let
