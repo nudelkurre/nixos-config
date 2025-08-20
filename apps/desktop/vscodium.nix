@@ -1,9 +1,7 @@
-
-{ config, lib, pkgs, ... }:
-
+{ config, pkgs, ... }:
 {
     programs.vscode = {
-        enable = ! config.disable.vscodium;
+        enable = !config.disable.vscodium;
         package = pkgs.unstable.vscodium;
         profiles = {
             "default" = {

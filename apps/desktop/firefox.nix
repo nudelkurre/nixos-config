@@ -1,7 +1,12 @@
-{pkgs, config, lib, ...}:
+{
+    pkgs,
+    config,
+    lib,
+    ...
+}:
 {
     programs.firefox = {
-        enable = ! config.disable.firefox;
+        enable = !config.disable.firefox;
         package = pkgs.firefox;
         policies = {
             "CaptivePortal" = false;
@@ -26,14 +31,14 @@
                 "Cryptomining" = true;
                 "Fingerprinting" = true;
                 "EmailTracking" = true;
-                "Exceptions" = [];
+                "Exceptions" = [ ];
             };
             "EncryptedMediaExtensions" = {
                 "Enabled" = false;
                 "Locked" = true;
             };
             "Extensions" = {
-                "Install" = [];
+                "Install" = [ ];
                 "Uninstall" = [
                     "amazon@search.mozilla.org"
                     "bing@search.mozilla.org"
@@ -79,39 +84,42 @@
             "PasswordManagerEnabled" = false;
             "Permissions" = {
                 "Camera" = {
-                    "Allow" = [];
-                    "Block" = [];
+                    "Allow" = [ ];
+                    "Block" = [ ];
                     "BlockNewRequests" = true;
                     "Locked" = false;
                 };
                 "Microphone" = {
-                    "Allow" = [];
-                    "Block" = [];
+                    "Allow" = [ ];
+                    "Block" = [ ];
                     "BlockNewRequests" = true;
                     "Locked" = false;
                 };
                 "Location" = {
-                    "Allow" = [];
-                    "Block" = [];
+                    "Allow" = [ ];
+                    "Block" = [ ];
                     "BlockNewRequests" = true;
                     "Locked" = false;
                 };
                 "Notifications" = {
-                    "Allow" = [];
-                    "Block" = [];
+                    "Allow" = [ ];
+                    "Block" = [ ];
                     "BlockNewRequests" = true;
                     "Locked" = false;
                 };
                 "Autoplay" = {
-                    "Allow" = ["https://www.twitch.tv" "https://clips.twitch.tv"];
-                    "Block" = [];
+                    "Allow" = [
+                        "https://www.twitch.tv"
+                        "https://clips.twitch.tv"
+                    ];
+                    "Block" = [ ];
                     "Default" = "block-audio-video";
                     "BlockNewRequests" = true;
                     "Locked" = false;
                 };
                 "VirtualReality" = {
-                    "Allow" = [];
-                    "Block" = [];
+                    "Allow" = [ ];
+                    "Block" = [ ];
                     "BlockNewRequests" = true;
                     "Locked" = true;
                 };
@@ -121,7 +129,7 @@
                 "Locked" = false;
             };
             "PopupBlocking" = {
-                "Allow" = [];
+                "Allow" = [ ];
                 "Default" = true;
                 "Locked" = true;
             };
@@ -201,7 +209,7 @@
                         "IconURL" = "https://search.nixos.org/favicon.png";
                         "Alias" = "@np";
                         "Description" = "Search for nixos packages";
-                    }                
+                    }
                     {
                         "Name" = "Startpage";
                         "URLTemplate" = "https://www.startpage.com/sp/search";
@@ -224,7 +232,14 @@
                 ];
                 "Default" = "Duckduckgo";
                 "PreventInstalls" = true;
-                "Remove" = ["DuckDuckGo" "Google" "Amazon" "Bing" "Wikipedia (en)" "Ecosia"];
+                "Remove" = [
+                    "DuckDuckGo"
+                    "Google"
+                    "Amazon"
+                    "Bing"
+                    "Wikipedia (en)"
+                    "Ecosia"
+                ];
             };
             "TranslateEnabled" = false;
             "UserMessaging" = {
@@ -353,7 +368,9 @@
                     "browser.urlbar.trimURLs" = false;
                     "dom.event.clipboardevents.enabled" = false;
                     "extensions.pocket.enabled" = false;
-                    "font.name-list.emoji" = "${toString (lib.lists.sublist 0 1 config.fonts.fontconfig.defaultFonts.emoji)}";
+                    "font.name-list.emoji" = "${toString (
+                        lib.lists.sublist 0 1 config.fonts.fontconfig.defaultFonts.emoji
+                    )}";
                     "general.warnOnAboutConfig" = false;
                     "geo.enabled" = false;
                     "identity.fxaccounts.enabled" = false;
@@ -423,11 +440,21 @@
     };
     xdg.desktopEntries = {
         "firefox-private" = {
-            categories = [ "Network" "WebBrowser" ];
+            categories = [
+                "Network"
+                "WebBrowser"
+            ];
             exec = "${config.programs.firefox.package}/bin/firefox --private-window %U";
             genericName = "Web Browser";
             icon = "firefox";
-            mimeType = [ "text/html" "text/xml" "application/xhtml+xml" "application/vnd.mozilla.xul+xml" "x-scheme-handler/http" "x-scheme-handler/https" ];
+            mimeType = [
+                "text/html"
+                "text/xml"
+                "application/xhtml+xml"
+                "application/vnd.mozilla.xul+xml"
+                "x-scheme-handler/http"
+                "x-scheme-handler/https"
+            ];
             name = "Firefox Private Window";
             noDisplay = true;
             terminal = false;

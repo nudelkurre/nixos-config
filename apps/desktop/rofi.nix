@@ -1,10 +1,10 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, ... }:
 let
     inherit (config.lib.formats.rasi) mkLiteral;
 in
 {
     programs.rofi = {
-        enable = ! config.disable.rofi;
+        enable = !config.disable.rofi;
         cycle = false;
         extraConfig = {
             disable-history = mkLiteral "true";
@@ -17,7 +17,7 @@ in
             show-icons = mkLiteral "true";
             sort = mkLiteral "true";
             sorting-method = "fzf";
-            
+
         };
         location = "top-left";
         modes = [ "drun" ];
@@ -41,9 +41,10 @@ in
                 text-color = mkLiteral "#c8c8c8";
                 horizontal-align = mkLiteral "0.5";
             };
-            "element.normal.normal, element.alternate.normal, element.normal.urgent, element.alternate.urgent, element.normal.active, element.alternate.active" = {
-                background-color = mkLiteral "rgba(51, 51, 51, 0.0)";
-            };
+            "element.normal.normal, element.alternate.normal, element.normal.urgent, element.alternate.urgent, element.normal.active, element.alternate.active" =
+                {
+                    background-color = mkLiteral "rgba(51, 51, 51, 0.0)";
+                };
             "element.selected.normal, element.selected.urgent, element.selected.active" = {
                 background-color = mkLiteral "rgba(128, 128, 128, 0.85)";
                 border = mkLiteral "2px";
