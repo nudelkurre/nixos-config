@@ -1,14 +1,14 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
     fonts = {
         fontconfig = {
             enable = true;
             defaultFonts = {
-                emoji = ["OpenMoji Color"];
-                monospace = ["MonaspiceAr Nerd Font Mono"];
-                sansSerif = ["MonaspiceAr Nerd Font"];
-                serif = ["MonaspiceXe Nerd Font"];
+                emoji = [ "OpenMoji Color" ];
+                monospace = [ "MonaspiceAr Nerd Font Mono" ];
+                sansSerif = [ "MonaspiceAr Nerd Font" ];
+                serif = [ "MonaspiceXe Nerd Font" ];
             };
         };
         name = "MonaspiceRn Nerd Font Mono";
@@ -77,7 +77,7 @@
             key = "XF86AudioPrev";
             program = "${pkgs.playerctl}/bin/playerctl -i firefox,floorp previous";
         }
-        
+
         # Change volume
         {
             key = "XF86AudioRaiseVolume";
@@ -94,7 +94,10 @@
 
         # Shutdown
         {
-            mod = ["Mod4" "Shift"];
+            mod = [
+                "Mod4"
+                "Shift"
+            ];
             key = "s";
             program = "systemctl poweroff";
             overlay-title = "Shutdown";
@@ -102,7 +105,11 @@
 
         # Reboot
         {
-            mod = ["Mod4" "Ctrl" "Shift"];
+            mod = [
+                "Mod4"
+                "Ctrl"
+                "Shift"
+            ];
             key = "r";
             program = "systemctl reboot";
             overlay-title = "Reboot";
@@ -110,7 +117,10 @@
 
         # Start Floorp
         {
-            mod = ["Mod4" "Shift"];
+            mod = [
+                "Mod4"
+                "Shift"
+            ];
             key = "f";
             program = "floorp";
         }
@@ -121,7 +131,11 @@
 
         # Start Floorp in private window
         {
-            mod = ["Mod4" "Ctrl" "Shift"];
+            mod = [
+                "Mod4"
+                "Ctrl"
+                "Shift"
+            ];
             key = "f";
             program = "floorp --private-window";
         }
@@ -144,7 +158,17 @@
                 refreshRate = 60;
                 transform = 0;
                 width = 1366;
-                workspaces = [ "1" "2" "3" "4" "5" "6" "7" "8" "9" ];
+                workspaces = [
+                    "1"
+                    "2"
+                    "3"
+                    "4"
+                    "5"
+                    "6"
+                    "7"
+                    "8"
+                    "9"
+                ];
                 x = 0;
                 y = 0;
             }
@@ -209,7 +233,7 @@
                                             "10" = "";
                                         };
                                     };
-                                "module" = "workspace";
+                                    "module" = "workspace";
                                 }
                             ];
                             "right" = [
@@ -220,7 +244,7 @@
                                     "module" = "disk";
                                 }
                                 {
-                                    "config" = {};
+                                    "config" = { };
                                     "module" = "cpu";
                                 }
                                 {
@@ -236,7 +260,7 @@
                                     "module" = "network";
                                 }
                                 {
-                                    "config" = {};
+                                    "config" = { };
                                     "module" = "volume";
                                 }
                                 {
@@ -279,64 +303,79 @@
         {
             name = "1";
             programs = [
-                {name ="Alacritty"; focus = true;}
-                {name ="kitty"; focus = true;}
+                {
+                    name = "Alacritty";
+                    focus = true;
+                }
+                {
+                    name = "kitty";
+                    focus = true;
+                }
             ];
         }
         {
             name = "2";
             programs = [
-                {name = "chromium-browser"; focus = true;}
-                {name = "firefox"; focus = true;}
+                {
+                    name = "chromium-browser";
+                    focus = true;
+                }
+                {
+                    name = "firefox";
+                    focus = true;
+                }
             ];
         }
         {
             name = "3";
             programs = [
-                {name = "FreeTube"; focus = true;}
+                {
+                    name = "FreeTube";
+                    focus = true;
+                }
             ];
         }
         {
             name = "4";
-            programs = [  ];
+            programs = [ ];
         }
         {
             name = "5";
             programs = [
-                {name = "com.usebottles.bottles";}
-                {name = "gamescope";}
-                {name = "steam";}
+                { name = "com.usebottles.bottles"; }
+                { name = "gamescope"; }
+                { name = "steam"; }
             ];
         }
         {
             name = "6";
-            programs = [  ];
+            programs = [ ];
         }
         {
             name = "7";
             programs = [
-                {name = "chatterino";}
-                {name = "com.chatterino.chatterino";}
-                {name = "discord";}
-                {name = "Keybase";}
+                { name = "chatterino"; }
+                { name = "com.chatterino.chatterino"; }
+                { name = "discord"; }
+                { name = "Keybase"; }
             ];
         }
         {
             name = "8";
             programs = [
-                {name = "codium";}
+                { name = "codium"; }
             ];
         }
         {
             name = "9";
             programs = [
-                {name = "org.freedesktop.ryuukyu.Helvum";}
-                {name = "pavucontrol";}
+                { name = "org.freedesktop.ryuukyu.Helvum"; }
+                { name = "pavucontrol"; }
             ];
         }
         {
             name = "10";
-            programs = [  ];
+            programs = [ ];
         }
     ];
 
@@ -374,7 +413,7 @@
                 pkgs.xdg-desktop-portal-gnome
                 pkgs.xdg-desktop-portal-gtk
                 pkgs.xdg-desktop-portal-hyprland
-                pkg.xdg-desktop-portal-wlr
+                pkgs.xdg-desktop-portal-wlr
             ];
             xdgOpenUsePortal = true;
         };

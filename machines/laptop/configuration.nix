@@ -1,4 +1,4 @@
-{config, pkgs, ...}:
+{ pkgs, ... }:
 {
 
     # Set bootloader config
@@ -136,7 +136,7 @@
         usePredictableInterfaceNames = false;
         wireless = {
             enable = true;
-            networks = {};
+            networks = { };
         };
     };
 
@@ -148,7 +148,10 @@
             options = "--delete-older-than 7d";
         };
         settings = {
-            experimental-features = [ "nix-command" "flakes" ];
+            experimental-features = [
+                "nix-command"
+                "flakes"
+            ];
         };
     };
 
@@ -198,8 +201,8 @@
     security = {
         pam = {
             services = {
-                hyprlock = {};
-                swaylock = {};
+                hyprlock = { };
+                swaylock = { };
             };
         };
         polkit = {
@@ -322,12 +325,15 @@
         };
         users = {
             emil = {
-                extraGroups = [ "wheel" "video" "docker" "users" "libvirtd" ]; # Enable ‘sudo’ for the user.
+                extraGroups = [
+                    "wheel"
+                    "video"
+                    "docker"
+                    "users"
+                    "libvirtd"
+                ]; # Enable ‘sudo’ for the user.
                 group = "emil";
                 isNormalUser = true;
-                packages = with pkgs; [
-                    
-                ];
             };
         };
     };
