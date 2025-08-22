@@ -30,6 +30,8 @@
                 Service = {
                     ExecStart = "${config.home.homeDirectory}/.local/bin/swww-background";
                     Type = "oneshot";
+                    Restart = "on-failure";
+                    RestartSec = "5";
                 };
                 Unit = {
                     Description = "Change background";
@@ -42,7 +44,7 @@
                     WantedBy = [ "timers.target" ];
                 };
                 Timer = {
-                    OnCalendar = "*-*-* *:0/15:*";
+                    OnCalendar = "*:0/15";
                     Unit = "bgchange.service";
                 };
                 Unit = {
