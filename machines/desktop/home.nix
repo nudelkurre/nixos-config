@@ -288,6 +288,7 @@ in
                 bars = [
                     {
                         "output" = "DP-1";
+                        "gaps" = 4;
                         "widgets" = {
                             "center" = [ ];
                             "left" = [
@@ -335,6 +336,7 @@ in
                     }
                     {
                         "output" = "HDMI-A-1";
+                        "gaps" = 4;
                         "widgets" = {
                             "center" = [ ];
                             "left" = [
