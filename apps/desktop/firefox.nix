@@ -171,8 +171,8 @@
                 "Add" = [
                     {
                         "Name" = "Duckduckgo";
-                        "URLTemplate" = "https://duckduckgo.com/";
-                        "Method" = "POST";
+                        "URLTemplate" = "https://duckduckgo.com/?q={searchTerms}&kz=1&kae=d&ks=m&kf=-1&kp=-2&kw=w&ko=1&kaf=1&kac=-1&km=m&kn=1";
+                        "Method" = "GET";
                         "Alias" = "@ddg";
                         "Description" = "DuckDuckGo search";
                         "PostData" = "q={searchTerms}&kz=1&kae=d&ks=m&kf=-1&kp=-2&kw=w&ko=1&kaf=1&kac=-1&km=m&kn=1";
@@ -212,8 +212,8 @@
                     }
                     {
                         "Name" = "Startpage";
-                        "URLTemplate" = "https://www.startpage.com/sp/search";
-                        "Method" = "POST";
+                        "URLTemplate" = "https://www.startpage.com/sp/search?query={searchTerms}";
+                        "Method" = "GET";
                         "IconURL" = "https://www.startpage.com/sp/cdn/favicons/favicon-16x16-gradient.png";
                         "Alias" = "@sp";
                         "Description" = "Startpage search";
