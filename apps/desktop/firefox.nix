@@ -363,7 +363,7 @@
                     "browser.safebrowsing.downloads.remote.enabled" = false;
                     "browser.search.suggest.enabled" = false;
                     "browser.shell.shortcutFavicons" = false;
-                    "browser.toolbars.bookmarks.visibility" = "always";
+                    "browser.toolbars.bookmarks.visibility" = "newtab";
                     "browser.urlbar.speculativeConnect.enabled" = false;
                     "browser.urlbar.trimURLs" = false;
                     "dom.event.clipboardevents.enabled" = false;
