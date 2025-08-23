@@ -219,6 +219,7 @@
             daemon = {
                 settings = {
                     dns = [
+                        "172.16.0.12" # Used for containers to get local dns records
                         "1.1.1.1"
                         "1.0.0.1"
                     ];
