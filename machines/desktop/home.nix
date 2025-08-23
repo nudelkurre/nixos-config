@@ -43,21 +43,22 @@ in
         };
         homeDirectory = "/home/emil";
         packages = with pkgs; [
-            nemo-with-extensions
-            mypkgs.freetube
-            seahorse
             imv
+            jq
             lm_sensors
-            mypkgs.mangadex-downloader
             mate.mate-polkit
-            pavucontrol
+            mypkgs.freetube
+            mypkgs.mangadex-downloader
             mypkgs.pkg2zip
+            nemo-with-extensions
+            pavucontrol
+            python3Minimal
             scripts.video-dl
+            seahorse
+            socat
             texliveMedium
             wl-clipboard
-            jq
-            socat
-            python3Minimal
+            yt-dlp
         ];
         sessionVariables = {
             EDITOR = "nano";
