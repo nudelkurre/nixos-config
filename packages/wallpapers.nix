@@ -1,10 +1,14 @@
-{ stdenv, ... }:
+{ stdenv, fetchFromGitea, ... }:
 stdenv.mkDerivation {
     pname = "wallpapers";
     version = "2025-08-20";
-    src = fetchGit {
-        url = "https://git.nudelkurre.com/nudelkurre/Wallpapers.git";
-        rev = "88ac60fd46f5689af0e03408f01b1386b605c8d2";
+
+    src = fetchFromGitea {
+        domain = "git.nudelkurre.com";
+        owner = "nudelkurre";
+        repo = "Wallpapers";
+        rev = "2025-08-23";
+        hash = "sha256-Cq0NnZ8tkD+glI7nLuDLoPuqncq3w4iny5mA2LhsooI=";
     };
 
     postInstall = ''
