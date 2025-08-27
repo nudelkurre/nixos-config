@@ -218,6 +218,12 @@
         pam = {
             services = {
                 hyprlock = { };
+                login = {
+                    u2fAuth = true;
+                };
+                sudo = {
+                    u2fAuth = true;
+                };
                 swaylock = { };
             };
         };
