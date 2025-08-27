@@ -187,6 +187,8 @@ in
         layout {
             gaps 5
 
+            background-color "transparent"
+
             center-focused-column "never"
 
             default-column-display "tabbed"
@@ -370,6 +372,18 @@ in
             match app-id="steam" title=r#"^notificationtoasts_\d+_desktop$"#
             open-focused false
             default-floating-position x=10 y=10 relative-to="top-right"
+        }
+
+        window-rule {
+            match is-floating=true
+            match is-floating=false
+            geometry-corner-radius 15
+            clip-to-geometry true
+        }
+
+        layer-rule {
+            match namespace="^swww-daemon$"
+            place-within-backdrop true
         }
 
         binds {
