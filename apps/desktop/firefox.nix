@@ -408,8 +408,6 @@
 
                     .tab-icon-overlay {
                         opacity: unset !important;
-                        width: 20px !important;
-                        height: 20px !important;
                     }
 
                     .tab-secondary-label {
