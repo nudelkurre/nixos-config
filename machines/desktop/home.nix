@@ -52,7 +52,7 @@ in
             mypkgs.pkg2zip
             nemo-with-extensions
             pavucontrol
-            python3Minimal
+            python3
             scripts.video-dl
             seahorse
             socat
