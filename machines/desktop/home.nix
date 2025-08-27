@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 let
     browser = "firefox-private.desktop";
     image_viewer = "imv-dir.desktop";
@@ -495,6 +495,8 @@ in
     xdg = {
         desktopEntries = {
             Alacritty = {
+                exec = "${config.programs.alacritty.package}/bin/alacritty";
+                icon = "alacritty";
                 name = "alacritty";
                 noDisplay = true;
             };
@@ -507,14 +509,20 @@ in
                 noDisplay = true;
             };
             btop = {
+                exec = "${config.programs.btop.package}/bin/btop";
+                icon = "btop";
                 name = "btop";
                 noDisplay = true;
             };
             kitty = {
+                exec = "${config.programs.kitty.package}/bin/kitty";
+                icon = "kitty";
                 name = "kitty";
                 noDisplay = true;
             };
             mpv = {
+                exec = "${config.programs.mpv.package}/bin/mpv";
+                icon = "mpv";
                 name = "mpv";
                 noDisplay = true;
             };
