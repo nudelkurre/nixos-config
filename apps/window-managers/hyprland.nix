@@ -247,19 +247,4 @@ in
             enable = true;
         };
     };
-    xdg = {
-        configFile = {
-            "hypr/hyprpaper.conf" = {
-                enable = config.wayland.windowManager.hyprland.enable;
-                text =
-                    lib.strings.concatStringsSep "\n" (map (m: "preload = ${m.background}") (config.monitors.outputs))
-                    + "\n"
-                    + lib.strings.concatStringsSep "\n" (
-                        map (m: "wallpaper = ${m.name},${m.background}") (config.monitors.outputs)
-                    )
-                    + "\n"
-                    + ''splash = false'';
-            };
-        };
-    };
 }
