@@ -289,7 +289,6 @@ in
                 bars = [
                     {
                         "output" = "DP-1";
-                        "gaps" = 4;
                         "widgets" = {
                             "center" = [ ];
                             "left" = [
@@ -337,7 +336,6 @@ in
                     }
                     {
                         "output" = "HDMI-A-1";
-                        "gaps" = 4;
                         "widgets" = {
                             "center" = [ ];
                             "left" = [
@@ -382,6 +380,10 @@ in
                         };
                     }
                 ];
+                "corner_radius" = 15;
+                "gaps" = 4;
+                "height" = 25;
+                "layer" = "top";
                 "icon_size" = 20;
                 "spacing" = 5;
             };
