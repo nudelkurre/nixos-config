@@ -103,11 +103,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1756513828,
-        "narHash": "sha256-Zr2DPuup84fQxcTIb+DlSppbNuAsJJI+DAsfBm/uUJ4=",
+        "lastModified": 1756561061,
+        "narHash": "sha256-cOQdnye3ny9VzlBqE7u5Tn3+RkHxxIjR71Gvs4V2WC0=",
         "owner": "nudelkurre",
         "repo": "ngb",
-        "rev": "d555ffdc5dc7575f1c47f39f27c3b9fb59ddbee4",
+        "rev": "d0600d3bebe558b0409fecebe420e9c4c7fa240e",
         "type": "github"
       },
       "original": {
