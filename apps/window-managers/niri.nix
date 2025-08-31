@@ -185,7 +185,7 @@ in
         }
 
         layout {
-            gaps 5
+            gaps 4
 
             background-color "transparent"
 
