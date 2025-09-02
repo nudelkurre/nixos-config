@@ -22,6 +22,9 @@
         ngb = {
             url = "github:nudelkurre/ngb";
         };
+        wallpapers = {
+            url = "git+https://git.nudelkurre.com/nudelkurre/Wallpapers.git";
+        };
     };
 
     outputs =
@@ -34,6 +37,7 @@
             m4b-tool,
             scripts,
             ngb,
+            wallpapers,
             ...
         }:
         let
@@ -53,6 +57,9 @@
             scripts-overlay = final: prev: {
                 scripts = scripts.packages.${system};
             };
+            wallpapers-overlay = final: prev: {
+                wallpapers = wallpapers.packages.${system};
+            };
             pkgs = import nixpkgs {
                 inherit system;
                 overlays = [
@@ -62,6 +69,7 @@
                     mypkgs-overlay
                     scripts-overlay
                     ngb.overlay
+                    wallpapers-overlay
                 ];
             };
         in
@@ -114,7 +122,6 @@
                 };
             };
             packages.x86_64-linux = {
-                wallpapers = pkgs.callPackage packages/wallpapers.nix { };
                 mangadex-downloader =
                     pkgs.python3Packages.callPackage packages/python/mangadex-dl/mangadex-downloader.nix
                         { };

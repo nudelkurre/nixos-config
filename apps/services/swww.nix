@@ -15,7 +15,7 @@
             ''
             + lib.strings.concatStringsSep "\n" (
                 map (m: ''
-                    ${config.services.swww.package}/bin/swww img -o ${m.name} --resize=crop --transition-type=fade "$(find ${pkgs.mypkgs.wallpapers}/share/wallpapers/${m.orientation} -maxdepth 1 -type f | shuf -n 1)"
+                    ${config.services.swww.package}/bin/swww img -o ${m.name} --resize=crop --transition-type=fade "$(find ${pkgs.wallpapers.wallpapers}/share/wallpapers/${m.orientation} -maxdepth 1 -type f | shuf -n 1)"
                 '') (config.monitors.outputs)
             );
         };
