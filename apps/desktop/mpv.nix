@@ -34,18 +34,17 @@
             vo = "gpu";
             volume-max = "100";
             volume = "60";
-            ytdl-format = "bv*[height<=1080][vcodec~='^((he|a)vc|h26[45])']+ba";
+            ytdl-format = "bv*[height<=1080][vcodec~='^((he|a)vc|h26[45])']+ba/best[height<=1080][vcodec~='^((he|a)vc|h26[45])']";
         };
         enable = !config.disable.mpv;
         package = pkgs.unstable.mpv;
         scriptOpts = {
             osc = {
-                boxalpha = 80;
                 barmargin = 0;
+                boxalpha = 80;
                 boxmaxchars = 80;
                 boxvideo = "no";
                 chapter_fmt = "%s";
-                chapters_osd = "yes";
                 deadzonesize = 0.0;
                 fadeduration = 200;
                 greenandgrumpy = "no";
@@ -55,7 +54,6 @@
                 layout = "bottombar";
                 livemarkers = "yes";
                 minmousemove = 0;
-                playlist_osd = "yes";
                 scalefullscreen = 1.0;
                 scalewindowed = 1.0;
                 seekbarhandlesize = 0.7;
