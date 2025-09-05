@@ -264,7 +264,7 @@ in
                 ) (config.monitors.outputs)
             );
         };
-        enable = !config.disable.sway;
+        enable = true;
         extraConfig = ''
             ${lib.strings.concatStringsSep "" wsf}
             for_window [class="steam"] move to workspace ${ws5}
