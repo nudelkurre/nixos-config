@@ -1,7 +1,7 @@
-{ config, ... }:
+{ ... }:
 {
     programs.ssh = {
-        enable = !config.disable.ssh;
+        enable = true;
         matchBlocks = {
             "router" = {
                 hostname = "172.16.0.1";

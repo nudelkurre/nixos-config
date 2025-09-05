@@ -1,7 +1,7 @@
-{ config, ... }:
+{ ... }:
 {
     home.file.".nanorc" = {
-        enable = !config.disable.nano;
+        enable = true;
         text = ''
             set atblanks
             set autoindent

@@ -1,10 +1,10 @@
-{ config, ... }:
+{ ... }:
 {
     programs.git = {
         aliases = {
             st = "status";
         };
-        enable = !config.disable.git;
+        enable = true;
         userEmail = "nudelkurre@protonmail.com";
         userName = "Emil Wendin";
     };

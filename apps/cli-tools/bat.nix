@@ -1,11 +1,11 @@
-{ pkgs, config, ... }:
+{ pkgs, ... }:
 {
     programs.bat = {
         config = {
             style = "numbers,rule";
             theme = "Catppuccin Frappe";
         };
-        enable = !config.disable.bat;
+        enable = true;
         themes = {
             catppuccin = {
                 src = pkgs.fetchFromGitHub {

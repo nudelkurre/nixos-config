@@ -1,7 +1,7 @@
-{ config, ... }:
+{ ... }:
 {
     programs.eza = {
-        enable = !config.disable.eza;
+        enable = true;
         extraOptions = [
             "--header"
             "--group"

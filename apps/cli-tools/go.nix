@@ -1,7 +1,7 @@
-{ config, ... }:
+{ ... }:
 {
     programs.go = {
-        enable = !config.disable.go;
+        enable = true;
         goBin = ".local/bin.go";
         goPath = "go";
     };
