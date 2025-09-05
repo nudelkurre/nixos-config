@@ -1,7 +1,7 @@
 { config, ... }:
 {
     programs.alacritty = {
-        enable = !config.disable.alacritty;
+        enable = true;
         settings = {
             colors = {
                 primary = {

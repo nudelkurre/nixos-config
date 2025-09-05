@@ -1,4 +1,4 @@
-{ pkgs, config, ... }:
+{ pkgs, ... }:
 {
     programs.mpv = {
         bindings = {
@@ -36,7 +36,7 @@
             volume = "60";
             ytdl-format = "bv*[height<=1080][vcodec~='^((he|a)vc|h26[45])']+ba/best[height<=1080][vcodec~='^((he|a)vc|h26[45])']";
         };
-        enable = !config.disable.mpv;
+        enable = true;
         package = pkgs.unstable.mpv;
         scriptOpts = {
             osc = {

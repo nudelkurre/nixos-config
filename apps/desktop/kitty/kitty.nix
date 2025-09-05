@@ -1,7 +1,7 @@
 { config, ... }:
 {
     programs.kitty = {
-        enable = !config.disable.kitty;
+        enable = true;
         font = {
             name = "${config.fonts.name}";
             size = 11;

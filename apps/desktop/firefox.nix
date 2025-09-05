@@ -6,7 +6,7 @@
 }:
 {
     programs.firefox = {
-        enable = !config.disable.firefox;
+        enable = true;
         package = pkgs.firefox;
         policies = {
             "CaptivePortal" = false;

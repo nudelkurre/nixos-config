@@ -4,7 +4,7 @@ let
 in
 {
     programs.rofi = {
-        enable = !config.disable.rofi;
+        enable = true;
         cycle = false;
         extraConfig = {
             disable-history = mkLiteral "true";

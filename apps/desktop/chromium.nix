@@ -1,7 +1,7 @@
-{ pkgs, config, ... }:
+{ pkgs, ... }:
 {
     programs.chromium = {
-        enable = !config.disable.chromium;
+        enable = true;
         package = pkgs.ungoogled-chromium;
     };
 }
