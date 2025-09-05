@@ -185,7 +185,7 @@ in
         }
 
         layout {
-            gaps 4
+            gaps 5
 
             background-color "transparent"
 
@@ -208,7 +208,7 @@ in
             }
             
             focus-ring {
-                width 4
+                width 2
                 active-gradient from="${color1}${opacity_active}" to="${color2}${opacity_active}" angle=${color_angle} relative-to="workspace-view"
                 inactive-gradient from="${color1}${opacity_inactive}" to="${color2}${opacity_inactive}" angle=${color_angle} relative-to="workspace-view"
             }
