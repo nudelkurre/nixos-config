@@ -1,7 +1,7 @@
-{ config, ... }:
+{ ... }:
 {
     programs.mangohud = {
-        enable = !config.disable.mangohud;
+        enable = true;
         settings = {
             time = true;
             fps = true;

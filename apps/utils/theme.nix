@@ -6,7 +6,7 @@
         };
     };
     home.pointerCursor = {
-        gtk.enable = !config.disable.gtk;
+        gtk.enable = true;
         name = "${config.gtk.cursorTheme.name}";
         package = config.gtk.cursorTheme.package;
         size = config.gtk.cursorTheme.size;

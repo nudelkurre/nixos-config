@@ -1,7 +1,7 @@
-{ config, ... }:
+{ ... }:
 {
     services.gnome-keyring = {
-        enable = !config.disable.gnome-keyring;
+        enable = true;
         components = [
             "ssh"
             "pkcs11"

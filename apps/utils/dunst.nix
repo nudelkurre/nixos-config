@@ -1,7 +1,7 @@
 { config, ... }:
 {
     services.dunst = {
-        enable = !config.disable.dunst;
+        enable = true;
         settings = {
             global = {
                 alignment = "center";
