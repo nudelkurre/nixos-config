@@ -15,6 +15,7 @@
                     naumovs.color-highlight
                     catppuccin.catppuccin-vsc
                     catppuccin.catppuccin-vsc-icons
+                    charliermarsh.ruff
                 ];
                 keybindings = [
                     {
