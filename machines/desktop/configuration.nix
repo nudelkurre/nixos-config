@@ -217,6 +217,7 @@
     security = {
         pam = {
             services = {
+                gtklock = { };
                 hyprlock = { };
                 login = {
                     u2fAuth = true;
