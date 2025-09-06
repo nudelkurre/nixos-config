@@ -6,7 +6,7 @@
 }:
 let
     mod1 = "Mod4";
-    mod2 = "Ctrl";
+    # mod2 = "Ctrl";
     mod3 = "Mod1";
     mod4 = "Shift";
 

@@ -5,6 +5,10 @@
     ...
 }:
 let
+    mod1 = "MOD4";
+    # mod2 = "CTRL";
+    mod3 = "ALT";
+    mod4 = "SHIFT";
     keyCodes = {
         "kp_0" = "code:90";
         "kp_1" = "code:87";
@@ -40,60 +44,55 @@ in
             pkgs.hyprlandPlugins.hy3
         ];
         settings = {
-            "$mod1" = "SUPER";
-            "$mod2" = "CTRL";
-            "$mod3" = "ALT";
-            "$mod4" = "SHIFT";
-
             animations = {
                 enabled = false;
                 first_launch_animation = false;
             };
 
             bind = lib.lists.flatten [
-                "$mod3, F4, killactive"
-                "$mod1 $mod4, E, exit"
-                "$mod1 $mod4, SPACE, togglefloating"
-                "$mod1, F, fullscreen"
-                "$mod1, J, togglesplit"
-                "$mod1, J, layoutmsg, orientationcycle left top"
+                "${mod3}, F4, killactive"
+                "${mod1} ${mod4}, E, exit"
+                "${mod1} ${mod4}, SPACE, togglefloating"
+                "${mod1}, F, fullscreen"
+                "${mod1}, J, togglesplit"
+                "${mod1}, J, layoutmsg, orientationcycle left top"
 
                 # Move focus with mainMod + arrow keys
-                "$mod1, left, movefocus, l"
-                "$mod1, right, movefocus, r"
-                "$mod1, up, movefocus, u"
-                "$mod1, down, movefocus, d"
+                "${mod1}, left, movefocus, l"
+                "${mod1}, right, movefocus, r"
+                "${mod1}, up, movefocus, u"
+                "${mod1}, down, movefocus, d"
 
                 # Switch workspaces with mainMod + [0-9]
-                "$mod1, 1, workspace, 1"
-                "$mod1, 2, workspace, 2"
-                "$mod1, 3, workspace, 3"
-                "$mod1, 4, workspace, 4"
-                "$mod1, 5, workspace, 5"
-                "$mod1, 6, workspace, 6"
-                "$mod1, 7, workspace, 7"
-                "$mod1, 8, workspace, 8"
-                "$mod1, 9, workspace, 9"
-                "$mod1, 0, workspace, 10"
+                "${mod1}, 1, workspace, 1"
+                "${mod1}, 2, workspace, 2"
+                "${mod1}, 3, workspace, 3"
+                "${mod1}, 4, workspace, 4"
+                "${mod1}, 5, workspace, 5"
+                "${mod1}, 6, workspace, 6"
+                "${mod1}, 7, workspace, 7"
+                "${mod1}, 8, workspace, 8"
+                "${mod1}, 9, workspace, 9"
+                "${mod1}, 0, workspace, 10"
 
                 # Move active window to a workspace with mainMod + SHIFT + [0-9]
-                "$mod1 $mod4, 1, movetoworkspacesilent, 1"
-                "$mod1 $mod4, 2, movetoworkspacesilent, 2"
-                "$mod1 $mod4, 3, movetoworkspacesilent, 3"
-                "$mod1 $mod4, 4, movetoworkspacesilent, 4"
-                "$mod1 $mod4, 5, movetoworkspacesilent, 5"
-                "$mod1 $mod4, 6, movetoworkspacesilent, 6"
-                "$mod1 $mod4, 7, movetoworkspacesilent, 7"
-                "$mod1 $mod4, 8, movetoworkspacesilent, 8"
-                "$mod1 $mod4, 9, movetoworkspacesilent, 9"
-                "$mod1 $mod4, 0, movetoworkspacesilent, 10"
+                "${mod1} ${mod4}, 1, movetoworkspacesilent, 1"
+                "${mod1} ${mod4}, 2, movetoworkspacesilent, 2"
+                "${mod1} ${mod4}, 3, movetoworkspacesilent, 3"
+                "${mod1} ${mod4}, 4, movetoworkspacesilent, 4"
+                "${mod1} ${mod4}, 5, movetoworkspacesilent, 5"
+                "${mod1} ${mod4}, 6, movetoworkspacesilent, 6"
+                "${mod1} ${mod4}, 7, movetoworkspacesilent, 7"
+                "${mod1} ${mod4}, 8, movetoworkspacesilent, 8"
+                "${mod1} ${mod4}, 9, movetoworkspacesilent, 9"
+                "${mod1} ${mod4}, 0, movetoworkspacesilent, 10"
 
                 # Scroll through existing workspaces with mainMod + scroll
-                "$mod1, mouse_down, workspace, m+1"
-                "$mod1, mouse_up, workspace, m-1"
+                "${mod1}, mouse_down, workspace, m+1"
+                "${mod1}, mouse_up, workspace, m-1"
 
                 # Lock screen
-                "$mod1, L, exec, hyprlock"
+                "${mod1}, L, exec, hyprlock"
 
                 # Printscreen
                 ", Print, exec, ${pkgs.grim}/bin/grim -g \"$(${pkgs.slurp}/bin/slurp)\""
@@ -116,8 +115,8 @@ in
             ];
 
             bindm = [
-                "$mod1, mouse:272, movewindow"
-                "$mod1, mouse:273, resizewindow"
+                "${mod1}, mouse:272, movewindow"
+                "${mod1}, mouse:273, resizewindow"
             ];
 
             binds = {
