@@ -329,7 +329,6 @@ in
         environment {
             XDG_CURRENT_DESKTOP "niri"
             NIXOS_OZONE_WL "1"
-            DISPLAY ":0"
         }
 
         ${workspaceOutput}
@@ -375,8 +374,6 @@ in
         }
 
         window-rule {
-            match is-floating=true
-            match is-floating=false
             geometry-corner-radius 15
             clip-to-geometry true
         }
@@ -494,6 +491,7 @@ in
 
         hotkey-overlay {
             skip-at-startup
+            hide-not-bound
         }
 
         overview {
@@ -503,8 +501,11 @@ in
             }
         }
 
+        xwayland-satellite {
+            path "${pkgs.xwayland-satellite}/bin/xwayland-satellite"
+        }
+
         spawn-at-startup "${pkgs.dbus}/bin/dbus-update-activation-environment" "--systemd" "DISPLAY" "WAYLAND_DISPLAY" "SWAYSOCK" "XDG_CURRENT_DESKTOP" "XDG_SESSION_TYPE" "NIXOS_OZONE_WL" "XCURSOR_THEME" "XCURSOR_SIZE"
-        spawn-at-startup "${pkgs.xwayland-satellite}/bin/xwayland-satellite"
         spawn-at-startup "${pkgs.ngb}/bin/ngb"
     '';
 }
