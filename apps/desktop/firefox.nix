@@ -171,11 +171,11 @@
                 "Add" = [
                     {
                         "Name" = "Duckduckgo";
-                        "URLTemplate" = "https://duckduckgo.com/?q={searchTerms}&kz=1&kae=d&ks=m&kf=-1&kp=-2&kw=w&ko=1&kaf=1&kac=-1&km=m&kn=1";
+                        "URLTemplate" = "https://duckduckgo.com/?q={searchTerms}&kz=1&kae=d&ks=m&kf=-1&kp=-2&kw=w&ko=s&kaf=1&kac=-1&km=m&kn=1";
                         "Method" = "GET";
                         "Alias" = "@ddg";
                         "Description" = "DuckDuckGo search";
-                        "PostData" = "q={searchTerms}&kz=1&kae=d&ks=m&kf=-1&kp=-2&kw=w&ko=1&kaf=1&kac=-1&km=m&kn=1";
+                        "PostData" = "q={searchTerms}&kz=1&kae=d&ks=m&kf=-1&kp=-2&kw=w&ko=s&kaf=1&kac=-1&km=m&kn=1";
                         "IconURL" = "https://duckduckgo.com/favicon.ico";
                     }
                     {
