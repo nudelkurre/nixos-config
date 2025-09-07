@@ -378,6 +378,12 @@ in
             clip-to-geometry true
         }
 
+        window-rule {
+            match app-id="firefox" title=r#"^Save As$"#
+            default-window-height { proportion 0.75; }
+            default-column-width { proportion 0.5; }
+        }
+
         layer-rule {
             match namespace="^swww-daemon$"
             place-within-backdrop true
