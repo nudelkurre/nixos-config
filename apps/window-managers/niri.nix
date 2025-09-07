@@ -386,7 +386,7 @@ in
         binds {
             Mod+F1 { show-hotkey-overlay; }
 
-            Mod+F2 { toggle-overview; }
+            Mod+F2 cooldown-ms=200 { toggle-overview; }
 
             Mod+L hotkey-overlay-title="Lock screen" { spawn "${pkgs.gtklock}/bin/gtklock" "-f" "-S"; }
 
