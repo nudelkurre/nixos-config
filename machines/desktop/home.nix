@@ -20,6 +20,8 @@ in
         size = 16;
     };
 
+    gaps = 5;
+
     # Home Manager is pretty good at managing dotfiles. The primary way to manage
     # plain files is through 'home.file'.
     home = {
@@ -381,7 +383,7 @@ in
                     }
                 ];
                 "corner_radius" = 15;
-                "gaps" = 4;
+                "gaps" = config.gaps;
                 "height" = 25;
                 "layer" = "top";
                 "icon_size" = 20;

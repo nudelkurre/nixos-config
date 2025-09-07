@@ -185,7 +185,7 @@ in
         }
 
         layout {
-            gaps 5
+            gaps ${toString config.gaps}
 
             background-color "transparent"
 

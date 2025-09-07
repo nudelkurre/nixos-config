@@ -14,6 +14,12 @@ with lib;
                 default = 16;
             };
         };
+        gaps = mkOption {
+            type = types.int;
+            example = 2;
+            default = 0;
+            description = "Set size of gaps to use";
+        };
         input = {
             keyboard = {
                 language = mkOption {
