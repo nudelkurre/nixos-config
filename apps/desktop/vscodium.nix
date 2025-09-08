@@ -12,10 +12,10 @@
                     jnoortheen.nix-ide
                     ms-dotnettools.csdevkit
                     ms-python.python
+                    ms-python.black-formatter
                     naumovs.color-highlight
                     catppuccin.catppuccin-vsc
                     catppuccin.catppuccin-vsc-icons
-                    charliermarsh.ruff
                 ];
                 keybindings = [
                     {
@@ -46,6 +46,10 @@
                     };
                     "workbench.colorTheme" = "Catppuccin Frappé";
                     "workbench.iconTheme" = "catppuccin-frappe";
+                    "[python]" = {
+                        "editor.formatOnSave" = true;
+                        "editor.defaultFormatter" = "ms-python.black-formatter";
+                    };
                 };
             };
         };
