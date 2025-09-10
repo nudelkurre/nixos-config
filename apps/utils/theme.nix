@@ -77,4 +77,13 @@
             };
         };
     };
+    qt = {
+        style = {
+            name = "catppuccin-frappe-pink";
+            package = pkgs.unstable.catppuccin-kvantum.override {
+                accent = "pink";
+                variant = "frappe";
+            };
+        };
+    };
 }
