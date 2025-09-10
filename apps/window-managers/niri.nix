@@ -389,6 +389,11 @@ in
             place-within-backdrop true
         }
 
+        layer-rule {
+            match namespace="^notifications$"
+            block-out-from "screen-capture"
+        }
+
         binds {
             Mod+F1 { show-hotkey-overlay; }
 
