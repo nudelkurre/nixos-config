@@ -414,20 +414,15 @@ in
             Mod+MouseBack { focus-column-left; }
 
             // Move windows
-            Mod+Ctrl+Left  { move-column-left; }
-            Mod+Ctrl+Down  { move-window-down; }
-            Mod+Ctrl+Up    { move-window-up; }
-            Mod+Ctrl+Right { move-column-right; }
+            Mod+Shift+Left  { move-column-left; }
+            Mod+Shift+Down  { move-window-down; }
+            Mod+Shift+Up    { move-window-up; }
+            Mod+Shift+Right { move-column-right; }
 
             Mod+Home { focus-column-first; }
             Mod+End  { focus-column-last; }
-            Mod+Ctrl+Home { move-column-to-first; }
-            Mod+Ctrl+End  { move-column-to-last; }
-
-            Mod+Shift+Left  { focus-monitor-left; }
-            Mod+Shift+Down  { focus-monitor-down; }
-            Mod+Shift+Up    { focus-monitor-up; }
-            Mod+Shift+Right { focus-monitor-right; }
+            Mod+Shift+Home { move-column-to-first; }
+            Mod+Shift+End  { move-column-to-last; }
 
             Mod+Shift+Ctrl+Left  { move-window-to-monitor-left; }
             Mod+Shift+Ctrl+Down  { move-window-to-monitor-down; }
