@@ -3,5 +3,6 @@
         ./gotify-desktop.nix
         ./kanshi.nix
         ./swww.nix
+        ./udiskie.nix
     ];
 }
