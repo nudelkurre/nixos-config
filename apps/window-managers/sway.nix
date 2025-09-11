@@ -230,8 +230,6 @@ in
                 };
             };
             startup = lib.lists.flatten [
-                { command = "${pkgs.udiskie}/bin/udiskie -a"; }
-                { command = "dunst -conf ~/.config/dunst/dunstrc"; }
                 { command = "systemctl --user import-environment PATH"; }
                 (
                     if config.monitors.primary != "" then
