@@ -2,6 +2,13 @@
 {
     boot = {
         initrd = {
+            luks = {
+                devices = {
+                    "encrypted" = {
+                        device = "/dev/disk/by-label/encrypted";
+                    };
+                };
+            };
             systemd = {
                 enable = true;
             };
@@ -23,13 +30,6 @@
             };
             systemd-boot = {
                 enable = false;
-            };
-        };
-        luks = {
-            devices = {
-                "encrypted" = {
-                    device = "/dev/disk/by-label/encrypted";
-                };
             };
         };
         # Settings for plymouth splash screen
