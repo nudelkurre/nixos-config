@@ -94,15 +94,15 @@ in
         # Controlling media
         {
             key = "XF86AudioPlay";
-            program = "${pkgs.playerctl}/bin/playerctl -i firefox,floorp play-pause";
+            program = "${pkgs.playerctl}/bin/playerctl play-pause";
         }
         {
             key = "XF86AudioNext";
-            program = "${pkgs.playerctl}/bin/playerctl -i firefox,floorp next";
+            program = "${pkgs.playerctl}/bin/playerctl next";
         }
         {
             key = "XF86AudioPrev";
-            program = "${pkgs.playerctl}/bin/playerctl -i firefox,floorp previous";
+            program = "${pkgs.playerctl}/bin/playerctl previous";
         }
 
         # Change volume
