@@ -24,75 +24,8 @@
                 "sd_mod"
             ];
             kernelModules = [ "amdgpu" ];
-            luks = {
-                devices = {
-                    "encrypted" = {
-                        device = "/dev/disk/by-label/encrypted";
-                    };
-                };
-            };
         };
         kernelModules = [ "kvm-intel" ];
-    };
-
-    fileSystems = {
-        "/" = {
-            device = "/dev/disk/by-label/ROOT";
-            fsType = "ext4";
-        };
-        "/boot" = {
-            device = "/dev/disk/by-label/BOOT";
-            fsType = "vfat";
-            options = [ "umask=0077" ];
-        };
-        "/home/emil/tmp" = {
-            fsType = "tmpfs";
-            options = [
-                "rw"
-                "size=10G"
-                "nodev"
-                "nosuid"
-                "noexec"
-                "uid=1000"
-                "gid=1000"
-            ];
-        };
-        "/home/emil/docker-compose" = {
-            device = "172.16.0.12:/nfs/docker/compose";
-            fsType = "nfs4";
-            options = [
-                "rw"
-                "x-systemd.automount"
-                "noauto"
-            ];
-        };
-        "/home/emil/Manga" = {
-            device = "172.16.0.12:/nfs/Manga";
-            fsType = "nfs4";
-            options = [
-                "rw"
-                "x-systemd.automount"
-                "noauto"
-            ];
-        };
-        "/home/emil/Media" = {
-            device = "172.16.0.12:/nfs/Media";
-            fsType = "nfs4";
-            options = [
-                "rw"
-                "x-systemd.automount"
-                "noauto"
-            ];
-        };
-        "/home/emil/roms" = {
-            device = "172.16.0.12:/nfs/ROMS";
-            fsType = "nfs4";
-            options = [
-                "rw"
-                "x-systemd.automount"
-                "noauto"
-            ];
-        };
     };
 
     hardware = {
