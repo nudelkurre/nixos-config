@@ -28,54 +28,11 @@
                 "sd_mod"
             ];
             kernelModules = [ ];
-            luks = {
-                devices = {
-                    "encrypted" = {
-                        device = "/dev/disk/by-label/encrypted_root";
-                        keyFile = "/key/key.bin";
-                    };
-                };
-            };
-            systemd = {
-                mounts = [
-                    {
-                        what = "/dev/disk/by-label/Key";
-                        where = "/key";
-                        type = "ext4";
-                    }
-                ];
-            };
         };
         kernelModules = [
             "kvm-amd"
             "nct6775"
         ];
-    };
-
-    environment = {
-        etc = {
-            crypttab = {
-                text = ''
-                    files /dev/disk/by-label/encrypted_files /etc/crypto.key
-                '';
-            };
-        };
-    };
-
-    fileSystems = {
-        "/" = {
-            device = "/dev/disk/by-label/ROOT";
-            fsType = "ext4";
-        };
-        "/boot" = {
-            device = "/dev/disk/by-label/BOOT";
-            fsType = "vfat";
-            options = [ "umask=0077" ];
-        };
-        "/nfs" = {
-            device = "/dev/disk/by-label/files";
-            fsType = "ext4";
-        };
     };
 
     hardware = {
