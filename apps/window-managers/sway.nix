@@ -224,6 +224,28 @@ in
                     Return = "mode \"default\"";
                 };
             };
+
+            output = (
+                builtins.listToAttrs (
+                    builtins.map (
+                        m:
+                        let
+                            position = "${toString m.x} ${toString m.y}";
+                            resolution = "${toString m.width}x${toString m.height}@${toString m.refreshRate}Hz";
+                        in
+                        {
+                            name = m.name;
+                            value = {
+                                adaptive_sync = m.adaptive_sync;
+                                pos = position;
+                                resolution = resolution;
+                                transform = "${toString m.transform}";
+                            };
+                        }
+                    ) (config.monitors.outputs)
+                )
+            );
+
             seat = {
                 "seat0" = {
                     xcursor_theme = "${config.gtk.cursorTheme.name} " + toString config.gtk.cursorTheme.size;

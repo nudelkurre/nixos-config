@@ -55,6 +55,24 @@ let
         ) (config.keybindings)
     );
 
+    outputs = lib.strings.concatStringsSep "\n" (map
+    (m:
+        let
+            resolution = "${toString m.width}x${toString m.height}@${toString m.refreshRate}";
+            transform = {"0" = "normal"; "90"= "270"; "180" = "180"; "270" = "90";};
+            vrr = {"off" = "false"; "on" = "true";};
+        in
+        ''output "${m.name}" {
+            mode "${resolution}"
+            scale 1
+            transform "${transform.${toString m.transform}}"
+            position x=${toString m.x} y=${toString m.y}
+            variable-refresh-rate on-demand=${vrr.${m.adaptive_sync}}
+        }
+        ''
+    )
+    (config.monitors.outputs));
+
     workspaceOutput = lib.strings.concatStringsSep "\n" (
         lib.lists.flatten (
             builtins.map (
@@ -183,6 +201,8 @@ in
             mod-key "Super"
             mod-key-nested "Alt"
         }
+
+        ${outputs}
 
         layout {
             gaps ${toString config.gaps}
