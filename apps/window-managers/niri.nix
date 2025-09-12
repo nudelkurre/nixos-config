@@ -400,6 +400,7 @@ in
 
         window-rule {
             match app-id="firefox" title=r#"^Save As$"#
+            match app-id="firefox" title=r#"^Enter name of file to save to…$"#
             default-window-height { proportion 0.75; }
             default-column-width { proportion 0.5; }
         }
