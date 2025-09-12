@@ -49,7 +49,7 @@ in
             jq
             lm_sensors
             mate.mate-polkit
-            unstable.freetube
+            mypkgs.freetube
             mypkgs.mangadex-downloader
             mypkgs.pkg2zip
             nemo-with-extensions
