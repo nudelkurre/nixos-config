@@ -223,7 +223,6 @@ in
         outputs = [
             {
                 adaptive_sync = "on";
-                background = "${pkgs.mypkgs.wallpapers}/share/wallpapers/wallhaven-z8xqqo.jpg";
                 bg_style = "fill";
                 name = "DP-1";
                 height = 1440;
@@ -243,7 +242,6 @@ in
             }
             {
                 adaptive_sync = "off";
-                background = "${pkgs.mypkgs.wallpapers}/share/wallpapers/wallhaven-qz2qld.jpg";
                 bg_style = "fill";
                 name = "HDMI-A-1";
                 height = 1080;
