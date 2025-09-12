@@ -4,6 +4,13 @@
     # Set bootloader config
     boot = {
         initrd = {
+            luks = {
+                devices = {
+                    "encrypted" = {
+                        device = "/dev/disk/by-label/encrypted";
+                    };
+                };
+            };
             systemd = {
                 enable = true;
             };
@@ -60,6 +67,18 @@
             xdg-utils
             zip
         ];
+    };
+
+    fileSystems = {
+        "/" = {
+            device = "/dev/disk/by-label/ROOT";
+            fsType = "ext4";
+        };
+        "/boot" = {
+            device = "/dev/disk/by-label/BOOT";
+            fsType = "vfat";
+            options = [ "umask=0077" ];
+        };
     };
 
     # Set fonts to install
