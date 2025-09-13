@@ -55,7 +55,6 @@ in
             nemo-with-extensions
             pavucontrol
             python3
-            scripts.video-dl
             seahorse
             socat
             texliveMedium

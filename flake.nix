@@ -15,10 +15,6 @@
         m4b-tool = {
             url = "github:sandreas/m4b-tool/5b0821449c529449a188bec521d51e00eefe52a2";
         };
-        scripts = {
-            url = "github:nudelkurre/scripts";
-            inputs.nixpkgs.follows = "nixpkgs-unstable";
-        };
         ngb = {
             url = "github:nudelkurre/ngb";
         };
@@ -35,7 +31,6 @@
             home-manager,
             firefox-addons,
             m4b-tool,
-            scripts,
             ngb,
             wallpapers,
             ...
@@ -54,9 +49,6 @@
             mypkgs-overlay = final: prev: {
                 mypkgs = self.packages.${system};
             };
-            scripts-overlay = final: prev: {
-                scripts = scripts.packages.${system};
-            };
             wallpapers-overlay = final: prev: {
                 wallpapers = wallpapers.packages.${system};
             };
@@ -67,7 +59,6 @@
                     m4b-tool-overlay
                     firefox-addons-overlay
                     mypkgs-overlay
-                    scripts-overlay
                     ngb.overlay
                     wallpapers-overlay
                 ];
