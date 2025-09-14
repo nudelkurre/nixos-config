@@ -9,11 +9,11 @@
 
 stdenv.mkDerivation rec {
     pname = "freetube";
-    version = "0.23.8";
+    version = "0.23.9";
 
     src = fetchurl {
         url = "https://github.com/FreeTubeApp/FreeTube/releases/download/v${version}-beta/freetube-${version}-beta-amd64.AppImage";
-        hash = "sha256-PcB/RRcHEwLOcrc5ifku5tdAnYKXsjPxFP1C+qmvuqA=";
+        hash = "sha256-wSNQysB8uv3ljM0x9fgIlr8iWJgegL+dMgDSXKm/hrQ=";
     };
 
     passthru.tests = nixosTests.freetube;
