@@ -405,6 +405,13 @@ in
             default-column-width { proportion 0.5; }
         }
 
+        window-rule {
+            match app-id="com.chatterino.chatterino"
+            exclude app-id="com.chatterino.chatterino" title=r#"^Chatterino \d+.\d+.\d+"#
+            default-window-height { proportion 0.5; }
+            open-floating true
+        }
+
         layer-rule {
             match namespace="^swww-daemon$"
             place-within-backdrop true
