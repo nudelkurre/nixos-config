@@ -265,7 +265,7 @@ in
     nix = {
         gc = {
             automatic = true;
-            frequency = "weekly";
+            frequency = "daily";
             options = "--delete-older-than 7d";
         };
     };
