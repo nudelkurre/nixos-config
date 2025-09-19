@@ -13,6 +13,7 @@
                     ms-dotnettools.csdevkit
                     ms-python.python
                     ms-python.black-formatter
+                    ms-vscode.live-server
                     naumovs.color-highlight
                     catppuccin.catppuccin-vsc
                     catppuccin.catppuccin-vsc-icons
