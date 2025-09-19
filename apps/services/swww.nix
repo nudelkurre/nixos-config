@@ -44,8 +44,10 @@
                     WantedBy = [ "timers.target" ];
                 };
                 Timer = {
-                    OnCalendar = "*:0/15";
+                    OnCalendar = "*:0/20";
                     Unit = "bgchange.service";
+                    RandomizedDelaySec = 0;
+                    AccuracySec = 15;
                 };
                 Unit = {
                     Description = "Change background";
