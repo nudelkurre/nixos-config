@@ -352,6 +352,16 @@
                 enable = true;
             };
         };
+        logind = {
+            hibernateKey = "ignore";
+            hibernateKeyLongPress = "ignore";
+            powerKey = "ignore";
+            powerKeyLongPress = "ignore";
+            rebootKey = "ignore";
+            rebootKeyLongPress = "ignore";
+            suspendKey = "ignore";
+            suspendKeyLongPress = "ignore";
+        };
         pcscd = {
             enable = true;
         };
