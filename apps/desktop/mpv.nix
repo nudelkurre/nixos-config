@@ -37,7 +37,7 @@
             ytdl-format = "bv*[height<=1080][vcodec~='^((he|a)vc|h26[45])']+ba/best[height<=1080][vcodec~='^((he|a)vc|h26[45])']";
         };
         enable = true;
-        package = pkgs.unstable.mpv;
+        package = pkgs.mpv;
         scriptOpts = {
             osc = {
                 barmargin = 0;
