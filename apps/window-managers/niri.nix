@@ -211,7 +211,7 @@ in
 
             center-focused-column "never"
 
-            default-column-display "tabbed"
+            default-column-display "normal"
 
             preset-column-widths {
                 proportion 0.5
