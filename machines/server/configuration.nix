@@ -113,11 +113,15 @@
         firewall = {
             enable = true;
             allowedTCPPorts = [
+                80   # http
+                443  # https
                 2049 # NFSv4
                 5900 # Spice virt-manager
                 5901 # VNC virt-manager
             ];
-            allowedUDPPorts = [ ];
+            allowedUDPPorts = [
+                53   # DNS
+            ];
         };
         hostName = "server";
         interfaces = {
