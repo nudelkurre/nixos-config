@@ -55,6 +55,21 @@ let
         ) (config.keybindings)
     );
 
+    keybinds-multi = lib.strings.concatStringsSep "\n\t" (
+        map (
+            attr:
+            let
+                modKeys = (if attr.mod != [ ] then lib.strings.concatStringsSep "+" attr.mod else "");
+                keymod = (if modKeys != "" then "${modKeys}+${attr.key}" else "${attr.key}");
+                program = "${attr.program}";
+                title = (
+                    if attr.overlay-title != "" then " hotkey-overlay-title=\"${attr.overlay-title}\" " else ""
+                );
+            in
+            ''${replaceKeys keymod}${title} { spawn-sh "${program}"; }''
+        ) (config.keybindings-multi)
+    );
+
     outputs = lib.strings.concatStringsSep "\n" (map
     (m:
         let
@@ -521,6 +536,9 @@ in
 
             // Generated keybinds
             ${keybinds}
+
+            // Generated keybinds-multi
+            ${keybinds-multi}
         }
 
         hotkey-overlay {

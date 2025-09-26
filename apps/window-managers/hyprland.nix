@@ -111,7 +111,7 @@ in
                         program = "${attr.program}";
                     in
                     "${keymod}, exec, ${program}"
-                ) (config.keybindings))
+                ) (config.keybindings ++ config.keybindings-multi))
             ];
 
             bindm = [

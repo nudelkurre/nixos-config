@@ -51,7 +51,7 @@ let
             program = "exec ${attr.program}";
         in
         acc // { "${keymod}" = program; }
-    ) { } config.keybindings;
+    ) { } (config.keybindings ++ config.keybindings-multi);
 in
 {
     wayland.windowManager.sway = {

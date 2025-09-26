@@ -111,6 +111,35 @@ with lib;
                 }
             );
         };
+        keybindings-multi = mkOption {
+            type = types.listOf (
+                types.submodule {
+                    options = {
+                        program = mkOption {
+                            type = types.str;
+                            example = "firefox";
+                            description = "Program to run on key bind";
+                        };
+                        key = mkOption {
+                            type = types.str;
+                            example = "f";
+                            description = "Key to use for key bind";
+                        };
+                        mod = mkOption {
+                            type = types.listOf types.str;
+                            default = [ ];
+                            description = "List of mod keys to use";
+                        };
+                        overlay-title = mkOption {
+                            type = types.str;
+                            default = "";
+                            example = "Launch firefox";
+                            description = "Set a custom title for niri overlay";
+                        };
+                    };
+                }
+            );
+        };
         monitors = {
             outputs = mkOption {
                 type = types.listOf (

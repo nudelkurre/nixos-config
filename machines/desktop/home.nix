@@ -141,14 +141,6 @@ in
             overlay-title = "Reboot";
         }
 
-        # Open rofi
-        {
-            mod = [ "Mod4" ];
-            key = "d";
-            program = "rofi -show";
-            overlay-title = "Open rofi";
-        }
-
         # Open terminal
         {
             mod = [ "Mod4" ];
@@ -215,6 +207,16 @@ in
             key = "kp_5";
             program = "steam --no-minimize-to-tray";
             overlay-title = "Launch Steam";
+        }
+    ];
+
+    keybindings-multi = [
+        # Toggle open rofi
+        {
+            mod = [ "Mod4" ];
+            key = "d";
+            program = "pkill rofi || rofi -show";
+            overlay-title = "Open rofi";
         }
     ];
 
