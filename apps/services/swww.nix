@@ -12,14 +12,15 @@
             target = ".local/bin/swww-background";
             text = ''
                 #!/usr/bin/env bash
+                
+                if [ -n "$1" ]; then
+                    count=$1
+                else
+                    count=1
+                fi
             ''
             + lib.strings.concatStringsSep "\n" (
                 map (m: ''
-                    if [ -n "$1" ]; then
-                        count=$1
-                    else
-                        count=1
-                    fi
                     for i in $(seq $count); do
                         filename=$(find ${pkgs.wallpapers.wallpapers}/share/wallpapers/${m.orientation} -maxdepth 1 -type f | shuf -n 1)
                     done
