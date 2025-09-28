@@ -110,6 +110,7 @@ with lib;
                     };
                 }
             );
+            default = [ ];
         };
         keybindings-multi = mkOption {
             type = types.listOf (
@@ -139,6 +140,7 @@ with lib;
                     };
                 }
             );
+            default = [ ];
         };
         monitors = {
             outputs = mkOption {
