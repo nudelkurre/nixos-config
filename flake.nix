@@ -12,9 +12,6 @@
             url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
             inputs.nixpkgs.follows = "nixpkgs";
         };
-        m4b-tool = {
-            url = "github:sandreas/m4b-tool/5b0821449c529449a188bec521d51e00eefe52a2";
-        };
         ngb = {
             url = "github:nudelkurre/ngb";
         };
@@ -30,7 +27,6 @@
             nixpkgs-unstable,
             home-manager,
             firefox-addons,
-            m4b-tool,
             ngb,
             wallpapers,
             ...
@@ -39,9 +35,6 @@
             system = "x86_64-linux";
             overlay-unstable = final: prev: {
                 unstable = nixpkgs-unstable.legacyPackages.${system};
-            };
-            m4b-tool-overlay = final: prev: {
-                m4b-tool = m4b-tool.packages.${system};
             };
             firefox-addons-overlay = final: prev: {
                 firefox-addons = firefox-addons.packages.${system};
@@ -67,7 +60,6 @@
                 inherit system;
                 overlays = [
                     overlay-unstable
-                    m4b-tool-overlay
                     firefox-addons-overlay
                     mypkgs-overlay
                     ngb.overlay
