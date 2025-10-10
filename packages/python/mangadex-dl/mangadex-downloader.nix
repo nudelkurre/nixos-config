@@ -6,10 +6,10 @@
 }:
 buildPythonPackage rec {
     pname = "mangadex_downloader";
-    version = "3.1.3";
+    version = "3.1.4";
     src = fetchPypi {
         inherit pname version;
-        sha256 = "sha256-LmxR9VQGyLrHbza/CeXwoNf02ywnqO7JFu0wmPF5PUM=";
+        sha256 = "sha256-653lHYQPFZ3I9+bqMRxGcSyJv1MEqPvYbbX0j/SATyo=";
     };
 
     dependencies = with pkgs.python3Packages; [
