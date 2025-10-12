@@ -222,16 +222,23 @@
         enableIPv6 = true;
         firewall = {
             enable = true;
-            interfaces = {
-                "eth0" = {
-                    allowedTCPPorts = [
-                        22000
-                    ];
-                };
-            };
         };
         hostName = "desktop";
+        interfaces = {
+            "eth0" = {
+                useDHCP = false;
+            };
+            "vlan20" = {
+                useDHCP = true;
+            };
+        };
         usePredictableInterfaceNames = false;
+        vlans = {
+            "vlan20" = {
+                id = 20;
+                interface = "eth0";
+            };
+        };
     };
 
     # Set expreimental flags to use flakes
