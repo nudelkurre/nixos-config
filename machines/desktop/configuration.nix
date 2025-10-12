@@ -39,12 +39,17 @@ in
             grub = {
                 device = "nodev";
                 efiSupport = true;
-                enable = true;
+                enable = false;
                 theme = "${pkgs.catppuccin-grub}";
                 useOSProber = true;
             };
             systemd-boot = {
-                enable = false;
+                configurationLimit = 10;
+                editor = false;
+                enable = true;
+                memtest86 = {
+                    enable = true;
+                };
             };
         };
         # Settings for plymouth splash screen
@@ -185,6 +190,11 @@ in
     };
 
     hardware = {
+        amdgpu = {
+            initrd = {
+                enable = true;
+            };
+        };
         bluetooth = {
             enable = true;
             powerOnBoot = true;
