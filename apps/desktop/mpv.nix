@@ -76,6 +76,15 @@
                 windowcontrols = "auto";
                 windowcontrols_alignment = "right";
             };
+            sponsorblock-minimal = {
+                categories = "sponsor";
+                hash = true;
+                server = "https://sponsor.ajay.app/api/skipSegments";
+            };
         };
+        scripts = with pkgs.mpvScripts; [
+            mpris
+            sponsorblock-minimal
+        ];
     };
 }
