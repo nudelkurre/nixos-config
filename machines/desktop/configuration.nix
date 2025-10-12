@@ -420,6 +420,9 @@ in
         flatpak = {
             enable = true;
         };
+        fwupd = {
+            enable = true;
+        };
         getty = {
             autologinUser = "emil";
         };
