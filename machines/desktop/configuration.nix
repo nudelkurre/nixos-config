@@ -399,6 +399,7 @@ in
                         ]
                     );
                     cue = true;
+                    interactive = true;
                     origin = "pam://yubikey";
                 };
             };
