@@ -4,12 +4,12 @@
         enable = true;
         matchBlocks = {
             "router" = {
-                hostname = "172.16.0.1";
+                hostname = "10.20.0.1";
                 port = 22;
                 user = "root";
             };
             "server" = {
-                hostname = "172.16.0.12";
+                hostname = "10.10.0.12";
                 port = 22;
                 user = "emil";
             };
