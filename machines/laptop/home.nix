@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, sharedSettings, ... }:
 
 {
     fonts = {
@@ -21,7 +21,7 @@
         file = {
 
         };
-        homeDirectory = "/home/emil";
+        homeDirectory = "/home/${sharedSettings.userName}";
         packages = with pkgs; [
             hyprpaper
             imv
@@ -44,7 +44,7 @@
         # want to update the value, then make sure to first check the Home Manager
         # release notes.
         stateVersion = "23.05"; # Please read the comment before changing.
-        username = "emil";
+        username = "${sharedSettings.userName}";
     };
 
     input = {

@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, sharedSettings, ... }:
 {
 
     # Set bootloader config
@@ -132,7 +132,7 @@
 
     # Select internationalisation properties.
     i18n = {
-        defaultLocale = "en_DK.UTF-8";
+        defaultLocale = sharedSettings.locale;
     };
 
     # Network settings
@@ -241,7 +241,7 @@
             enable = true;
         };
         getty = {
-            autologinUser = "emil";
+            autologinUser = sharedSettings.userName;
         };
         gnome = {
             gnome-keyring = {
@@ -332,18 +332,18 @@
 
     # Set your time zone.
     time = {
-        timeZone = "Europe/Stockholm";
+        timeZone = sharedSettings.timeZone;
     };
 
     # Define a user account. Don't forget to set a password with ‘passwd’.
     users = {
         groups = {
-            emil = {
-                gid = 1000;
+            "${sharedSettings.userName}" = {
+                gid = sharedSettings.groupId;
             };
         };
         users = {
-            emil = {
+            "${sharedSettings.userName}" = {
                 extraGroups = [
                     "wheel"
                     "video"
@@ -351,7 +351,7 @@
                     "users"
                     "libvirtd"
                 ]; # Enable ‘sudo’ for the user.
-                group = "emil";
+                group = sharedSettings.userName;
                 isNormalUser = true;
             };
         };

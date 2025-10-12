@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ pkgs, lib, sharedSettings, ... }:
 let
     greetdConfig = pkgs.writeText "greetd-sway-config" ''
         exec "${pkgs.greetd.regreet}/bin/regreet; swaymsg exit"
@@ -12,7 +12,6 @@ let
 
         output "HDMI-A-1" disable
     '';
-    server_ip = "10.10.0.12";
 in
 
 {
@@ -108,7 +107,7 @@ in
             options = [ "umask=0077" ];
         };
         "/home/emil/docker-compose" = {
-            device = "${server_ip}:/nfs/docker/compose";
+            device = "${sharedSettings.serverIP}:/nfs/docker/compose";
             fsType = "nfs4";
             options = [
                 "rw"
@@ -117,7 +116,7 @@ in
             ];
         };
         "/home/emil/Manga" = {
-            device = "${server_ip}:/nfs/Manga";
+            device = "${sharedSettings.serverIP}:/nfs/Manga";
             fsType = "nfs4";
             options = [
                 "rw"
@@ -126,7 +125,7 @@ in
             ];
         };
         "/home/emil/Media" = {
-            device = "${server_ip}:/nfs/Media";
+            device = "${sharedSettings.serverIP}:/nfs/Media";
             fsType = "nfs4";
             options = [
                 "rw"
@@ -135,7 +134,7 @@ in
             ];
         };
         "/home/emil/roms" = {
-            device = "${server_ip}:/nfs/ROMS";
+            device = "${sharedSettings.serverIP}:/nfs/ROMS";
             fsType = "nfs4";
             options = [
                 "rw"
@@ -240,7 +239,7 @@ in
 
     # Select internationalisation properties.
     i18n = {
-        defaultLocale = "en_DK.UTF-8";
+        defaultLocale = sharedSettings.locale;
     };
 
     # Network settings
@@ -258,6 +257,7 @@ in
                 useDHCP = true;
             };
         };
+        tempAddresses = "disabled";
         usePredictableInterfaceNames = false;
         vlans = {
             "vlan20" = {
@@ -339,7 +339,7 @@ in
                 widget.clock = {
                     format = "%A %Y-%m-%d %H:%M:%S";
                     resolution = "500ms";
-                    timezone = "Europe/Stockholm";
+                    timezone = sharedSettings.timeZone;
                 };
             };
             theme = {
@@ -394,7 +394,7 @@ in
                 settings = {
                     authfile = pkgs.writeText "u2f-mappings" (
                         lib.concatStrings [
-                            "emil"
+                            "${sharedSettings.userName}"
                             ":TmhcVuAwLzXUVz+fZhF8KXSRDSV6qV0xWTTqGsiCYmz+15MHMUQC0I92eIGF8GuaNvOuegzX8TzBXTaxZ8z67A==,2ZD3OVnwUE6K9JqjJuc83TxfwcuPnZk2T42QzCyctq3Xc0gmKSPxxTg11ID5h6rsfwHaTjYUYEK2FStqtnWiZA==,es256,+presence"
                             ":i2SEXzssJ4SHNufLn5floulKQirWCW+NB0rrN5PgZmhEkn1mUhV1G1wAFzWKEfBzh8wfnWafBgds1kK5QXjQrA==,2TXrz7rEza+OP5OLLoOdTfLA6SgnlIL0UYVLYA3DTzRd3Bgvz6Oag7R5nLLR9griaVMh/Z9Eqo1CzxmkhmV55g==,es256,+presence"
                         ]
@@ -425,7 +425,7 @@ in
             enable = true;
         };
         getty = {
-            autologinUser = "emil";
+            autologinUser = "${sharedSettings.userName}";
         };
         gnome = {
             gnome-keyring = {
@@ -556,18 +556,18 @@ in
 
     # Set your time zone.
     time = {
-        timeZone = "Europe/Stockholm";
+        timeZone = sharedSettings.timeZone;
     };
 
     # Define a user account. Don't forget to set a password with ‘passwd’.
     users = {
         groups = {
-            emil = {
-                gid = 1000;
+            "${sharedSettings.userName}" = {
+                gid = sharedSettings.groupId;
             };
         };
         users = {
-            emil = {
+            "${sharedSettings.userName}" = {
                 extraGroups = [
                     "wheel"
                     "video"
@@ -577,7 +577,7 @@ in
                     "kvm"
                     "adbusers"
                 ]; # Enable ‘sudo’ for the user.
-                group = "emil";
+                group = "${sharedSettings.userName}";
                 isNormalUser = true;
             };
         };

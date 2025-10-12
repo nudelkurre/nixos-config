@@ -2,10 +2,7 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ pkgs, ... }:
-let
-    ip_addr = "10.10.0.12";
-in
+{ pkgs, sharedSettings, ... }:
 {
     # Set bootloader config
     boot = {
@@ -127,14 +124,14 @@ in
         };
         hostName = "server";
         hosts = {
-            "${ip_addr}" = ["git.nudelkurre.com"];
+            "${sharedSettings.serverIP}" = ["git.nudelkurre.com"];
         };
         interfaces = {
             vlan10 = {
                 ipv4 = {
                     addresses = [
                         {
-                            address = ip_addr;
+                            address = sharedSettings.serverIP;
                             prefixLength = 24;
                         }
                     ];
@@ -235,18 +232,18 @@ in
 
     # Set your time zone.
     time = {
-        timeZone = "Europe/Stockholm";
+        timeZone = sharedSettings.timeZone;
     };
 
     # Define a user account. Don't forget to set a password with ‘passwd’.
     users = {
         groups = {
-            emil = {
-                gid = 1000;
+            "${sharedSettings.userName}" = {
+                gid = sharedSettings.groupId;
             };
         };
         users = {
-            emil = {
+            "${sharedSettings.userName}" = {
                 extraGroups = [
                     "wheel"
                     "video"
@@ -254,7 +251,7 @@ in
                     "users"
                     "libvirtd"
                 ]; # Enable ‘sudo’ for the user.
-                group = "emil";
+                group = "${sharedSettings.userName}";
                 isNormalUser = true;
                 openssh = {
                     authorizedKeys = {

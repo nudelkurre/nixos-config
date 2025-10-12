@@ -67,6 +67,13 @@
                     version-overlay
                 ];
             };
+            sharedSettings = {
+                groupId = 1000;
+                locale = "en_DK.UTF-8";
+                serverIP = "10.10.0.12";
+                timeZone = "Europe/Stockholm";
+                userName = "emil";
+            };
         in
         {
             nixosConfigurations = {
@@ -82,22 +89,25 @@
                         ./machines/desktop/configuration.nix
                         ./machines/desktop/hardware-configuration-desktop.nix
                     ];
+                    specialArgs = { inherit sharedSettings; };
                 };
                 laptop = nixpkgs.lib.nixosSystem {
                     modules = [
                         ./machines/laptop/configuration.nix
                         ./machines/laptop/hardware-configuration-laptop.nix
                     ];
+                    specialArgs = { inherit sharedSettings; };
                 };
                 server = nixpkgs.lib.nixosSystem {
                     modules = [
                         ./machines/server/configuration.nix
                         ./machines/server/hardware-configuration-server.nix
                     ];
+                    specialArgs = { inherit sharedSettings; };
                 };
             };
             homeConfigurations = {
-                "emil@desktop" = home-manager.lib.homeManagerConfiguration {
+                "${sharedSettings.userName}@desktop" = home-manager.lib.homeManagerConfiguration {
                     inherit pkgs;
                     modules = [
                         ./apps
@@ -105,8 +115,9 @@
                         ./options.nix
                         ngb.outputs.homeManagerModules.ngb
                     ];
+                    extraSpecialArgs = { inherit sharedSettings; };
                 };
-                "emil@laptop" = home-manager.lib.homeManagerConfiguration {
+                "${sharedSettings.userName}@laptop" = home-manager.lib.homeManagerConfiguration {
                     inherit pkgs;
                     modules = [
                         ./apps
@@ -114,6 +125,7 @@
                         ./options.nix
                         ngb.outputs.homeManagerModules.ngb
                     ];
+                    extraSpecialArgs = { inherit sharedSettings; };
                 };
             };
             packages.x86_64-linux = {

@@ -1,4 +1,4 @@
-{ pkgs, config, ... }:
+{ pkgs, config, sharedSettings, ... }:
 let
     browser = "firefox-private.desktop";
     image_viewer = "imv-dir.desktop";
@@ -25,7 +25,7 @@ in
     # Home Manager is pretty good at managing dotfiles. The primary way to manage
     # plain files is through 'home.file'.
     home = {
-        homeDirectory = "/home/emil";
+        homeDirectory = "/home/${sharedSettings.userName}";
         packages = with pkgs; [
             imv
             jq
@@ -56,7 +56,7 @@ in
         # want to update the value, then make sure to first check the Home Manager
         # release notes.
         stateVersion = "23.05"; # Please read the comment before changing.
-        username = "emil";
+        username = "${sharedSettings.userName}";
     };
 
     input = {

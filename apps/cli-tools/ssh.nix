@@ -1,4 +1,4 @@
-{ ... }:
+{ sharedSettings, ... }:
 {
     programs.ssh = {
         enable = true;
@@ -9,7 +9,7 @@
                 user = "root";
             };
             "server" = {
-                hostname = "10.10.0.12";
+                hostname = "${sharedSettings.serverIP}";
                 port = 22;
                 user = "emil";
             };
