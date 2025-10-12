@@ -72,6 +72,16 @@
                 locale = "en_DK.UTF-8";
                 serverIP = "10.10.0.12";
                 timeZone = "Europe/Stockholm";
+                u2f = {
+                    authFile = pkgs.writeText "u2f-mappings" (
+                        nixpkgs.lib.concatStrings [
+                            "${sharedSettings.userName}"
+                            ":TmhcVuAwLzXUVz+fZhF8KXSRDSV6qV0xWTTqGsiCYmz+15MHMUQC0I92eIGF8GuaNvOuegzX8TzBXTaxZ8z67A==,2ZD3OVnwUE6K9JqjJuc83TxfwcuPnZk2T42QzCyctq3Xc0gmKSPxxTg11ID5h6rsfwHaTjYUYEK2FStqtnWiZA==,es256,+presence"
+                            ":i2SEXzssJ4SHNufLn5floulKQirWCW+NB0rrN5PgZmhEkn1mUhV1G1wAFzWKEfBzh8wfnWafBgds1kK5QXjQrA==,2TXrz7rEza+OP5OLLoOdTfLA6SgnlIL0UYVLYA3DTzRd3Bgvz6Oag7R5nLLR9griaVMh/Z9Eqo1CzxmkhmV55g==,es256,+presence"
+                        ]
+                    );
+                    origin = "pam://yubikey";
+                };
                 userName = "emil";
             };
         in

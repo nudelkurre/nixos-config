@@ -1,4 +1,4 @@
-{ pkgs, lib, sharedSettings, ... }:
+{ pkgs, sharedSettings, ... }:
 let
     greetdConfig = pkgs.writeText "greetd-sway-config" ''
         exec "${pkgs.greetd.regreet}/bin/regreet; swaymsg exit"
@@ -392,16 +392,10 @@ in
             u2f = {
                 enable = true;
                 settings = {
-                    authfile = pkgs.writeText "u2f-mappings" (
-                        lib.concatStrings [
-                            "${sharedSettings.userName}"
-                            ":TmhcVuAwLzXUVz+fZhF8KXSRDSV6qV0xWTTqGsiCYmz+15MHMUQC0I92eIGF8GuaNvOuegzX8TzBXTaxZ8z67A==,2ZD3OVnwUE6K9JqjJuc83TxfwcuPnZk2T42QzCyctq3Xc0gmKSPxxTg11ID5h6rsfwHaTjYUYEK2FStqtnWiZA==,es256,+presence"
-                            ":i2SEXzssJ4SHNufLn5floulKQirWCW+NB0rrN5PgZmhEkn1mUhV1G1wAFzWKEfBzh8wfnWafBgds1kK5QXjQrA==,2TXrz7rEza+OP5OLLoOdTfLA6SgnlIL0UYVLYA3DTzRd3Bgvz6Oag7R5nLLR9griaVMh/Z9Eqo1CzxmkhmV55g==,es256,+presence"
-                        ]
-                    );
+                    authfile = sharedSettings.u2f.authFile;
                     cue = true;
                     interactive = true;
-                    origin = "pam://yubikey";
+                    origin = sharedSettings.u2f.origin;
                 };
             };
         };

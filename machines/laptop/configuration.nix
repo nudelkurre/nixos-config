@@ -221,7 +221,22 @@
         pam = {
             services = {
                 hyprlock = { };
+                login = {
+                    u2fAuth = true;
+                };
+                sudo = {
+                    u2fAuth = true;
+                };
                 swaylock = { };
+            };
+            u2f = {
+                enable = true;
+                settings = {
+                    authfile = sharedSettings.u2f.authFile;
+                    cue = true;
+                    interactive = true;
+                    origin = sharedSettings.u2f.origin;
+                };
             };
         };
         polkit = {
