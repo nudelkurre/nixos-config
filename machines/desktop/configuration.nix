@@ -1,4 +1,19 @@
 { pkgs, lib, ... }:
+let
+    greetdConfig = pkgs.writeText "greetd-sway-config" ''
+        exec "${pkgs.greetd.regreet}/bin/regreet; swaymsg exit"
+        bindsym Mod4+shift+e exec swaynag \
+        -t warning \
+        -m 'What do you want to do?' \
+        -b 'Poweroff' 'systemctl poweroff' \
+        -b 'Reboot' 'systemctl reboot'
+
+        output "DP-1" resolution 2560x1440@144Hz
+
+        output "HDMI-A-1" disable
+    '';
+in
+
 {
     boot = {
         initrd = {
@@ -289,6 +304,43 @@
                 enableSSHSupport = true;
             };
         };
+        hyprland = {
+            enable = true;
+        };
+        niri = {
+            enable = true;
+        };
+        regreet = {
+            cursorTheme = {
+                name = "Bibata-Modern-Ice";
+                package = pkgs.bibata-cursors;
+            };
+            enable = true;
+            font = {
+                name = "MonaspiceRn Nerd Font Mono";
+                size = 16;
+            };
+            settings = {
+                commands = {
+                    reboot = ["systemctl" "reboot"];
+                    poweroff = ["systemctl" "poweroff"];
+                };
+                widget.clock = {
+                    format = "%A %Y-%m-%d %H:%M:%S";
+                    resolution = "500ms";
+                    timezone = "Europe/Stockholm";
+                };
+            };
+            theme = {
+                name = "Colloid-Pink-Dark-Compact-Catppuccin";
+                package = pkgs.unstable.colloid-gtk-theme.override {
+                    themeVariants = [ "pink" ];
+                    colorVariants = [ "dark" ];
+                    sizeVariants = [ "compact" ];
+                    tweaks = [ "catppuccin" ];
+                };
+            };
+        };
         steam = {
             enable = true;
             gamescopeSession = {
@@ -302,6 +354,10 @@
                 ];
                 enable = true;
             };
+        };
+        sway = {
+            enable = true;
+            extraPackages = [ ];
         };
         virt-manager = {
             enable = true;
@@ -359,6 +415,14 @@
         gnome = {
             gnome-keyring = {
                 enable = true;
+            };
+        };
+        greetd = {
+            enable = true;
+            settings = {
+                default_session = {
+                    command = "${pkgs.sway}/bin/sway --config ${greetdConfig}";
+                };
             };
         };
         logind = {
