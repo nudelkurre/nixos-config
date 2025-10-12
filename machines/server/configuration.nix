@@ -3,7 +3,9 @@
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
 { pkgs, ... }:
-
+let
+    ip_addr = "10.10.0.12";
+in
 {
     # Set bootloader config
     boot = {
@@ -108,7 +110,7 @@
     # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
     # networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
     networking = {
-        defaultGateway = "172.16.0.1";
+        defaultGateway = "10.10.0.1";
         enableIPv6 = true;
         firewall = {
             enable = true;
@@ -124,12 +126,15 @@
             ];
         };
         hostName = "server";
+        hosts = {
+            "${ip_addr}" = ["git.nudelkurre.com"];
+        };
         interfaces = {
-            eth0 = {
+            vlan10 = {
                 ipv4 = {
                     addresses = [
                         {
-                            address = "172.16.0.12";
+                            address = ip_addr;
                             prefixLength = 24;
                         }
                     ];
@@ -140,7 +145,14 @@
             "1.1.1.1"
             "1.0.0.1"
         ];
+        useDHCP = false;
         usePredictableInterfaceNames = false;
+        vlans = {
+            vlan10 = {
+                id = 10;
+                interface = "eth0";
+            };
+        };
     };
 
     # Set expreimental flags to use flakes
@@ -180,11 +192,11 @@
             server = {
                 enable = true;
                 exports = ''
-                    /nfs/docker/compose 172.16.0.132(rw,sync,no_subtree_check)
-                    /nfs/ebooks 172.16.0.132(rw,sync,no_subtree_check)
-                    /nfs/Manga  172.16.0.132(rw,sync,no_subtree_check)
-                    /nfs/Media  172.16.0.132(rw,sync,no_subtree_check)
-                    /nfs/ROMS   172.16.0.132(rw,sync,no_subtree_check)
+                    /nfs/docker/compose 10.20.0.0/24(rw,sync,no_subtree_check)
+                    /nfs/ebooks 10.20.0.0/24(rw,sync,no_subtree_check)
+                    /nfs/Manga  10.20.0.0/24(rw,sync,no_subtree_check)
+                    /nfs/Media  10.20.0.0/24(rw,sync,no_subtree_check)
+                    /nfs/ROMS   10.20.0.0/24(rw,sync,no_subtree_check)
                 '';
             };
         };
@@ -261,7 +273,6 @@
             daemon = {
                 settings = {
                     dns = [
-                        "172.16.0.12" # Used for containers to get local dns records
                         "1.1.1.1"
                         "1.0.0.1"
                     ];
