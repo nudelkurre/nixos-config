@@ -12,6 +12,7 @@ let
 
         output "HDMI-A-1" disable
     '';
+    server_ip = "10.10.0.12";
 in
 
 {
@@ -107,7 +108,7 @@ in
             options = [ "umask=0077" ];
         };
         "/home/emil/docker-compose" = {
-            device = "172.16.0.12:/nfs/docker/compose";
+            device = "${server_ip}:/nfs/docker/compose";
             fsType = "nfs4";
             options = [
                 "rw"
@@ -116,7 +117,7 @@ in
             ];
         };
         "/home/emil/Manga" = {
-            device = "172.16.0.12:/nfs/Manga";
+            device = "${server_ip}:/nfs/Manga";
             fsType = "nfs4";
             options = [
                 "rw"
@@ -125,7 +126,7 @@ in
             ];
         };
         "/home/emil/Media" = {
-            device = "172.16.0.12:/nfs/Media";
+            device = "${server_ip}:/nfs/Media";
             fsType = "nfs4";
             options = [
                 "rw"
@@ -134,7 +135,7 @@ in
             ];
         };
         "/home/emil/roms" = {
-            device = "172.16.0.12:/nfs/ROMS";
+            device = "${server_ip}:/nfs/ROMS";
             fsType = "nfs4";
             options = [
                 "rw"
