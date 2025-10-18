@@ -242,12 +242,6 @@ in
                 proportion 1.0
             }
             
-            focus-ring {
-                width 2
-                active-gradient from="${color1}${opacity_active}" to="${color2}${opacity_active}" angle=${color_angle} relative-to="workspace-view"
-                inactive-gradient from="${color1}${opacity_inactive}" to="${color2}${opacity_inactive}" angle=${color_angle} relative-to="workspace-view"
-            }
-
             insert-hint {
                 gradient from="${color1}" to="${color2}" angle=${color_angle}
             }
@@ -425,6 +419,22 @@ in
             exclude app-id="com.chatterino.chatterino" title=r#"^Chatterino \d+.\d+.\d+"#
             default-window-height { proportion 0.5; }
             open-floating true
+        }
+
+        window-rule {
+            match is-focused=true
+            focus-ring {
+                width 2
+                active-gradient from="${color1}${opacity_active}" to="${color2}${opacity_active}" angle=${color_angle} relative-to="workspace-view"
+                inactive-gradient from="${color1}${opacity_inactive}" to="${color2}${opacity_inactive}" angle=${color_angle} relative-to="workspace-view"
+            }
+        }
+
+        window-rule {
+            match is-focused=false
+            focus-ring {
+                off
+            }
         }
 
         layer-rule {
