@@ -1,0 +1,35 @@
+{
+    pkgs,
+    config,
+    ...
+}:
+let
+    target = "graphical-session.target";
+in
+{
+    systemd.user = {
+        services = (
+            builtins.listToAttrs (
+                builtins.map (m: {
+                    name = "mpvpaper-${m.name}";
+                    value = {
+                        Install = {
+                            WantedBy = [ target ];
+                        };
+                        Service = {
+                            ExecStart = "${pkgs.mpvpaper}/bin/mpvpaper ${m.name} ${pkgs.wallpapers.wallpapers}/share/wallpapers/${m.orientation} --slideshow 1200 --mpv-options 'shuffle panscan=1.0' --auto-pause";
+                            Restart = "always";
+                            RestartSec = "5s";
+                        };
+                        Unit = {
+                            After = target;
+                            ConditionEnvironment = "WAYLAND_DISPLAY";
+                            Description = "Change background";
+                            PartOf = target;
+                        };
+                    };
+                }) (config.monitors.outputs)
+            )
+        );
+    };
+}
