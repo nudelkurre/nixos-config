@@ -22,7 +22,7 @@
             + lib.strings.concatStringsSep "\n" (
                 map (m: ''
                     for i in $(seq $count); do
-                        filename=$(find ${pkgs.wallpapers.wallpapers}/share/wallpapers/${m.orientation} -maxdepth 1 -type f | shuf -n 1)
+                        filename=$(find ${pkgs.wallpapers.wallpapers}/share/wallpapers/${m.orientation} -maxdepth 1 -type f | grep -P '(png|jpg|jpeg)' | shuf -n 1)
                     done
                     ${config.services.swww.package}/bin/swww img -o ${m.name} --resize=crop --transition-type=fade $filename
                 '') (config.monitors.outputs)
