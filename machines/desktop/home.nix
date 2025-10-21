@@ -479,6 +479,7 @@ in
                 { name = "com.chatterino.chatterino"; }
                 { name = "discord"; }
                 { name = "Keybase"; }
+                { name = "vesktop"; }
             ];
         }
         {
