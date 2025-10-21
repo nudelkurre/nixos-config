@@ -1,4 +1,9 @@
-{ pkgs, config, sharedSettings, ... }:
+{
+    pkgs,
+    config,
+    sharedSettings,
+    ...
+}:
 let
     browser = "firefox-private.desktop";
     image_viewer = "imv-dir.desktop";
@@ -383,6 +388,27 @@ in
     rofi = {
         border-color = "#f3c8f3";
         lines = 23;
+    };
+
+    systemd = {
+        user = {
+            services = {
+                "ngb" = {
+                    Unit = {
+                        Description = "ngb status bar";
+                        PartOf = "graphical-session.target";
+                    };
+                    Install = {
+                        WantedBy = [ "graphical-session.target" ];
+                    };
+                    Service = {
+                        ExecStart = "${pkgs.ngb}/bin/ngb";
+                        Restart = "always";
+                        RestartSec = "5s";
+                    };
+                };
+            };
+        };
     };
 
     workspaces = [

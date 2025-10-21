@@ -261,7 +261,6 @@ in
                     else
                         [ ]
                 )
-                { command = "${pkgs.ngb}/bin/ngb"; }
                 {
                     command = "kanshi";
                     always = true;

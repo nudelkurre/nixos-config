@@ -158,7 +158,6 @@ in
             ];
 
             exec-once = lib.lists.flatten [
-                "${pkgs.ngb}/bin/ngb"
                 "dunst"
                 "hyprpaper"
             ];
