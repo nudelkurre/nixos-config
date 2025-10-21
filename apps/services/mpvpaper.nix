@@ -21,7 +21,7 @@ in
                                 if m.orientation == "horizontal" then
                                     "${pkgs.mpvpaper}/bin/mpvpaper ${m.name} ${pkgs.wallpapers.video-wallpapers}/share/wallpapers/${m.orientation} --slideshow 1200 --mpv-options 'shuffle panscan=1.0 really-quiet no-audio' --auto-pause"
                                 else
-                                    "${pkgs.mpvpaper}/bin/mpvpaper ${m.name} ${pkgs.wallpapers.wallpapers}/share/wallpapers/${m.orientation} --slideshow 1200 --mpv-options 'shuffle panscan=1.0 really-quiet no-audio' --auto-pause";
+                                    "${pkgs.mpvpaper}/bin/mpvpaper ${m.name} ${pkgs.wallpapers.wallpapers}/share/wallpapers/${m.orientation} --slideshow 1200 --mpv-options 'shuffle panscan=1.0 really-quiet'";
                             Restart = "always";
                             RestartSec = "5s";
                         };
