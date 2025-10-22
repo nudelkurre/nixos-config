@@ -45,14 +45,17 @@
             wallpapers-overlay = final: prev: {
                 wallpapers = wallpapers.packages.${system};
             };
+            versions = {
+                yt-dlp = "2025.10.22";
+            };
             version-overlay = final: prev: {
                 yt-dlp = prev.yt-dlp.overrideAttrs (old: {
-                    version = "2025.10.14";
+                    version = versions.yt-dlp;
                     src = prev.fetchFromGitHub {
                         owner = "yt-dlp";
                         repo = "yt-dlp";
-                        rev = "2025.10.14";
-                        hash = "sha256-x7vpuXUihlC4jONwjmWnPECFZ7xiVAOFSDUgBNvl+aA=";
+                        rev = versions.yt-dlp;
+                        hash = "sha256-jQaENEflaF9HzY/EiMXIHgUehAJ3nnDT9IbaN6bDcac=";
                     };
                 });
             };
