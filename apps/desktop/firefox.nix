@@ -239,6 +239,7 @@
                     "Bing"
                     "Wikipedia (en)"
                     "Ecosia"
+                    "Perplexity"
                 ];
             };
             "TranslateEnabled" = false;
