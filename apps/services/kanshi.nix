@@ -1,4 +1,4 @@
-{ ... }:
+{ config, ... }:
 {
     services.kanshi = {
         enable = false;
@@ -38,9 +38,15 @@
             }
         ];
     };
-    systemd.user.services."kanshi" = {
-        Service = {
-            RestartSec = 1;
-        };
-    };
+    systemd.user.services =
+        if config.services.kanshi.enable then
+            {
+                "kanshi" = {
+                    Service = {
+                        RestartSec = 1;
+                    };
+                };
+            }
+        else
+            { };
 }

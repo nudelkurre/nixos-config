@@ -261,10 +261,6 @@ in
                     else
                         [ ]
                 )
-                {
-                    command = "kanshi";
-                    always = true;
-                }
             ];
             window = {
                 border = 1;
