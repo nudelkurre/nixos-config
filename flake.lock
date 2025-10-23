@@ -174,11 +174,11 @@
         "nixpkgs": "nixpkgs_3"
       },
       "locked": {
-        "lastModified": 1760449711,
-        "narHash": "sha256-9yEpVgwHblS3VYP4wtkO1XUXoBDQU0qtt0qr7GaETag=",
+        "lastModified": 1760977231,
+        "narHash": "sha256-qErpwTOIzTFrNQZWoKOYuy5wpUd/6uaS4jhFTsUSKiw=",
         "ref": "refs/heads/master",
-        "rev": "bfed6c1dff29e58e8bc01f3336e53950a1482408",
-        "revCount": 21,
+        "rev": "ba66a5e720501fd3279a6ebc8fb162d1cdd3ba84",
+        "revCount": 26,
         "type": "git",
         "url": "https://git.nudelkurre.com/nudelkurre/Wallpapers.git"
       },

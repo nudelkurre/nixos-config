@@ -439,6 +439,7 @@ in
 
         layer-rule {
             match namespace="^swww-daemon$"
+            match namespace="^mpvpaper$"
             place-within-backdrop true
         }
 
