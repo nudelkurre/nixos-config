@@ -257,7 +257,7 @@ in
                 useDHCP = true;
             };
         };
-        tempAddresses = "disabled";
+        tempAddresses = "enabled";
         usePredictableInterfaceNames = false;
         vlans = {
             "vlan20" = {
