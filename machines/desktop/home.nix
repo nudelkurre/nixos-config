@@ -32,6 +32,7 @@ in
     home = {
         homeDirectory = "/home/${sharedSettings.userName}";
         packages = with pkgs; [
+            bitwarden-desktop
             imv
             jq
             lm_sensors
