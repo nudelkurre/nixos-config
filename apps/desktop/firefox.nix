@@ -337,6 +337,11 @@
                         icon = "circle";
                         id = 16;
                     };
+                    "Yt-nocookie" = {
+                        color = "red";
+                        icon = "circle";
+                        id = 17;
+                    };
                 };
                 containersForce = true;
                 extensions = {
@@ -438,12 +443,22 @@
         };
     };
     xdg.desktopEntries = {
-        "firefox-private" = {
+        "firefox" = {
+            actions = {
+                "new-private-window" = {
+                    exec = "${config.programs.firefox.package}/bin/firefox --private-window %U";
+                    name = "New Private Window";
+                };
+                "profile-manager-window" = {
+                    exec = "${config.programs.firefox.package}/bin/firefox --ProfileManager";
+                    name = "Profile Manager";
+                };
+            };
             categories = [
                 "Network"
                 "WebBrowser"
             ];
-            exec = "${config.programs.firefox.package}/bin/firefox --private-window %U";
+            exec = "${config.programs.firefox.package}/bin/firefox --new-window %U";
             genericName = "Web Browser";
             icon = "firefox";
             mimeType = [
@@ -454,9 +469,11 @@
                 "x-scheme-handler/http"
                 "x-scheme-handler/https"
             ];
-            name = "Firefox Private Window";
-            noDisplay = true;
+            name = "Firefox";
+            # noDisplay = true;
+            startupNotify = true;
             terminal = false;
+            type = "Application";
         };
     };
 }

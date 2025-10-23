@@ -5,7 +5,7 @@
     ...
 }:
 let
-    browser = "firefox-private.desktop";
+    browser = "firefox.desktop";
     image_viewer = "imv-dir.desktop";
     media_player = "mpv.desktop";
     text_editor = "codium.desktop";
