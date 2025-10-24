@@ -222,6 +222,15 @@ with lib;
                 example = "DP-1";
                 default = "";
             };
+            wallpaper = mkOption {
+                type = types.enum[
+                    "swww"
+                    "mpvpaper"
+                ];
+                example = "mpvpaper";
+                default = "swww";
+                description = "Set default wallpaper service";
+            };
         };
         rofi = {
             border-color = mkOption {

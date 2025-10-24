@@ -5,7 +5,7 @@
     ...
 }:
 {
-    home.file = {
+    home.file = if config.monitors.wallpaper == "swww" then {
         "swww-background" = {
             enable = true;
             executable = true;
@@ -28,12 +28,12 @@
                 '') (config.monitors.outputs)
             );
         };
-    };
-    services.swww = {
+    } else {};
+    services.swww = if config.monitors.wallpaper == "swww" then {
         enable = true;
         package = pkgs.unstable.swww;
-    };
-    systemd.user = {
+    } else {};
+    systemd.user = if config.monitors.wallpaper == "swww" then {
         services = {
             bgchange = {
                 Service = {
@@ -63,5 +63,5 @@
                 };
             };
         };
-    };
+    } else {};
 }
