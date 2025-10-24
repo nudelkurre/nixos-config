@@ -12,7 +12,7 @@
             gpu_stats = false; # Causes stuttering in game if enabled
             gpu_temp = false;
             gpu_power = false;
-            gpu_name = false;
+            gpu_name = true;
             throttling_status = false;
             vram = false;
             ram = true;
