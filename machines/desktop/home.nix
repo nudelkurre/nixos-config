@@ -9,6 +9,9 @@ let
     image_viewer = "imv-dir.desktop";
     media_player = "mpv.desktop";
     text_editor = "codium.desktop";
+
+    main-monitor = "DP-1";
+    secondary-monitor = "HDMI-A-3";
 in
 {
     fonts = {
@@ -213,7 +216,7 @@ in
             {
                 adaptive_sync = "on";
                 bg_style = "fill";
-                name = "DP-1";
+                name = main-monitor;
                 height = 1440;
                 refreshRate = 144;
                 transform = 0;
@@ -232,7 +235,7 @@ in
             {
                 adaptive_sync = "off";
                 bg_style = "fill";
-                name = "HDMI-A-1";
+                name = secondary-monitor;
                 height = 1080;
                 refreshRate = 60;
                 transform = 90;
@@ -249,7 +252,7 @@ in
                 orientation = "vertical";
             }
         ];
-        primary = "DP-1";
+        primary = main-monitor;
     };
 
     nix = {
@@ -277,13 +280,13 @@ in
             settings = {
                 bars = [
                     {
-                        "output" = "DP-1";
+                        "output" = main-monitor;
                         "widgets" = {
                             "center" = [ ];
                             "left" = [
                                 {
                                     "config" = {
-                                        "monitor" = "DP-1";
+                                        "monitor" = main-monitor;
                                         "names" = {
                                             "1" = "";
                                             "2" = "";
@@ -324,13 +327,13 @@ in
                         };
                     }
                     {
-                        "output" = "HDMI-A-1";
+                        "output" = secondary-monitor;
                         "widgets" = {
                             "center" = [ ];
                             "left" = [
                                 {
                                     "config" = {
-                                        "monitor" = "HDMI-A-1";
+                                        "monitor" = secondary-monitor;
                                         "names" = {
                                             "6" = "";
                                             "7" = "";
