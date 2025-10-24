@@ -11,7 +11,7 @@ let
     text_editor = "codium.desktop";
 
     main-monitor = "DP-1";
-    secondary-monitor = "HDMI-A-3";
+    secondary-monitor = "HDMI-A-1";
 in
 {
     fonts = {
