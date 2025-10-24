@@ -72,9 +72,6 @@
                 "StartPage" = "homepage-locked";
             };
             "HttpsOnlyMode" = "force_enabled";
-            "InstallAddonsPermission" = {
-                "Default" = false;
-            };
             "NetworkPrediction" = false;
             "NewTabPage" = true;
             "NoDefaultBookmarks" = true;
