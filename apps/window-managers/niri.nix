@@ -76,6 +76,7 @@ let
             resolution = "${toString m.width}x${toString m.height}@${toString m.refreshRate}";
             transform = {"0" = "normal"; "90"= "270"; "180" = "180"; "270" = "90";};
             vrr = {"off" = "false"; "on" = "true";};
+            backdrop-color = if m.wallpaper == "none" then "backdrop-color \"#000000\"" else "";
         in
         ''output "${m.name}" {
             mode "${resolution}"
@@ -83,6 +84,7 @@ let
             transform "${transform.${toString m.transform}}"
             position x=${toString m.x} y=${toString m.y}
             variable-refresh-rate on-demand=${vrr.${m.adaptive_sync}}
+            ${backdrop-color}
         }
         ''
     )

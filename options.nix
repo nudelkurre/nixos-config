@@ -212,6 +212,16 @@ with lib;
                                 default = "horizontal";
                                 description = "Specify orientation for use with background";
                             };
+                            wallpaper = mkOption {
+                                type = types.enum [
+                                    "mpvpaper"
+                                    "swww"
+                                    "none"
+                                ];
+                                example = "mpvpaper";
+                                default = "none";
+                                description = "Set wallpaper service to use";
+                            };
                         };
                     }
                 );

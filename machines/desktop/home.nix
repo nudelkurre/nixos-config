@@ -231,6 +231,7 @@ in
                 x = 0;
                 y = 240;
                 orientation = "horizontal";
+                wallpaper = "mpvpaper";
             }
             {
                 adaptive_sync = "off";
@@ -250,6 +251,7 @@ in
                 x = 2560;
                 y = 0;
                 orientation = "vertical";
+                wallpaper = "swww";
             }
         ];
         primary = main-monitor;

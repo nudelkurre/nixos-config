@@ -4,9 +4,8 @@
         ./gnome-keyring.nix
         ./gotify-desktop.nix
         ./kanshi.nix
-        ./mpvpaper.nix
-        ./swww.nix
         ./udiskie.nix
+        ./wallpapers.nix
         ./wlsunset.nix
     ];
 }
