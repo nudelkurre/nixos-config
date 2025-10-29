@@ -1,4 +1,4 @@
-{ pkgs, sharedSettings, ... }:
+{ pkgs, config, sharedSettings, ... }:
 let
     greetdConfig = pkgs.writeText "greetd-sway-config" ''
         exec "${pkgs.greetd.regreet}/bin/regreet; swaymsg exit"
@@ -16,6 +16,11 @@ in
 
 {
     boot = {
+        # Enable virtual cam with v4l2loopback
+        extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback ];
+        extraModprobeConfig = ''
+            options v4l2loopback devices=1 video_nr=1 card_label="OBS CAM" exclusive_caps=1
+        '';
         initrd = {
             luks = {
                 devices = {
