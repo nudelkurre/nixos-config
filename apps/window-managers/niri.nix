@@ -51,7 +51,7 @@ let
                     if attr.overlay-title != "" then " hotkey-overlay-title=\"${attr.overlay-title}\" " else ""
                 );
             in
-            ''${replaceKeys keymod}${title} { spawn ${program}; }''
+            ''${replaceKeys keymod}${title} repeat=false { spawn ${program}; }''
         ) (config.keybindings)
     );
 
@@ -66,7 +66,7 @@ let
                     if attr.overlay-title != "" then " hotkey-overlay-title=\"${attr.overlay-title}\" " else ""
                 );
             in
-            ''${replaceKeys keymod}${title} { spawn-sh "${program}"; }''
+            ''${replaceKeys keymod}${title} repeat=false { spawn-sh "${program}"; }''
         ) (config.keybindings-multi)
     );
 
