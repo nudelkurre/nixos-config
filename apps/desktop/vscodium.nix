@@ -33,6 +33,8 @@
                     "editor.fontFamily" = "${config.fonts.name}";
                     "editor.insertSpaces" = true;
                     "editor.tabSize" = 4;
+                    "latex-workshop.latex.autoBuild.run" = "never";
+                    "latex-workshop.latex.autoClean.run" = "onSucceeded";
                     "nix.enableLanguageServer" = true;
                     "nix.serverPath" = "${pkgs.nil}/bin/nil";
                     "nix.serverSettings" = {
