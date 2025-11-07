@@ -106,9 +106,7 @@ in
             fonts = { };
             gaps = {
                 inner = config.gaps;
-                outer = -config.gaps;
                 smartBorders = "on";
-                smartGaps = true;
             };
             input = {
                 "1003:34842:Atmel_Atmel_maXTouch_Digitizer" = {
