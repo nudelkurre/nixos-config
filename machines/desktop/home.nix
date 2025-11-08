@@ -277,6 +277,21 @@ in
         home-manager = {
             enable = true;
         };
+    };
+
+    qt = {
+        enable = true;
+        platformTheme = {
+            name = "gtk3";
+        };
+    };
+
+    rofi = {
+        border-color = "#f3c8f3";
+        lines = 23;
+    };
+
+    services = {
         ngb = {
             enable = true;
             settings = {
@@ -380,39 +395,6 @@ in
                 "layer" = "top";
                 "icon_size" = 20;
                 "spacing" = 5;
-            };
-        };
-    };
-
-    qt = {
-        enable = true;
-        platformTheme = {
-            name = "gtk3";
-        };
-    };
-
-    rofi = {
-        border-color = "#f3c8f3";
-        lines = 23;
-    };
-
-    systemd = {
-        user = {
-            services = {
-                "ngb" = {
-                    Unit = {
-                        Description = "ngb status bar";
-                        PartOf = "graphical-session.target";
-                    };
-                    Install = {
-                        WantedBy = [ "graphical-session.target" ];
-                    };
-                    Service = {
-                        ExecStart = "${pkgs.ngb}/bin/ngb";
-                        Restart = "always";
-                        RestartSec = "5s";
-                    };
-                };
             };
         };
     };
