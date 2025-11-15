@@ -46,7 +46,7 @@
                 wallpapers = wallpapers.packages.${system};
             };
             versions = {
-                yt-dlp = "2025.10.22";
+                yt-dlp = "2025.11.12";
             };
             version-overlay = final: prev: {
                 yt-dlp = prev.yt-dlp.overrideAttrs (old: {
@@ -55,7 +55,7 @@
                         owner = "yt-dlp";
                         repo = "yt-dlp";
                         rev = versions.yt-dlp;
-                        hash = "sha256-jQaENEflaF9HzY/EiMXIHgUehAJ3nnDT9IbaN6bDcac=";
+                        hash = "sha256-Em8FLcCizSfvucg+KPuJyhFZ5MJ8STTjSpqaTD5xeKI=";
                     };
                 });
             };
