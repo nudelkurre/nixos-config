@@ -8,11 +8,11 @@
       },
       "locked": {
         "dir": "pkgs/firefox-addons",
-        "lastModified": 1763093017,
-        "narHash": "sha256-FjnOyxTNNt85ZNjtLqRnG23LKQyvilGzyrO0bLffMm8=",
+        "lastModified": 1763697825,
+        "narHash": "sha256-AgCCcVPOi1tuzuW5/StlwqBjRWSX62oL97qWuxrq5UA=",
         "owner": "rycee",
         "repo": "nur-expressions",
-        "rev": "d84c9ea299c1e4629f0d0716799f5c57975021ce",
+        "rev": "cefce78793603231be226fa77e7ad58e0e4899b8",
         "type": "gitlab"
       },
       "original": {
@@ -97,11 +97,11 @@
     },
     "nixpkgs-unstable": {
       "locked": {
-        "lastModified": 1762977756,
-        "narHash": "sha256-4PqRErxfe+2toFJFgcRKZ0UI9NSIOJa+7RXVtBhy4KE=",
+        "lastModified": 1763421233,
+        "narHash": "sha256-Stk9ZYRkGrnnpyJ4eqt9eQtdFWRRIvMxpNRf4sIegnw=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "c5ae371f1a6a7fd27823bc500d9390b38c05fa55",
+        "rev": "89c2b2330e733d6cdb5eae7b899326930c2c0648",
         "type": "github"
       },
       "original": {
@@ -113,11 +113,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1763049705,
-        "narHash": "sha256-A5LS0AJZ1yDPTa2fHxufZN++n8MCmtgrJDtxFxrH4S8=",
+        "lastModified": 1763622513,
+        "narHash": "sha256-1jQnuyu82FpiSxowrF/iFK6Toh9BYprfDqfs4BB+19M=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "3acb677ea67d4c6218f33de0db0955f116b7588c",
+        "rev": "c58bc7f5459328e4afac201c5c4feb7c818d604b",
         "type": "github"
       },
       "original": {
@@ -174,11 +174,11 @@
         "nixpkgs": "nixpkgs_3"
       },
       "locked": {
-        "lastModified": 1762566114,
-        "narHash": "sha256-9xgOJFI/OjqXirU1NJNUwelnzqEtWGsia+xV/nFaJjQ=",
+        "lastModified": 1763767053,
+        "narHash": "sha256-BWPvTXFzH7B4yInkX4F3JpLQ/6v1vzhs6GahcVtWwR0=",
         "ref": "refs/heads/master",
-        "rev": "dc5fad7ac0017c6700164928b5316e25b4f182bf",
-        "revCount": 35,
+        "rev": "63ba01d5ce6d0a36e425318d64dd252c9dc99879",
+        "revCount": 39,
         "type": "git",
         "url": "https://git.nudelkurre.com/nudelkurre/Wallpapers.git"
       },
