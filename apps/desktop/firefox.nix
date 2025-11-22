@@ -139,7 +139,7 @@
                     "Value" = true;
                     "Status" = "default";
                 };
-                "browser.ml.enabled" = {
+                "browser.ml.enable" = {
                     "Value" = false;
                     "Status" = "locked";
                 };
@@ -361,6 +361,13 @@
                     "browser.display.background_color" = "#e2e2e2";
                     "browser.display.foreground_color" = "#4a4a4a";
                     "browser.formfill.enable" = false;
+                    "browser.ml.chat.page.footerBadge" = false;
+                    "browser.ml.chat.page.menuBadge " = false;
+                    "browser.ml.chat.shortcuts" = false;
+                    "browser.ml.chat.shortcuts.custom" = false;
+                    "browser.ml.chat.sidebar" = false;
+                    "browser.ml.checkForMemory" = false;
+                    "browser.ml.linkPreview.shift" = false;
                     "browser.privatebrowsing.promoEnabled" = false;
                     "browser.privatebrowsing.vpnpromourl" = "";
                     "browser.safebrowsing.downloads.remote.enabled" = false;
