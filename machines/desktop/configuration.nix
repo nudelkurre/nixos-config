@@ -380,6 +380,9 @@ in
         pam = {
             services = {
                 gtklock = { };
+                greetd = {
+                    u2fAuth = false;
+                };
                 hyprlock = { };
                 login = {
                     u2fAuth = true;
