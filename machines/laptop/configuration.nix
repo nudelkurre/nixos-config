@@ -119,7 +119,7 @@
         graphics = {
             enable = true;
             extraPackages = with pkgs; [
-                vaapiIntel
+                intel-vaapi-driver
             ];
         };
         # Driver for drawing tablet
