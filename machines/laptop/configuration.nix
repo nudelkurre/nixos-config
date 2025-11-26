@@ -260,9 +260,6 @@
         flatpak = {
             enable = true;
         };
-        getty = {
-            autologinUser = sharedSettings.userName;
-        };
         gnome = {
             gnome-keyring = {
                 enable = true;
