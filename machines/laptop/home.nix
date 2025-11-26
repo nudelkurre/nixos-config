@@ -363,7 +363,10 @@
         {
             name = "8";
             programs = [
-                { name = "codium"; }
+                {
+                    name = "codium";
+                    focus = true;
+                }
             ];
         }
         {
