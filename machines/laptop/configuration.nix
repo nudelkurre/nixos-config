@@ -42,11 +42,16 @@ in
             grub = {
                 device = "nodev";
                 efiSupport = true;
-                enable = true;
+                enable = false;
                 useOSProber = true;
             };
             systemd-boot = {
-                enable = false;
+                configurationLimit = 10;
+                editor = false;
+                enable = true;
+                memtest86 = {
+                    enable = true;
+                };
             };
         };
         # Settings for plymouth splash screen
