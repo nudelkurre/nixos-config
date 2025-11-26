@@ -201,6 +201,20 @@
         home-manager = {
             enable = true;
         };
+
+    };
+
+    qt = {
+        enable = true;
+        platformTheme.name = "gtk";
+    };
+
+    rofi = {
+        border-color = "#f3c8f3";
+        lines = 11;
+    };
+
+    services = {
         ngb = {
             enable = true;
             settings = {
@@ -278,19 +292,6 @@
                 "spacing" = 5;
             };
         };
-    };
-
-    qt = {
-        enable = true;
-        platformTheme.name = "gtk";
-    };
-
-    rofi = {
-        border-color = "#f3c8f3";
-        lines = 11;
-    };
-
-    services = {
         udiskie = {
             automount = true;
             enable = true;
