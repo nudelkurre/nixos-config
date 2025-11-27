@@ -115,21 +115,26 @@
             overlay-title = "Reboot";
         }
 
-        # Start Floorp
+        # Open terminal
+        {
+            mod = [ "Mod4" ];
+            key = "Return";
+            program = "alacritty";
+            overlay-title = "Open terminal window";
+        }
+
+        # Start firefox
         {
             mod = [
                 "Mod4"
                 "Shift"
             ];
             key = "f";
-            program = "floorp";
-        }
-        {
-            key = "XF86HomePage";
-            program = "floorp";
+            program = "firefox";
+            overlay-title = "Launch firefox";
         }
 
-        # Start Floorp in private window
+        # Start firefox in private window
         {
             mod = [
                 "Mod4"
@@ -137,13 +142,8 @@
                 "Shift"
             ];
             key = "f";
-            program = "floorp --private-window";
-        }
-
-        # Take a screenshot
-        {
-            key = "Print";
-            program = "${pkgs.grim}/bin/grim -g \"$(${pkgs.slurp}/bin/slurp)\"";
+            program = "firefox --private-window";
+            overlay-title = "Launch firefox private window";
         }
     ];
 
