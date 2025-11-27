@@ -184,7 +184,7 @@ in
                         ''
                             touchpad {
                                 ${(if cfg.touchpad.natural-scroll then "natural-scroll" else "")}
-                                ${(if cfg.touchpad.scroll-method != "" then "scroll-method cfg.touchpad.scroll-method" else "")}
+                                ${(if cfg.touchpad.scroll-method != "" then "scroll-method ${cfg.touchpad.scroll-method}" else "")}
                                 ${(if cfg.touchpad.disable-on-mouse then "disabled-on-external-mouse" else "")}
                                 }
                         ''
