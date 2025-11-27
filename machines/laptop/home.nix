@@ -171,6 +171,8 @@
                 ];
                 x = 0;
                 y = 0;
+                orientation = "horizontal";
+                wallpaper = "swww";
             }
             {
                 adaptive_sync = "off";
