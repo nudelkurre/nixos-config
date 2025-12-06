@@ -41,7 +41,6 @@ in
             lm_sensors
             mate.mate-polkit
             mypkgs.freetube
-            mypkgs.mangadex-downloader
             mypkgs.pkg2zip
             nemo-with-extensions
             pavucontrol
@@ -371,8 +370,10 @@ in
                                 }
                                 {
                                     "config" = {
+                                        "api" = "SMHI";
                                         "city" = "Västerås";
                                         "icon_size" = 20;
+                                        "show_big_icon" = true;
                                     };
                                     "module" = "weather";
                                 }
