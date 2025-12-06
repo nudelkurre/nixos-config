@@ -203,15 +203,15 @@ with lib;
                                 example = 0;
                                 default = 0;
                             };
-                            orientation = mkOption {
-                                type = types.enum [
-                                    "horizontal"
-                                    "vertical"
-                                ];
-                                example = "vertical";
-                                default = "horizontal";
-                                description = "Specify orientation for use with background";
-                            };
+                            # orientation = mkOption {
+                            #     type = types.enum [
+                            #         "horizontal"
+                            #         "vertical"
+                            #     ];
+                            #     example = "vertical";
+                            #     default = "horizontal";
+                            #     description = "Specify orientation for use with background";
+                            # };
                             wallpaper = mkOption {
                                 type = types.enum [
                                     "mpvpaper"

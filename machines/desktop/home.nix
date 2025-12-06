@@ -230,7 +230,6 @@ in
                 ];
                 x = 0;
                 y = 240;
-                orientation = "horizontal";
                 wallpaper = "mpvpaper";
             }
             {
@@ -250,7 +249,6 @@ in
                 ];
                 x = 2560;
                 y = 0;
-                orientation = "vertical";
                 wallpaper = "swww";
             }
         ];
@@ -260,7 +258,7 @@ in
     nix = {
         gc = {
             automatic = true;
-            frequency = "daily";
+            dates = "daily";
             options = "--delete-older-than 7d";
         };
     };

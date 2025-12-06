@@ -21,7 +21,7 @@ in
         };
         location = "top-left";
         modes = [ "drun" ];
-        package = pkgs.rofi-wayland;
+        package = pkgs.rofi;
         terminal = "kitty";
         theme = {
             "*" = {
