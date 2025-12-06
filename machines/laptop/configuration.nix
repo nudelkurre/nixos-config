@@ -1,7 +1,7 @@
 { pkgs, config, sharedSettings, ... }:
 let
     greetdConfig = pkgs.writeText "greetd-sway-config" ''
-        exec "${pkgs.greetd.regreet}/bin/regreet; swaymsg exit"
+        exec "${pkgs.regreet}/bin/regreet; swaymsg exit"
         bindsym Mod4+shift+e exec swaynag \
         -t warning \
         -m 'What do you want to do?' \
@@ -116,7 +116,7 @@ in
             nerd-fonts.noto
             noto-fonts
             noto-fonts-cjk-sans
-            noto-fonts-emoji
+            noto-fonts-color-emoji
             openmoji-black
             openmoji-color
         ];
@@ -291,12 +291,13 @@ in
             };
         };
         logind = {
-            extraConfig = ''
-                HandleLidSwitch=ignore
-            '';
-            lidSwitch = "ignore";
-            lidSwitchDocked = "ignore";
-            lidSwitchExternalPower = "ignore";
+            settings = {
+                Login = {
+                    HandleLidSwitch = "ignore";
+                    HandleLidSwitchDocked = "ignore";
+                    HandleLidSwitchExternalPower = "ignore";
+                };
+            };
         };
         pcscd = {
             enable = true;
@@ -349,9 +350,11 @@ in
     };
 
     systemd = {
-        extraConfig = ''
-            DefaultTimeoutStopSec=10s
-        '';
+        settings = {
+            Manager = {
+                DefaultTimeoutStopSec = "10s";
+            };
+        };
         # Settings to get polkit working
         user = {
             services = {

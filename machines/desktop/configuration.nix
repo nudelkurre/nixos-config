@@ -1,7 +1,7 @@
 { pkgs, config, sharedSettings, ... }:
 let
     greetdConfig = pkgs.writeText "greetd-sway-config" ''
-        exec "${pkgs.greetd.regreet}/bin/regreet; swaymsg exit"
+        exec "${pkgs.regreet}/bin/regreet; swaymsg exit"
         bindsym Mod4+shift+e exec swaynag \
         -t warning \
         -m 'What do you want to do?' \
@@ -188,7 +188,7 @@ in
             nerd-fonts.noto
             noto-fonts
             noto-fonts-cjk-sans
-            noto-fonts-emoji
+            noto-fonts-color-emoji
             openmoji-black
             openmoji-color
         ];
@@ -435,14 +435,18 @@ in
             };
         };
         logind = {
-            hibernateKey = "ignore";
-            hibernateKeyLongPress = "ignore";
-            powerKey = "ignore";
-            powerKeyLongPress = "ignore";
-            rebootKey = "ignore";
-            rebootKeyLongPress = "ignore";
-            suspendKey = "ignore";
-            suspendKeyLongPress = "ignore";
+            settings = {
+                Login = {
+                    HandleHibernateKey = "ignore";
+                    HandleHibernateKeyLongPress = "ignore";
+                    HandlePowerKey = "ignore";
+                    HandlePowerKeyLongPress = "ignore";
+                    HandleRebootKey = "ignore";
+                    HandleRebootKeyLongPress = "ignore";
+                    HandleSuspendKey = "ignore";
+                    HandleSuspendKeyLongPress = "ignore";
+                };
+            };
         };
         pcscd = {
             enable = true;
@@ -495,7 +499,6 @@ in
         udev = {
             enable = true;
             packages = [
-                pkgs.android-udev-rules
                 pkgs.headsetcontrol
             ];
         };
@@ -525,9 +528,11 @@ in
     };
 
     systemd = {
-        extraConfig = ''
-            DefaultTimeoutStopSec=10s
-        '';
+        settings = {
+            Manager = {
+                DefaultTimeoutStopSec = "10s";
+            };
+        };
         # Settings to get polkit working
         user = {
             services = {
