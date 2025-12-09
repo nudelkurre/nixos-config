@@ -46,6 +46,7 @@
                 wallpapers = wallpapers.packages.${prev.stdenv.hostPlatform.system};
             };
             versions = {
+                intel-vaapi-driver = "2.4.5";
                 yt-dlp = "2025.11.12";
             };
             version-overlay = final: prev: {
@@ -106,6 +107,21 @@
                 };
                 laptop = nixpkgs.lib.nixosSystem {
                     modules = [
+                        {
+                            nixpkgs.overlays = [
+                                (final: prev: {
+                                    intel-vaapi-driver = prev.intel-vaapi-driver.overrideAttrs (old: {
+                                        version = versions.intel-vaapi-driver;
+                                        src = prev.fetchFromGitHub {
+                                            owner = "irql-notlessorequal";
+                                            repo = "intel-vaapi-driver";
+                                            rev = versions.intel-vaapi-driver;
+                                            hash = "sha256-exQBA42jCmwybE7WIfF83cjmzBdtluDzUtOdqt49HSg=";
+                                        };
+                                    });
+                                })
+                            ];
+                        }
                         ./machines/laptop/configuration.nix
                         ./machines/laptop/hardware-configuration-laptop.nix
                     ];
