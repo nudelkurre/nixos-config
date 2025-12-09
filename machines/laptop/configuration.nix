@@ -1,16 +1,4 @@
 { pkgs, config, sharedSettings, ... }:
-let
-    greetdConfig = pkgs.writeText "greetd-sway-config" ''
-        exec "${pkgs.regreet}/bin/regreet; swaymsg exit"
-        bindsym Mod4+shift+e exec swaynag \
-        -t warning \
-        -m 'What do you want to do?' \
-        -b 'Poweroff' 'systemctl poweroff' \
-        -b 'Reboot' 'systemctl reboot'
-
-        output "LVDS-1" resolution 1366x768@60Hz
-    '';
-in
 {
 
     # Set bootloader config
@@ -225,6 +213,9 @@ in
         light = {
             enable = true;
         };
+        niri = {
+            enable = true;
+        };
         steam = {
             enable = true;
             gamescopeSession = {
@@ -236,6 +227,9 @@ in
                 ];
                 enable = true;
             };
+        };
+        sway = {
+            enable = true;
         };
         virt-manager = {
             enable = true;
@@ -289,7 +283,7 @@ in
             enable = true;
             settings = {
                 default_session = {
-                    command = "${pkgs.sway}/bin/sway --config ${greetdConfig}";
+                    command = "${pkgs.cage}/bin/cage -s -- ${pkgs.regreet}/bin/regreet";
                 };
             };
         };
