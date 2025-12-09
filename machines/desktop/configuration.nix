@@ -1,19 +1,4 @@
 { pkgs, config, sharedSettings, ... }:
-let
-    greetdConfig = pkgs.writeText "greetd-sway-config" ''
-        exec "${pkgs.regreet}/bin/regreet; swaymsg exit"
-        bindsym Mod4+shift+e exec swaynag \
-        -t warning \
-        -m 'What do you want to do?' \
-        -b 'Poweroff' 'systemctl poweroff' \
-        -b 'Reboot' 'systemctl reboot'
-
-        output "DP-1" resolution 2560x1440@144Hz
-
-        output "HDMI-A-1" disable
-    '';
-in
-
 {
     boot = {
         # Enable virtual cam with v4l2loopback
@@ -430,7 +415,7 @@ in
             enable = true;
             settings = {
                 default_session = {
-                    command = "${pkgs.sway}/bin/sway --config ${greetdConfig}";
+                    command = "${pkgs.cage}/bin/cage -s -- ${pkgs.regreet}/bin/regreet";
                 };
             };
         };
