@@ -54,7 +54,7 @@
         gtk3 = {
             bookmarks = [
                 "file:///home/emil/Downloads"
-                "file://home/emil/repos"
+                "file:///home/emil/repos"
             ];
             extraConfig = {
                 gtk-application-prefer-dark-theme = true;
