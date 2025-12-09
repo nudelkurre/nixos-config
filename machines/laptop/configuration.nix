@@ -272,6 +272,7 @@
         };
         sway = {
             enable = true;
+            extraPackages = [ ];
         };
         virt-manager = {
             enable = true;
