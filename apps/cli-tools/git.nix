@@ -6,7 +6,7 @@
             enable = true;
         };
         settings = {
-            aliases = {
+            alias = {
                 st = "status";
             };
             user = {
