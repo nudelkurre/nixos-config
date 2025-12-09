@@ -34,16 +34,16 @@
         let
             system = "x86_64-linux";
             overlay-unstable = final: prev: {
-                unstable = nixpkgs-unstable.legacyPackages.${system};
+                unstable = nixpkgs-unstable.legacyPackages.${prev.stdenv.hostPlatform.system};
             };
             firefox-addons-overlay = final: prev: {
-                firefox-addons = firefox-addons.packages.${system};
+                firefox-addons = firefox-addons.packages.${prev.stdenv.hostPlatform.system};
             };
             mypkgs-overlay = final: prev: {
-                mypkgs = self.packages.${system};
+                mypkgs = self.packages.${prev.stdenv.hostPlatform.system};
             };
             wallpapers-overlay = final: prev: {
-                wallpapers = wallpapers.packages.${system};
+                wallpapers = wallpapers.packages.${prev.stdenv.hostPlatform.system};
             };
             versions = {
                 yt-dlp = "2025.11.12";
@@ -95,7 +95,7 @@
                         {
                             nixpkgs.overlays = [
                                 (final: prev: {
-                                    unstable = nixpkgs-unstable.legacyPackages.${prev.system};
+                                    unstable = nixpkgs-unstable.legacyPackages.${prev.stdenv.hostPlatform.system};
                                 })
                             ];
                         }
