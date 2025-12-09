@@ -89,6 +89,9 @@ in
             xdg-utils
             zip
         ];
+        variables = {
+            GSK_RENDERER = "cairo";
+        };
     };
 
     fileSystems = {
