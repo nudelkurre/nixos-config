@@ -1,4 +1,9 @@
-{ pkgs, config, sharedSettings, ... }:
+{
+    pkgs,
+    config,
+    sharedSettings,
+    ...
+}:
 {
 
     # Set bootloader config
@@ -215,6 +220,43 @@
         };
         niri = {
             enable = true;
+        };
+        regreet = {
+            cursorTheme = {
+                name = "Bibata-Modern-Ice";
+                package = pkgs.bibata-cursors;
+            };
+            enable = true;
+            font = {
+                name = "MonaspiceRn Nerd Font Mono";
+                size = 12;
+            };
+            settings = {
+                commands = {
+                    reboot = [
+                        "systemctl"
+                        "reboot"
+                    ];
+                    poweroff = [
+                        "systemctl"
+                        "poweroff"
+                    ];
+                };
+                widget.clock = {
+                    format = "%A %Y-%m-%d %H:%M:%S";
+                    resolution = "500ms";
+                    timezone = sharedSettings.timeZone;
+                };
+            };
+            theme = {
+                name = "Colloid-Pink-Dark-Compact-Catppuccin";
+                package = pkgs.unstable.colloid-gtk-theme.override {
+                    themeVariants = [ "pink" ];
+                    colorVariants = [ "dark" ];
+                    sizeVariants = [ "compact" ];
+                    tweaks = [ "catppuccin" ];
+                };
+            };
         };
         steam = {
             enable = true;

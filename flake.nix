@@ -120,6 +120,9 @@
                                         };
                                     });
                                 })
+                                (final: prev: {
+                                    unstable = nixpkgs-unstable.legacyPackages.${prev.stdenv.hostPlatform.system};
+                                })
                             ];
                         }
                         ./machines/laptop/configuration.nix
