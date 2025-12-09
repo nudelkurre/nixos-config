@@ -36,6 +36,7 @@ in
         homeDirectory = "/home/${sharedSettings.userName}";
         packages = with pkgs; [
             bitwarden-desktop
+            chatterino2
             imv
             jq
             lm_sensors
