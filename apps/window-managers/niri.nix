@@ -417,8 +417,8 @@ in
         }
 
         window-rule {
-            match app-id="com.chatterino.chatterino"
-            exclude app-id="com.chatterino.chatterino" title=r#"^Chatterino \d+.\d+.\d+"#
+            match app-id=r#"com.chatterino.(chatterino)?"#
+            exclude app-id=r#"com.chatterino.(chatterino)?"# title=r#"^Chatterino \d+.\d+.\d+"#
             default-window-height { proportion 0.5; }
             open-floating true
         }
