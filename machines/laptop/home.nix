@@ -147,6 +147,16 @@
         }
     ];
 
+    keybindings-multi = [
+        # Toggle open rofi
+        {
+            mod = [ "Mod4" ];
+            key = "d";
+            program = "pkill rofi || rofi -show";
+            overlay-title = "Open rofi";
+        }
+    ];
+
     monitors = {
         outputs = [
             {
