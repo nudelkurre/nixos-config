@@ -11,13 +11,16 @@ let
             builtins.map (m: {
                 name = "bgchange-${m.name}";
                 value =
-                    if m.wallpaper == "mpvpaper" && m.orientation == "horizontal" then
+                    let
+                        orientation = if m.transform == 0 || m.transform == 180 then "horizontal" else "vertical";
+                    in
+                    if m.wallpaper == "mpvpaper" && orientation == "horizontal" then
                         {
                             Install = {
                                 WantedBy = [ target ];
                             };
                             Service = {
-                                ExecStart = "${pkgs.mpvpaper}/bin/mpvpaper ${m.name} ${pkgs.wallpapers.video-wallpapers}/share/wallpapers/${m.orientation} --slideshow 1200 --mpv-options 'shuffle panscan=1.0 really-quiet no-audio' --auto-pause";
+                                ExecStart = "${pkgs.mpvpaper}/bin/mpvpaper ${m.name} ${pkgs.wallpapers.video-wallpapers}/share/wallpapers/${orientation} --slideshow 1200 --mpv-options 'shuffle panscan=1.0 really-quiet no-audio' --auto-pause";
                                 Restart = "always";
                                 RestartSec = "5s";
                             };
@@ -31,7 +34,7 @@ let
                     else if m.wallpaper == "swww" then
                         {
                             Service = {
-                                ExecStart = pkgs.writeShellScript "bgchange-${m.name}" "${config.services.swww.package}/bin/swww img -o ${m.name} --resize=crop --transition-type=fade $(find ${pkgs.wallpapers.wallpapers}/share/wallpapers/${m.orientation} -type f | grep -P '(png|jpg|jpeg)' | shuf -n 1)";
+                                ExecStart = pkgs.writeShellScript "bgchange-${m.name}" "${config.services.swww.package}/bin/swww img -o ${m.name} --resize=crop --transition-type=fade $(find ${pkgs.wallpapers.wallpapers}/share/wallpapers/${orientation} -type f | grep -P '(png|jpg|jpeg)' | shuf -n 1)";
                                 Type = "oneshot";
                                 Restart = "on-failure";
                                 RestartSec = "5";

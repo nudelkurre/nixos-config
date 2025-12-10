@@ -2,10 +2,10 @@
     description = "A very basic flake";
 
     inputs = {
-        nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
+        nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
         nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
         home-manager = {
-            url = "github:nix-community/home-manager/release-25.05";
+            url = "github:nix-community/home-manager/release-25.11";
             inputs.nixpkgs.follows = "nixpkgs";
         };
         firefox-addons = {
@@ -34,19 +34,20 @@
         let
             system = "x86_64-linux";
             overlay-unstable = final: prev: {
-                unstable = nixpkgs-unstable.legacyPackages.${system};
+                unstable = nixpkgs-unstable.legacyPackages.${prev.stdenv.hostPlatform.system};
             };
             firefox-addons-overlay = final: prev: {
-                firefox-addons = firefox-addons.packages.${system};
+                firefox-addons = firefox-addons.packages.${prev.stdenv.hostPlatform.system};
             };
             mypkgs-overlay = final: prev: {
-                mypkgs = self.packages.${system};
+                mypkgs = self.packages.${prev.stdenv.hostPlatform.system};
             };
             wallpapers-overlay = final: prev: {
-                wallpapers = wallpapers.packages.${system};
+                wallpapers = wallpapers.packages.${prev.stdenv.hostPlatform.system};
             };
             versions = {
-                yt-dlp = "2025.11.12";
+                intel-vaapi-driver = "2.4.5";
+                yt-dlp = "2025.12.08";
             };
             version-overlay = final: prev: {
                 yt-dlp = prev.yt-dlp.overrideAttrs (old: {
@@ -55,7 +56,7 @@
                         owner = "yt-dlp";
                         repo = "yt-dlp";
                         rev = versions.yt-dlp;
-                        hash = "sha256-Em8FLcCizSfvucg+KPuJyhFZ5MJ8STTjSpqaTD5xeKI=";
+                        hash = "sha256-y06MDP+CrlHGrell9hcLOGlHp/gU2OOxs7can4hbj+g=";
                     };
                 });
             };
@@ -95,7 +96,7 @@
                         {
                             nixpkgs.overlays = [
                                 (final: prev: {
-                                    unstable = nixpkgs-unstable.legacyPackages.${prev.system};
+                                    unstable = nixpkgs-unstable.legacyPackages.${prev.stdenv.hostPlatform.system};
                                 })
                             ];
                         }
@@ -106,6 +107,24 @@
                 };
                 laptop = nixpkgs.lib.nixosSystem {
                     modules = [
+                        {
+                            nixpkgs.overlays = [
+                                (final: prev: {
+                                    intel-vaapi-driver = prev.intel-vaapi-driver.overrideAttrs (old: {
+                                        version = versions.intel-vaapi-driver;
+                                        src = prev.fetchFromGitHub {
+                                            owner = "irql-notlessorequal";
+                                            repo = "intel-vaapi-driver";
+                                            rev = versions.intel-vaapi-driver;
+                                            hash = "sha256-exQBA42jCmwybE7WIfF83cjmzBdtluDzUtOdqt49HSg=";
+                                        };
+                                    });
+                                })
+                                (final: prev: {
+                                    unstable = nixpkgs-unstable.legacyPackages.${prev.stdenv.hostPlatform.system};
+                                })
+                            ];
+                        }
                         ./machines/laptop/configuration.nix
                         ./machines/laptop/hardware-configuration-laptop.nix
                     ];

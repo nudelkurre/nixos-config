@@ -1,14 +1,18 @@
 { ... }:
 {
     programs.git = {
-        aliases = {
-            st = "status";
-        };
         enable = true;
         lfs = {
             enable = true;
         };
-        userEmail = "nudelkurre@protonmail.com";
-        userName = "Emil Wendin";
+        settings = {
+            alias = {
+                st = "status";
+            };
+            user = {
+                email = "nudelkurre@protonmail.com";
+                name = "Emil Wendin";
+            };
+        };
     };
 }

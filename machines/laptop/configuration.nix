@@ -1,16 +1,9 @@
-{ pkgs, config, sharedSettings, ... }:
-let
-    greetdConfig = pkgs.writeText "greetd-sway-config" ''
-        exec "${pkgs.greetd.regreet}/bin/regreet; swaymsg exit"
-        bindsym Mod4+shift+e exec swaynag \
-        -t warning \
-        -m 'What do you want to do?' \
-        -b 'Poweroff' 'systemctl poweroff' \
-        -b 'Reboot' 'systemctl reboot'
-
-        output "LVDS-1" resolution 1366x768@60Hz
-    '';
-in
+{
+    pkgs,
+    config,
+    sharedSettings,
+    ...
+}:
 {
 
     # Set bootloader config
@@ -89,6 +82,9 @@ in
             xdg-utils
             zip
         ];
+        variables = {
+            GSK_RENDERER = "cairo";
+        };
     };
 
     fileSystems = {
@@ -116,7 +112,7 @@ in
             nerd-fonts.noto
             noto-fonts
             noto-fonts-cjk-sans
-            noto-fonts-emoji
+            noto-fonts-color-emoji
             openmoji-black
             openmoji-color
         ];
@@ -222,6 +218,46 @@ in
         light = {
             enable = true;
         };
+        niri = {
+            enable = true;
+        };
+        regreet = {
+            cursorTheme = {
+                name = "Bibata-Modern-Ice";
+                package = pkgs.bibata-cursors;
+            };
+            enable = true;
+            font = {
+                name = "MonaspiceRn Nerd Font Mono";
+                size = 12;
+            };
+            settings = {
+                commands = {
+                    reboot = [
+                        "systemctl"
+                        "reboot"
+                    ];
+                    poweroff = [
+                        "systemctl"
+                        "poweroff"
+                    ];
+                };
+                widget.clock = {
+                    format = "%A %Y-%m-%d %H:%M:%S";
+                    resolution = "500ms";
+                    timezone = sharedSettings.timeZone;
+                };
+            };
+            theme = {
+                name = "Colloid-Pink-Dark-Compact-Catppuccin";
+                package = pkgs.unstable.colloid-gtk-theme.override {
+                    themeVariants = [ "pink" ];
+                    colorVariants = [ "dark" ];
+                    sizeVariants = [ "compact" ];
+                    tweaks = [ "catppuccin" ];
+                };
+            };
+        };
         steam = {
             enable = true;
             gamescopeSession = {
@@ -234,6 +270,10 @@ in
                 enable = true;
             };
         };
+        sway = {
+            enable = true;
+            extraPackages = [ ];
+        };
         virt-manager = {
             enable = true;
         };
@@ -243,11 +283,8 @@ in
         pam = {
             services = {
                 hyprlock = { };
-                login = {
-                    u2fAuth = true;
-                };
-                sudo = {
-                    u2fAuth = true;
+                greetd = {
+                    u2fAuth = false;
                 };
                 swaylock = { };
             };
@@ -286,17 +323,18 @@ in
             enable = true;
             settings = {
                 default_session = {
-                    command = "${pkgs.sway}/bin/sway --config ${greetdConfig}";
+                    command = "${pkgs.cage}/bin/cage -s -- ${pkgs.regreet}/bin/regreet";
                 };
             };
         };
         logind = {
-            extraConfig = ''
-                HandleLidSwitch=ignore
-            '';
-            lidSwitch = "ignore";
-            lidSwitchDocked = "ignore";
-            lidSwitchExternalPower = "ignore";
+            settings = {
+                Login = {
+                    HandleLidSwitch = "ignore";
+                    HandleLidSwitchDocked = "ignore";
+                    HandleLidSwitchExternalPower = "ignore";
+                };
+            };
         };
         pcscd = {
             enable = true;
@@ -349,9 +387,11 @@ in
     };
 
     systemd = {
-        extraConfig = ''
-            DefaultTimeoutStopSec=10s
-        '';
+        settings = {
+            Manager = {
+                DefaultTimeoutStopSec = "10s";
+            };
+        };
         # Settings to get polkit working
         user = {
             services = {

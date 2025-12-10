@@ -30,6 +30,7 @@ let
     replaceKeys = str: if builtins.hasAttr str keyCodes then keyCodes.${str} else str;
 
     cfg.keyboard = config.input.keyboard;
+    cfg.touchpad = config.input.touchpad;
 in
 {
     home = {
@@ -186,6 +187,7 @@ in
                 "numlock_by_default" = cfg.keyboard.numlock;
                 touchpad = {
                     "natural_scroll" = "no";
+                    "tap-to-click" = cfg.touchpad.tap;
                 };
                 "sensitivity" = "0";
             };

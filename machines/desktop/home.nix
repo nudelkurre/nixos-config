@@ -36,12 +36,12 @@ in
         homeDirectory = "/home/${sharedSettings.userName}";
         packages = with pkgs; [
             bitwarden-desktop
+            chatterino2
             imv
             jq
             lm_sensors
             mate.mate-polkit
             mypkgs.freetube
-            mypkgs.mangadex-downloader
             mypkgs.pkg2zip
             nemo-with-extensions
             pavucontrol
@@ -230,7 +230,6 @@ in
                 ];
                 x = 0;
                 y = 240;
-                orientation = "horizontal";
                 wallpaper = "mpvpaper";
             }
             {
@@ -250,7 +249,6 @@ in
                 ];
                 x = 2560;
                 y = 0;
-                orientation = "vertical";
                 wallpaper = "swww";
             }
         ];
@@ -260,7 +258,7 @@ in
     nix = {
         gc = {
             automatic = true;
-            frequency = "daily";
+            dates = "daily";
             options = "--delete-older-than 7d";
         };
     };
@@ -373,8 +371,10 @@ in
                                 }
                                 {
                                     "config" = {
+                                        "api" = "SMHI";
                                         "city" = "Västerås";
                                         "icon_size" = 20;
+                                        "show_big_icon" = true;
                                     };
                                     "module" = "weather";
                                 }

@@ -56,6 +56,12 @@ with lib;
                 };
             };
             touchpad = {
+                clickfinger = mkOption {
+                    type = types.bool;
+                    example = false;
+                    description = "Enable clickfinger mode for touchpads";
+                    default = true;
+                };
                 disable-on-mouse = mkOption {
                     type = types.bool;
                     example = true;
@@ -79,6 +85,12 @@ with lib;
                     example = "two-finger";
                     description = "Set scroll method";
                     default = "";
+                };
+                tap = mkOption {
+                    type = types.bool;
+                    example = false;
+                    description = "Enable tap-to-click";
+                    default = true;
                 };
             };
         };
@@ -203,15 +215,15 @@ with lib;
                                 example = 0;
                                 default = 0;
                             };
-                            orientation = mkOption {
-                                type = types.enum [
-                                    "horizontal"
-                                    "vertical"
-                                ];
-                                example = "vertical";
-                                default = "horizontal";
-                                description = "Specify orientation for use with background";
-                            };
+                            # orientation = mkOption {
+                            #     type = types.enum [
+                            #         "horizontal"
+                            #         "vertical"
+                            #     ];
+                            #     example = "vertical";
+                            #     default = "horizontal";
+                            #     description = "Specify orientation for use with background";
+                            # };
                             wallpaper = mkOption {
                                 type = types.enum [
                                     "mpvpaper"

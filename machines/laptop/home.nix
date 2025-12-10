@@ -1,4 +1,4 @@
-{ pkgs, sharedSettings, ... }:
+{ pkgs, sharedSettings, config, ... }:
 
 {
     fonts = {
@@ -12,8 +12,10 @@
             };
         };
         name = "MonaspiceRn Nerd Font Mono";
-        size = 13;
+        size = 12;
     };
+
+    gaps = 4;
 
     # Home Manager is pretty good at managing dotfiles. The primary way to manage
     # plain files is through 'home.file'.
@@ -147,6 +149,16 @@
         }
     ];
 
+    keybindings-multi = [
+        # Toggle open rofi
+        {
+            mod = [ "Mod4" ];
+            key = "d";
+            program = "pkill rofi || rofi -show";
+            overlay-title = "Open rofi";
+        }
+    ];
+
     monitors = {
         outputs = [
             {
@@ -171,7 +183,6 @@
                 ];
                 x = 0;
                 y = 0;
-                orientation = "horizontal";
                 wallpaper = "swww";
             }
             {
@@ -290,8 +301,12 @@
                         };
                     }
                 ];
-                "icon_size" = 20;
-                "spacing" = 5;
+                "corner_radius" = 15;
+                "gaps" = config.gaps;
+                "height" = 20;
+                "layer" = "top";
+                "icon_size" = 16;
+                "spacing" = 4;
             };
         };
         udiskie = {
