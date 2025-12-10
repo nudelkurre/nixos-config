@@ -73,7 +73,8 @@ let
     outputs = lib.strings.concatStringsSep "\n" (map
     (m:
         let
-            resolution = "${toString m.width}x${toString m.height}@${toString m.refreshRate}";
+            refreshRate = {"60" = "60"; "120" = "119.881"; "144" = "143.856";};
+            resolution = "${toString m.width}x${toString m.height}@${refreshRate.${toString m.refreshRate}}";
             transform = {"0" = "normal"; "90"= "270"; "180" = "180"; "270" = "90";};
             vrr = {"off" = "false"; "on" = "true";};
             backdrop-color = if m.wallpaper == "none" then "backdrop-color \"#000000\"" else "";
