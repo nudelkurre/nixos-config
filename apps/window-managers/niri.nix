@@ -186,6 +186,8 @@ in
                                 ${(if cfg.touchpad.natural-scroll then "natural-scroll" else "")}
                                 ${(if cfg.touchpad.scroll-method != "" then "scroll-method \"${cfg.touchpad.scroll-method}\"" else "")}
                                 ${(if cfg.touchpad.disable-on-mouse then "disabled-on-external-mouse" else "")}
+                                ${(if cfg.touchpad.clickfinger then "click-method \"clickfinger\"" else "click-method \"button-areas\"")}
+                                ${(if cfg.touchpad.tap then "tap" else "")}
                                 }
                         ''
                     else

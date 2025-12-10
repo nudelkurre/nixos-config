@@ -186,6 +186,7 @@ in
                 "numlock_by_default" = cfg.keyboard.numlock;
                 touchpad = {
                     "natural_scroll" = "no";
+                    "tap-to-click" = cfg.touchpad.click;
                 };
                 "sensitivity" = "0";
             };
