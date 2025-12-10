@@ -39,7 +39,7 @@ in
         ];
     };
     wayland.windowManager.hyprland = {
-        enable = true;
+        enable = false;
         package = pkgs.hyprland;
         plugins = [
             pkgs.hyprlandPlugins.hy3

@@ -301,7 +301,7 @@
             };
         };
         hyprland = {
-            enable = true;
+            enable = false;
         };
         niri = {
             enable = true;
