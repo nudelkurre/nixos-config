@@ -90,7 +90,7 @@ with lib;
                     type = types.bool;
                     example = false;
                     description = "Enable tap-to-click";
-                    default = "true";
+                    default = true;
                 };
             };
         };
