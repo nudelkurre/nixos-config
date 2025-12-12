@@ -202,6 +202,14 @@
         primary = "LVDS-1";
     };
 
+    nix = {
+        gc = {
+            automatic = true;
+            dates = "daily";
+            options = "--delete-older-than 7d";
+        };
+    };
+
     # Allow to install unfree packages
     nixpkgs = {
         config = {
