@@ -147,6 +147,10 @@
                     "Value" = false;
                     "Status" = "locked";
                 };
+                "browser.ml.linkPreview.enabled" = {
+                    "Value" = false;
+                    "Status" = "locked";
+                };
                 "extensions.ml.enabled" = {
                     "Value" = false;
                     "Status" = "locked";
