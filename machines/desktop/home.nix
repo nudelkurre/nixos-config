@@ -14,6 +14,10 @@ let
     secondary-monitor = "HDMI-A-1";
 in
 {
+    desktop = {
+        corner-radius = 15;
+        gaps = 5;
+    };
     fonts = {
         fontconfig = {
             defaultFonts = {
@@ -27,8 +31,6 @@ in
         name = "MonaspiceRn Nerd Font Mono";
         size = 16;
     };
-
-    gaps = 5;
 
     # Home Manager is pretty good at managing dotfiles. The primary way to manage
     # plain files is through 'home.file'.
@@ -389,12 +391,12 @@ in
                         };
                     }
                 ];
-                "corner_radius" = 15;
-                "gaps" = config.gaps;
+                "corner_radius" = config.desktop.corner-radius;
+                "gaps" = config.desktop.gaps;
                 "height" = 25;
                 "layer" = "top";
                 "icon_size" = 20;
-                "spacing" = 5;
+                "spacing" = config.desktop.gaps;
             };
         };
     };

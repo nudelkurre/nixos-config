@@ -1,6 +1,10 @@
 { pkgs, sharedSettings, config, ... }:
 
 {
+    desktop = {
+        corner-radius = 15;
+        gaps = 4;
+    };
     fonts = {
         fontconfig = {
             enable = true;
@@ -14,8 +18,6 @@
         name = "MonaspiceRn Nerd Font Mono";
         size = 12;
     };
-
-    gaps = 4;
 
     # Home Manager is pretty good at managing dotfiles. The primary way to manage
     # plain files is through 'home.file'.
@@ -309,12 +311,12 @@
                         };
                     }
                 ];
-                "corner_radius" = 15;
-                "gaps" = config.gaps;
+                "corner_radius" = config.desktop.corner-radius;
+                "gaps" = config.desktop.gaps;
                 "height" = 20;
                 "layer" = "top";
                 "icon_size" = 16;
-                "spacing" = 4;
+                "spacing" = config.desktop.gaps;
             };
         };
         udiskie = {

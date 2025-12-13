@@ -225,7 +225,7 @@ in
         ${outputs}
 
         layout {
-            gaps ${toString config.gaps}
+            gaps ${toString config.desktop.gaps}
 
             background-color "transparent"
 
@@ -408,7 +408,7 @@ in
         }
 
         window-rule {
-            geometry-corner-radius 15
+            geometry-corner-radius ${toString config.desktop.corner-radius}
             clip-to-geometry true
         }
 

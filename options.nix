@@ -2,6 +2,20 @@
 with lib;
 {
     options = {
+        desktop = {
+            corner-radius = mkOption {
+                type = types.int;
+                example = 10;
+                default = 0;
+                description = "Set radius to use for window corners";
+            };
+            gaps = mkOption {
+                type = types.int;
+                example = 2;
+                default = 0;
+                description = "Set size of gaps to use";
+            };
+        };
         fonts = {
             name = mkOption {
                 type = types.str;
@@ -13,12 +27,6 @@ with lib;
                 example = 16;
                 default = 16;
             };
-        };
-        gaps = mkOption {
-            type = types.int;
-            example = 2;
-            default = 0;
-            description = "Set size of gaps to use";
         };
         input = {
             keyboard = {

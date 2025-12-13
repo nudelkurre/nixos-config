@@ -49,7 +49,7 @@ in
                 background-color = mkLiteral "rgba(128, 128, 128, 0.85)";
                 border = mkLiteral "2px";
                 border-color = mkLiteral "${config.rofi.border-color}";
-                border-radius = mkLiteral "20px";
+                border-radius = mkLiteral "${toString config.desktop.corner-radius}px";
             };
             "entry" = {
                 placeholder = "Program";
@@ -58,7 +58,7 @@ in
             };
             "inputbar" = {
                 background-color = mkLiteral "rgba(128, 128, 128, 0.85)";
-                border-radius = mkLiteral "15px";
+                border-radius = mkLiteral "${toString config.desktop.corner-radius}px";
                 children = mkLiteral "[entry]";
                 margin = mkLiteral "10px";
                 padding = mkLiteral "10px 4px 10px 10px";
@@ -76,8 +76,8 @@ in
                 background-color = mkLiteral "rgba(51, 51, 51, 0.8)";
                 border = mkLiteral "2px";
                 border-color = mkLiteral "${config.rofi.border-color}";
-                border-radius = mkLiteral "15px";
-                margin = mkLiteral "50px";
+                border-radius = mkLiteral "${toString config.desktop.corner-radius}px";
+                margin = mkLiteral "${toString (config.desktop.gaps * 4)}px";
                 width = mkLiteral "100%";
                 height = mkLiteral "100%";
             };

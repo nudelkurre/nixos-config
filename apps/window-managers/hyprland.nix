@@ -168,7 +168,7 @@ in
                 "col.active_border" = "rgba(33ccffee) rgba(ff00ddee) 45deg";
                 "col.inactive_border" = "rgba(595959aa)";
                 "gaps_in" = "2";
-                "gaps_out" = "${toString config.gaps}";
+                "gaps_out" = "${toString config.desktop.gaps}";
                 "layout" = "hy3";
                 "no_border_on_floating" = false;
             };

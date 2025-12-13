@@ -105,7 +105,7 @@ in
             };
             fonts = { };
             gaps = {
-                inner = config.gaps;
+                inner = config.desktop.gaps;
                 smartBorders = "on";
             };
             input = {
