@@ -76,6 +76,7 @@
             nano
             p7zip
             pulseaudio
+            sops
             unrar
             unzip
             usbutils
@@ -171,9 +172,34 @@
             enable = false;
         };
         usePredictableInterfaceNames = false;
+        wg-quick = {
+            interfaces = {
+                wg0 = {
+                    address = [ "10.13.13.2" ];
+                    dns = [ "10.10.0.12" ];
+                    privateKeyFile = config.sops.secrets."wg-quick/laptop/private_key".path;
+                    peers = [
+                        {
+                            publicKey = "5ow/nE7fdaFcOdjnTsFMeOi8CBiTxoShcuEc9OFO+Tk=";
+                            presharedKeyFile = config.sops.secrets."wg-quick/laptop/preshared_key".path;
+                            allowedIPs = [ "0.0.0.0/0" ];
+                            endpoint = "vpn.nudelkurre.com:51820";
+                        }
+                    ];
+                };
+            };
+        };
         wireless = {
             enable = true;
-            networks = { };
+            networks = {
+                "___" = {
+                    pskRaw = "ext:home";
+                };
+                "Wendin_5.0" = {
+                    pskRaw = "ext:Wendin_5.0";
+                };
+            };
+            secretsFile = config.sops.secrets."wifi".path;
         };
     };
 
@@ -373,6 +399,22 @@
         };
         upower = {
             enable = true;
+        };
+    };
+
+    sops = {
+        age = {
+            generateKey = true;
+            keyFile = "/home/${sharedSettings.userName}/.config/sops/age/keys.txt";
+            sshKeyPaths = [ "/home/${sharedSettings.userName}/.ssh/id_ed25519" ];
+        };
+        defaultSopsFile = ../../secrets/secrets.yaml;
+        defaultSopsFormat = "yaml";
+
+        secrets = {
+            "wg-quick/laptop/private_key" = { };
+            "wg-quick/laptop/preshared_key" = { };
+            "wifi" = { };
         };
     };
 
