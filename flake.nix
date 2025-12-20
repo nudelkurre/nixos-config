@@ -18,6 +18,10 @@
         wallpapers = {
             url = "git+https://git.nudelkurre.com/nudelkurre/Wallpapers.git";
         };
+        sops-nix = {
+            url = "github:Mic92/sops-nix";
+            inputs.nixpkgs.follows = "nixpkgs";
+        };
     };
 
     outputs =
@@ -29,6 +33,7 @@
             firefox-addons,
             ngb,
             wallpapers,
+            sops-nix,
             ...
         }:
         let
@@ -102,6 +107,7 @@
                         }
                         ./machines/desktop/configuration.nix
                         ./machines/desktop/hardware-configuration-desktop.nix
+                        sops-nix.nixosModules.sops
                     ];
                     specialArgs = { inherit sharedSettings; };
                 };
@@ -127,6 +133,7 @@
                         }
                         ./machines/laptop/configuration.nix
                         ./machines/laptop/hardware-configuration-laptop.nix
+                        sops-nix.nixosModules.sops
                     ];
                     specialArgs = { inherit sharedSettings; };
                 };
@@ -146,6 +153,7 @@
                         ./machines/desktop/home.nix
                         ./options.nix
                         ngb.outputs.homeManagerModules.ngb
+                        sops-nix.homeManagerModules.sops
                     ];
                     extraSpecialArgs = { inherit sharedSettings; };
                 };
@@ -156,6 +164,7 @@
                         ./machines/laptop/home.nix
                         ./options.nix
                         ngb.outputs.homeManagerModules.ngb
+                        sops-nix.homeManagerModules.sops
                     ];
                     extraSpecialArgs = { inherit sharedSettings; };
                 };

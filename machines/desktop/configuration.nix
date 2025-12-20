@@ -1,4 +1,9 @@
-{ pkgs, config, sharedSettings, ... }:
+{
+    pkgs,
+    config,
+    sharedSettings,
+    ...
+}:
 {
     boot = {
         # Enable virtual cam with v4l2loopback
@@ -78,6 +83,7 @@
             nano
             p7zip
             pulseaudio
+            sops
             unrar
             unzip
             usbutils
@@ -250,6 +256,27 @@
                 interface = "eth0";
             };
         };
+        # wg-quick = {
+        #     interfaces = {
+        #         wg0 = {
+        #             address = [ "10.13.13.4" ];
+        #             dns = [ "10.10.0.12" ];
+        #             privateKeyFile = config.sops.secrets."wg-quick/desktop/private_key".path;
+        #             peers = [
+        #                 {
+        #                     publicKey = "5ow/nE7fdaFcOdjnTsFMeOi8CBiTxoShcuEc9OFO+Tk=";
+        #                     presharedKeyFile = config.sops.secrets."wg-quick/desktop/preshared_key".path;
+        #                     allowedIPs = [ "0.0.0.0/0" ];
+        #                     endpoint = "vpn.nudelkurre.com:51820";
+        #                 }
+        #             ];
+        #         };
+        #     };
+        # };
+        # wireless = {
+        #     enable = true;
+        #     networks = { };
+        # };
     };
 
     # Set expreimental flags to use flakes
@@ -318,8 +345,14 @@
             };
             settings = {
                 commands = {
-                    reboot = ["systemctl" "reboot"];
-                    poweroff = ["systemctl" "poweroff"];
+                    reboot = [
+                        "systemctl"
+                        "reboot"
+                    ];
+                    poweroff = [
+                        "systemctl"
+                        "poweroff"
+                    ];
                 };
                 widget.clock = {
                     format = "%A %Y-%m-%d %H:%M:%S";
@@ -499,6 +532,21 @@
             };
             enable = false;
             videoDrivers = [ "amdgpu" ];
+        };
+    };
+
+    sops = {
+        age = {
+            generateKey = true;
+            keyFile = "/home/${sharedSettings.userName}/.config/sops/age/keys.txt";
+            sshKeyPaths = [ "/home/${sharedSettings.userName}/.ssh/id_ed25519"];
+        };
+        defaultSopsFile = ../../secrets/secrets.yaml;
+        defaultSopsFormat = "yaml";
+
+        secrets = {
+            "wg-quick/desktop/private_key" = {};
+            "wg-quick/desktop/preshared_key" = {};
         };
     };
 

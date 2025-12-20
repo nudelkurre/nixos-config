@@ -35,6 +35,20 @@ in
     # Home Manager is pretty good at managing dotfiles. The primary way to manage
     # plain files is through 'home.file'.
     home = {
+        file = {
+            pokemon-dl = {
+                source = pkgs.writeShellScript "pokemon-dl" ''
+                    ${pkgs.yt-dlp}/bin/yt-dlp --output "%(playlist_index)s_%(title)s.%(ext)s" --restrict-filenames --format "bv[height<=720][vcodec~='^((he|a)vc|h26[45])']+mergeall[language~='(en|sv)'][acodec='opus'][abr>=100][format_id!$=-drc]" --audio-multistreams --embed-chapters --embed-metadata --extractor-args "youtube:player-client=default,-tv_simply" $1
+                '';
+                target = "${config.home.homeDirectory}/.local/bin/pokemon-dl";
+            };
+            scale-video = {
+                source = pkgs.writeShellScript "scale-video" ''
+                    ${pkgs.ffmpeg}/bin/ffmpeg -i $1 -an -b:v 4M -vf "scale=1920:1080,setsar=1:1" $(echo $1 | cut -d "." -f1)_1080.mp4
+                '';
+                target = "${config.home.homeDirectory}/.local/bin/scale-video";
+            };
+        };
         homeDirectory = "/home/${sharedSettings.userName}";
         packages = with pkgs; [
             bitwarden-desktop
@@ -398,6 +412,16 @@ in
                 "icon_size" = 20;
                 "spacing" = config.desktop.gaps;
             };
+        };
+    };
+
+    sops = {
+        age = {
+            sshKeyPaths = [ "${config.home.homeDirectory}/.ssh/id_ed25519" ];
+        };
+        defaultSopsFile = ../../secrets/secrets.yaml;
+        secrets = {
+            
         };
     };
 
