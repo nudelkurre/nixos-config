@@ -172,6 +172,23 @@
             enable = false;
         };
         usePredictableInterfaceNames = false;
+        wg-quick = {
+            interfaces = {
+                wg0 = {
+                    address = [ "10.13.13.2" ];
+                    dns = [ "10.10.0.12" ];
+                    privateKeyFile = config.sops.secrets."wg-quick/laptop/private_key".path;
+                    peers = [
+                        {
+                            publicKey = "5ow/nE7fdaFcOdjnTsFMeOi8CBiTxoShcuEc9OFO+Tk=";
+                            presharedKeyFile = config.sops.secrets."wg-quick/laptop/preshared_key".path;
+                            allowedIPs = [ "0.0.0.0/0" ];
+                            endpoint = "vpn.nudelkurre.com:51820";
+                        }
+                    ];
+                };
+            };
+        };
         wireless = {
             enable = true;
             networks = {
