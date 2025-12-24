@@ -249,7 +249,8 @@
                             "center" = [
                                 {
                                     "config" = {
-                                        "city" = "Västerås";
+                                        "api" = "SMHI";
+                                        "show_big_icon" = true;
                                     };
                                     "module" = "weather";
                                 }
@@ -257,7 +258,7 @@
                             "left" = [
                                 {
                                     "config" = {
-                                        "monitor" = "all";
+                                        "monitor" = "LVDS-1";
                                         "names" = {
                                             "1" = "";
                                             "2" = "";
