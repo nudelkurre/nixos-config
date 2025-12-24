@@ -97,6 +97,16 @@
             fsType = "vfat";
             options = [ "umask=0077" ];
         };
+        "/home/emil/Media" = {
+            device = "${sharedSettings.serverIP}:/nfs/Media";
+            fsType = "nfs4";
+            options = [
+                "rw"
+                "x-systemd.automount"
+                "x-systemd.idle-timeout=120"
+                "noauto"
+            ];
+        };
     };
 
     # Set fonts to install
