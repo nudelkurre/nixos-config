@@ -69,7 +69,6 @@
             dnsutils
             file
             git
-            htop
             intel-gpu-tools
             libnotify
             libva-utils
