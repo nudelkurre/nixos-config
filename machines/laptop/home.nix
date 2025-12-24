@@ -199,6 +199,7 @@
                 workspaces = [ "10" ];
                 x = 1366;
                 y = 0;
+                wallpaper = "swww";
             }
         ];
         primary = "LVDS-1";
