@@ -134,8 +134,8 @@
                 "Shift"
             ];
             key = "f";
-            program = "firefox";
-            overlay-title = "Launch firefox";
+            program = "librewolf";
+            overlay-title = "Launch librewolf";
         }
 
         # Start firefox in private window
@@ -146,8 +146,8 @@
                 "Shift"
             ];
             key = "f";
-            program = "firefox --private-window";
-            overlay-title = "Launch firefox private window";
+            program = "librewolf --private-window";
+            overlay-title = "Launch librewolf private window";
         }
     ];
 
@@ -360,6 +360,10 @@
                 }
                 {
                     name = "firefox";
+                    focus = true;
+                }
+                {
+                    name = "librewolf";
                     focus = true;
                 }
             ];
