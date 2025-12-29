@@ -8,5 +8,6 @@
         ./git.nix
         ./nano.nix
         ./ssh.nix
+        ./zsh.nix
     ];
 }
