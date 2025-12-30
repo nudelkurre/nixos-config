@@ -82,6 +82,9 @@
             xdg-utils
             zip
         ];
+        pathsToLink = [
+            "/share/zsh"
+        ];
         variables = {
             GSK_RENDERER = "cairo";
         };
@@ -312,6 +315,9 @@
         virt-manager = {
             enable = true;
         };
+        zsh = {
+            enable = true;
+        };
     };
 
     security = {
@@ -486,6 +492,7 @@
                 ]; # Enable ‘sudo’ for the user.
                 group = sharedSettings.userName;
                 isNormalUser = true;
+                shell = pkgs.zsh;
             };
         };
     };

@@ -391,6 +391,9 @@
         virt-manager = {
             enable = true;
         };
+        zsh = {
+            enable = true;
+        };
     };
 
     # Settings used for polkit
@@ -611,6 +614,7 @@
                 ]; # Enable ‘sudo’ for the user.
                 group = "${sharedSettings.userName}";
                 isNormalUser = true;
+                shell = pkgs.zsh;
             };
         };
     };
