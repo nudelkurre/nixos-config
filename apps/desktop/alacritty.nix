@@ -60,4 +60,14 @@
             };
         };
     };
+    xdg = {
+        desktopEntries = {
+            Alacritty = {
+                exec = "${config.programs.alacritty.package}/bin/alacritty";
+                icon = "alacritty";
+                name = "alacritty";
+                noDisplay = true;
+            };
+        };
+    };
 }

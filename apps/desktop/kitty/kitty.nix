@@ -40,5 +40,13 @@
                 source = ./Espeon_Umbreon.png;
             };
         };
+        desktopEntries = {
+            kitty = {
+                exec = "${config.programs.kitty.package}/bin/kitty";
+                icon = "kitty";
+                name = "kitty";
+                noDisplay = true;
+            };
+        };
     };
 }

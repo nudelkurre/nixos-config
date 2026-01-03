@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 {
     programs.mpv = {
         bindings = {
@@ -86,5 +86,15 @@
             mpris
             sponsorblock-minimal
         ];
+    };
+    xdg = {
+        desktopEntries = {
+            mpv = {
+                exec = "${config.programs.mpv.package}/bin/mpv";
+                icon = "mpv";
+                name = "mpv";
+                noDisplay = true;
+            };
+        };
     };
 }

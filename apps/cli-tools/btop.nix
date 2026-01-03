@@ -1,4 +1,4 @@
-{ ... }:
+{ config, ... }:
 {
     programs.btop = {
         enable = true;
@@ -92,6 +92,16 @@
                 theme[process_mid]="#babbf1"
                 theme[process_end]="#ca9ee6"
             '';
+        };
+    };
+    xdg = {
+        desktopEntries = {
+            btop = {
+                exec = "${config.programs.btop.package}/bin/btop";
+                icon = "btop";
+                name = "btop";
+                noDisplay = true;
+            };
         };
     };
 }
