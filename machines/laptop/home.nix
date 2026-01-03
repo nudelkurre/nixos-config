@@ -308,6 +308,10 @@
                                     "module" = "volume";
                                 }
                                 {
+                                    "config" = { };
+                                    "module" = "battery";
+                                }
+                                {
                                     "config" = {
                                         "timeformat_normal" = "%H:%M:%S";
                                         "timeformat_revealer" = "%A %Y-%m-%d";
