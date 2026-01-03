@@ -344,10 +344,10 @@
         };
         defaultSopsFile = ../../secrets/secrets.yaml;
         secrets = {
-            
+
         };
     };
-    
+
     workspaces = [
         {
             name = "1";
@@ -390,7 +390,16 @@
         }
         {
             name = "4";
-            programs = [ ];
+            programs = [
+                {
+                    name = ".virt-manager-wrapped";
+                    focus = true;
+                }
+                {
+                    name = "remote-viewer";
+                    focus = true;
+                }
+            ];
         }
         {
             name = "5";
@@ -411,6 +420,7 @@
                 { name = "com.chatterino.chatterino"; }
                 { name = "discord"; }
                 { name = "Keybase"; }
+                { name = "vesktop"; }
             ];
         }
         {
