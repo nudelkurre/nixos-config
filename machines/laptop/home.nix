@@ -1,5 +1,9 @@
-{ pkgs, sharedSettings, config, ... }:
-
+{
+    pkgs,
+    sharedSettings,
+    config,
+    ...
+}:
 {
     desktop = {
         corner-radius = 15;
@@ -34,6 +38,7 @@
             mypkgs.freetube
             nemo-with-extensions
             pavucontrol
+            python3
             wireguard-tools
             wl-clipboard
         ];
