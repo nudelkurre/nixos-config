@@ -38,7 +38,7 @@ in
         file = {
             pokemon-dl = {
                 source = pkgs.writeShellScript "pokemon-dl" ''
-                    ${pkgs.yt-dlp}/bin/yt-dlp --output "%(playlist_index)s_%(title)s.%(ext)s" --restrict-filenames --format "bv[height<=720][vcodec~='^((he|a)vc|h26[45])']+mergeall[language~='(en|sv)'][acodec='opus'][abr>=100][format_id!$=-drc]" --audio-multistreams --embed-chapters --embed-metadata --extractor-args "youtube:player-client=default,-tv_simply" $1
+                    ${pkgs.yt-dlp}/bin/yt-dlp --output "%(playlist_index)s_%(title)s.%(ext)s" --restrict-filenames --format "bv[height<=720][vcodec~='^((he|a)vc|h26[45])']+mergeall[language~='(en|sv)'][acodec='opus'][abr>=100][format_id!$=-drc]" --audio-multistreams --embed-chapters --embed-metadata --extractor-args "youtube:player-client=default,-tv_simply" $@
                 '';
                 target = "${config.home.homeDirectory}/.local/bin/pokemon-dl";
             };
