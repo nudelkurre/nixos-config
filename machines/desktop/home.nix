@@ -65,6 +65,7 @@ in
             seahorse
             socat
             texliveMedium
+            vesktop
             wl-clipboard
             yt-dlp
         ];
