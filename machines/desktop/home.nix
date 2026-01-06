@@ -5,10 +5,12 @@
     ...
 }:
 let
-    browser = "firefox.desktop";
-    image_viewer = "imv-dir.desktop";
-    media_player = "mpv.desktop";
-    text_editor = "codium.desktop";
+    # Set default programs to be used by mimetypes and keybindings
+    browser = "firefox";
+    image_viewer = "imv-dir";
+    media_player = "mpv";
+    text_editor = "codium";
+    file_browser = "nemo";
 
     main-monitor = "DP-1";
     secondary-monitor = "HDMI-A-1";
@@ -101,15 +103,15 @@ in
         # Controlling media
         {
             key = "XF86AudioPlay";
-            program = "${pkgs.playerctl}/bin/playerctl -i firefox play-pause";
+            program = "${pkgs.playerctl}/bin/playerctl -i ${browser} play-pause";
         }
         {
             key = "XF86AudioNext";
-            program = "${pkgs.playerctl}/bin/playerctl -i firefox next";
+            program = "${pkgs.playerctl}/bin/playerctl -i ${browser} next";
         }
         {
             key = "XF86AudioPrev";
-            program = "${pkgs.playerctl}/bin/playerctl -i firefox previous";
+            program = "${pkgs.playerctl}/bin/playerctl -i ${browser} previous";
         }
 
         # Change volume
@@ -157,23 +159,23 @@ in
             overlay-title = "Open terminal window";
         }
 
-        # Start firefox
+        # Start browser
         {
             mod = [
                 "Mod4"
                 "Shift"
             ];
             key = "f";
-            program = "firefox";
-            overlay-title = "Launch firefox";
+            program = "${browser}";
+            overlay-title = "Launch ${browser}";
         }
         {
             key = "XF86HomePage";
-            program = "firefox";
-            overlay-title = "Launch firefox";
+            program = "${browser}";
+            overlay-title = "Launch ${browser}";
         }
 
-        # Start firefox in private window
+        # Start browser in private window
         {
             mod = [
                 "Mod4"
@@ -181,8 +183,8 @@ in
                 "Shift"
             ];
             key = "f";
-            program = "firefox --private-window";
-            overlay-title = "Launch firefox private window";
+            program = "${browser} --private-window";
+            overlay-title = "Launch ${browser} private window";
         }
 
         # Start jellyfin media player
@@ -205,7 +207,7 @@ in
         {
             mod = [ "Mod4" ];
             key = "kp_2";
-            program = "nemo";
+            program = "${file_browser}";
             overlay-title = "Launch file browser";
         }
 
@@ -448,7 +450,7 @@ in
                     focus = true;
                 }
                 {
-                    name = "firefox";
+                    name = "${browser}";
                     focus = true;
                 }
                 {
@@ -575,21 +577,21 @@ in
         mimeApps = {
             enable = true;
             defaultApplications = {
-                "application/pdf" = browser;
-                "audio/flac" = media_player;
-                "audio/mpeg" = media_player;
-                "audio/x-m4b" = media_player;
-                "audio/x-vorbis+ogg" = media_player;
-                "image/jpeg" = image_viewer;
-                "image/png" = image_viewer;
-                "inode/directory" = "nemo.desktop";
-                "text/html" = text_editor;
-                "text/x-python" = text_editor;
-                "video/mp4" = media_player;
-                "video/x-matroska" = media_player;
-                "x-scheme-handler/http" = browser;
-                "x-scheme-handler/https" = browser;
-                "x-scheme-handler/chrome" = browser;
+                "application/pdf" = "${browser}.desktop";
+                "audio/flac" = "${media_player}.desktop";
+                "audio/mpeg" = "${media_player}.desktop";
+                "audio/x-m4b" = "${media_player}.desktop";
+                "audio/x-vorbis+ogg" = "${media_player}.desktop";
+                "image/jpeg" = "${image_viewer}.desktop";
+                "image/png" = "${image_viewer}.desktop";
+                "inode/directory" = "${file_browser}.desktop";
+                "text/html" = "${text_editor}.desktop";
+                "text/x-python" = "${text_editor}.desktop";
+                "video/mp4" = "${media_player}.desktop";
+                "video/x-matroska" = "${media_player}.desktop";
+                "x-scheme-handler/http" = "${browser}.desktop";
+                "x-scheme-handler/https" = "${browser}.desktop";
+                "x-scheme-handler/chrome" = "${browser}.desktop";
             };
         };
         # Enable xdg-desktop-portal
