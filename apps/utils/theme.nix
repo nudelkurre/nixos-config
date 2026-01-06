@@ -23,8 +23,6 @@ in
     gtk = {
         enable = true;
         cursorTheme = {
-            # name = "Bibata-Modern-Ice";
-            # package = pkgs.bibata-cursors;
             name = "catppuccin-${lib.strings.toLower variant}-${lib.strings.toLower color}-cursors";
             package = pkgs.catppuccin-cursors."${lib.strings.toLower variant + color}";
             size = 32;
