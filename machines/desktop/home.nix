@@ -523,12 +523,6 @@ in
 
     xdg = {
         desktopEntries = {
-            # Alacritty = {
-            #     exec = "${config.programs.alacritty.package}/bin/alacritty";
-            #     icon = "alacritty";
-            #     name = "alacritty";
-            #     noDisplay = true;
-            # };
             "amdgpu_top" = {
                 name = "AMDGPU TOP";
                 noDisplay = true;
@@ -537,24 +531,6 @@ in
                 name = "AMDGPU TOP";
                 noDisplay = true;
             };
-            # btop = {
-            #     exec = "${config.programs.btop.package}/bin/btop";
-            #     icon = "btop";
-            #     name = "btop";
-            #     noDisplay = true;
-            # };
-            # kitty = {
-            #     exec = "${config.programs.kitty.package}/bin/kitty";
-            #     icon = "kitty";
-            #     name = "kitty";
-            #     noDisplay = true;
-            # };
-            # mpv = {
-            #     exec = "${config.programs.mpv.package}/bin/mpv";
-            #     icon = "mpv";
-            #     name = "mpv";
-            #     noDisplay = true;
-            # };
             steam = {
                 name = "Steam";
                 comment = "Application for managing and playing games on Steam";
