@@ -122,6 +122,7 @@
                 80   # http
                 443  # https
                 2049 # NFSv4
+                2222 # SSH Gitea local network
                 5900 # Spice virt-manager
                 5901 # VNC virt-manager
             ];
