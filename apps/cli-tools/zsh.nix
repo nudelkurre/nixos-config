@@ -1,4 +1,4 @@
-{pkgs, ...}:
+{pkgs, lib, ...}:
 {
     programs.zsh = {
         autosuggestion = {
@@ -17,6 +17,21 @@
             save = 10000;
             size = 10000;
         };
+        initContent = 
+            let
+                early = lib.mkOrder 500 ''
+                    # Early content
+                '';
+                middle = lib.mkOrder 1000 ''
+                    # Middle content
+                '';
+                late = lib.mkOrder 1500 ''
+                    # Late content
+                    bindkey "^[[1;5C" forward-word
+                    bindkey "^[[1;5D" backward-word
+                '';
+            in
+            lib.mkMerge [ early middle late];
         localVariables = {
             PROMPT = "%B%F{#00e600}[%n@%m:%~]$%f%b ";
         };
