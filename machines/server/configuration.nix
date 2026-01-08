@@ -97,6 +97,13 @@
         };
     };
 
+    hardware = {
+        graphics = {
+            enable = true;
+            enable32Bit = true;
+        };
+    };
+
     # Select internationalisation properties.
     i18n = {
         defaultLocale = "en_DK.UTF-8";
