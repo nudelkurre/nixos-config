@@ -248,7 +248,7 @@
                 useDHCP = true;
             };
         };
-        tempAddresses = "enabled";
+        tempAddresses = if config.networking.enableIPv6 then "enabled" else "disabled";
         usePredictableInterfaceNames = false;
         vlans = {
             "vlan20" = {
