@@ -235,7 +235,7 @@
 
     # Network settings
     networking = {
-        enableIPv6 = true;
+        enableIPv6 = sharedSettings.enableIPv6;
         firewall = {
             enable = true;
         };

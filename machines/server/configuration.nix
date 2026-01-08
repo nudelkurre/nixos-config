@@ -108,7 +108,7 @@
     # networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
     networking = {
         defaultGateway = "10.10.0.1";
-        enableIPv6 = true;
+        enableIPv6 = sharedSettings.enableIPv6;
         firewall = {
             enable = true;
             allowedTCPPorts = [

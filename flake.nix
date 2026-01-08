@@ -80,6 +80,7 @@
                 groupId = 1000;
                 locale = "en_DK.UTF-8";
                 serverIP = "10.10.0.12";
+                enableIPv6 = false;
                 timeZone = "Europe/Stockholm";
                 u2f = {
                     authFile = pkgs.writeText "u2f-mappings" (

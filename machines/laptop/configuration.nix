@@ -168,7 +168,7 @@
 
     # Network settings
     networking = {
-        enableIPv6 = false;
+        enableIPv6 = sharedSettings.enableIPv6;
         hostName = "laptop";
         firewall = {
             enable = true;
