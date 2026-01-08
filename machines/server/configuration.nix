@@ -31,11 +31,11 @@
                 enable = false;
             };
             efi = {
-                canTouchEfiVariables = false;
+                canTouchEfiVariables = true;
             };
             grub = {
                 device = "nodev";
-                efiSupport = false;
+                efiSupport = true;
                 enable = true;
                 useOSProber = true;
             };
