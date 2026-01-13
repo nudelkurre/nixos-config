@@ -47,7 +47,6 @@ in
         settings = {
             animations = {
                 enabled = false;
-                first_launch_animation = false;
             };
 
             bind = lib.lists.flatten [
@@ -147,6 +146,11 @@ in
                 smart_split = false;
             };
 
+            ecosystem = {
+                no_update_news = true;
+                no_donation_nag = true;
+            };
+
             env = [
                 "CLUTTER_BACKEND,wayland"
                 "GDK_BACKEND,wayland"
@@ -174,7 +178,7 @@ in
             };
 
             gestures = {
-                "workspace_swipe" = "off";
+                "workspace" = "unset";
             };
 
             input = {
