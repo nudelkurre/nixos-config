@@ -382,6 +382,10 @@ in
                             "right" = [
                                 {
                                     "config" = { };
+                                    "module" = "bluetooth";
+                                }
+                                {
+                                    "config" = { };
                                     "module" = "headset";
                                 }
                                 {
@@ -391,6 +395,15 @@ in
                                 {
                                     "config" = {
                                         "api" = "SMHI";
+                                        "city" = "Västerås";
+                                        "icon_size" = 20;
+                                        "show_big_icon" = true;
+                                    };
+                                    "module" = "weather";
+                                }
+                                {
+                                    "config" = {
+                                        "api" = "YR";
                                         "city" = "Västerås";
                                         "icon_size" = 20;
                                         "show_big_icon" = true;
