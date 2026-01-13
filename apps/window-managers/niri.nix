@@ -569,6 +569,10 @@ in
             }
         }
 
+        clipboard {
+            disable-primary
+        }
+
         xwayland-satellite {
             path "${pkgs.xwayland-satellite}/bin/xwayland-satellite"
         }
