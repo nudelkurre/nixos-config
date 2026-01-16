@@ -238,6 +238,12 @@
         enableIPv6 = sharedSettings.enableIPv6;
         firewall = {
             enable = true;
+            allowedTCPPorts = [
+                1716 # KDE Connect
+            ];
+            allowedUDPPorts = [
+                1716 # KDE Connect
+            ];
         };
         hostName = "desktop";
         interfaces = {
@@ -542,14 +548,14 @@
         age = {
             generateKey = true;
             keyFile = "/home/${sharedSettings.userName}/.config/sops/age/keys.txt";
-            sshKeyPaths = [ "/home/${sharedSettings.userName}/.ssh/id_ed25519"];
+            sshKeyPaths = [ "/home/${sharedSettings.userName}/.ssh/id_ed25519" ];
         };
         defaultSopsFile = ../../secrets/secrets.yaml;
         defaultSopsFormat = "yaml";
 
         secrets = {
-            "wg-quick/desktop/private_key" = {};
-            "wg-quick/desktop/preshared_key" = {};
+            "wg-quick/desktop/private_key" = { };
+            "wg-quick/desktop/preshared_key" = { };
         };
     };
 
