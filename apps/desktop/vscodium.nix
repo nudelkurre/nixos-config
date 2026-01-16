@@ -46,6 +46,12 @@
                                 ];
                             };
                         };
+                        "nix" = {
+                            "binary" = "${pkgs.nix}/bin/nix";
+                            "flake" = {
+                                "autoArchive" = true;
+                            };
+                        };
                     };
                     "workbench.colorTheme" = "Catppuccin Frappé";
                     "workbench.iconTheme" = "catppuccin-frappe";
