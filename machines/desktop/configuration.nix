@@ -424,7 +424,7 @@
                 settings = {
                     authfile = sharedSettings.u2f.authFile;
                     cue = true;
-                    interactive = true;
+                    interactive = false;
                     origin = sharedSettings.u2f.origin;
                 };
             };
