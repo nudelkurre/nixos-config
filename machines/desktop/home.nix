@@ -320,7 +320,11 @@ in
                     {
                         "output" = main-monitor;
                         "widgets" = {
-                            "center" = [ ];
+                            "center" = [
+                                {
+                                    "module" = "windowtitle";
+                                }
+                            ];
                             "left" = [
                                 {
                                     "config" = {
