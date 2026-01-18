@@ -66,11 +66,11 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1768591419,
-        "narHash": "sha256-OiTYaQHvZZT/Lm+I8IKuvYBBXjrSAqHf/p/hsOXqgzg=",
+        "lastModified": 1768750867,
+        "narHash": "sha256-BKjFopbOJid+Heig9XxlvLMrDAwWTuDepSMoFVR1zjw=",
         "owner": "nudelkurre",
         "repo": "ngb",
-        "rev": "21882db2ca268d597834b5ff988e0335261a0037",
+        "rev": "5d0427087d86738a7e91c2dafb3f4c1c87b0e941",
         "type": "github"
       },
       "original": {
