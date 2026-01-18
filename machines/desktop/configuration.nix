@@ -77,7 +77,6 @@
             file
             git
             headsetcontrol
-            intel-gpu-tools
             libnotify
             libva-utils
             nano
@@ -197,16 +196,6 @@
             settings = {
                 General = {
                     Experimental = true;
-                };
-            };
-        };
-        # Disable Intel SGX
-        cpu = {
-            intel = {
-                sgx = {
-                    provision = {
-                        enable = false;
-                    };
                 };
             };
         };
