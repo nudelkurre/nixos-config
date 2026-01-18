@@ -19,38 +19,26 @@
             availableKernelModules = [
                 "xhci_pci"
                 "ahci"
-                "ohci_pci"
-                "ehci_pci"
-                "pata_atiixp"
                 "usbhid"
-                "usbcore"
                 "usb_storage"
                 "sd_mod"
             ];
             kernelModules = [ ];
         };
         kernelModules = [
-            "kvm-amd"
-            "nct6775"
+            "kvm-intel"
         ];
     };
 
     hardware = {
         cpu = {
-            amd = {
+            intel = {
                 updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
             };
         };
     };
 
-    networking = {
-        useDHCP = lib.mkDefault true;
-    };
-
     nixpkgs = {
         hostPlatform = lib.mkDefault "x86_64-linux";
     };
-
-    swapDevices = [ ];
-
 }
