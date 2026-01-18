@@ -10,21 +10,24 @@
 
 {
     boot = {
+        extraModulePackages = [ ];
         initrd = {
             availableKernelModules = [
                 "xhci_pci"
                 "ahci"
                 "nvme"
                 "usbhid"
+                "usb_storage"
+                "sd_mod"
             ];
             kernelModules = [ ];
         };
-        kernelModules = [ "kvm-intel" ];
+        kernelModules = [ ];
     };
 
     hardware = {
         cpu = {
-            intel = {
+            amd = {
                 updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
             };
         };
@@ -33,10 +36,6 @@
     imports = [
         (modulesPath + "/installer/scan/not-detected.nix")
     ];
-
-    networking = {
-        useDHCP = lib.mkDefault true;
-    };
 
     nixpkgs = {
         hostPlatform = lib.mkDefault "x86_64-linux";
