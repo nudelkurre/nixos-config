@@ -322,6 +322,9 @@ in
                         "widgets" = {
                             "center" = [
                                 {
+                                    "config" = {
+                                        "hide_no_focus" = true;
+                                    };
                                     "module" = "windowtitle";
                                 }
                             ];
