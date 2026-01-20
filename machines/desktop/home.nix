@@ -54,22 +54,9 @@ in
         homeDirectory = "/home/${sharedSettings.userName}";
         packages = with pkgs; [
             bitwarden-desktop
-            chatterino2
-            imv
-            jq
-            lm_sensors
-            mate.mate-polkit
-            mypkgs.freetube
             mypkgs.pkg2zip
-            nemo-with-extensions
-            pavucontrol
-            python3
-            seahorse
             socat
             texliveMedium
-            vesktop
-            wl-clipboard
-            yt-dlp
         ];
         sessionVariables = {
             EDITOR = "nano";

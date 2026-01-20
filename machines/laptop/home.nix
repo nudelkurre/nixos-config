@@ -31,16 +31,7 @@
         };
         homeDirectory = "/home/${sharedSettings.userName}";
         packages = with pkgs; [
-            hyprpaper
-            imv
-            lm_sensors
-            mate.mate-polkit
-            mypkgs.freetube
-            nemo-with-extensions
-            pavucontrol
-            python3
-            wireguard-tools
-            wl-clipboard
+            
         ];
         sessionVariables = {
             EDITOR = "nano";
