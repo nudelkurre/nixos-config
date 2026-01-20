@@ -435,7 +435,7 @@ in
         };
         defaultSopsFile = ../../secrets/secrets.yaml;
         secrets = {
-            
+
         };
     };
 
@@ -468,6 +468,10 @@ in
                     name = "floorp";
                     focus = true;
                 }
+                {
+                    name = "com.github.iwalton3.jellyfin-media-player";
+                    focus = true;
+                }
             ];
         }
         {
@@ -489,7 +493,10 @@ in
             name = "5";
             programs = [
                 { name = "com.usebottles.bottles"; }
-                { name = "gamescope"; }
+                {
+                    name = "gamescope";
+                    focus = true;
+                }
                 { name = "heroic"; }
                 { name = "lutris"; }
                 { name = "steam"; }
