@@ -6,8 +6,13 @@
 }:
 {
     boot = {
-        # Enable virtual cam with v4l2loopback
-        extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback ];
+        blacklistedKernelModules = [
+            "k10temp"
+        ];
+        extraModulePackages = with config.boot.kernelPackages; [
+            v4l2loopback
+            zenpower
+        ];
         extraModprobeConfig = ''
             options v4l2loopback devices=1 video_nr=1 card_label="OBS CAM" exclusive_caps=1
         '';
