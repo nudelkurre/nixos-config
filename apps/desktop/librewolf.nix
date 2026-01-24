@@ -1,6 +1,7 @@
 {
     pkgs,
     config,
+    lib,
     ...
 }:
 {
@@ -449,7 +450,7 @@
             };
         };
     };
-    xdg.desktopEntries = {
+    xdg.desktopEntries = lib.mkIf config.programs.librewolf.enable {
         "librewolf" = {
             actions = {
                 "new-private-window" = {
