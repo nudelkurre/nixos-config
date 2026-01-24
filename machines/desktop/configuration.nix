@@ -374,11 +374,11 @@
             enable = true;
             gamescopeSession = {
                 args = [
-                    "-H 1440"
-                    "-h 720"
-                    "-S integer"
-                    "-f"
-                    "--filter linear"
+                    "--output-height 1440" # Monitor resolution
+                    "--nested-height 1440" # Game Resolution
+                    "--scaler integer"
+                    "--fullscreen"
+                    "--filter fsr"
                     "--force-grab-cursor"
                 ];
                 enable = true;
