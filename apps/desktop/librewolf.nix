@@ -7,7 +7,7 @@
 {
     programs.librewolf = {
         enable = true;
-        package = pkgs.unstable.librewolf;
+        package = pkgs.librewolf;
         policies = {
             "CaptivePortal" = false;
             "Cookies" = {
