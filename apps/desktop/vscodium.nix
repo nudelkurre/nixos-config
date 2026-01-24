@@ -10,7 +10,6 @@
                     golang.go
                     james-yu.latex-workshop
                     jnoortheen.nix-ide
-                    ms-dotnettools.csdevkit
                     ms-python.python
                     ms-python.black-formatter
                     ms-vscode.live-server
