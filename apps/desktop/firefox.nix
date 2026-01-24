@@ -450,7 +450,7 @@
             };
         };
     };
-    xdg.desktopEntries = {
+    xdg.desktopEntries = lib.mkIf config.programs.firefox.enable {
         "firefox" = {
             actions = {
                 "new-private-window" = {
