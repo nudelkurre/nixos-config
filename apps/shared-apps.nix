@@ -4,6 +4,7 @@
         packages = with pkgs; [
             chatterino2
             imv
+            jellyfin-desktop
             jq
             lm_sensors
             mate.mate-polkit

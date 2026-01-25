@@ -178,7 +178,7 @@ in
         {
             mod = [ "Mod4" ];
             key = "kp_0";
-            program = "flatpak run com.github.iwalton3.jellyfin-media-player";
+            program = "${pkgs.jellyfin-desktop}/bin/jellyfin-desktop";
             overlay-title = "Launch jellyfin media player";
         }
 
@@ -472,7 +472,7 @@ in
                     focus = true;
                 }
                 {
-                    name = "com.github.iwalton3.jellyfin-media-player";
+                    name = "org.jellyfin.JellyfinDesktop";
                     focus = true;
                 }
             ];
