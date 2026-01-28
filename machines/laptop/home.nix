@@ -230,7 +230,7 @@
     };
 
     rofi = {
-        border-color = "#f3c8f3";
+        border-color = "${sharedSettings.colors.main}";
         lines = 11;
     };
 
