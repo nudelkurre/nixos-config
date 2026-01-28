@@ -1,6 +1,7 @@
 {
     pkgs,
     config,
+    sharedSettings,
     lib,
     ...
 }:
@@ -138,8 +139,8 @@ let
     cfg.mouse = config.input.mouse;
     cfg.touchpad = config.input.touchpad;
 
-    color1 = "#33ccff";
-    color2 = "#ff96ff";
+    color1 = "${sharedSettings.colors.main}";
+    color2 = "${sharedSettings.colors.secondary}";
     opacity_active = "ee";
     opacity_inactive = "33";
     color_angle = "45";

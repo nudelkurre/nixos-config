@@ -1,6 +1,7 @@
 {
     pkgs,
     config,
+    sharedSettings,
     lib,
     ...
 }:
@@ -75,10 +76,10 @@ in
             bindkeysToCode = false;
             colors = {
                 focused = {
-                    background = "#285577";
-                    border = "#33ccff";
-                    childBorder = "#33ccff";
-                    indicator = "#993399";
+                    background = "${sharedSettings.colors.secondary}";
+                    border = "${sharedSettings.colors.main}";
+                    childBorder = "${sharedSettings.colors.secondary}";
+                    indicator = "${sharedSettings.colors.main}";
                     text = "#ffffff";
                 };
             };

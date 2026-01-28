@@ -93,6 +93,10 @@
                     origin = "pam://yubikey";
                 };
                 userName = "emil";
+                colors = {
+                    main = "#f4b8e4";
+                    secondary = "#8caaee";
+                };
             };
         in
         {

@@ -1,9 +1,14 @@
-{pkgs, lib, ...}:
+{
+    pkgs,
+    lib,
+    sharedSettings,
+    ...
+}:
 {
     programs.zsh = {
         autosuggestion = {
             enable = true;
-            highlight = "fg=#ff96ff,bold,underline";
+            highlight = "fg=${sharedSettings.colors.main},bold,underline";
             strategy = [
                 "history"
                 "completion"
