@@ -22,7 +22,7 @@
             save = 10000;
             size = 10000;
         };
-        initContent = 
+        initContent =
             let
                 early = lib.mkOrder 500 ''
                     # Early content
@@ -36,7 +36,11 @@
                     bindkey "^[[1;5D" backward-word
                 '';
             in
-            lib.mkMerge [ early middle late];
+            lib.mkMerge [
+                early
+                middle
+                late
+            ];
         localVariables = {
             PROMPT = "%B%F{#00e600}[%n@%m:%~]$%f%b ";
         };
