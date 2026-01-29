@@ -569,6 +569,30 @@ in
                     "x-scheme-handler/steamlink"
                 ];
             };
+            "org.kde.kdeconnect.nonplasma" = {
+                name = "KDE Connect Indicator";
+                exec = "${pkgs.kdePackages.kdeconnect-kde}/bin/kdeconnect-indicator";
+                terminal = false;
+                type = "Application";
+                categories = [
+                    "Qt"
+                    "KDE"
+                    "Network"
+                ];
+                noDisplay = true;
+            };
+            "org.kde.kdeconnect.sms" = {
+                name = "KDE Connect SMS";
+                exec = "${pkgs.kdePackages.kdeconnect-kde}/bin/kdeconnect-sms";
+                terminal = false;
+                type = "Application";
+                categories = [
+                    "Qt"
+                    "KDE"
+                    "Network"
+                ];
+                noDisplay = true;
+            };
         };
         enable = true;
         mimeApps = {
