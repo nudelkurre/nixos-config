@@ -154,20 +154,6 @@
                 "gid=1000"
             ];
         };
-        "/home/emil/Winrepos/java" = {
-            device = "/home/emil/repos/D0018D";
-            fsType = "none";
-            options = [
-                "bind"
-            ];
-        };
-        "/home/emil/Winrepos/net" = {
-            device = "/home/emil/repos/2IS225";
-            fsType = "none";
-            options = [
-                "bind"
-            ];
-        };
     };
 
     # Set fonts to install
