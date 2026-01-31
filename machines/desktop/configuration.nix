@@ -242,27 +242,6 @@
                 interface = "eth0";
             };
         };
-        # wg-quick = {
-        #     interfaces = {
-        #         wg0 = {
-        #             address = [ "10.13.13.4" ];
-        #             dns = [ "10.10.0.12" ];
-        #             privateKeyFile = config.sops.secrets."wg-quick/desktop/private_key".path;
-        #             peers = [
-        #                 {
-        #                     publicKey = "5ow/nE7fdaFcOdjnTsFMeOi8CBiTxoShcuEc9OFO+Tk=";
-        #                     presharedKeyFile = config.sops.secrets."wg-quick/desktop/preshared_key".path;
-        #                     allowedIPs = [ "0.0.0.0/0" ];
-        #                     endpoint = "vpn.nudelkurre.com:51820";
-        #                 }
-        #             ];
-        #         };
-        #     };
-        # };
-        # wireless = {
-        #     enable = true;
-        #     networks = { };
-        # };
     };
 
     # Set expreimental flags to use flakes
