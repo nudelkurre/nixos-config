@@ -175,19 +175,11 @@
                 };
             };
             packages.x86_64-linux = {
-                mangadex-downloader =
-                    pkgs.python3Packages.callPackage packages/python/mangadex-dl/mangadex-downloader.nix
-                        { };
-                requests-doh = pkgs.python3Packages.callPackage packages/python/requests-doh.nix { };
                 freetube = pkgs.callPackage packages/freetube.nix { };
                 pkg2zip = pkgs.callPackage packages/pkg2zip.nix { };
             };
 
             apps.x86_64-linux = {
-                mangadex-downloader = {
-                    type = "app";
-                    program = "${self.packages.x86_64-linux.mangadex-downloader}/bin/mangadex-downloader";
-                };
                 freetube = {
                     type = "app";
                     program = "${self.packages.x86_64-linux.freetube}/bin/freetube";
