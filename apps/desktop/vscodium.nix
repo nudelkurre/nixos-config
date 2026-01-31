@@ -52,6 +52,7 @@
                             };
                         };
                     };
+                    "terminal.integrated.initialHint" = false;
                     "workbench.colorTheme" = "Catppuccin Frappé";
                     "workbench.iconTheme" = "catppuccin-frappe";
                     "[python]" = {
