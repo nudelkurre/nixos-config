@@ -465,23 +465,6 @@
                 enable = true;
             };
         };
-        tlp = {
-            enable = true;
-            settings = {
-                CPU_BOOST_ON_AC = "1";
-                CPU_DRIVER_OPMODE_ON_AC = "active";
-                CPU_ENERGY_PERF_POLICY_ON_AC = "performance";
-                CPU_HWP_DYN_BOOST_ON_AC = "1";
-                CPU_MAX_PERF_ON_AC = "100";
-                CPU_MIN_PERF_ON_AC = "0";
-                CPU_SCALING_GOVERNOR_ON_AC = "performance";
-                NMI_WATCHDOG = "1";
-                RADEON_DPM_PERF_LEVEL_ON_AC = "high";
-                RADEON_DPM_STATE_ON_AC = "performance";
-                START_CHARGE_THRESH_BAT0 = "75";
-                STOP_CHARGE_THRESH_BAT0 = "80";
-            };
-        };
         udev = {
             enable = true;
             packages = [
