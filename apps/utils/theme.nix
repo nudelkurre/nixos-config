@@ -1,4 +1,9 @@
-{ pkgs, config, lib, ... }:
+{
+    pkgs,
+    config,
+    lib,
+    ...
+}:
 let
     color = "Pink";
     variant = "Frappe";
@@ -23,8 +28,11 @@ in
     gtk = {
         enable = true;
         cursorTheme = {
-            name = "catppuccin-${lib.strings.toLower variant}-${lib.strings.toLower color}-cursors";
-            package = pkgs.catppuccin-cursors."${lib.strings.toLower variant + color}";
+            name = "Afterglow-Recolored-Catppuccin-${color}";
+            package = pkgs.afterglow-cursors-recolored.override {
+                themeVariants = [ "Catppuccin" ];
+                catppuccinColorVariants = [ color ];
+            };
             size = 32;
         };
         font = {
