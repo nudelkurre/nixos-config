@@ -44,6 +44,12 @@
         localVariables = {
             PROMPT = "%B%F{#00e600}[%n@%m:%~]$%f%b ";
         };
+        oh-my-zsh = {
+            enable = true;
+            plugins = [
+                "git-prompt"
+            ];
+        };
         package = pkgs.zsh;
         shellAliases = {
             mv = "mv -v";
