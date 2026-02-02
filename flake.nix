@@ -8,10 +8,6 @@
             url = "github:nix-community/home-manager/release-25.11";
             inputs.nixpkgs.follows = "nixpkgs";
         };
-        firefox-addons = {
-            url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
-            inputs.nixpkgs.follows = "nixpkgs";
-        };
         ngb = {
             url = "github:nudelkurre/ngb";
         };
@@ -30,7 +26,6 @@
             nixpkgs,
             nixpkgs-unstable,
             home-manager,
-            firefox-addons,
             ngb,
             wallpapers,
             sops-nix,
@@ -40,9 +35,6 @@
             system = "x86_64-linux";
             overlay-unstable = final: prev: {
                 unstable = nixpkgs-unstable.legacyPackages.${prev.stdenv.hostPlatform.system};
-            };
-            firefox-addons-overlay = final: prev: {
-                firefox-addons = firefox-addons.packages.${prev.stdenv.hostPlatform.system};
             };
             mypkgs-overlay = final: prev: {
                 mypkgs = self.packages.${prev.stdenv.hostPlatform.system};
@@ -69,7 +61,6 @@
                 inherit system;
                 overlays = [
                     overlay-unstable
-                    firefox-addons-overlay
                     mypkgs-overlay
                     ngb.overlay
                     wallpapers-overlay
