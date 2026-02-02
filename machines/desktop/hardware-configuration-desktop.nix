@@ -22,7 +22,9 @@
             ];
             kernelModules = [ ];
         };
-        kernelModules = [ ];
+        kernelModules = [
+            "kvm-amd"
+        ];
     };
 
     hardware = {
