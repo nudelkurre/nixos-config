@@ -20,9 +20,19 @@
             "DisableFormHistory" = true;
             "DisableMasterPasswordCreation" = true;
             "DisablePasswordReveal" = true;
+            "DisableProfileRefresh" = true;
             "DisableSetDesktopBackground" = true;
             "DisableSystemAddonUpdate" = true;
             "DisableTelemetry" = true;
+            "DisplayBookmarksToolbar" = "newtab";
+            "DisplayMenuBar" = "default-off";
+            "DNSOverHTTPS" = {
+                "Enable" = true;
+                "ProviderURL" = "https://dns.nudelkurre.com/dns-query";
+                "Locked" = true;
+                "ExcludedDomains" = [ ];
+                "Fallback" = false;
+            };
             "DontCheckDefaultBrowser" = true;
             "DownloadDirectory" = "${config.home.homeDirectory}/Downloads";
             "EnableTrackingProtection" = {
@@ -38,7 +48,14 @@
                 "Locked" = true;
             };
             "Extensions" = {
-                "Install" = [ ];
+                "Install" = [
+                    "https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/addon-11423598-latest.xpi"
+                    "https://addons.mozilla.org/firefox/downloads/latest/bitwarden-password-manager/addon-12533945-latest.xpi"
+                    "https://addons.mozilla.org/firefox/downloads/latest/violentmonkey/addon-6458157-latest.xpi"
+                    "https://addons.mozilla.org/firefox/downloads/latest/floccus/addon-12344312-latest.xpi"
+                    "https://addons.mozilla.org/firefox/downloads/latest/multi-account-containers/addon-4757633-latest.xpi"
+                    "https://addons.mozilla.org/firefox/downloads/latest/linkwarden/addon-18125611-latest.xpi"
+                ];
                 "Uninstall" = [
                     "amazon@search.mozilla.org"
                     "bing@search.mozilla.org"
@@ -51,7 +68,7 @@
                     "floccus@handmadeideas.org"
                     "uBlock0@raymondhill.net"
                     "{aecec67f-0d10-4fa7-b7c7-609a2db280cf}"
-                    "jordanlinkwarden@gmail.com"
+                    # "jordanlinkwarden@gmail.com"
                 ];
             };
             "FirefoxHome" = {
@@ -66,12 +83,26 @@
                 "Snippets" = false;
                 "Locked" = true;
             };
+            "GenerativeAI" = {
+                "Enable" = false;
+                "Chatbot" = false;
+                "LinkPreviews" = false;
+                "TabGroups" = false;
+                "Locked" = false;
+            };
+            "HardwareAcceleration" = true;
             "Homepage" = {
                 "URL" = "about:home";
                 "Locked" = true;
                 "StartPage" = "homepage-locked";
             };
             "HttpsOnlyMode" = "force_enabled";
+            "InstallAddonsPermission" = {
+                "Allow" = [
+                    "https://addons.mozilla.org"
+                ];
+                "Default" = false;
+            };
             "NetworkPrediction" = false;
             "NewTabPage" = true;
             "NoDefaultBookmarks" = true;
@@ -123,13 +154,14 @@
             };
             "PictureInPicture" = {
                 "Enabled" = false;
-                "Locked" = false;
+                "Locked" = true;
             };
             "PopupBlocking" = {
                 "Allow" = [ ];
                 "Default" = true;
                 "Locked" = true;
             };
+            "PostQuantumKeyAgreementEnabled" = true;
             "Preferences" = {
                 "toolkit.legacyUserProfileCustomizations.stylesheets" = {
                     "Value" = true;
@@ -139,24 +171,12 @@
                     "Value" = true;
                     "Status" = "default";
                 };
-                "browser.ml.enable" = {
-                    "Value" = false;
-                    "Status" = "locked";
-                };
-                "browser.ml.chat.enabled" = {
-                    "Value" = false;
-                    "Status" = "locked";
-                };
-                "browser.ml.linkPreview.enabled" = {
-                    "Value" = false;
-                    "Status" = "locked";
-                };
-                "extensions.ml.enabled" = {
-                    "Value" = false;
-                    "Status" = "locked";
-                };
             };
             "PromptForDownloadLocation" = true;
+            "Proxy" = {
+                "Mode" = "none";
+                "Locked" = true;
+            };
             "SanitizeOnShutdown" = {
                 "Cache" = true;
                 "Cookies" = false;
@@ -168,11 +188,13 @@
                 "OfflineApps" = false;
                 "Locked" = true;
             };
+            "SearchBar" = "unified";
             "SearchEngines" = {
                 "Add" = [
                     {
                         "Name" = "Duckduckgo";
-                        "URLTemplate" = "https://duckduckgo.com/?q={searchTerms}&kz=1&kae=d&ks=m&kf=-1&kp=-2&kw=w&ko=s&kaf=1&kac=-1&km=m&kn=1";
+                        "URLTemplate" =
+                            "https://duckduckgo.com/?q={searchTerms}&kz=1&kae=d&ks=m&kf=-1&kp=-2&kw=w&ko=s&kaf=1&kac=-1&km=m&kn=1";
                         "Method" = "GET";
                         "Alias" = "@ddg";
                         "Description" = "DuckDuckGo search";
@@ -243,6 +265,9 @@
                     "Perplexity"
                 ];
             };
+            "SearchSuggestEnabled" = false;
+            "ShowHomeButton" = false;
+            "SkipTermsOfUse" = true;
             "TranslateEnabled" = false;
             "UserMessaging" = {
                 "WhatsNew" = false;
@@ -251,7 +276,7 @@
                 "UrlbarInterventions" = false;
                 "SkipOnboarding" = false;
                 "MoreFromMozilla" = false;
-                "FirefoxLabs" = false;
+                "FirefoxLabs" = true;
                 "Locked" = true;
             };
         };
@@ -345,53 +370,26 @@
                     };
                 };
                 containersForce = true;
-                extensions = {
-                    packages = with pkgs.firefox-addons; [
-                        ublock-origin
-                        bitwarden
-                        violentmonkey
-                        floccus
-                        multi-account-containers
-                    ];
-                };
                 id = 0;
                 isDefault = true;
                 settings = {
                     "beacon.enabled" = false;
                     "browser.aboutConfig.showWarning" = false;
                     "browser.chrome.site_icons" = false;
-                    "browser.contentblocking.category" = "custom";
                     "browser.contentblocking.report.hide_vpn_banner" = true;
                     "browser.display.background_color" = "#e2e2e2";
                     "browser.display.foreground_color" = "#4a4a4a";
-                    "browser.formfill.enable" = false;
-                    "browser.ml.chat.page.footerBadge" = false;
-                    "browser.ml.chat.page.menuBadge " = false;
-                    "browser.ml.chat.shortcuts" = false;
-                    "browser.ml.chat.shortcuts.custom" = false;
-                    "browser.ml.chat.sidebar" = false;
-                    "browser.ml.checkForMemory" = false;
-                    "browser.ml.linkPreview.shift" = false;
                     "browser.privatebrowsing.promoEnabled" = false;
                     "browser.privatebrowsing.vpnpromourl" = "";
                     "browser.safebrowsing.downloads.remote.enabled" = false;
-                    "browser.search.suggest.enabled" = false;
                     "browser.shell.shortcutFavicons" = false;
-                    "browser.toolbars.bookmarks.visibility" = "newtab";
                     "browser.urlbar.speculativeConnect.enabled" = false;
                     "browser.urlbar.trimURLs" = false;
-                    "dom.event.clipboardevents.enabled" = false;
-                    "extensions.pocket.enabled" = false;
                     "font.name-list.emoji" = "${toString (
                         lib.lists.sublist 0 1 config.fonts.fontconfig.defaultFonts.emoji
                     )}";
-                    "general.warnOnAboutConfig" = false;
-                    "geo.enabled" = false;
-                    "identity.fxaccounts.enabled" = false;
                     "media.peerconnection.enabled" = false;
-                    "network.cookie.cookieBehavior" = 1;
-                    "network.dns.disablePrefetch" = true;
-                    "network.http.referer.XOriginPolicy" = 1;
+                    "network.http.referer.XOriginPolicy" = 0;
                     "network.http.referer.XOriginTrimmingPolicy" = 2;
                     "network.IDN_show_punycode" = true;
                     "network.predictor.enabled" = false;
@@ -401,12 +399,6 @@
                     "privacy.history.custom" = true;
                     "privacy.userContext.enabled" = true;
                     "privacy.userContext.ui.enabled" = true;
-                    "toolkit.telemetry.enabled" = false;
-                    "toolkit.telemetry.prompted" = 2;
-                    "toolkit.telemetry.rejected" = true;
-                    "toolkit.telemetry.server" = "";
-                    "toolkit.telemetry.unified" = false;
-                    "toolkit.telemetry.unifiedIsOptIn" = false;
                 };
                 userChrome = ''
                     #alltabs-button {
