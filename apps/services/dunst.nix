@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, sharedSettings, ... }:
 {
     services.dunst = {
         enable = true;
@@ -12,7 +12,7 @@
                 ellipsize = "middle";
                 font = "${config.fonts.name} ${toString config.fonts.size}";
                 format = "<b>%s</b>\\n%b";
-                frame_color = "#000000";
+                frame_color = sharedSettings.colors.main;
                 frame_width = 1;
                 height = "(0, 500)";
                 hide_duplicate_count = "false";
@@ -46,20 +46,20 @@
                 word_wrap = "yes";
             };
             urgency_critical = {
-                background = "#900000";
-                foreground = "#ffffff";
-                frame_color = "#ff0000";
+                background = sharedSettings.colors.red;
+                foreground = sharedSettings.colors.base;
+                frame_color = sharedSettings.colors.main;
                 timeout = 0;
             };
             urgency_low = {
-                background = "#222222";
-                foreground = "#888888";
+                background = sharedSettings.colors.base;
+                foreground = sharedSettings.colors.text;
                 timeout = 20;
             };
             urgency_normal = {
-                background = "#a0a0a0";
-                foreground = "#000000";
-                timeout = 20;
+                background = sharedSettings.colors.base;
+                foreground = sharedSettings.colors.main;
+                timeout = 30;
             };
         };
     };
