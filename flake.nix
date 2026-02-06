@@ -85,8 +85,25 @@
                 };
                 userName = "emil";
                 colors = {
-                    main = "#f4b8e4";
-                    secondary = "#8caaee";
+                    main = sharedSettings.colors.pink;
+                    secondary = sharedSettings.colors.blue;
+                    rosewater = "#f2d5cf";
+                    flamingo = "#eebebe";
+                    pink = "#f4b8e4";
+                    mauve = "#ca9ee6";
+                    red = "#e78284";
+                    maroon = "#ea999c";
+                    peach = "#ef9f76";
+                    yellow = "#e5c890";
+                    green = "#a6d189";
+                    teal = "#81c8be";
+                    sky = "#99d1db";
+                    sapphire = "#85c1dc";
+                    blue = "#8caaee";
+                    lavender = "#babbf1";
+                    base = "#303446";
+                    text = "#c6d0f5";
+                    overlay = "#737994";
                 };
             };
         in
