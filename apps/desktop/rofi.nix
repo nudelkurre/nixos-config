@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, sharedSettings, ... }:
 let
     inherit (config.lib.formats.rasi) mkLiteral;
 in
@@ -38,31 +38,31 @@ in
             };
             "element-text" = {
                 font = "${config.fonts.name} Bold 10";
-                text-color = mkLiteral "#c8c8c8";
+                text-color = mkLiteral sharedSettings.colors.text;
                 horizontal-align = mkLiteral "0.5";
             };
             "element.normal.normal, element.alternate.normal, element.normal.urgent, element.alternate.urgent, element.normal.active, element.alternate.active" =
                 {
-                    background-color = mkLiteral "rgba(51, 51, 51, 0.0)";
+                    background-color = mkLiteral "${sharedSettings.colors.base}00";
                 };
             "element.selected.normal, element.selected.urgent, element.selected.active" = {
-                background-color = mkLiteral "rgba(128, 128, 128, 0.85)";
+                background-color = mkLiteral "${sharedSettings.colors.overlay}d9";
                 border = mkLiteral "2px";
                 border-color = mkLiteral "${config.rofi.border-color}";
                 border-radius = mkLiteral "${toString config.desktop.corner-radius}px";
             };
             "entry" = {
                 placeholder = "Program";
-                placeholder-color = mkLiteral "#aaaaaa";
-                text-color = mkLiteral "#ffffff";
+                placeholder-color = mkLiteral sharedSettings.colors.text;
+                text-color = mkLiteral sharedSettings.colors.text;
             };
             "inputbar" = {
-                background-color = mkLiteral "rgba(128, 128, 128, 0.85)";
+                background-color = mkLiteral "${sharedSettings.colors.overlay}d9";
                 border-radius = mkLiteral "${toString config.desktop.corner-radius}px";
                 children = mkLiteral "[entry]";
                 margin = mkLiteral "10px";
                 padding = mkLiteral "10px 4px 10px 10px";
-                text-color = mkLiteral "#ffffff";
+                text-color = mkLiteral sharedSettings.colors.text;
             };
             "listview" = {
                 columns = mkLiteral "10";
@@ -70,10 +70,10 @@ in
                 padding = mkLiteral "10px";
             };
             "prompt" = {
-                text-color = mkLiteral "#ffffff";
+                text-color = mkLiteral sharedSettings.colors.text;
             };
             "window" = {
-                background-color = mkLiteral "rgba(51, 51, 51, 0.8)";
+                background-color = mkLiteral "${sharedSettings.colors.base}cc";
                 border = mkLiteral "2px";
                 border-color = mkLiteral "${config.rofi.border-color}";
                 border-radius = mkLiteral "${toString config.desktop.corner-radius}px";
