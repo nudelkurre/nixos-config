@@ -504,6 +504,8 @@ in
                 { name = "lutris"; }
                 { name = "steam"; }
                 { name = "pcsx2-qt"; }
+                { name = "info.cemu.Cemu"; }
+                { name = "org.ppsspp.PPSSPP"; }
             ];
         }
         {
