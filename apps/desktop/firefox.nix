@@ -27,7 +27,7 @@
             "DisplayBookmarksToolbar" = "newtab";
             "DisplayMenuBar" = "default-off";
             "DNSOverHTTPS" = {
-                "Enable" = true;
+                "Enabled" = true;
                 "ProviderURL" = "https://dns.nudelkurre.com/dns-query";
                 "Locked" = true;
                 "ExcludedDomains" = [ ];
@@ -68,7 +68,6 @@
                     "floccus@handmadeideas.org"
                     "uBlock0@raymondhill.net"
                     "{aecec67f-0d10-4fa7-b7c7-609a2db280cf}"
-                    # "jordanlinkwarden@gmail.com"
                 ];
             };
             "FirefoxHome" = {
@@ -168,6 +167,10 @@
                     "Status" = "locked";
                 };
                 "browser.fixup.domainsuffixwhitelist.lan" = {
+                    "Value" = true;
+                    "Status" = "default";
+                };
+                "network.trr.allow-rfc1918" = {
                     "Value" = true;
                     "Status" = "default";
                 };
