@@ -44,7 +44,7 @@
             };
             versions = {
                 intel-vaapi-driver = "2.4.5";
-                yt-dlp = "2025.12.08";
+                yt-dlp = "2026.02.04";
             };
             version-overlay = final: prev: {
                 yt-dlp = prev.yt-dlp.overrideAttrs (old: {
@@ -53,7 +53,7 @@
                         owner = "yt-dlp";
                         repo = "yt-dlp";
                         rev = versions.yt-dlp;
-                        hash = "sha256-y06MDP+CrlHGrell9hcLOGlHp/gU2OOxs7can4hbj+g=";
+                        hash = "sha256-KXnz/ocHBftenDUkCiFoBRBxi6yWt0fNuRX+vKFWDQw=";
                     };
                 });
             };
