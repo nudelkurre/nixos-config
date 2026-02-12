@@ -45,7 +45,7 @@ in
                 sticky_history = false;
                 title = "Dunst";
                 transparency = 0;
-                width = "(${toString (builtins.floor (main_monitor.width / 6))}, ${toString (builtins.floor (main_monitor.width / 4))}";
+                width = "(${toString (builtins.floor (main_monitor.width / 6))}, ${toString (builtins.floor (main_monitor.width / 4))})";
                 word_wrap = true;
             };
             urgency_critical = {
