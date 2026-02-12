@@ -16,6 +16,7 @@
                     naumovs.color-highlight
                     catppuccin.catppuccin-vsc
                     catppuccin.catppuccin-vsc-icons
+                    signageos.signageos-vscode-sops
                 ];
                 keybindings = [
                     {
