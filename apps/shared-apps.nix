@@ -13,7 +13,6 @@
             pavucontrol
             python3
             seahorse
-            vesktop
             wl-clipboard
             yt-dlp
         ];
