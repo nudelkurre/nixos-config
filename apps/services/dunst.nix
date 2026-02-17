@@ -1,4 +1,4 @@
-{ config, lib, sharedSettings, ... }:
+{ pkgs, config, lib, sharedSettings, ... }:
 let
     main_monitor = builtins.head (lib.filter (output: output.name == config.monitors.primary) config.monitors.outputs);
     variant = sharedSettings.colors.variant;
@@ -6,11 +6,16 @@ in
 {
     services.dunst = {
         enable = true;
+        iconTheme = {
+            name = config.gtk.iconTheme.name;
+            package = config.gtk.iconTheme.package;
+            size = "64x64x";
+        };
         settings = {
             global = {
                 alignment = "center";
                 always_run_script = true;
-                browser = "${config.programs.firefox.package}/bin/firefox --private-window";
+                browser = "${pkgs.xdg-utils}/bin/xdg-open";
                 class = "Dunst";
                 corner_radius = config.desktop.corner-radius;
                 ellipsize = "middle";
@@ -22,7 +27,6 @@ in
                 hide_duplicate_count = false;
                 history_length = 7;
                 horizontal_padding = 8;
-                icon_path = "/usr/share/icons/gnome/16x16/status/:/usr/share/icons/gnome/16x16/devices/";
                 icon_position = "left";
                 idle_threshold = 0;
                 ignore_newline = false;
