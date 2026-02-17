@@ -1,6 +1,7 @@
 { config, lib, sharedSettings, ... }:
 let
     main_monitor = builtins.head (lib.filter (output: output.name == config.monitors.primary) config.monitors.outputs);
+    variant = sharedSettings.colors.variant;
 in
 {
     services.dunst = {
@@ -49,18 +50,18 @@ in
                 word_wrap = true;
             };
             urgency_critical = {
-                background = sharedSettings.colors.red;
-                foreground = sharedSettings.colors.base;
+                background = sharedSettings.colors."${variant}".red;
+                foreground = sharedSettings.colors."${variant}".base;
                 frame_color = sharedSettings.colors.main;
                 timeout = 0;
             };
             urgency_low = {
-                background = sharedSettings.colors.base;
-                foreground = sharedSettings.colors.text;
+                background = sharedSettings.colors."${variant}".base;
+                foreground = sharedSettings.colors."${variant}".text;
                 timeout = 20;
             };
             urgency_normal = {
-                background = sharedSettings.colors.base;
+                background = sharedSettings.colors."${variant}".base;
                 foreground = sharedSettings.colors.main;
                 timeout = 30;
             };

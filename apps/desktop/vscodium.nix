@@ -1,4 +1,8 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, sharedSettings, ... }:
+let
+    capitalize = str: if str == "" then "" else lib.strings.toUpper (builtins.substring 0 1 str) + lib.strings.toLower (builtins.substring 1 (builtins.stringLength str - 1) str);
+    variant = sharedSettings.colors.variant;
+in
 {
     programs.vscode = {
         enable = true;
@@ -54,8 +58,8 @@
                         };
                     };
                     "terminal.integrated.initialHint" = false;
-                    "workbench.colorTheme" = "Catppuccin Frappé";
-                    "workbench.iconTheme" = "catppuccin-frappe";
+                    "workbench.colorTheme" = "Catppuccin ${if variant == "frappe" then "Frappé" else capitalize variant}";
+                    "workbench.iconTheme" = "catppuccin-${variant}";
                     "[python]" = {
                         "editor.formatOnSave" = true;
                         "editor.defaultFormatter" = "ms-python.black-formatter";

@@ -1,11 +1,15 @@
 { sharedSettings, ... }:
 let
+    variant = sharedSettings.colors.variant;
     main-color = builtins.replaceStrings ["#"] [""] sharedSettings.colors.main;
     secondary-color = builtins.replaceStrings ["#"] [""] sharedSettings.colors.secondary;
+    red = builtins.replaceStrings ["#"] [""] sharedSettings.colors."${variant}".red;
+    yellow = builtins.replaceStrings ["#"] [""] sharedSettings.colors."${variant}".yellow;
 in
 {
     programs.mangohud = {
         enable = true;
+        enableSessionWide = true;
         settings = {
             time = true;
             fps = true;
@@ -26,6 +30,7 @@ in
             engine_short_names = true;
 
             fps_limit = "60,30,0";
+            fps_color_change = true;
             show_fps_limit = true;
             font_size = "20";
             background_color = "000000";
@@ -37,6 +42,7 @@ in
             frametime_color = "${main-color}";
             engine_color = "${main-color}";
             text_color = "${main-color}";
+            fps_color = [ red yellow main-color];
             horizontal_separator_color = secondary-color;
 
             # Disable settings

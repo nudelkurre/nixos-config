@@ -2,11 +2,13 @@
     pkgs,
     config,
     lib,
+    sharedSettings,
     ...
 }:
 let
+    capitalize = str: if str == "" then "" else lib.strings.toUpper (builtins.substring 0 1 str) + lib.strings.toLower (builtins.substring 1 (builtins.stringLength str - 1) str);
     color = "Pink";
-    variant = "Frappe";
+    variant = capitalize sharedSettings.colors.variant;
     accent = if variant == "Latte" then "Light" else "Dark";
 in
 {
