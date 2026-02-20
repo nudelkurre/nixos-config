@@ -28,7 +28,7 @@
             "DisplayMenuBar" = "default-off";
             "DNSOverHTTPS" = {
                 "Enabled" = true;
-                "ProviderURL" = "https://dns.nudelkurre.com/dns-query";
+                "ProviderURL" = "https://dns.nudelkurre.com/dns-query/computer";
                 "Locked" = true;
                 "ExcludedDomains" = [ ];
                 "Fallback" = false;
@@ -219,6 +219,14 @@
                         "IconURL" = "https://howlongtobeat.com/img/icons/favicon-16x16.png";
                         "Alias" = "@hltb";
                         "Description" = "Search for time to beat a game";
+                    }
+                    {
+                        "Name" = "Mangadex";
+                        "URLTemplate" = "https://mangadex.org/search?q={searchTerms}";
+                        "Method" = "GET";
+                        "IconURL" = "https://mangadex.org/favicon.ico";
+                        "Alias" = "@md";
+                        "Description" = "Search for manga on mangadex";
                     }
                     {
                         "Name" = "Nixos options";
