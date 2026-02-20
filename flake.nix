@@ -44,9 +44,19 @@
             };
             versions = {
                 intel-vaapi-driver = "2.4.5";
+                jellyfin-desktop = "2.0.0";
                 yt-dlp = "2026.02.04";
             };
             version-overlay = final: prev: {
+                jellyfin-desktop = prev.jellyfin-desktop.overrideAttrs (old: {
+                    version = versions.jellyfin-desktop;
+                    src = prev.fetchFromGitHub {
+                        owner = "jellyfin";
+                        repo = "jellyfin-desktop";
+                        rev = "21875fe17875762eb69678534b2699eb4d01c5e0";
+                        hash = "sha256-RfQgvXhNn+oR0Ub0Urf+7GiBF9eZqS8gT9TYPpxmSTQ=";
+                    };
+                });
                 yt-dlp = prev.yt-dlp.overrideAttrs (old: {
                     version = versions.yt-dlp;
                     src = prev.fetchFromGitHub {
