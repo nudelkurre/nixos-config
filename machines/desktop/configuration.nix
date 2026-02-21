@@ -457,6 +457,16 @@
                                     "audio.position" = "FL,FR";
                                 };
                             }
+                            {
+                                factory = "adapter";
+                                args = {
+                                    "factory.name" = "support.null-audio-sink";
+                                    "node.name" = "Null Input";
+                                    "node.description" = "Null Input";
+                                    "media.class" = "Audio/Source/Virtual";
+                                    "audio.position" = "FL,FR";
+                                };
+                            }
                         ];
                     };
                 };
