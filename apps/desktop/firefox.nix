@@ -457,11 +457,11 @@
         "firefox" = {
             actions = {
                 "new-private-window" = {
-                    exec = "${config.programs.firefox.package}/bin/firefox --private-window %U";
+                    exec = "firefox --private-window %U";
                     name = "New Private Window";
                 };
                 "profile-manager-window" = {
-                    exec = "${config.programs.firefox.package}/bin/firefox --ProfileManager";
+                    exec = "firefox --ProfileManager";
                     name = "Profile Manager";
                 };
             };
@@ -469,7 +469,7 @@
                 "Network"
                 "WebBrowser"
             ];
-            exec = "${config.programs.firefox.package}/bin/firefox --new-window %U";
+            exec = "firefox --new-window %U";
             genericName = "Web Browser";
             icon = "firefox";
             mimeType = [
