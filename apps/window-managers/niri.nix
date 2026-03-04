@@ -409,6 +409,11 @@ in
         }
 
         window-rule {
+            match app-id="gamescope"
+            variable-refresh-rate true
+        }
+
+        window-rule {
             geometry-corner-radius ${toString config.desktop.corner-radius}
             clip-to-geometry true
         }
