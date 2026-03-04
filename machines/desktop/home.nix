@@ -313,7 +313,6 @@ in
                                 {
                                     "config" = {
                                         "hide_no_focus" = true;
-                                        "timer" = 0.3;
                                     };
                                     "module" = "windowtitle";
                                 }
@@ -329,7 +328,6 @@ in
                                             "4" = "";
                                             "5" = "";
                                         };
-                                        "timer" = 0.3;
                                     };
                                     "module" = "workspace";
                                 }
@@ -377,7 +375,6 @@ in
                                             "9" = "󰓃";
                                             "10" = "";
                                         };
-                                        "timer" = 0.3;
                                     };
                                     "module" = "workspace";
                                 }
