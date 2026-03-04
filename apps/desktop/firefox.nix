@@ -1,6 +1,7 @@
 {
     pkgs,
     config,
+    sharedSettings,
     lib,
     ...
 }:
@@ -162,17 +163,137 @@
             };
             "PostQuantumKeyAgreementEnabled" = true;
             "Preferences" = {
-                "toolkit.legacyUserProfileCustomizations.stylesheets" = {
-                    "Value" = true;
+                "browser.aboutConfig.showWarning" = {
+                    "Value" = false;
+                    "Type" = "boolean";
+                    "Status" = "default";
+                };
+                "browser.ai.control.default" = {
+                    "Value" = "blocked";
+                    "Type" = "string";
                     "Status" = "locked";
+                };
+                "browser.chrome.site_icons" = {
+                    "Value" = false;
+                    "Type" = "boolean";
+                    "Status" = "default";
+                };
+                "browser.contentblocking.report.hide_vpn_banner" = {
+                    "Value" = true;
+                    "Type" = "boolean";
+                    "Status" = "default";
+                };
+                "browser.display.background_color" = {
+                    # "Value" = "#e2e2e2";
+                    "Value" = sharedSettings.colors.${sharedSettings.colors.variant}.base;
+                    "Type" = "string";
+                    "Status" = "default";
+                };
+                "browser.display.foreground_color" = {
+                    # "Value" = "#4a4a4a";
+                    "Value" = sharedSettings.colors.${sharedSettings.colors.variant}.text;
+                    "Type" = "string";
+                    "Status" = "default";
                 };
                 "browser.fixup.domainsuffixwhitelist.lan" = {
                     "Value" = true;
+                    "Type" = "boolean";
+                    "Status" = "default";
+                };
+                "browser.ml.linkPreview.enabled" = {
+                    "Value" = false;
+                    "Type" = "boolean";
+                    "Status" = "default";
+                };
+                "browser.privatebrowsing.promoEnabled" = {
+                    "Value" = false;
+                    "Type" = "boolean";
+                    "Status" = "default";
+                };
+                "browser.privatebrowsing.vpnpromourl" = {
+                    "Value" = "";
+                    "Type" = "string";
+                    "Status" = "default";
+                };
+                "browser.safebrowsing.downloads.remote.enabled" = {
+                    "Value" = false;
+                    "Type" = "boolean";
+                    "Status" = "default";
+                };
+                "browser.shell.shortcutFavicons" = {
+                    "Value" = false;
+                    "Type" = "boolean";
+                    "Status" = "default";
+                };
+                "browser.urlbar.speculativeConnect.enabled" = {
+                    "Value" = false;
+                    "Type" = "boolean";
+                    "Status" = "default";
+                };
+                "browser.urlbar.trimURLs" = {
+                    "Value" = false;
+                    "Type" = "boolean";
+                    "Status" = "default";
+                };
+                "media.peerconnection.enabled" = {
+                    "Value" = false;
+                    "Type" = "boolean";
+                    "Status" = "default";
+                };
+                "network.http.referer.XOriginPolicy" = {
+                    "Value" = 0;
+                    "Type" = "number";
+                    "Status" = "default";
+                };
+                "network.http.referer.XOriginTrimmingPolicy" = {
+                    "Value" = 2;
+                    "Type" = "number";
+                    "Status" = "default";
+                };
+                "network.IDN_show_punycode" = {
+                    "Value" = true;
+                    "Type" = "boolean";
+                    "Status" = "default";
+                };
+                "network.predictor.enabled" = {
+                    "Value" = false;
+                    "Type" = "boolean";
+                    "Status" = "default";
+                };
+                "network.prefetch-next" = {
+                    "Value" = false;
+                    "Type" = "boolean";
+                    "Status" = "default";
+                };
+                "network.security.esni.enabled" = {
+                    "Value" = true;
+                    "Type" = "boolean";
                     "Status" = "default";
                 };
                 "network.trr.allow-rfc1918" = {
                     "Value" = true;
+                    "Type" = "boolean";
                     "Status" = "default";
+                };
+                "places.history.enabled" = {
+                    "Value" = false;
+                    "Type" = "boolean";
+                    "Status" = "default";
+                };
+                "privacy.userContext.enabled" = {
+                    "Value" = true;
+                    "Type" = "boolean";
+                    "Status" = "locked";
+                };
+                "privacy.userContext.ui.enabled" = {
+                    "Value" = true;
+                    "Type" = "boolean";
+                    "Status" = "locked";
+                };
+                "toolkit.legacyUserProfileCustomizations.stylesheets" = {
+                    "Value" = true;
+                    "Type" = "boolean";
+                    "Status" = "locked";
                 };
             };
             "PromptForDownloadLocation" = true;
@@ -385,31 +506,10 @@
                 isDefault = true;
                 settings = {
                     "beacon.enabled" = false;
-                    "browser.aboutConfig.showWarning" = false;
-                    "browser.chrome.site_icons" = false;
-                    "browser.contentblocking.report.hide_vpn_banner" = true;
-                    "browser.display.background_color" = "#e2e2e2";
-                    "browser.display.foreground_color" = "#4a4a4a";
-                    "browser.privatebrowsing.promoEnabled" = false;
-                    "browser.privatebrowsing.vpnpromourl" = "";
-                    "browser.safebrowsing.downloads.remote.enabled" = false;
-                    "browser.shell.shortcutFavicons" = false;
-                    "browser.urlbar.speculativeConnect.enabled" = false;
-                    "browser.urlbar.trimURLs" = false;
                     "font.name-list.emoji" = "${toString (
                         lib.lists.sublist 0 1 config.fonts.fontconfig.defaultFonts.emoji
                     )}";
-                    "media.peerconnection.enabled" = false;
-                    "network.http.referer.XOriginPolicy" = 0;
-                    "network.http.referer.XOriginTrimmingPolicy" = 2;
-                    "network.IDN_show_punycode" = true;
-                    "network.predictor.enabled" = false;
-                    "network.prefetch-next" = false;
-                    "network.security.esni.enabled" = true;
-                    "places.history.enabled" = false;
                     "privacy.history.custom" = true;
-                    "privacy.userContext.enabled" = true;
-                    "privacy.userContext.ui.enabled" = true;
                 };
                 userChrome = ''
                     #alltabs-button {
