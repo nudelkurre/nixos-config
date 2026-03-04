@@ -285,13 +285,6 @@ in
         };
     };
 
-    qt = {
-        enable = true;
-        platformTheme = {
-            name = "gtk3";
-        };
-    };
-
     rofi = {
         border-color = "${sharedSettings.colors.main}";
         lines = 23;
