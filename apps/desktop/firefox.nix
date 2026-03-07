@@ -173,6 +173,21 @@
                     "Type" = "string";
                     "Status" = "locked";
                 };
+                "browser.ai.control.linkPreviewKeyPoints" = {
+                    "Value" = "blocked";
+                    "Type" = "string";
+                    "Status" = "locked";
+                };
+                "browser.ai.control.pdfjsAltText" = {
+                    "Value" = "blocked";
+                    "Type" = "string";
+                    "Status" = "locked";
+                };
+                "browser.ai.control.smartTabGroups" = {
+                    "Value" = "blocked";
+                    "Type" = "string";
+                    "Status" = "locked";
+                };
                 "browser.chrome.site_icons" = {
                     "Value" = false;
                     "Type" = "boolean";
@@ -200,10 +215,15 @@
                     "Type" = "boolean";
                     "Status" = "default";
                 };
+                "browser.ml.chat.enabled" = {
+                    "Value" = false;
+                    "Type" = "boolean";
+                    "Status" = "locked";
+                };
                 "browser.ml.linkPreview.enabled" = {
                     "Value" = false;
                     "Type" = "boolean";
-                    "Status" = "default";
+                    "Status" = "locked";
                 };
                 "browser.privatebrowsing.promoEnabled" = {
                     "Value" = false;
