@@ -372,6 +372,7 @@ in
 
         window-rule {
             match app-id="Alacritty"
+            match app-id="kitty"
             match app-id="nemo"
             default-column-width {
                 proportion 0.5;
