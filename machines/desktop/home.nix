@@ -144,7 +144,7 @@ in
         {
             mod = [ "Mod4" ];
             key = "Return";
-            program = "alacritty";
+            program = "kitty";
             overlay-title = "Open terminal window";
         }
 
