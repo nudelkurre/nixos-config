@@ -7,8 +7,8 @@
 let
     target = "graphical-session.target";
     services = (
-        builtins.listToAttrs (
-            builtins.map (m: {
+        builtins.listToAttrs
+            (builtins.map (m: {
                 name = "bgchange-${m.name}";
                 value =
                     let
@@ -20,7 +20,7 @@ let
                                 WantedBy = [ target ];
                             };
                             Service = {
-                                ExecStart = "${pkgs.mpvpaper}/bin/mpvpaper ${m.name} ${pkgs.wallpapers.video-wallpapers}/share/wallpapers/${orientation} --slideshow 1200 --mpv-options 'shuffle panscan=1.0 really-quiet no-audio' --auto-pause";
+                                ExecStart = "${pkgs.mpvpaper}/bin/mpvpaper ${m.name} ${pkgs.wallpapers.video-wallpapers}/share/wallpapers/${orientation} --mpv-options 'shuffle loop-file=inf panscan=1.0 really-quiet no-audio' --auto-pause";
                                 Restart = "always";
                                 RestartSec = "5s";
                             };
@@ -34,8 +34,10 @@ let
                     else if m.wallpaper == "swww" then
                         {
                             Service = {
-                                ExecStart = pkgs.writeShellScript "bgchange-${m.name}" "${config.services.swww.package}/bin/swww img -o ${m.name} --resize=crop --transition-type=fade $(find ${pkgs.wallpapers.wallpapers}/share/wallpapers/${orientation} -type f | grep -P '(png|jpg|jpeg)' | shuf -n 1)";
+                                ExecStart = pkgs.writeShellScript "bgchange-${m.name}" "${config.services.swww.package}/bin/swww img -o ${m.name} --resize=crop --transition-type=fade $(find ${pkgs.wallpapers.wallpapers}/share/wallpapers/${orientation} | grep -P '(png|jpg|jpeg)' | shuf -n 1)";
+                                ExecStop =  pkgs.writeShellScript "bgchange-${m.name}-clear" "${config.services.swww.package}/bin/swww clear -o ${m.name}";
                                 Type = "oneshot";
+                                RemainAfterExit = true;
                                 Restart = "on-failure";
                                 RestartSec = "5";
                             };
@@ -45,22 +47,35 @@ let
                         }
                     else
                         { };
-            }) (config.monitors.outputs)
-        )
+            }) (config.monitors.outputs)) //
+            builtins.listToAttrs
+            (
+                (builtins.map (m: {
+                    name = "bgchange-${m.name}-restart";
+                    value = {
+                        Service = {
+                            ExecStart = "systemctl --user restart bgchange-${m.name}.service";
+                            Type = "oneshot";
+                            Restart = "on-failure";
+                            RestartSec = "5";
+                        };
+                    };
+                }) (config.monitors.outputs))
+            )
     );
     timers = (
         builtins.listToAttrs (
             builtins.map (m: {
                 name = "bgchange-${m.name}";
                 value =
-                    if m.wallpaper == "swww" then
+                    if m.wallpaper == "swww" || m.wallpaper == "mpvpaper" then
                         {
                             Install = {
                                 WantedBy = [ "timers.target" ];
                             };
                             Timer = {
                                 OnCalendar = "*:0/20";
-                                Unit = "bgchange-${m.name}.service";
+                                Unit = "bgchange-${m.name}-restart.service";
                                 RandomizedDelaySec = 0;
                                 AccuracySec = 15;
                             };
@@ -73,9 +88,9 @@ let
             }) (config.monitors.outputs)
         )
     );
-    enableSwww = builtins.elem true (builtins.map(m:
-        if m.wallpaper == "swww" then true else false
-    )(config.monitors.outputs));
+    enableSwww = builtins.elem true (
+        builtins.map (m: if m.wallpaper == "swww" then true else false) (config.monitors.outputs)
+    );
     filteredAttrs = lib.filterAttrsRecursive (name: value: value != { });
 in
 {
