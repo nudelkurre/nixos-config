@@ -23,9 +23,9 @@ in
                 format = "<b>%s</b>\\n%b";
                 frame_color = sharedSettings.colors.main;
                 frame_width = 2;
-                height = "(0, ${toString (builtins.floor (main_monitor.height / 3))})";
+                height = "(0, ${toString (builtins.floor (main_monitor.height / 5))})";
                 hide_duplicate_count = false;
-                history_length = 7;
+                history_length = 5;
                 horizontal_padding = 8;
                 icon_position = "left";
                 idle_threshold = 0;
@@ -38,6 +38,7 @@ in
                 mouse_left_click = "close_current";
                 mouse_middle_click = "do_action";
                 mouse_right_click = "close_all";
+                offset = "(${toString config.desktop.gaps}, ${toString config.desktop.gaps})";
                 origin = "top-right";
                 padding = 8;
                 separator_color = "frame";
