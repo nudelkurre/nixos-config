@@ -425,6 +425,38 @@ in
         };
     };
 
+    systemd.user = {
+        services = {
+            "pw-link" = {
+                Install = {
+                    WantedBy = [ "graphical-session.target" ];
+                };
+                Service =
+                    let
+                        input = "Null Output";
+                        output = "alsa_output.usb-SteelSeries_SteelSeries_Arctis_7-00.stereo-game";
+                    in
+                    {
+                    ExecStart = pkgs.writeShellScript "pw-link" ''
+                        ${pkgs.pipewire}/bin/pw-link "${input}:monitor_FL" "${output}:playback_FL"
+                        ${pkgs.pipewire}/bin/pw-link "${input}:monitor_FR" "${output}:playback_FR"
+                    '';
+                    ExecStop =  pkgs.writeShellScript "pw-unlink" ''
+                        ${pkgs.pipewire}/bin/pw-link -d "${input}:monitor_FL" "${output}:playback_FL"
+                        ${pkgs.pipewire}/bin/pw-link -d "${input}:monitor_FR" "${output}:playback_FR"
+                    '';
+                    Type = "oneshot";
+                    RemainAfterExit = true;
+                    Restart = "on-failure";
+                    RestartSec = "5";
+                };
+                Unit = {
+                    Description = "Link headset to null sink";
+                };
+            };
+        };
+    };
+
     workspaces = [
         {
             name = "1";
