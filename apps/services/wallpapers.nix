@@ -35,7 +35,8 @@ let
                         {
                             Service = {
                                 ExecStart = pkgs.writeShellScript "bgchange-${m.name}" "${config.services.swww.package}/bin/swww img -o ${m.name} --resize=crop --transition-type=fade $(find ${pkgs.wallpapers.wallpapers}/share/wallpapers/${orientation} | grep -P '(png|jpg|jpeg)' | shuf -n 1)";
-                                ExecStop =  pkgs.writeShellScript "bgchange-${m.name}-clear" "${config.services.swww.package}/bin/swww clear -o ${m.name}";
+                                ExecReload = pkgs.writeShellScript "bgchange-${m.name}" "${config.services.swww.package}/bin/swww img -o ${m.name} --resize=crop --transition-type=fade $(find ${pkgs.wallpapers.wallpapers}/share/wallpapers/${orientation} | grep -P '(png|jpg|jpeg)' | shuf -n 1)";
+                                ExecStopPost =  pkgs.writeShellScript "bgchange-${m.name}-clear" "${config.services.swww.package}/bin/swww clear -o ${m.name}";
                                 Type = "oneshot";
                                 RemainAfterExit = true;
                                 Restart = "on-failure";
@@ -54,7 +55,7 @@ let
                     name = "bgchange-${m.name}-restart";
                     value = {
                         Service = {
-                            ExecStart = "systemctl --user restart bgchange-${m.name}.service";
+                            ExecStart = "systemctl --user ${if m.wallpaper == "swww" then "reload" else "restart"} bgchange-${m.name}.service";
                             Type = "oneshot";
                             Restart = "on-failure";
                             RestartSec = "5";
