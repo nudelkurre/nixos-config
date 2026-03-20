@@ -262,20 +262,6 @@ with lib;
                 description = "Set default wallpaper service";
             };
         };
-        rofi = {
-            border-color = mkOption {
-                type = types.str;
-                description = "Color to use on borders of rofi";
-                example = "#ffffff";
-                default = "#ffffff";
-            };
-            lines = mkOption {
-                type = types.int;
-                description = "Number of rows to use in rofi";
-                example = 15;
-                default = 10;
-            };
-        };
         workspaces = mkOption {
             type = types.listOf (
                 types.submodule {

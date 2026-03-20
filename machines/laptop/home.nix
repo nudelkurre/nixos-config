@@ -224,11 +224,6 @@
 
     };
 
-    rofi = {
-        border-color = "${sharedSettings.colors.main}";
-        lines = 11;
-    };
-
     services = {
         ngb = {
             enable = true;

@@ -290,11 +290,6 @@ in
         };
     };
 
-    rofi = {
-        border-color = "${sharedSettings.colors.main}";
-        lines = 23;
-    };
-
     services = {
         kdeconnect = {
             enable = true;
