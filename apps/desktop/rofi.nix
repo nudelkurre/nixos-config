@@ -4,12 +4,13 @@ let
     variant = sharedSettings.colors.variant;
     text-color = sharedSettings.colors."${variant}".text;
     base-color = sharedSettings.colors."${variant}".base;
+    main-color = sharedSettings.colors.main;
     overlay-color = sharedSettings.colors."${variant}".overlay;
 in
 {
     programs.rofi = {
         enable = true;
-        cycle = false;
+        cycle = true;
         extraConfig = {
             disable-history = mkLiteral "true";
             drun-display-format = "{name}";
@@ -17,13 +18,12 @@ in
             fixed-num-lines = mkLiteral "false";
             hover-select = mkLiteral "false";
             icon-theme = "${config.gtk.iconTheme.name}";
-            scroll-method = mkLiteral "0";
+            scroll-method = mkLiteral "1";
             show-icons = mkLiteral "true";
             sort = mkLiteral "true";
             sorting-method = "fzf";
-
         };
-        location = "top-left";
+        location = "center";
         modes = [ "drun" ];
         package = pkgs.rofi;
         terminal = "kitty";
@@ -35,15 +35,15 @@ in
                 margin = mkLiteral "2px 5px 2px 5px";
                 padding = mkLiteral "10px 4px 10px 10px";
                 children = mkLiteral "[element-icon, element-text]";
-                orientation = mkLiteral "vertical";
+                orientation = mkLiteral "horizontal";
             };
             "element-icon" = {
-                size = mkLiteral "96px";
+                size = mkLiteral "32px";
             };
             "element-text" = {
-                font = "${config.fonts.name} Bold 10";
+                font = "${config.fonts.name} Bold ${toString config.fonts.size}";
                 text-color = mkLiteral text-color;
-                horizontal-align = mkLiteral "0.5";
+                vertical-align = mkLiteral "0.5";
             };
             "element.normal.normal, element.alternate.normal, element.normal.urgent, element.alternate.urgent, element.normal.active, element.alternate.active" =
                 {
@@ -52,10 +52,11 @@ in
             "element.selected.normal, element.selected.urgent, element.selected.active" = {
                 background-color = mkLiteral "${overlay-color}d9";
                 border = mkLiteral "2px";
-                border-color = mkLiteral "${config.rofi.border-color}";
+                border-color = mkLiteral "${main-color}";
                 border-radius = mkLiteral "${toString config.desktop.corner-radius}px";
             };
             "entry" = {
+                font = "${config.fonts.name} Bold ${toString (config.fonts.size * 2)}";
                 placeholder = "Program";
                 placeholder-color = mkLiteral text-color;
                 text-color = mkLiteral text-color;
@@ -69,9 +70,10 @@ in
                 text-color = mkLiteral text-color;
             };
             "listview" = {
-                columns = mkLiteral "10";
+                lines = mkLiteral "5";
                 scrollbar = mkLiteral "false";
                 padding = mkLiteral "10px";
+                require-input = mkLiteral "true";
             };
             "prompt" = {
                 text-color = mkLiteral text-color;
@@ -79,11 +81,10 @@ in
             "window" = {
                 background-color = mkLiteral "${base-color}cc";
                 border = mkLiteral "2px";
-                border-color = mkLiteral "${config.rofi.border-color}";
+                border-color = mkLiteral "${main-color}";
                 border-radius = mkLiteral "${toString config.desktop.corner-radius}px";
                 margin = mkLiteral "${toString (config.desktop.gaps * 4)}px";
-                width = mkLiteral "100%";
-                height = mkLiteral "100%";
+                width = mkLiteral "700px";
             };
         };
     };
