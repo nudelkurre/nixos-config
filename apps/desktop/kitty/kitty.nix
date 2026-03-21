@@ -4,7 +4,7 @@
         enable = true;
         font = {
             name = "${config.fonts.name}";
-            size = 11;
+            size = config.fonts.size;
         };
         settings = {
             background = "#000000";

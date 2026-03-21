@@ -45,7 +45,7 @@
                     family = "${config.fonts.name}";
                     style = "Regular";
                 };
-                size = 11;
+                size = config.fonts.size;
             };
             mouse = {
                 bindings = [
