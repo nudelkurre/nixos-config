@@ -35,6 +35,7 @@ in
                 ];
                 userSettings = {
                     "editor.fontFamily" = "${config.fonts.name}";
+                    "editor.fontSize" = config.fonts.size;
                     "editor.insertSpaces" = true;
                     "editor.tabSize" = 4;
                     "latex-workshop.latex.autoBuild.run" = "never";
@@ -57,8 +58,10 @@ in
                             };
                         };
                     };
+                    "terminal.integrated.fontSize" = config.fonts.size;
                     "terminal.integrated.initialHint" = false;
                     "workbench.colorTheme" = "Catppuccin ${if variant == "frappe" then "Frappé" else capitalize variant}";
+                    "workbench.experimental.fontSize" = config.fonts.size;
                     "workbench.iconTheme" = "catppuccin-${variant}";
                     "[python]" = {
                         "editor.formatOnSave" = true;
