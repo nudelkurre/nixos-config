@@ -29,6 +29,7 @@ in
     };
     gtk = {
         enable = true;
+        colorScheme = lib.strings.toLower accent;
         cursorTheme = {
             name = "Afterglow-Recolored-Catppuccin-${color}";
             package = pkgs.afterglow-cursors-recolored.override {
@@ -57,39 +58,21 @@ in
                 tweaks = [ "catppuccin" ];
             };
         };
-        gtk2 = {
-            extraConfig = ''
-                gtk-enable-animations = 1
-                gtk-primary-button-warps-slider = 0
-                gtk-toolbar-style = 3
-                gtk-menu-images = 1
-                gtk-button-images = 1
-            '';
-        };
         gtk3 = {
             bookmarks = [
                 "file:///home/emil/Downloads"
                 "file:///home/emil/repos"
             ];
             extraConfig = {
-                gtk-application-prefer-dark-theme = if accent == "Dark" then true else false;
                 gtk-button-images = true;
-                gtk-decoration-layout = "icon:minimize,maximize,close";
                 gtk-enable-animations = true;
                 gtk-menu-images = true;
-                gtk-modules = "window-decorations-gtk-module:colorreload-gtk-module";
-                gtk-primary-button-warps-slider = false;
                 gtk-toolbar-style = 3;
-                gtk-xft-dpi = 98304;
             };
         };
         gtk4 = {
             extraConfig = {
-                gtk-application-prefer-dark-theme = if accent == "Dark" then true else false;
-                gtk-decoration-layout = "icon:minimize,maximize,close";
                 gtk-enable-animations = true;
-                gtk-primary-button-warps-slider = false;
-                gtk-xft-dpi = 98304;
             };
         };
     };
