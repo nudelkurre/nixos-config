@@ -31,7 +31,7 @@ in
             enable = true;
         };
         name = "MonaspiceRn Nerd Font Mono";
-        size = 16;
+        size = 12;
     };
 
     # Home Manager is pretty good at managing dotfiles. The primary way to manage
