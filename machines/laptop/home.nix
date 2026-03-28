@@ -4,6 +4,14 @@
     config,
     ...
 }:
+let
+    # Set default programs to be used by mimetypes and keybindings
+    browser = sharedSettings.firefox-version;
+    image_viewer = "imv-dir";
+    media_player = "mpv";
+    text_editor = "codium";
+    file_browser = "nemo";
+in
 {
     desktop = {
         corner-radius = 15;
@@ -130,8 +138,8 @@
                 "Shift"
             ];
             key = "f";
-            program = "librewolf";
-            overlay-title = "Launch librewolf";
+            program = "${browser}";
+            overlay-title = "Launch ${browser}";
         }
 
         # Start firefox in private window
@@ -142,8 +150,8 @@
                 "Shift"
             ];
             key = "f";
-            program = "librewolf --private-window";
-            overlay-title = "Launch librewolf private window";
+            program = "${browser} --private-window";
+            overlay-title = "Launch ${browser} private window";
         }
     ];
 
@@ -428,6 +436,26 @@
 
     xdg = {
         enable = true;
+        mimeApps = {
+            enable = true;
+            defaultApplications = {
+                "application/pdf" = "${browser}.desktop";
+                "audio/flac" = "${media_player}.desktop";
+                "audio/mpeg" = "${media_player}.desktop";
+                "audio/x-m4b" = "${media_player}.desktop";
+                "audio/x-vorbis+ogg" = "${media_player}.desktop";
+                "image/jpeg" = "${image_viewer}.desktop";
+                "image/png" = "${image_viewer}.desktop";
+                "inode/directory" = "${file_browser}.desktop";
+                "text/html" = "${text_editor}.desktop";
+                "text/x-python" = "${text_editor}.desktop";
+                "video/mp4" = "${media_player}.desktop";
+                "video/x-matroska" = "${media_player}.desktop";
+                "x-scheme-handler/http" = "${browser}.desktop";
+                "x-scheme-handler/https" = "${browser}.desktop";
+                "x-scheme-handler/chrome" = "${browser}.desktop";
+            };
+        };
         # Enable xdg-desktop-portal
         portal = {
             config = {

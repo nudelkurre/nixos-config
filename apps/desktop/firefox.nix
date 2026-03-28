@@ -5,10 +5,13 @@
     lib,
     ...
 }:
+let
+    version = sharedSettings.firefox-version;
+in
 {
     programs.firefox = {
         enable = true;
-        package = pkgs.firefox;
+        package = pkgs.${version};
         policies = {
             "CaptivePortal" = false;
             "Cookies" = {
@@ -21,7 +24,7 @@
             "DisableFormHistory" = true;
             "DisableMasterPasswordCreation" = true;
             "DisablePasswordReveal" = true;
-            "DisableProfileRefresh" = true;
+            "DisableProfileRefresh" = false;
             "DisableSetDesktopBackground" = true;
             "DisableSystemAddonUpdate" = true;
             "DisableTelemetry" = true;
@@ -97,12 +100,6 @@
                 "StartPage" = "homepage-locked";
             };
             "HttpsOnlyMode" = "force_enabled";
-            "InstallAddonsPermission" = {
-                "Allow" = [
-                    "https://addons.mozilla.org"
-                ];
-                "Default" = false;
-            };
             "NetworkPrediction" = false;
             "NewTabPage" = true;
             "NoDefaultBookmarks" = true;
@@ -199,13 +196,11 @@
                     "Status" = "default";
                 };
                 "browser.display.background_color" = {
-                    # "Value" = "#e2e2e2";
                     "Value" = sharedSettings.colors.${sharedSettings.colors.variant}.base;
                     "Type" = "string";
                     "Status" = "default";
                 };
                 "browser.display.foreground_color" = {
-                    # "Value" = "#4a4a4a";
                     "Value" = sharedSettings.colors.${sharedSettings.colors.variant}.text;
                     "Type" = "string";
                     "Status" = "default";
@@ -428,7 +423,7 @@
                 "UrlbarInterventions" = false;
                 "SkipOnboarding" = false;
                 "MoreFromMozilla" = false;
-                "FirefoxLabs" = true;
+                "FirefoxLabs" = false;
                 "Locked" = true;
             };
         };
@@ -465,14 +460,14 @@
                         icon = "chill";
                         id = 6;
                     };
-                    Linkedin = {
+                    Hotmail = {
                         color = "blue";
                         icon = "chill";
                         id = 7;
                     };
-                    Hotmail = {
+                    Twitter = {
                         color = "blue";
-                        icon = "chill";
+                        icon = "vacation";
                         id = 8;
                     };
                     Facebook = {
@@ -480,45 +475,25 @@
                         icon = "fingerprint";
                         id = 9;
                     };
-                    Crypto = {
-                        color = "yellow";
-                        icon = "dollar";
-                        id = 10;
-                    };
                     Personal = {
                         color = "blue";
                         icon = "fingerprint";
-                        id = 11;
+                        id = 10;
                     };
                     "Yt music" = {
                         color = "red";
                         icon = "circle";
-                        id = 12;
-                    };
-                    Twitter = {
-                        color = "blue";
-                        icon = "vacation";
-                        id = 13;
-                    };
-                    Tailscale = {
-                        color = "blue";
-                        icon = "vacation";
-                        id = 14;
+                        id = 11;
                     };
                     Proxy = {
                         color = "pink";
                         icon = "circle";
-                        id = 15;
+                        id = 12;
                     };
                     Blusky = {
                         color = "blue";
                         icon = "circle";
-                        id = 16;
-                    };
-                    "Yt-nocookie" = {
-                        color = "red";
-                        icon = "circle";
-                        id = 17;
+                        id = 13;
                     };
                 };
                 containersForce = true;
@@ -578,14 +553,14 @@
         };
     };
     xdg.desktopEntries = lib.mkIf config.programs.firefox.enable {
-        "firefox" = {
+        "${version}" = {
             actions = {
                 "new-private-window" = {
-                    exec = "firefox --private-window %U";
+                    exec = "${version} --private-window %U";
                     name = "New Private Window";
                 };
                 "profile-manager-window" = {
-                    exec = "firefox --ProfileManager";
+                    exec = "${version} --ProfileManager";
                     name = "Profile Manager";
                 };
             };
@@ -593,7 +568,7 @@
                 "Network"
                 "WebBrowser"
             ];
-            exec = "firefox --new-window %U";
+            exec = "${version} --new-window %U";
             genericName = "Web Browser";
             icon = "firefox";
             mimeType = [
@@ -604,7 +579,7 @@
                 "x-scheme-handler/http"
                 "x-scheme-handler/https"
             ];
-            name = "Firefox";
+            name = "${version}";
             # noDisplay = true;
             startupNotify = true;
             terminal = false;

@@ -6,7 +6,7 @@
 }:
 let
     # Set default programs to be used by mimetypes and keybindings
-    browser = "firefox";
+    browser = sharedSettings.firefox-version;
     image_viewer = "imv-dir";
     media_player = "mpv";
     text_editor = "codium";
