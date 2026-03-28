@@ -569,6 +569,10 @@
                     #sidebar-button {
                         display: none;
                     }
+
+                    .subviewbutton, .urlbar {
+                        font-size: ${toString config.fonts.size}px;
+                    }
                 '';
             };
         };
