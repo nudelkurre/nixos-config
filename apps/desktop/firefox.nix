@@ -30,7 +30,7 @@
             "DNSOverHTTPS" = {
                 "Enabled" = true;
                 "ProviderURL" = "https://dns.nudelkurre.com/dns-query/computer";
-                "Locked" = true;
+                "Locked" = false;
                 "ExcludedDomains" = [ ];
                 "Fallback" = false;
             };
