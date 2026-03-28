@@ -479,7 +479,7 @@ in
                     focus = true;
                 }
                 {
-                    name = "${browser}";
+                    name = "firefox";
                     focus = true;
                 }
                 {
