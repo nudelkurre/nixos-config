@@ -560,6 +560,12 @@ in
     ];
 
     xdg = {
+        configFile = {
+            # Force managing mimeapps.list via home manager
+            "mimeapps.list" = {
+                force = true;
+            };
+        };
         desktopEntries = {
             "amdgpu_top" = {
                 name = "AMDGPU TOP";
