@@ -17,6 +17,14 @@ let
 in
 {
     desktop = {
+        bookmarks = [
+            "file:///home/emil/Downloads"
+            "file:///mnt/docker-compose"
+            "file:///mnt/Manga"
+            "file:///mnt/Media"
+            "file:///home/emil/repos"
+            "file:///mnt/roms"
+        ];
         corner-radius = 15;
         gaps = 5;
     };

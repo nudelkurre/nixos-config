@@ -96,7 +96,16 @@
         ];
     };
 
-    fileSystems = {
+    fileSystems = 
+        let
+            options = [
+                "rw"
+                "x-systemd.automount"
+                "x-systemd.idle-timeout=120"
+                "noauto"
+            ];
+        in
+        {
         "/" = {
             device = "/dev/disk/by-label/ROOT";
             fsType = "ext4";
@@ -106,41 +115,25 @@
             fsType = "vfat";
             options = [ "umask=0077" ];
         };
-        "/home/emil/docker-compose" = {
+        "/mnt/docker-compose" = {
             device = "${sharedSettings.serverIP}:/nfs/docker/compose";
             fsType = "nfs4";
-            options = [
-                "rw"
-                "x-systemd.automount"
-                "noauto"
-            ];
+            options = options;
         };
-        "/home/emil/Manga" = {
+        "/mnt/Manga" = {
             device = "${sharedSettings.serverIP}:/nfs/Manga";
             fsType = "nfs4";
-            options = [
-                "rw"
-                "x-systemd.automount"
-                "noauto"
-            ];
+            options = options;
         };
-        "/home/emil/Media" = {
+        "/mnt/Media" = {
             device = "${sharedSettings.serverIP}:/nfs/Media";
             fsType = "nfs4";
-            options = [
-                "rw"
-                "x-systemd.automount"
-                "noauto"
-            ];
+            options = options;
         };
-        "/home/emil/roms" = {
+        "/mnt/roms" = {
             device = "${sharedSettings.serverIP}:/nfs/ROMS";
             fsType = "nfs4";
-            options = [
-                "rw"
-                "x-systemd.automount"
-                "noauto"
-            ];
+            options = options;
         };
         "/home/emil/tmp" = {
             fsType = "tmpfs";

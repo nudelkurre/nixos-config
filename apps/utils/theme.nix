@@ -59,10 +59,7 @@ in
             };
         };
         gtk3 = {
-            bookmarks = [
-                "file:///home/emil/Downloads"
-                "file:///home/emil/repos"
-            ];
+            bookmarks = config.desktop.bookmarks;
             extraConfig = {
                 gtk-button-images = true;
                 gtk-enable-animations = true;

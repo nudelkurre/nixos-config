@@ -100,7 +100,7 @@
             fsType = "vfat";
             options = [ "umask=0077" ];
         };
-        "/home/emil/Media" = {
+        "/mnt/Media" = {
             device = "${sharedSettings.serverIP}:/nfs/Media";
             fsType = "nfs4";
             options = [

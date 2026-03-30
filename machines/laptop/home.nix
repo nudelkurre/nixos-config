@@ -14,6 +14,11 @@ let
 in
 {
     desktop = {
+        bookmarks = [
+            "file:///home/emil/Downloads"
+            "file:///mnt/Media"
+            "file:///home/emil/repos"
+        ];
         corner-radius = 15;
         gaps = 4;
     };

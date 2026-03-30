@@ -3,6 +3,11 @@ with lib;
 {
     options = {
         desktop = {
+            bookmarks = mkOption {
+                type = types.listOf types.str;
+                default = [];
+                description = "List of bookmarks to use by gtk";
+            };
             corner-radius = mkOption {
                 type = types.int;
                 example = 10;
