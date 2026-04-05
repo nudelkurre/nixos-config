@@ -71,6 +71,7 @@ in
             natural-scroll = false;
         };
         touchpad = {
+            clickfinger = false;
             enable = true;
             scroll-method = "two-finger";
         };
