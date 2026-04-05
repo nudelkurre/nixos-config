@@ -246,15 +246,7 @@ in
                     {
                         "output" = "LVDS-1";
                         "widgets" = {
-                            "center" = [
-                                {
-                                    "config" = {
-                                        "api" = "SMHI";
-                                        "show_big_icon" = true;
-                                    };
-                                    "module" = "weather";
-                                }
-                            ];
+                            "center" = [ ];
                             "left" = [
                                 {
                                     "config" = {
