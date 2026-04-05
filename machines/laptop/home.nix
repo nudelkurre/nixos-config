@@ -269,6 +269,10 @@ in
                             ];
                             "right" = [
                                 {
+                                    "config" = { };
+                                    "module" = "bluetooth";
+                                }
+                                {
                                     "config" = {
                                         "mountpoint" = "/";
                                     };
