@@ -10,6 +10,7 @@ let
     color = "Pink";
     variant = capitalize sharedSettings.colors.variant;
     accent = if variant == "Latte" then "Light" else "Dark";
+    darkmode = if accent == "Dark" then true else false;
 in
 {
     dconf.settings = {
@@ -29,7 +30,6 @@ in
     };
     gtk = {
         enable = true;
-        colorScheme = lib.strings.toLower accent;
         cursorTheme = {
             name = "Afterglow-Recolored-Catppuccin-${color}";
             package = pkgs.afterglow-cursors-recolored.override {
@@ -61,6 +61,7 @@ in
         gtk3 = {
             bookmarks = config.desktop.bookmarks;
             extraConfig = {
+                gtk-application-prefer-dark-theme = darkmode;
                 gtk-button-images = true;
                 gtk-enable-animations = true;
                 gtk-menu-images = true;
@@ -69,6 +70,7 @@ in
         };
         gtk4 = {
             extraConfig = {
+                gtk-application-prefer-dark-theme = darkmode;
                 gtk-enable-animations = true;
             };
         };
