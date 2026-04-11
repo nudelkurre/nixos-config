@@ -358,7 +358,7 @@ in
                     }
                     {
                         "Name" = "Mangadex";
-                        "URLTemplate" = "https://mangadex.org/search?q={searchTerms}";
+                        "URLTemplate" = "https://mangadex.org/titles?q={searchTerms}&onlyAvailableChapters=true&translatedLang=en";
                         "Method" = "GET";
                         "IconURL" = "https://mangadex.org/favicon.ico";
                         "Alias" = "@md";
