@@ -9,7 +9,6 @@ in
 {
     programs.mangohud = {
         enable = true;
-        enableSessionWide = true;
         settings = {
             time = true;
             fps = true;
