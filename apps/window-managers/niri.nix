@@ -126,6 +126,7 @@ let
                     ''
                         window-rule {
                             match app-id="${program}"
+                            match title=r#"${program}$"#
                             open-on-workspace "${ws}"
                             open-focused ${focus}
                         }
