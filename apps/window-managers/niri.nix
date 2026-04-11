@@ -229,6 +229,10 @@ in
         layout {
             gaps ${toString config.desktop.gaps}
 
+            struts {
+                top -${toString config.desktop.gaps}
+            }
+
             background-color "transparent"
 
             center-focused-column "never"
