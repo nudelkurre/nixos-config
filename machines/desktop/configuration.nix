@@ -413,6 +413,9 @@
                 };
             };
         };
+        gvfs = {
+            enable = true;
+        };
         logind = {
             settings = {
                 Login = {
