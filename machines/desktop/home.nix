@@ -193,7 +193,7 @@ in
         {
             mod = [ "Mod4" ];
             key = "kp_0";
-            program = "flatpak run com.github.iwalton3.jellyfin-media-player";
+            program = "flatpak run org.jellyfin.JellyfinDesktop";
             overlay-title = "Launch jellyfin media player";
         }
 
