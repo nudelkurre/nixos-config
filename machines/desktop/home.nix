@@ -417,6 +417,7 @@ in
                 "gaps" = config.desktop.gaps;
                 "height" = 25;
                 "layer" = "top";
+                "font_size" = config.fonts.size;
                 "icon_size" = 20;
                 "spacing" = config.desktop.gaps;
             };
