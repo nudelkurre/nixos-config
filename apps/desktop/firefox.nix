@@ -51,28 +51,65 @@ in
                 "Enabled" = false;
                 "Locked" = true;
             };
-            "Extensions" = {
-                "Install" = [
-                    "https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/addon-11423598-latest.xpi"
-                    "https://addons.mozilla.org/firefox/downloads/latest/bitwarden-password-manager/addon-12533945-latest.xpi"
-                    "https://addons.mozilla.org/firefox/downloads/latest/violentmonkey/addon-6458157-latest.xpi"
-                    "https://addons.mozilla.org/firefox/downloads/latest/floccus/addon-12344312-latest.xpi"
-                    "https://addons.mozilla.org/firefox/downloads/latest/multi-account-containers/addon-4757633-latest.xpi"
-                    "https://addons.mozilla.org/firefox/downloads/latest/linkwarden/addon-18125611-latest.xpi"
-                ];
-                "Uninstall" = [
-                    "amazon@search.mozilla.org"
-                    "bing@search.mozilla.org"
-                    "google@search.mozilla.org"
-                    "wikipedia@search.mozilla.org"
-                ];
-                "Locked" = [
-                    "{446900e4-71c2-419f-a6a7-df9c091e268b}"
-                    "@testpilot-containers"
-                    "floccus@handmadeideas.org"
-                    "uBlock0@raymondhill.net"
-                    "{aecec67f-0d10-4fa7-b7c7-609a2db280cf}"
-                ];
+            "ExtensionSettings" = {
+                "*" = {
+                    "blocked_install_message" = "Not allowed to install extensions outside home manager config";
+                    "installation_mode" = "blocked";
+                };
+                "amazon@search.mozilla.org" = {
+                    "installation_mode" = "blocked";
+                };
+                "bing@search.mozilla.org" = {
+                    "installation_mode" = "blocked";
+                };
+                "google@search.mozilla.org" = {
+                    "installation_mode" = "blocked";
+                };
+                "wikipedia@search.mozilla.org" = {
+                    "installation_mode" = "blocked";
+                };
+                "{446900e4-71c2-419f-a6a7-df9c091e268b}" = {
+                    "installation_mode" = "force_installed";
+                    "install_url" = "https://addons.mozilla.org/firefox/downloads/latest/{446900e4-71c2-419f-a6a7-df9c091e268b}/latest.xpi";
+                    "default_area" = "navbar";
+                    "private_browsing" = true;
+                };
+                "@testpilot-containers" = {
+                    "installation_mode" = "force_installed";
+                    "install_url" = "https://addons.mozilla.org/firefox/downloads/latest/@testpilot-containers/latest.xpi";
+                    "default_area" = "navbar";
+                    "private_browsing" = true;
+                };
+                "floccus@handmadeideas.org" = {
+                    "installation_mode" = "force_installed";
+                    "install_url" = "https://addons.mozilla.org/firefox/downloads/latest/floccus@handmadeideas.org/latest.xpi";
+                    "default_area" = "navbar";
+                    "private_browsing" = false;
+                };
+                "jordanlinkwarden@gmail.com" = {
+                    "installation_mode" = "force_installed";
+                    "install_url" = "https://addons.mozilla.org/firefox/downloads/latest/jordanlinkwarden@gmail.com/latest.xpi";
+                    "default_area" = "navbar";
+                    "private_browsing" = true;
+                };
+                "uBlock0@raymondhill.net" = {
+                    "installation_mode" = "force_installed";
+                    "install_url" = "https://addons.mozilla.org/firefox/downloads/latest/uBlock0@raymondhill.net/latest.xpi";
+                    "default_area" = "navbar";
+                    "private_browsing" = true;
+                };
+                "{aecec67f-0d10-4fa7-b7c7-609a2db280cf}" = {
+                    "installation_mode" = "force_installed";
+                    "install_url" = "https://addons.mozilla.org/firefox/downloads/latest/{aecec67f-0d10-4fa7-b7c7-609a2db280cf}/latest.xpi";
+                    "default_area" = "navbar";
+                    "private_browsing" = true;
+                };
+                "{73a6fe31-595d-460b-a920-fcc0f8843232}" = {
+                    "installation_mode" = "normal_installed";
+                    "install_url" = "https://addons.mozilla.org/firefox/downloads/latest/{73a6fe31-595d-460b-a920-fcc0f8843232}/latest.xpi";
+                    "default_area" = "navbar";
+                    "private_browsing" = true;
+                };
             };
             "FirefoxHome" = {
                 "Search" = true;
@@ -547,6 +584,29 @@ in
 
                     .subviewbutton, .urlbar {
                         font-size: ${toString config.fonts.size}px;
+                    }
+
+                    #downloads-button[progress] {
+                        --downloads-progress-border-color: #888888 !important;
+                        --downloads-progress-fill: #ffff1b !important;
+                    }
+                    #downloads-button[attention="success"] {
+                        --downloads-progress-border-color: #888888 !important;
+                        --downloads-progress-fill: #1bff1b !important;
+                    }
+                    #downloads-button[attention="warning"] {
+                        --downloads-progress-border-color: #888888 !important;
+                        --downloads-progress-fill: #f0f0f0 !important;
+                    }
+                    #downloads-button[attention="severe"] {
+                        --downloads-progress-border-color: #888888 !important;
+                        --downloads-progress-fill: #ff1b1b !important;
+                    }
+                    #downloads-button {
+                        --toolbarbutton-icon-fill-attention: var(--downloads-progress-fill) !important;
+                    }
+                    #downloads-button > .toolbarbutton-badge-stack > #downloads-indicator-progress-outer {
+                        border-color: var(--downloads-progress-border-color) !important;
                     }
                 '';
             };
