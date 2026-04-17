@@ -44,11 +44,11 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1775843913,
-        "narHash": "sha256-du/R+I2EkekybD2DHw4ZUINZsVmCnJ1x1m9GrCFdhms=",
+        "lastModified": 1776449265,
+        "narHash": "sha256-6Q69V566ObM9kVziV+J7SgYHCwqvNOC+Y9WKsoTYGBY=",
         "owner": "nudelkurre",
         "repo": "ngb",
-        "rev": "14c32a79f954451c23f615ef0cf5f38975ce5da5",
+        "rev": "106c46e7eceae2771b0c50448abfcf5ec351507b",
         "type": "github"
       },
       "original": {
@@ -75,11 +75,11 @@
     },
     "nixpkgs-unstable": {
       "locked": {
-        "lastModified": 1775710090,
-        "narHash": "sha256-ar3rofg+awPB8QXDaFJhJ2jJhu+KqN/PRCXeyuXR76E=",
+        "lastModified": 1776169885,
+        "narHash": "sha256-l/iNYDZ4bGOAFQY2q8y5OAfBBtrDAaPuRQqWaFHVRXM=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "4c1018dae018162ec878d42fec712642d214fdfa",
+        "rev": "4bd9165a9165d7b5e33ae57f3eecbcb28fb231c9",
         "type": "github"
       },
       "original": {
@@ -91,11 +91,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1775595990,
-        "narHash": "sha256-OEf7YqhF9IjJFYZJyuhAypgU+VsRB5lD4DuiMws5Ltc=",
+        "lastModified": 1776221942,
+        "narHash": "sha256-FbQAeVNi7G4v3QCSThrSAAvzQTmrmyDLiHNPvTF2qFM=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "4e92bbcdb030f3b4782be4751dc08e6b6cb6ccf2",
+        "rev": "1766437c5509f444c1b15331e82b8b6a9b967000",
         "type": "github"
       },
       "original": {
@@ -138,11 +138,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1775682595,
-        "narHash": "sha256-0E9PohY/VuESLq0LR4doaH7hTag513sDDW5n5qmHd1Q=",
+        "lastModified": 1776119890,
+        "narHash": "sha256-Zm6bxLNnEOYuS/SzrAGsYuXSwk3cbkRQZY0fJnk8a5M=",
         "owner": "Mic92",
         "repo": "sops-nix",
-        "rev": "d2e8438d5886e92bc5e7c40c035ab6cae0c41f76",
+        "rev": "d4971dd58c6627bfee52a1ad4237637c0a2fb0cd",
         "type": "github"
       },
       "original": {
@@ -172,11 +172,11 @@
         "nixpkgs": "nixpkgs_3"
       },
       "locked": {
-        "lastModified": 1775844439,
-        "narHash": "sha256-WD3d/sGksMsljrbWHc0V+W2ED8G9rVvEgFMCfLnZHcg=",
+        "lastModified": 1776449759,
+        "narHash": "sha256-KBming1rdM0TGAxPq4K//sEYMEPGUMDnTACYzeeLpt0=",
         "ref": "refs/heads/master",
-        "rev": "ea59bbd2e48dd3fb0ff04ce19f68f918c44bc6d6",
-        "revCount": 71,
+        "rev": "8757a3f68b5496cf15b7ef74074a306a3d4281af",
+        "revCount": 73,
         "type": "git",
         "url": "https://git.nudelkurre.com/nudelkurre/Wallpapers.git"
       },
