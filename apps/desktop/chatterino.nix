@@ -1,117 +1,116 @@
-{ pkgs, sharedSettings, ... }:
+{ pkgs, config, sharedSettings, ... }:
 let
     colors = sharedSettings.colors."${sharedSettings.colors.variant}";
     accent = "pink";
     strip = code: builtins.substring 1 6 code;
     theme_json = {
-        "$schema" =
-            "https://raw.githubusercontent.com/Chatterino/chatterino2/v2.5.0/docs/ChatterinoTheme.schema.json";
+        "$schema" = "https://raw.githubusercontent.com/Chatterino/chatterino2/v2.5.0/docs/ChatterinoTheme.schema.json";
         "colors" = {
-            "accent" = "${strip colors.${accent}}"; #ff
+            "accent" = "#ff${strip colors.${accent}}";
             "messages" = {
                 "backgrounds" = {
-                    "alternate" = "${colors.base}"; #ff
-                    "regular" = "${colors.mantle}"; #ff
+                    "alternate" = "#ff${strip colors.base}";
+                    "regular" = "#ff${strip colors.mantle}";
                 };
-                "disabled" = "${colors.crust}"; #99
-                "highlightAnimationEnd" = "${colors.overlay2}"; #00
-                "highlightAnimationStart" = "${colors.overlay2}"; #73
-                "selection" = "${colors.text}"; #40
+                "disabled" = "#99${strip colors.crust}";
+                "highlightAnimationEnd" = "#00${strip colors.overlay2}";
+                "highlightAnimationStart" = "#73${strip colors.overlay2}";
+                "selection" = "#40${strip colors.text}";
                 "textColors" = {
-                    "caret" = "${colors.text}"; #ff
-                    "chatPlaceholder" = "${colors.subtext1}"; #ff
-                    "link" = "${colors.${accent}}"; #ff
-                    "regular" = "${colors.text}"; #ff
-                    "system" = "${colors.subtext0}"; #ff
+                    "caret" = "#ff${strip colors.text}";
+                    "chatPlaceholder" = "#ff${strip colors.subtext1}";
+                    "link" = "#ff${strip colors.${accent}}";
+                    "regular" = "#ff${strip colors.text}";
+                    "system" = "#ff${strip colors.subtext0}";
                 };
             };
             "scrollbars" = {
-                "background" = "${colors.crust}"; #00
-                "thumb" = "${colors.overlay1}"; #ff
-                "thumbSelected" = "${colors.overlay0}"; #ff
+                "background" = "#00${strip colors.crust}";
+                "thumb" = "#ff${strip colors.overlay1}";
+                "thumbSelected" = "#ff${strip colors.overlay0}";
             };
             "splits" = {
-                "background" = "${colors.crust}"; #ff
-                "dropPreview" = "${colors.${accent}}"; #33
-                "dropPreviewBorder" = "${colors.${accent}}"; #ff
-                "dropTargetRect" = "${colors.${accent}}"; #00
-                "dropTargetRectBorder" = "${colors.${accent}}"; #00
+                "background" = "#ff${strip colors.crust}";
+                "dropPreview" = "#33${strip colors.${accent}}";
+                "dropPreviewBorder" = "#ff${strip colors.${accent}}";
+                "dropTargetRect" = "#00${strip colors.${accent}}";
+                "dropTargetRectBorder" = "#00${strip colors.${accent}}";
                 "header" = {
-                    "background" = "${colors.mantle}"; #ff
-                    "border" = "${colors.crust}"; #ff
-                    "focusedBackground" = "${colors.mantle}"; #ff
-                    "focusedBorder" = "${colors.crust}"; #ff
-                    "focusedText" = "${colors.text}"; #ff
-                    "text" = "${colors.text}"; #ff
+                    "background" = "#ff${strip colors.mantle}";
+                    "border" = "#ff${strip colors.crust}";
+                    "focusedBackground" = "#ff${strip colors.mantle}";
+                    "focusedBorder" = "#ff${strip colors.crust}";
+                    "focusedText" = "#ff${strip colors.text}";
+                    "text" = "#ff${strip colors.text}";
                 };
                 "input" = {
-                    "background" = "${colors.mantle}"; #ff
-                    "text" = "${colors.${accent}}"; #ff
+                    "background" = "#ff${strip colors.mantle}";
+                    "text" = "#ff${strip colors.${accent}}";
                 };
-                "messageSeperator" = "${colors.surface0}"; #ff
-                "resizeHandle" = "${colors.${accent}}"; #ff
-                "resizeHandleBackground" = "${colors.${accent}}"; #ff
+                "messageSeperator" = "#ff${strip colors.surface0}";
+                "resizeHandle" = "#ff${strip colors.${accent}}";
+                "resizeHandleBackground" = "#ff${strip colors.${accent}}";
             };
             "tabs" = {
-                "dividerLine" = "${colors.${accent}}"; #ff
+                "dividerLine" = "#ff${strip colors.${accent}}";
                 "highlighted" = {
                     "backgrounds" = {
-                        "hover" = "${colors.mantle}"; #ff
-                        "regular" = "${colors.mantle}"; #ff
-                        "unfocused" = "${colors.mantle}"; #ff
+                        "hover" = "#ff${strip colors.mantle}";
+                        "regular" = "#ff${strip colors.mantle}";
+                        "unfocused" = "#ff${strip colors.mantle}";
                     };
                     "line" = {
-                        "hover" = "${colors.red}"; #ff
-                        "regular" = "${colors.red}"; #ff
-                        "unfocused" = "${colors.red}"; #ff
+                        "hover" = "#ff${strip colors.red}";
+                        "regular" = "#ff${strip colors.red}";
+                        "unfocused" = "#ff${strip colors.red}";
                     };
-                    "text" = "${colors.subtext1}"; #ff
+                    "text" = "#ff${strip colors.subtext1}";
                 };
-                "liveIndicator" = "${colors.red}"; #ff
+                "liveIndicator" = "#ff${strip colors.red}";
                 "newMessage" = {
                     "backgrounds" = {
-                        "hover" = "${colors.mantle}"; #ff
-                        "regular" = "${colors.mantle}"; #ff
-                        "unfocused" = "${colors.mantle}"; #ff
+                        "hover" = "#ff${strip colors.mantle}";
+                        "regular" = "#ff${strip colors.mantle}";
+                        "unfocused" = "#ff${strip colors.mantle}";
                     };
                     "line" = {
-                        "hover" = "${colors.mantle}"; #ff
-                        "regular" = "${colors.mantle}"; #ff
-                        "unfocused" = "${colors.mantle}"; #ff
+                        "hover" = "#ff${strip colors.mantle}";
+                        "regular" = "#ff${strip colors.mantle}";
+                        "unfocused" = "#ff${strip colors.mantle}";
                     };
-                    "text" = "${colors.text}"; #ff
+                    "text" = "#ff${strip colors.text}";
                 };
                 "regular" = {
                     "backgrounds" = {
-                        "hover" = "${colors.mantle}"; #ff
-                        "regular" = "${colors.mantle}"; #ff
-                        "unfocused" = "${colors.mantle}"; #ff
+                        "hover" = "#ff${strip colors.mantle}";
+                        "regular" = "#ff${strip colors.mantle}";
+                        "unfocused" = "#ff${strip colors.mantle}";
                     };
                     "line" = {
-                        "hover" = "${colors.mantle}"; #ff
-                        "regular" = "${colors.mantle}"; #ff
-                        "unfocused" = "${colors.mantle}"; #ff
+                        "hover" = "#ff${strip colors.mantle}";
+                        "regular" = "#ff${strip colors.mantle}";
+                        "unfocused" = "#ff${strip colors.mantle}";
                     };
-                    "text" = "${colors.subtext0}"; #ff
+                    "text" = "#ff${strip colors.subtext0}";
                 };
-                "rerunIndicator" = "${colors.yellow}"; #ff
+                "rerunIndicator" = "#ff${strip colors.yellow}";
                 "selected" = {
                     "backgrounds" = {
-                        "hover" = "${colors.surface0}"; #ff
-                        "regular" = "${colors.surface0}"; #ff
-                        "unfocused" = "${colors.surface0}"; #ff
+                        "hover" = "#ff${strip colors.surface0}";
+                        "regular" = "#ff${strip colors.surface0}";
+                        "unfocused" = "#ff${strip colors.surface0}";
                     };
                     "line" = {
-                        "hover" = "${colors.${accent}}"; #ff
-                        "regular" = "${colors.${accent}}"; #ff
-                        "unfocused" = "${colors.${accent}}"; #ff
+                        "hover" = "#ff${strip colors.${accent}}";
+                        "regular" = "#ff${strip colors.${accent}}";
+                        "unfocused" = "#ff${strip colors.${accent}}";
                     };
-                    "text" = "${colors.text}"; #ff
+                    "text" = "#ff${strip colors.text}";
                 };
             };
             "window" = {
-                "background" = "${colors.crust}"; #ff
-                "text" = "${colors.subtext1}"; #ff
+                "background" = "#ff${strip colors.crust}";
+                "text" = "#ff${strip colors.subtext1}";
             };
         };
         "metadata" = {
@@ -121,16 +120,15 @@ let
     toJson = pkgs.formats.json {};
 in
 {
-    home.file = {
-        # "${config.xdg.dataHome}/chatterino/Themes/${sharedSettings.colors.variant}.json" = {
-        #     text = ''
-        #         ${theme_json}
-        #     '';
-        # };
-        test = {
-            text = ''
-                ${toJson.generate "theme" theme_json}
-            '';
+    home = {
+        file = {
+            "${config.xdg.dataHome}/chatterino/Themes/${sharedSettings.colors.variant}-${accent}.json" = {
+                force = true;
+                source = toJson.generate "theme" theme_json;
+            };
         };
+        packages = [
+            pkgs.chatterino2
+        ];
     };
 }

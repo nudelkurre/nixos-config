@@ -2,7 +2,6 @@
 {
     home = {
         packages = with pkgs; [
-            chatterino2
             imv
             jq
             lm_sensors
