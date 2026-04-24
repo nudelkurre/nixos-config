@@ -5,7 +5,7 @@ let
     text-color = sharedSettings.colors."${variant}".text;
     base-color = sharedSettings.colors."${variant}".base;
     main-color = sharedSettings.colors.main;
-    overlay-color = sharedSettings.colors."${variant}".overlay;
+    overlay-color = sharedSettings.colors."${variant}".overlay0;
 in
 {
     programs.rofi = {

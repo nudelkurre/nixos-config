@@ -106,8 +106,17 @@
                         blue = "#1e66f5";
                         lavender = "#7287fd";
                         base = "#eff1f5";
+                        mantle = "#e6e9ef";
+                        crust = "#dce0e8";
                         text = "#4c4f69";
-                        overlay = "#9ca0b0";
+                        subtext0 = "#6c6f85";
+                        subtext1 = "#5c5f77";
+                        overlay0 = "#9ca0b0";
+                        overlay1 = "#8c8fa1";
+                        overlay2 = "#7c7f93";
+                        surface0 = "#ccd0da";
+                        surface1 = "#bcc0cc";
+                        surface2 = "#acb0be";
                     };
                     frappe = {
                         rosewater = "#f2d5cf";
@@ -125,8 +134,17 @@
                         blue = "#8caaee";
                         lavender = "#babbf1";
                         base = "#303446";
+                        mantle = "#292c3c";
+                        crust = "#232634";
                         text = "#c6d0f5";
-                        overlay = "#737994";
+                        subtext0 = "#a5adce";
+                        subtext1 = "#b5bfe2";
+                        overlay0 = "#737994";
+                        overlay1 = "#838ba7";
+                        overlay2 = "#949cbb";
+                        surface0 = "#414559";
+                        surface1 = "#51576d";
+                        surface2 = "#626880";
                     };
                     macchiato = {
                         rosewater = "#f4dbd6";
@@ -144,8 +162,17 @@
                         blue = "#8aadf4";
                         lavender = "#b7bdf8";
                         base = "#24273a";
+                        mantle = "#1e2030";
+                        crust = "#181926";
                         text = "#cad3f5";
-                        overlay = "#6e738d";
+                        subtext0 = "#a5adcb";
+                        subtext1 = "#b8c0e0";
+                        overlay0 = "#6e738d";
+                        overlay1 = "#8087a2";
+                        overlay2 = "#939ab7";
+                        surface0 = "#363a4f";
+                        surface1 = "#494d64";
+                        surface2 = "#5b6078";
                     };
                     mocha = {
                         rosewater = "#f5e0dc";
@@ -163,8 +190,17 @@
                         blue = "#89b4fa";
                         lavender = "#b4befe";
                         base = "#1e1e2e";
+                        mantle = "#181825";
+                        crust = "#11111b";
                         text = "#cdd6f4";
-                        overlay = "#6c7086";
+                        subtext0 = "#a6adc8";
+                        subtext1 = "#bac2de";
+                        overlay0 = "#6c7086";
+                        overlay1 = "#7f849c";
+                        overlay2 = "#9399b2";
+                        surface0 = "#313244";
+                        surface1 = "#45475a";
+                        surface2 = "#585b70";
                     };
                 };
             };
