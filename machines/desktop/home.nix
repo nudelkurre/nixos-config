@@ -25,6 +25,7 @@ in
             "file:///home/emil/repos"
             "file:///mnt/roms"
         ];
+        borders = 4;
         corner-radius = 15;
         gaps = 5;
     };

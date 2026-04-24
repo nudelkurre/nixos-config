@@ -441,7 +441,7 @@ in
         window-rule {
             match is-focused=true
             focus-ring {
-                width 2
+                width ${toString config.desktop.borders}
                 active-gradient from="${color1}${opacity_active}" to="${color2}${opacity_active}" angle=${color_angle} relative-to="workspace-view"
                 inactive-gradient from="${color1}${opacity_inactive}" to="${color2}${opacity_inactive}" angle=${color_angle} relative-to="workspace-view"
             }

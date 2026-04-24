@@ -8,6 +8,12 @@ with lib;
                 default = [];
                 description = "List of bookmarks to use by gtk";
             };
+            borders = mkOption {
+                type = types.int;
+                example = 2;
+                default = 0;
+                description = "Set border width";
+            };
             corner-radius = mkOption {
                 type = types.int;
                 example = 10;
