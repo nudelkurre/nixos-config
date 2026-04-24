@@ -1,12 +1,34 @@
-{ pkgs, config, sharedSettings, ... }:
+{
+    pkgs,
+    config,
+    lib,
+    sharedSettings,
+    ...
+}:
 let
     colors = sharedSettings.colors."${sharedSettings.colors.variant}";
-    accent = "pink";
+    accents = [
+        "rosewater"
+        "flamingo"
+        "pink"
+        "mauve"
+        "red"
+        "maroon"
+        "peach"
+        "yellow"
+        "green"
+        "teal"
+        "sky"
+        "sapphire"
+        "blue"
+        "lavender"
+    ];
     strip = code: builtins.substring 1 6 code;
-    theme_json = {
-        "$schema" = "https://raw.githubusercontent.com/Chatterino/chatterino2/v2.5.0/docs/ChatterinoTheme.schema.json";
+    theme_json = color: {
+        "$schema" =
+            "https://raw.githubusercontent.com/Chatterino/chatterino2/v2.5.0/docs/ChatterinoTheme.schema.json";
         "colors" = {
-            "accent" = "#ff${strip colors.${accent}}";
+            "accent" = "#ff${strip colors.${color}}";
             "messages" = {
                 "backgrounds" = {
                     "alternate" = "#ff${strip colors.base}";
@@ -19,7 +41,7 @@ let
                 "textColors" = {
                     "caret" = "#ff${strip colors.text}";
                     "chatPlaceholder" = "#ff${strip colors.subtext1}";
-                    "link" = "#ff${strip colors.${accent}}";
+                    "link" = "#ff${strip colors.${color}}";
                     "regular" = "#ff${strip colors.text}";
                     "system" = "#ff${strip colors.subtext0}";
                 };
@@ -31,10 +53,10 @@ let
             };
             "splits" = {
                 "background" = "#ff${strip colors.crust}";
-                "dropPreview" = "#33${strip colors.${accent}}";
-                "dropPreviewBorder" = "#ff${strip colors.${accent}}";
-                "dropTargetRect" = "#00${strip colors.${accent}}";
-                "dropTargetRectBorder" = "#00${strip colors.${accent}}";
+                "dropPreview" = "#33${strip colors.${color}}";
+                "dropPreviewBorder" = "#ff${strip colors.${color}}";
+                "dropTargetRect" = "#00${strip colors.${color}}";
+                "dropTargetRectBorder" = "#00${strip colors.${color}}";
                 "header" = {
                     "background" = "#ff${strip colors.mantle}";
                     "border" = "#ff${strip colors.crust}";
@@ -45,14 +67,14 @@ let
                 };
                 "input" = {
                     "background" = "#ff${strip colors.mantle}";
-                    "text" = "#ff${strip colors.${accent}}";
+                    "text" = "#ff${strip colors.${color}}";
                 };
                 "messageSeperator" = "#ff${strip colors.surface0}";
-                "resizeHandle" = "#ff${strip colors.${accent}}";
-                "resizeHandleBackground" = "#ff${strip colors.${accent}}";
+                "resizeHandle" = "#ff${strip colors.${color}}";
+                "resizeHandleBackground" = "#ff${strip colors.${color}}";
             };
             "tabs" = {
-                "dividerLine" = "#ff${strip colors.${accent}}";
+                "dividerLine" = "#ff${strip colors.${color}}";
                 "highlighted" = {
                     "backgrounds" = {
                         "hover" = "#ff${strip colors.mantle}";
@@ -101,9 +123,9 @@ let
                         "unfocused" = "#ff${strip colors.surface0}";
                     };
                     "line" = {
-                        "hover" = "#ff${strip colors.${accent}}";
-                        "regular" = "#ff${strip colors.${accent}}";
-                        "unfocused" = "#ff${strip colors.${accent}}";
+                        "hover" = "#ff${strip colors.${color}}";
+                        "regular" = "#ff${strip colors.${color}}";
+                        "unfocused" = "#ff${strip colors.${color}}";
                     };
                     "text" = "#ff${strip colors.text}";
                 };
@@ -117,16 +139,23 @@ let
             "iconTheme" = "light";
         };
     };
-    toJson = pkgs.formats.json {};
+    toJson = pkgs.formats.json { };
+    files = lib.listToAttrs (map (color:
+        let
+            path = "${config.xdg.dataHome}/chatterino/Themes/${sharedSettings.colors.variant}-${color}.json";
+        in
+        {
+            name = path;
+            value = {
+                force = true;
+                source = toJson.generate "${color}-theme" (theme_json color);
+            };
+        }
+    ) accents);
 in
 {
     home = {
-        file = {
-            "${config.xdg.dataHome}/chatterino/Themes/${sharedSettings.colors.variant}-${accent}.json" = {
-                force = true;
-                source = toJson.generate "theme" theme_json;
-            };
-        };
+        file = files;
         packages = [
             pkgs.chatterino2
         ];
