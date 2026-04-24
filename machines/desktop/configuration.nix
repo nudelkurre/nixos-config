@@ -101,7 +101,7 @@
             options = [
                 "rw"
                 "x-systemd.automount"
-                "x-systemd.idle-timeout=120"
+                "x-systemd.idle-timeout=600"
                 "noauto"
             ];
         in
