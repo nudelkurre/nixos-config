@@ -244,6 +244,10 @@
             dates = "daily";
             options = "--delete-older-than 7d";
         };
+        optimise = {
+            automatic = true;
+            dates = "daily";
+        };
         settings = {
             experimental-features = [
                 "nix-command"
