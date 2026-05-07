@@ -658,22 +658,16 @@ in
                         "gtk"
                     ];
                 };
-                hyprland = {
-                    default = [
-                        "gtk"
-                        "hyprland"
-                    ];
-                };
                 niri = {
                     default = [
-                        "gtk"
                         "gnome"
+                        "gtk"
                     ];
                 };
                 sway = {
                     default = [
-                        "gtk"
                         "wlr"
+                        "gtk"
                     ];
                 };
             };
