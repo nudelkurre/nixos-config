@@ -11,6 +11,7 @@ let
     media_player = "mpv";
     text_editor = "codium";
     file_browser = "nemo";
+    pdf_viewer = "mupdf";
 
     main-monitor = "DP-1";
     secondary-monitor = "HDMI-A-1";
@@ -68,6 +69,7 @@ in
             heroic
             krita
             mkvtoolnix
+            mupdf
             mypkgs.pkg2zip
             pcsx2
             ppsspp
@@ -633,13 +635,15 @@ in
         mimeApps = {
             enable = true;
             defaultApplications = {
-                "application/pdf" = "${browser}.desktop";
+                "application/pdf" = "${pdf_viewer}.desktop";
                 "audio/flac" = "${media_player}.desktop";
                 "audio/mpeg" = "${media_player}.desktop";
                 "audio/x-m4b" = "${media_player}.desktop";
                 "audio/x-vorbis+ogg" = "${media_player}.desktop";
+                "image/gif" = "${image_viewer}.desktop";
                 "image/jpeg" = "${image_viewer}.desktop";
                 "image/png" = "${image_viewer}.desktop";
+                "image/x-xcursor" = "${image_viewer}.desktop";
                 "inode/directory" = "${file_browser}.desktop";
                 "text/html" = "${text_editor}.desktop";
                 "text/x-python" = "${text_editor}.desktop";
