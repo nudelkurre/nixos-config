@@ -11,9 +11,6 @@
         ngb = {
             url = "github:nudelkurre/ngb";
         };
-        wallpapers = {
-            url = "git+https://git.nudelkurre.com/nudelkurre/Wallpapers.git";
-        };
         sops-nix = {
             url = "github:Mic92/sops-nix";
             inputs.nixpkgs.follows = "nixpkgs";
@@ -27,7 +24,6 @@
             nixpkgs-unstable,
             home-manager,
             ngb,
-            wallpapers,
             sops-nix,
             ...
         }:
@@ -38,9 +34,6 @@
             };
             mypkgs-overlay = final: prev: {
                 mypkgs = self.packages.${prev.stdenv.hostPlatform.system};
-            };
-            wallpapers-overlay = final: prev: {
-                wallpapers = wallpapers.packages.${prev.stdenv.hostPlatform.system};
             };
             versions = {
                 intel-vaapi-driver = "2.4.5";
@@ -64,7 +57,6 @@
                     overlay-unstable
                     mypkgs-overlay
                     ngb.overlay
-                    wallpapers-overlay
                     version-overlay
                 ];
             };
@@ -283,6 +275,8 @@
             packages.x86_64-linux = {
                 freetube = pkgs.callPackage packages/freetube.nix { };
                 pkg2zip = pkgs.callPackage packages/pkg2zip.nix { };
+                video-wallpapers = pkgs.callPackage packages/video-wallpapers.nix { };
+                wallpapers = pkgs.callPackage packages/wallpapers.nix { };
             };
 
             apps.x86_64-linux = {

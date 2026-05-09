@@ -22,7 +22,7 @@ let
                             };
                             Service = {
                                 ExecStart = pkgs.writeShellScript "mpvpaper-${m.name}-start" ''
-                                    ${pkgs.mpvpaper}/bin/mpvpaper ${m.name} ${pkgs.wallpapers.video-wallpapers}/share/wallpapers/${orientation} --mpv-options 'shuffle loop-file=inf panscan=1.0 really-quiet no-audio input-ipc-server=${mpv-socket}' --auto-pause
+                                    ${pkgs.mpvpaper}/bin/mpvpaper ${m.name} ${pkgs.mypkgs.video-wallpapers}/share/wallpapers/${orientation} --mpv-options 'shuffle loop-file=inf panscan=1.0 really-quiet no-audio input-ipc-server=${mpv-socket}' --auto-pause
                                 '';
                                 ExecReload = pkgs.writeShellScript "mpvpaper-${m.name}-reload" ''
                                     echo 'playlist-next' | ${pkgs.socat}/bin/socat - ${mpv-socket}
@@ -48,10 +48,10 @@ let
                             };
                             Service = {
                                 ExecStart = pkgs.writeShellScript "bgchange-${m.name}" ''
-                                    ${config.services.swww.package}/bin/swww img -o ${m.name} --resize=crop --transition-type=fade $(find ${pkgs.wallpapers.wallpapers}/share/wallpapers/${orientation} | grep -P '(png|jpg|jpeg)' | shuf -n 1)
+                                    ${config.services.swww.package}/bin/swww img -o ${m.name} --resize=crop --transition-type=fade $(find ${pkgs.mypkgs.wallpapers}/share/wallpapers/${orientation} | grep -P '(png|jpg|jpeg)' | shuf -n 1)
                                 '';
                                 ExecReload = pkgs.writeShellScript "bgchange-${m.name}" ''
-                                    ${config.services.swww.package}/bin/swww img -o ${m.name} --resize=crop --transition-type=fade $(find ${pkgs.wallpapers.wallpapers}/share/wallpapers/${orientation} | grep -P '(png|jpg|jpeg)' | shuf -n 1)
+                                    ${config.services.swww.package}/bin/swww img -o ${m.name} --resize=crop --transition-type=fade $(find ${pkgs.mypkgs.wallpapers}/share/wallpapers/${orientation} | grep -P '(png|jpg|jpeg)' | shuf -n 1)
                                 '';
                                 ExecStopPost = pkgs.writeShellScript "bgchange-${m.name}-clear" ''
                                     ${config.services.swww.package}/bin/swww clear -o ${m.name}
