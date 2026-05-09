@@ -368,7 +368,6 @@ in
 
         environment {
             XDG_CURRENT_DESKTOP "niri"
-            NIXOS_OZONE_WL "1"
         }
 
         ${workspaceOutput}
@@ -589,6 +588,6 @@ in
             path "${pkgs.xwayland-satellite}/bin/xwayland-satellite"
         }
 
-        spawn-at-startup "${pkgs.dbus}/bin/dbus-update-activation-environment" "--systemd" "DISPLAY" "WAYLAND_DISPLAY" "SWAYSOCK" "XDG_CURRENT_DESKTOP" "XDG_SESSION_TYPE" "NIXOS_OZONE_WL" "XCURSOR_THEME" "XCURSOR_SIZE"
+        spawn-at-startup "${pkgs.dbus}/bin/dbus-update-activation-environment" "--systemd" "DISPLAY" "WAYLAND_DISPLAY" "SWAYSOCK" "XDG_CURRENT_DESKTOP" "XDG_SESSION_TYPE" "XCURSOR_THEME" "XCURSOR_SIZE"
     '';
 }
