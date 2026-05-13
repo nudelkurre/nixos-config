@@ -254,7 +254,7 @@ in
                 ];
                 x = 0;
                 y = 240;
-                wallpaper = "mpvpaper";
+                wallpaper = "swww";
             }
             {
                 adaptive_sync = "off";
