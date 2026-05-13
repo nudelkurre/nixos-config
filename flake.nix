@@ -41,6 +41,15 @@
                 yt-dlp = "2026.03.17";
             };
             version-overlay = final: prev: {
+                jellyfin-desktop = prev.jellyfin-desktop.overrideAttrs (old: {
+                    version = versions.jellyfin-desktop;
+                    src = prev.fetchFromGitHub {
+                        owner = "jellyfin-archive";
+                        repo = "jellyfin-desktop-qt";
+                        rev = "ecf1dbd2f771119a7aecb23d3d4305280ccffed1";
+                        hash = "sha256-cbwc11tQL6SaqcQM6vdoKti1/EFb6dRI+vFFkh9mR0E=";
+                    };
+                });
                 yt-dlp = prev.yt-dlp.overrideAttrs (old: {
                     version = versions.yt-dlp;
                     src = prev.fetchFromGitHub {

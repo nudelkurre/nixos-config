@@ -3,6 +3,7 @@
     home = {
         packages = with pkgs; [
             imv
+            jellyfin-desktop
             jq
             lm_sensors
             mate.mate-polkit
