@@ -68,7 +68,7 @@ in
             cemu
             heroic
             krita
-            mkvtoolnix
+            unstable.mkvtoolnix
             mupdf
             mypkgs.pkg2zip
             pcsx2
