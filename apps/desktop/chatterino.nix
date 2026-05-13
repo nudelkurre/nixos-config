@@ -157,7 +157,7 @@ in
     home = {
         file = files;
         packages = [
-            pkgs.chatterino2
+            pkgs.unstable.chatterino2
         ];
     };
 }
