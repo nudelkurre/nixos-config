@@ -30,7 +30,10 @@
         let
             system = "x86_64-linux";
             overlay-unstable = final: prev: {
-                unstable = nixpkgs-unstable.legacyPackages.${prev.stdenv.hostPlatform.system};
+                unstable = import nixpkgs-unstable {
+                    inherit (final.stdenv.hostPlatform) system;
+                    config = final.config // {allowUnfree = true;};
+                };
             };
             mypkgs-overlay = final: prev: {
                 mypkgs = self.packages.${prev.stdenv.hostPlatform.system};
@@ -62,6 +65,7 @@
             };
             pkgs = import nixpkgs {
                 inherit system;
+                config.allowUnfree = true;
                 overlays = [
                     overlay-unstable
                     mypkgs-overlay
