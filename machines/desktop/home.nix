@@ -65,14 +65,12 @@ in
         packages = with pkgs; [
             bitwarden-desktop
             blender
-            cemu
             heroic
             krita
             unstable.mkvtoolnix
             mupdf
             mypkgs.pkg2zip
             pcsx2
-            ppsspp
             socat
             texliveMedium
         ];
