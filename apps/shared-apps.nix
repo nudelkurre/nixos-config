@@ -2,6 +2,10 @@
 {
     home = {
         packages = with pkgs; [
+            (unstable.discord.override {
+                withOpenASAR = true;
+                withVencord = true;
+            })
             imv
             jellyfin-desktop
             jq
@@ -14,7 +18,7 @@
             python3
             qpwgraph
             seahorse
-            vesktop
+            # vesktop
             virt-viewer
             wl-clipboard
             yt-dlp
