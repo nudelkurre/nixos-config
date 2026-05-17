@@ -445,13 +445,21 @@ in
                     let
                         input = "Null Output";
                         output = ["alsa_output.usb-SteelSeries_SteelSeries_Arctis_7-00.stereo-game" "alsa_output.pci-0000_30_00.6.analog-stereo"];
-                        linkTemplate = s: ''        
-                            ${pkgs.pipewire}/bin/pw-link "${input}:monitor_FL" "${s}:playback_FL"
-                            ${pkgs.pipewire}/bin/pw-link "${input}:monitor_FR" "${s}:playback_FR"
+                        linkTemplate = s: ''
+                            input_exist=$(${pkgs.pipewire}/bin/pw-link -i ${input})
+                            output_exist=$(${pkgs.pipewire}/bin/pw-link -o ${s})
+                            if [[ $input_exist && $output_exist ]]; then
+                                ${pkgs.pipewire}/bin/pw-link "${input}:monitor_FL" "${s}:playback_FL"
+                                ${pkgs.pipewire}/bin/pw-link "${input}:monitor_FR" "${s}:playback_FR"
+                            fi
                         '';
-                        unlinkTemplate = s: ''        
-                            ${pkgs.pipewire}/bin/pw-link -d "${input}:monitor_FL" "${s}:playback_FL"
-                            ${pkgs.pipewire}/bin/pw-link -d "${input}:monitor_FR" "${s}:playback_FR"
+                        unlinkTemplate = s: ''
+                            input_exist=$(${pkgs.pipewire}/bin/pw-link -i ${input})
+                            output_exist=$(${pkgs.pipewire}/bin/pw-link -o ${s})
+                            if [[ $input_exist && $output_exist ]]; then
+                                ${pkgs.pipewire}/bin/pw-link -d "${input}:monitor_FL" "${s}:playback_FL"
+                                ${pkgs.pipewire}/bin/pw-link -d "${input}:monitor_FR" "${s}:playback_FR"
+                            fi
                         '';
                     in
                     {
