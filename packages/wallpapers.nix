@@ -4,8 +4,8 @@ stdenvNoCC.mkDerivation {
 
     src = fetchgit {
         url = "https://git.nudelkurre.com/nudelkurre/Wallpapers-images";
-        rev = "71f6256646cf8e04ccbd8651a346c4fcb2353bf2";
-        hash = "sha256-FDOYFg7DNnTKsMvRty3XscKP1mXVPgiiDPAmFl0p86g=";
+        rev = "af252801f994d15623eb53c0498859c28797ebda";
+        hash = "sha256-j9bKOzmc0XzcxjqhtzJhdEzW819x7pRI5jEg338cIR4=";
     };
 
     postInstall = ''
