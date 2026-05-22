@@ -32,7 +32,9 @@
             overlay-unstable = final: prev: {
                 unstable = import nixpkgs-unstable {
                     inherit (final.stdenv.hostPlatform) system;
-                    config = final.config // {allowUnfree = true;};
+                    config = final.config // {
+                        allowUnfree = true;
+                    };
                 };
             };
             mypkgs-overlay = final: prev: {
@@ -66,12 +68,6 @@
             pkgs = import nixpkgs {
                 inherit system;
                 config.allowUnfree = true;
-                overlays = [
-                    overlay-unstable
-                    mypkgs-overlay
-                    ngb.overlay
-                    version-overlay
-                ];
             };
             sharedSettings = {
                 groupId = 1000;
@@ -216,14 +212,34 @@
                     modules = [
                         {
                             nixpkgs.overlays = [
-                                (final: prev: {
-                                    unstable = nixpkgs-unstable.legacyPackages.${prev.stdenv.hostPlatform.system};
-                                })
+                                mypkgs-overlay
+                                ngb.overlay
+                                overlay-unstable
+                                version-overlay
                             ];
                         }
                         ./machines/desktop/configuration.nix
                         ./machines/desktop/hardware-configuration-desktop.nix
                         sops-nix.nixosModules.sops
+                        home-manager.nixosModules.home-manager
+                        {
+                            home-manager = {
+                                extraSpecialArgs = { inherit sharedSettings; };
+                                useGlobalPkgs = true;
+                                useUserPackages = true;
+                                users = {
+                                    "${sharedSettings.userName}" = {
+                                        imports = [
+                                            ./apps
+                                            ./machines/desktop/home.nix
+                                            ./options.nix
+                                            ngb.outputs.homeManagerModules.ngb
+                                            sops-nix.homeManagerModules.sops
+                                        ];
+                                    };
+                                };
+                            };
+                        }
                     ];
                     specialArgs = { inherit sharedSettings; };
                 };
@@ -242,14 +258,34 @@
                                         };
                                     });
                                 })
-                                (final: prev: {
-                                    unstable = nixpkgs-unstable.legacyPackages.${prev.stdenv.hostPlatform.system};
-                                })
+                                mypkgs-overlay
+                                ngb.overlay
+                                overlay-unstable
+                                version-overlay
                             ];
                         }
                         ./machines/laptop/configuration.nix
                         ./machines/laptop/hardware-configuration-laptop.nix
                         sops-nix.nixosModules.sops
+                        home-manager.nixosModules.home-manager
+                        {
+                            home-manager = {
+                                extraSpecialArgs = { inherit sharedSettings; };
+                                useGlobalPkgs = true;
+                                useUserPackages = true;
+                                users = {
+                                    "${sharedSettings.userName}" = {
+                                        imports = [
+                                            ./apps
+                                            ./machines/laptop/home.nix
+                                            ./options.nix
+                                            ngb.outputs.homeManagerModules.ngb
+                                            sops-nix.homeManagerModules.sops
+                                        ];
+                                    };
+                                };
+                            };
+                        }
                     ];
                     specialArgs = { inherit sharedSettings; };
                 };
@@ -259,30 +295,6 @@
                         ./machines/server/hardware-configuration-server.nix
                     ];
                     specialArgs = { inherit sharedSettings; };
-                };
-            };
-            homeConfigurations = {
-                "${sharedSettings.userName}@desktop" = home-manager.lib.homeManagerConfiguration {
-                    inherit pkgs;
-                    modules = [
-                        ./apps
-                        ./machines/desktop/home.nix
-                        ./options.nix
-                        ngb.outputs.homeManagerModules.ngb
-                        sops-nix.homeManagerModules.sops
-                    ];
-                    extraSpecialArgs = { inherit sharedSettings; };
-                };
-                "${sharedSettings.userName}@laptop" = home-manager.lib.homeManagerConfiguration {
-                    inherit pkgs;
-                    modules = [
-                        ./apps
-                        ./machines/laptop/home.nix
-                        ./options.nix
-                        ngb.outputs.homeManagerModules.ngb
-                        sops-nix.homeManagerModules.sops
-                    ];
-                    extraSpecialArgs = { inherit sharedSettings; };
                 };
             };
             packages.x86_64-linux = {
