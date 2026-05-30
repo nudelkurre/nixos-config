@@ -220,20 +220,11 @@
         hostName = "desktop";
         interfaces = {
             "eth0" = {
-                useDHCP = false;
-            };
-            "vlan20" = {
                 useDHCP = true;
             };
         };
         tempAddresses = if config.networking.enableIPv6 then "enabled" else "disabled";
         usePredictableInterfaceNames = false;
-        vlans = {
-            "vlan20" = {
-                id = 20;
-                interface = "eth0";
-            };
-        };
     };
 
     # Set expreimental flags to use flakes
