@@ -63,7 +63,6 @@ in
         };
         homeDirectory = "/home/${sharedSettings.userName}";
         packages = with pkgs; [
-            bitwarden-desktop
             blender
             heroic
             krita
