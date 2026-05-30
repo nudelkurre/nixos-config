@@ -328,7 +328,7 @@ in
                                 }
                                 {
                                     "config" = {
-                                        "interface" = "vlan20";
+                                        "interface" = "eth0";
                                     };
                                     "module" = "network";
                                 }
