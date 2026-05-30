@@ -367,10 +367,10 @@ in
                                 }
                             ];
                             "right" = [
-                                {
-                                    "config" = { };
-                                    "module" = "bluetooth";
-                                }
+                                # {
+                                #     "config" = { };
+                                #     "module" = "bluetooth";
+                                # }
                                 {
                                     "config" = { };
                                     "module" = "headset";
