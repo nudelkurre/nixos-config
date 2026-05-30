@@ -67,12 +67,14 @@ in
                 gtk-menu-images = true;
                 gtk-toolbar-style = 3;
             };
+            theme = config.gtk.theme;
         };
         gtk4 = {
             extraConfig = {
                 gtk-application-prefer-dark-theme = darkmode;
                 gtk-enable-animations = true;
             };
+            theme = config.gtk.theme;
         };
     };
     qt = {
