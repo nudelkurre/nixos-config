@@ -508,30 +508,15 @@ in
                         icon = "vacation";
                         id = 8;
                     };
-                    Facebook = {
+                    Personal = {
                         color = "blue";
                         icon = "fingerprint";
                         id = 9;
                     };
-                    Personal = {
-                        color = "blue";
-                        icon = "fingerprint";
-                        id = 10;
-                    };
                     "Yt music" = {
                         color = "red";
                         icon = "circle";
-                        id = 11;
-                    };
-                    Proxy = {
-                        color = "pink";
-                        icon = "circle";
-                        id = 12;
-                    };
-                    Blusky = {
-                        color = "blue";
-                        icon = "circle";
-                        id = 13;
+                        id = 10;
                     };
                 };
                 containersForce = true;
