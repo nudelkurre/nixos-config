@@ -1,6 +1,7 @@
 {
     pkgs,
     config,
+    osConfig,
     sharedSettings,
     lib,
     ...
@@ -52,7 +53,7 @@ let
                     if attr.overlay-title != "" then " hotkey-overlay-title=\"${attr.overlay-title}\" " else ""
                 );
             in
-            ''${replaceKeys keymod}${title} repeat=false { spawn ${program}; }''
+            "${replaceKeys keymod}${title} repeat=false { spawn ${program}; }"
         ) (config.keybindings)
     );
 
@@ -71,26 +72,40 @@ let
         ) (config.keybindings-multi)
     );
 
-    outputs = lib.strings.concatStringsSep "\n" (map
-    (m:
-        let
-            refreshRate = {"60" = "60"; "120" = "119.881"; "144" = "143.856";};
-            resolution = "${toString m.width}x${toString m.height}@${refreshRate.${toString m.refreshRate}}";
-            transform = {"0" = "normal"; "90"= "270"; "180" = "180"; "270" = "90";};
-            vrr = {"off" = "false"; "on" = "true";};
-            backdrop-color = if m.wallpaper == "none" then "backdrop-color \"#000000\"" else "";
-        in
-        ''output "${m.name}" {
-            mode "${resolution}"
-            scale 1
-            transform "${transform.${toString m.transform}}"
-            position x=${toString m.x} y=${toString m.y}
-            variable-refresh-rate on-demand=${vrr.${m.adaptive_sync}}
-            ${backdrop-color}
-        }
-        ''
-    )
-    (config.monitors.outputs));
+    outputs = lib.strings.concatStringsSep "\n" (
+        map (
+            m:
+            let
+                refreshRate = {
+                    "60" = "60";
+                    "120" = "119.881";
+                    "144" = "143.856";
+                };
+                resolution = "${toString m.width}x${toString m.height}@${refreshRate.${toString m.refreshRate}}";
+                transform = {
+                    "0" = "normal";
+                    "90" = "270";
+                    "180" = "180";
+                    "270" = "90";
+                };
+                vrr = {
+                    "off" = "false";
+                    "on" = "true";
+                };
+                backdrop-color = if m.wallpaper == "none" then "backdrop-color \"#000000\"" else "";
+            in
+            ''
+                output "${m.name}" {
+                            mode "${resolution}"
+                            scale 1
+                            transform "${transform.${toString m.transform}}"
+                            position x=${toString m.x} y=${toString m.y}
+                            variable-refresh-rate on-demand=${vrr.${m.adaptive_sync}}
+                            ${backdrop-color}
+                        }
+            ''
+        ) (config.monitors.outputs)
+    );
 
     workspaceOutput = lib.strings.concatStringsSep "\n" (
         lib.lists.flatten (
@@ -145,19 +160,8 @@ let
     opacity_active = "ee";
     opacity_inactive = "33";
     color_angle = "45";
-in
-{
-    home.packages = [ pkgs.niri ];
-    systemd.user.targets."niri-session" = {
-        Unit = {
-            After = "graphical-session-pre.target";
-            BindsTo = "graphical-session.target";
-            Description = "niri compositor session";
-            Documentation = [ "man:systemd.special(7)" ];
-            Wants = "graphical-session-pre.target";
-        };
-    };
-    xdg.configFile."niri/config.kdl".text = ''
+
+    niri_config = ''
         input {
             keyboard {
                 xkb {
@@ -187,9 +191,15 @@ in
                         ''
                             touchpad {
                                 ${(if cfg.touchpad.natural-scroll then "natural-scroll" else "")}
-                                ${(if cfg.touchpad.scroll-method != "" then "scroll-method \"${cfg.touchpad.scroll-method}\"" else "")}
+                                ${
+                                    (if cfg.touchpad.scroll-method != "" then "scroll-method \"${cfg.touchpad.scroll-method}\"" else "")
+                                }
                                 ${(if cfg.touchpad.disable-on-mouse then "disabled-on-external-mouse" else "")}
-                                ${(if cfg.touchpad.clickfinger then "click-method \"clickfinger\"" else "click-method \"button-areas\"")}
+                                ${
+                                    (
+                                        if cfg.touchpad.clickfinger then "click-method \"clickfinger\"" else "click-method \"button-areas\""
+                                    )
+                                }
                                 ${(if cfg.touchpad.tap then "tap" else "")}
                                 }
                         ''
@@ -590,4 +600,19 @@ in
 
         spawn-at-startup "${pkgs.dbus}/bin/dbus-update-activation-environment" "--systemd" "DISPLAY" "WAYLAND_DISPLAY" "SWAYSOCK" "XDG_CURRENT_DESKTOP" "XDG_SESSION_TYPE" "XCURSOR_THEME" "XCURSOR_SIZE"
     '';
+in
+{
+    config = lib.mkIf osConfig.programs.niri.enable {
+        home.packages = [ pkgs.niri ];
+        systemd.user.targets."niri-session" = {
+            Unit = {
+                After = "graphical-session-pre.target";
+                BindsTo = "graphical-session.target";
+                Description = "niri compositor session";
+                Documentation = [ "man:systemd.special(7)" ];
+                Wants = "graphical-session-pre.target";
+            };
+        };
+        xdg.configFile."niri/config.kdl".text = niri_config;
+    };
 }
