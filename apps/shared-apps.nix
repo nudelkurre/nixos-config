@@ -3,7 +3,7 @@
     home = {
         packages = with pkgs; [
             (unstable.discord.override {
-                withOpenASAR = true;
+                # withOpenASAR = true;
                 withVencord = true;
             })
             imv
@@ -17,7 +17,7 @@
             python3
             qpwgraph
             seahorse
-            # vesktop
+            vesktop
             virt-viewer
             wl-clipboard
             yt-dlp
