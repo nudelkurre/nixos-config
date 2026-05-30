@@ -174,15 +174,15 @@
                 enable = true;
             };
         };
-        bluetooth = {
-            enable = true;
-            powerOnBoot = true;
-            settings = {
-                General = {
-                    Experimental = true;
-                };
-            };
-        };
+        # bluetooth = {
+        #     enable = true;
+        #     powerOnBoot = true;
+        #     settings = {
+        #         General = {
+        #             Experimental = true;
+        #         };
+        #     };
+        # };
         # Hardware accelerating
         graphics = {
             enable = true;
