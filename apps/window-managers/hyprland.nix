@@ -1,6 +1,7 @@
 {
     pkgs,
     config,
+    osConfig,
     lib,
     ...
 }:
@@ -39,7 +40,7 @@ in
         ];
     };
     wayland.windowManager.hyprland = {
-        enable = false;
+        enable = osConfig.programs.hyprland.enable;
         package = pkgs.hyprland;
         plugins = [
             pkgs.hyprlandPlugins.hy3
