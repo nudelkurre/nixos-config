@@ -33,7 +33,7 @@ let
                 let
                     wsfocus = (
                         if p.focus then
-                            "for_window [app_id=\"${p.name}\"] focus\nfor_window [class=\"${p.name}\"] focus\n"
+                            "for_window [app_id=\"${p.name}\"] focus\nfor_window [class=\"${p.name}\"] focus\nfor_window [title=\"${p.name}$\"] focus\n"
                         else
                             ""
                     );
@@ -66,6 +66,7 @@ in
                             map (p: [
                                 { app_id = p.name; }
                                 { class = p.name; }
+                                { title = "${p.name}$"; }
                             ]) (w.programs)
                         );
                     }) (config.workspaces)
