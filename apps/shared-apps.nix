@@ -10,7 +10,6 @@
             jellyfin-desktop
             jq
             lm_sensors
-            mate.mate-polkit
             mypkgs.freetube
             nemo-with-extensions
             pavucontrol
