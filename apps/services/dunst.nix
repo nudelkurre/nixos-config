@@ -36,8 +36,8 @@ in
                 max_icon_size = 64;
                 monitor = main_monitor.name;
                 mouse_left_click = "close_current";
-                mouse_middle_click = "do_action";
-                mouse_right_click = "close_all";
+                mouse_middle_click = "close_all";
+                mouse_right_click = "do_action";
                 offset = "(${toString config.desktop.gaps}, ${toString config.desktop.gaps})";
                 origin = "top-right";
                 padding = 8;
