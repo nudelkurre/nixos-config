@@ -1,6 +1,7 @@
 {
     pkgs,
     config,
+    osConfig,
     sharedSettings,
     lib,
     ...
@@ -278,7 +279,7 @@ in
                 ) (config.monitors.outputs)
             );
         };
-        enable = true;
+        enable = osConfig.programs.sway.enable;
         extraConfig = ''
             ${lib.strings.concatStringsSep "" wsf}
             for_window [class="steam"] move to workspace ${ws5}
