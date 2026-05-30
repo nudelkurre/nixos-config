@@ -109,7 +109,7 @@ in
             fonts = { };
             gaps = {
                 inner = config.desktop.gaps;
-                smartBorders = "on";
+                smartBorders = "off";
             };
             input = {
                 "1003:34842:Atmel_Atmel_maXTouch_Digitizer" = {
@@ -264,7 +264,7 @@ in
                 )
             ];
             window = {
-                border = 1;
+                border = config.desktop.borders;
                 hideEdgeBorders = "none";
                 titlebar = false;
             };
