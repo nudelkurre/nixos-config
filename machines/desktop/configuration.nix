@@ -29,7 +29,6 @@
             };
         };
         kernelParams = [
-            "nosgx"
             "quiet"
         ];
         loader = {
