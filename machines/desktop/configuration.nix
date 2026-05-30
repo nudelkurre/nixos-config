@@ -270,9 +270,6 @@
 
     # Programs to enable
     programs = {
-        adb = {
-            enable = true;
-        };
         dconf = {
             enable = true;
         };
