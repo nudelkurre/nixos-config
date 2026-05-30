@@ -1,6 +1,7 @@
 {
     pkgs,
     lib,
+    config,
     sharedSettings,
     ...
 }:
@@ -14,6 +15,7 @@
                 "completion"
             ];
         };
+        dotDir = "${config.home.homeDirectory}";
         enable = true;
         enableCompletion = true;
         history = {
