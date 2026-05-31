@@ -15,7 +15,7 @@
                 "completion"
             ];
         };
-        dotDir = "${config.home.homeDirectory}";
+        dotDir = "${config.xdg.configHome}/zsh";
         enable = true;
         enableCompletion = true;
         history = {
