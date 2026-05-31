@@ -10,7 +10,7 @@ let
 in
 {
     programs.firefox = {
-        configPath = "./mozilla/firefox";
+        configPath = "${config.xdg.configHome}/mozilla/firefox";
         enable = true;
         package = pkgs.${version};
         policies = {

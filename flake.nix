@@ -86,7 +86,7 @@
                     origin = "pam://yubikey";
                 };
                 userName = "emil";
-                firefox-version = "firefox-esr";
+                firefox-version = "firefox";
                 colors = {
                     variant = "frappe";
                     main = sharedSettings.colors."${sharedSettings.colors.variant}".pink;
