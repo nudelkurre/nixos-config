@@ -14,7 +14,7 @@ in
         extraConfig = {
             disable-history = mkLiteral "true";
             drun-display-format = "{name}";
-            drun-match-fields = "name";
+            drun-match-fields = "name,categories";
             fixed-num-lines = mkLiteral "false";
             hover-select = mkLiteral "false";
             icon-theme = "${config.gtk.iconTheme.name}";
