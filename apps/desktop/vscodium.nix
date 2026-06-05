@@ -34,6 +34,7 @@ in
                     }
                 ];
                 userSettings = {
+                    "chat.agent.enabled" = false;
                     "editor.fontFamily" = "${config.fonts.name}";
                     "editor.fontSize" = config.fonts.size;
                     "editor.insertSpaces" = true;
