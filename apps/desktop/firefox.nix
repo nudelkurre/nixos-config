@@ -278,6 +278,21 @@ in
                     "Type" = "boolean";
                     "Status" = "default";
                 };
+                "browser.tabs.groups.enabled" = {
+                    "Value" = false;
+                    "Type" = "boolean";
+                    "Status" = "default";
+                };
+                "browser.tabs.groups.smart.enabled" = {
+                    "Value" = false;
+                    "Type" = "boolean";
+                    "Status" = "default";
+                };
+                "browser.tabs.splitView.enabled" = {
+                    "Value" = false;
+                    "Type" = "boolean";
+                    "Status" = "default";
+                };
                 "browser.urlbar.speculativeConnect.enabled" = {
                     "Value" = false;
                     "Type" = "boolean";
@@ -292,6 +307,11 @@ in
                     "Value" = false;
                     "Type" = "boolean";
                     "Status" = "default";
+                };
+                "media.videocontrols.picture-in-picture" = {
+                    "Value" = false;
+                    "Type" = "boolean";
+                    "Status" = "locked";
                 };
                 "network.http.referer.XOriginPolicy" = {
                     "Value" = 0;
