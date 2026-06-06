@@ -173,15 +173,17 @@
                 enable = true;
             };
         };
-        # bluetooth = {
-        #     enable = true;
-        #     powerOnBoot = true;
-        #     settings = {
-        #         General = {
-        #             Experimental = true;
-        #         };
-        #     };
-        # };
+        bluetooth = {
+            enable = true;
+            powerOnBoot = true;
+            settings = {
+                General = {
+                    ControllerMode = "le";
+                    Experimental = true;
+                    ReverseServiceDiscovery = false;
+                };
+            };
+        };
         # Hardware accelerating
         graphics = {
             enable = true;
@@ -521,7 +523,7 @@
                     after = [ "graphical-session.target" ];
                     description = "polkit-mate-authentication-agent-1";
                     serviceConfig = {
-                        ExecStart = "${pkgs.mate.mate-polkit}/libexec/polkit-mate-authentication-agent-1";
+                        ExecStart = "${pkgs.mate-polkit}/libexec/polkit-mate-authentication-agent-1";
                         Restart = "on-failure";
                         RestartSec = 1;
                         TimeoutStopSec = 10;

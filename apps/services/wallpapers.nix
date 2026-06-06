@@ -41,20 +41,20 @@ let
                                 PartOf = target;
                             };
                         }
-                    else if m.wallpaper == "swww" then
+                    else if m.wallpaper == "awww" then
                         {
                             Install = {
                                 WantedBy = [ target ];
                             };
                             Service = {
                                 ExecStart = pkgs.writeShellScript "bgchange-${m.name}" ''
-                                    ${config.services.swww.package}/bin/swww img -o ${m.name} --resize=crop --transition-type=fade $(find ${pkgs.mypkgs.wallpapers}/share/wallpapers/${orientation} | grep -P '(png|jpg|jpeg)' | shuf -n 1)
+                                    ${config.services.awww.package}/bin/awww img -o ${m.name} --resize=crop --transition-type=fade $(find ${pkgs.mypkgs.wallpapers}/share/wallpapers/${orientation} | grep -P '(png|jpg|jpeg)' | shuf -n 1)
                                 '';
                                 ExecReload = pkgs.writeShellScript "bgchange-${m.name}" ''
-                                    ${config.services.swww.package}/bin/swww img -o ${m.name} --resize=crop --transition-type=fade $(find ${pkgs.mypkgs.wallpapers}/share/wallpapers/${orientation} | grep -P '(png|jpg|jpeg)' | shuf -n 1)
+                                    ${config.services.awww.package}/bin/awww img -o ${m.name} --resize=crop --transition-type=fade $(find ${pkgs.mypkgs.wallpapers}/share/wallpapers/${orientation} | grep -P '(png|jpg|jpeg)' | shuf -n 1)
                                 '';
                                 ExecStopPost = pkgs.writeShellScript "bgchange-${m.name}-clear" ''
-                                    ${config.services.swww.package}/bin/swww clear -o ${m.name}
+                                    ${config.services.awww.package}/bin/awww clear -o ${m.name}
                                 '';
                                 Type = "oneshot";
                                 RemainAfterExit = true;
@@ -76,7 +76,7 @@ let
             (builtins.map (m: {
                 name = "bgchange-${m.name}-restart";
                 value =
-                    if m.wallpaper == "swww" || m.wallpaper == "mpvpaper" then
+                    if m.wallpaper == "awww" || m.wallpaper == "mpvpaper" then
                         {
                             Service = {
                                 ExecStart = pkgs.writeShellScript "bgchange-${m.name}-restart" ''
@@ -101,7 +101,7 @@ let
             builtins.map (m: {
                 name = "bgchange-${m.name}";
                 value =
-                    if m.wallpaper == "swww" || m.wallpaper == "mpvpaper" then
+                    if m.wallpaper == "awww" || m.wallpaper == "mpvpaper" then
                         {
                             Install = {
                                 WantedBy = [ "timers.target" ];
@@ -122,7 +122,7 @@ let
         )
     );
     enableSwww = builtins.elem true (
-        builtins.map (m: if m.wallpaper == "swww" then true else false) (config.monitors.outputs)
+        builtins.map (m: if m.wallpaper == "awww" then true else false) (config.monitors.outputs)
     );
     filteredAttrs = lib.filterAttrsRecursive (name: value: value != { });
 in
@@ -131,5 +131,5 @@ in
         services = filteredAttrs services;
         timers = filteredAttrs timers;
     };
-    services.swww.enable = enableSwww;
+    services.awww.enable = enableSwww;
 }

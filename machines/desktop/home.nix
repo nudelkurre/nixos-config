@@ -251,7 +251,7 @@ in
                 ];
                 x = 0;
                 y = 480;
-                wallpaper = "swww";
+                wallpaper = "awww";
             }
             {
                 adaptive_sync = "off";
@@ -270,7 +270,7 @@ in
                 ];
                 x = 2560;
                 y = 0;
-                wallpaper = "swww";
+                wallpaper = "awww";
             }
         ];
         primary = main-monitor;
@@ -367,10 +367,10 @@ in
                                 }
                             ];
                             "right" = [
-                                # {
-                                #     "config" = { };
-                                #     "module" = "bluetooth";
-                                # }
+                                {
+                                    "config" = { };
+                                    "module" = "bluetooth";
+                                }
                                 {
                                     "config" = { };
                                     "module" = "headset";
@@ -678,6 +678,7 @@ in
         userDirs = {
             createDirectories = true;
             enable = true;
+            setSessionVariables = false;
         };
     };
 }

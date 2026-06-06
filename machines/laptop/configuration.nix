@@ -66,6 +66,7 @@
     # System pakages to install
     environment = {
         systemPackages = with pkgs; [
+            brightnessctl
             dnsutils
             file
             git
@@ -254,9 +255,6 @@
                 enable = true;
                 enableSSHSupport = true;
             };
-        };
-        light = {
-            enable = true;
         };
         niri = {
             enable = true;
@@ -458,7 +456,7 @@
                     after = [ "graphical-session.target" ];
                     description = "polkit-mate-authentication-agent-1";
                     serviceConfig = {
-                        ExecStart = "${pkgs.mate.mate-polkit}/libexec/polkit-mate-authentication-agent-1";
+                        ExecStart = "${pkgs.mate-polkit}/libexec/polkit-mate-authentication-agent-1";
                         Restart = "on-failure";
                         RestartSec = 1;
                         TimeoutStopSec = 10;
