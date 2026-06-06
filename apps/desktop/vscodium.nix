@@ -4,7 +4,7 @@ let
     variant = sharedSettings.colors.variant;
 in
 {
-    programs.vscode = {
+    programs.vscodium = {
         enable = true;
         package = pkgs.unstable.vscodium;
         profiles = {
@@ -47,7 +47,7 @@ in
                         "nil" = {
                             "formatting" = {
                                 command = [
-                                    "${pkgs.nixfmt-rfc-style}/bin/nixfmt"
+                                    "${pkgs.nixfmt}/bin/nixfmt"
                                     "--indent=4"
                                 ];
                             };

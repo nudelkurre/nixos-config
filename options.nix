@@ -246,7 +246,7 @@ with lib;
                             wallpaper = mkOption {
                                 type = types.enum [
                                     "mpvpaper"
-                                    "swww"
+                                    "awww"
                                     "none"
                                 ];
                                 example = "mpvpaper";
@@ -265,11 +265,11 @@ with lib;
             };
             wallpaper = mkOption {
                 type = types.enum[
-                    "swww"
+                    "awww"
                     "mpvpaper"
                 ];
                 example = "mpvpaper";
-                default = "swww";
+                default = "awww";
                 description = "Set default wallpaper service";
             };
         };

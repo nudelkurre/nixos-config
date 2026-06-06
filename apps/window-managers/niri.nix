@@ -464,7 +464,7 @@ let
         }
 
         layer-rule {
-            match namespace="^swww-daemon$"
+            match namespace="^awww-daemon$"
             match namespace="^mpvpaper$"
             place-within-backdrop true
         }

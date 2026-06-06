@@ -195,7 +195,7 @@ in
                 ];
                 x = 0;
                 y = 0;
-                wallpaper = "swww";
+                wallpaper = "awww";
             }
             {
                 adaptive_sync = "off";
@@ -209,7 +209,7 @@ in
                 workspaces = [ "10" ];
                 x = 1366;
                 y = 0;
-                wallpaper = "swww";
+                wallpaper = "awww";
             }
         ];
         primary = "LVDS-1";
@@ -482,6 +482,7 @@ in
         userDirs = {
             createDirectories = true;
             enable = true;
+            setSessionVariables = false;
         };
     };
 }
