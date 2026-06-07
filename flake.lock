@@ -26,11 +26,11 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1777671846,
-        "narHash": "sha256-CgTMeVXPXIhu/G8h6kaDTrqye+MJwBtIDgcc8nmQdnk=",
+        "lastModified": 1780840196,
+        "narHash": "sha256-qV4LBriBNRG30woCUnuEHWyJB9uOf/3lNWYi1Me3rTo=",
         "owner": "nudelkurre",
         "repo": "ngb",
-        "rev": "f5e2d3e1a79f5f862484d72e4a92ea3a4321a269",
+        "rev": "ec2e2f63f0d47022d95147b3f792456037071b07",
         "type": "github"
       },
       "original": {
