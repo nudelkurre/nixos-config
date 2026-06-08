@@ -76,7 +76,7 @@ in
         sessionVariables = {
             EDITOR = "nano";
             MANGADEXDL_CONFIG_ENABLED = "1";
-            PATH = "$PATH:$HOME/.local/bin";
+            PATH = "$HOME/.local/bin:$PATH";
         };
         # This value determines the Home Manager release that your configuration is
         # compatible with. This helps avoid breakage when a new Home Manager release
