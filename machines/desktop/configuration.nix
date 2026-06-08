@@ -178,7 +178,6 @@
             powerOnBoot = true;
             settings = {
                 General = {
-                    ControllerMode = "le";
                     Experimental = true;
                     ReverseServiceDiscovery = false;
                 };
