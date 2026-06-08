@@ -385,15 +385,6 @@ let
         ${workspacePrograms}
 
         window-rule {
-            match app-id="Alacritty"
-            match app-id="kitty"
-            match app-id="nemo"
-            default-column-width {
-                proportion 0.5;
-            }
-        }
-
-        window-rule {
             match title="Bitwarden"
             open-floating true
             open-focused true
