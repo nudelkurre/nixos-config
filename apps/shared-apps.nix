@@ -2,6 +2,7 @@
 {
     home = {
         packages = with pkgs; [
+            unstable.bitwarden-desktop
             imv
             jellyfin-desktop
             jq
