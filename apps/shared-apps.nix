@@ -2,10 +2,6 @@
 {
     home = {
         packages = with pkgs; [
-            (unstable.discord.override {
-                # withOpenASAR = true;
-                withVencord = true;
-            })
             imv
             jellyfin-desktop
             jq
