@@ -67,7 +67,6 @@
             };
             pkgs = import nixpkgs {
                 inherit system;
-                config.allowUnfree = true;
             };
             sharedSettings = {
                 groupId = 1000;
