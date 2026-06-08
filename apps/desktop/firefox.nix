@@ -73,43 +73,36 @@ in
                     "installation_mode" = "force_installed";
                     "install_url" = "https://addons.mozilla.org/firefox/downloads/latest/{446900e4-71c2-419f-a6a7-df9c091e268b}/latest.xpi";
                     "default_area" = "navbar";
-                    "private_browsing" = true;
                 };
                 "@testpilot-containers" = {
                     "installation_mode" = "force_installed";
                     "install_url" = "https://addons.mozilla.org/firefox/downloads/latest/@testpilot-containers/latest.xpi";
                     "default_area" = "navbar";
-                    "private_browsing" = true;
                 };
                 "floccus@handmadeideas.org" = {
                     "installation_mode" = "force_installed";
                     "install_url" = "https://addons.mozilla.org/firefox/downloads/latest/floccus@handmadeideas.org/latest.xpi";
                     "default_area" = "navbar";
-                    "private_browsing" = false;
                 };
                 "jordanlinkwarden@gmail.com" = {
                     "installation_mode" = "force_installed";
                     "install_url" = "https://addons.mozilla.org/firefox/downloads/latest/jordanlinkwarden@gmail.com/latest.xpi";
                     "default_area" = "navbar";
-                    "private_browsing" = true;
                 };
                 "uBlock0@raymondhill.net" = {
                     "installation_mode" = "force_installed";
                     "install_url" = "https://addons.mozilla.org/firefox/downloads/latest/uBlock0@raymondhill.net/latest.xpi";
                     "default_area" = "navbar";
-                    "private_browsing" = true;
                 };
                 "{aecec67f-0d10-4fa7-b7c7-609a2db280cf}" = {
                     "installation_mode" = "force_installed";
                     "install_url" = "https://addons.mozilla.org/firefox/downloads/latest/{aecec67f-0d10-4fa7-b7c7-609a2db280cf}/latest.xpi";
                     "default_area" = "navbar";
-                    "private_browsing" = true;
                 };
                 "{73a6fe31-595d-460b-a920-fcc0f8843232}" = {
                     "installation_mode" = "normal_installed";
                     "install_url" = "https://addons.mozilla.org/firefox/downloads/latest/{73a6fe31-595d-460b-a920-fcc0f8843232}/latest.xpi";
                     "default_area" = "navbar";
-                    "private_browsing" = true;
                 };
             };
             "FirefoxHome" = {
