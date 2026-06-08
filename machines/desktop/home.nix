@@ -655,8 +655,8 @@ in
                 };
                 niri = {
                     default = [
-                        "gnome"
                         "gtk"
+                        "gnome"
                     ];
                 };
                 sway = {
