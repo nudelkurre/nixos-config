@@ -577,7 +577,7 @@ in
                         margin-bottom: 0px !important;
                     }
 
-                    #sidebar-button {
+                    #sidebar-button, #vertical-spacer {
                         display: none;
                     }
 
