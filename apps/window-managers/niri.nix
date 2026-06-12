@@ -386,11 +386,6 @@ let
 
         window-rule {
             match title="Bitwarden"
-            open-floating true
-            open-focused true
-
-            default-window-height { proportion 0.75; }
-            default-column-width { proportion 0.5; }
 
             block-out-from "screen-capture"
         }
