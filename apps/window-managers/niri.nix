@@ -454,6 +454,20 @@ let
             }
         }
 
+        window-rule {
+            background-effect {
+                blur false
+                xray false
+            }
+        }
+
+        layer-rule {
+            background-effect {
+                blur false
+                xray false
+            }
+        }
+
         layer-rule {
             match namespace="^awww-daemon$"
             match namespace="^mpvpaper$"
