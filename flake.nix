@@ -210,6 +210,20 @@
         in
         {
             nixosConfigurations = {
+                iso = nixpkgs.lib.nixosSystem {
+                    modules = [
+                        {
+                            nixpkgs.overlays = [
+                                mypkgs-overlay
+                                ngb.overlay
+                                overlay-unstable
+                                version-overlay
+                            ];
+                        }
+                        ./machines/iso/configuration.nix
+                    ];
+                    specialArgs = { inherit sharedSettings; };
+                };
                 desktop = nixpkgs.lib.nixosSystem {
                     modules = [
                         {
@@ -301,6 +315,7 @@
             };
             packages.x86_64-linux = {
                 freetube = pkgs.callPackage packages/freetube.nix { };
+                iso = self.nixosConfigurations.iso.config.system.build.isoImage;
                 pkg2zip = pkgs.callPackage packages/pkg2zip.nix { };
                 video-wallpapers = pkgs.callPackage packages/video-wallpapers.nix { };
                 wallpapers = pkgs.callPackage packages/wallpapers.nix { };
