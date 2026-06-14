@@ -403,7 +403,7 @@ in
                         "Name" = "HowLongToBeat";
                         "URLTemplate" = "https://howlongtobeat.com/?q={searchTerms}";
                         "Method" = "GET";
-                        "IconURL" = "https://howlongtobeat.com/img/icons/favicon-16x16.png";
+                        "IconURL" = "https://howlongtobeat.com/img/icons/favicon-32x32.png";
                         "Alias" = "@hltb";
                         "Description" = "Search for time to beat a game";
                     }
@@ -435,7 +435,7 @@ in
                         "Name" = "Startpage";
                         "URLTemplate" = "https://www.startpage.com/sp/search?query={searchTerms}";
                         "Method" = "GET";
-                        "IconURL" = "https://www.startpage.com/sp/cdn/favicons/favicon-16x16-gradient.png";
+                        "IconURL" = "https://www.startpage.com/sp/cdn/favicons/favicon-32x32-gradient.png";
                         "Alias" = "@sp";
                         "Description" = "Startpage search";
                         "PostData" = "query={searchTerms}";
@@ -448,6 +448,14 @@ in
                         "IconURL" = "https://store.steampowered.com/favicon.ico";
                         "Alias" = "@steam";
                         "Description" = "Steam store";
+                    }
+                    {
+                        "Name" = "Weeb Central";
+                        "URLTemplate" = "https://weebcentral.com/search?text={searchTerms}";
+                        "Method" = "GET";
+                        "IconURL" = "https://weebcentral.com/favicon.ico";
+                        "Alias" = "@wc";
+                        "Description" = "Search for manga on weed central";
                     }
 
                 ];
