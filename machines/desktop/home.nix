@@ -429,7 +429,10 @@ in
                 Service =
                     let
                         input = "Null Output";
-                        output = ["alsa_output.usb-SteelSeries_SteelSeries_Arctis_7-00.stereo-game" "alsa_output.pci-0000_30_00.6.analog-stereo"];
+                        output = [
+                            "alsa_output.usb-SteelSeries_SteelSeries_Arctis_7-00.stereo-game"
+                            "alsa_output.pci-0000_30_00.6.analog-stereo"
+                        ];
                         linkTemplate = s: ''
                             input_exist=$(${pkgs.pipewire}/bin/pw-link -i ${input})
                             output_exist=$(${pkgs.pipewire}/bin/pw-link -o ${s})
@@ -448,8 +451,12 @@ in
                         '';
                     in
                     {
-                        ExecStart = pkgs.writeShellScript "pw-link" (builtins.concatStringsSep "" (map linkTemplate output));
-                        ExecStop = pkgs.writeShellScript "pw-unlink" (builtins.concatStringsSep "" (map unlinkTemplate output));
+                        ExecStart = pkgs.writeShellScript "pw-link" (
+                            builtins.concatStringsSep "" (map linkTemplate output)
+                        );
+                        ExecStop = pkgs.writeShellScript "pw-unlink" (
+                            builtins.concatStringsSep "" (map unlinkTemplate output)
+                        );
                         Type = "oneshot";
                         RemainAfterExit = true;
                         Restart = "on-failure";
