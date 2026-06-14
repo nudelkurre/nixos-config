@@ -359,7 +359,7 @@ in
                                             "6" = "";
                                             "7" = "";
                                             "8" = "";
-                                            "9" = "󰓃";
+                                            "9" = "";
                                             "10" = "";
                                         };
                                     };
@@ -551,6 +551,7 @@ in
             programs = [
                 { name = "org.freedesktop.ryuukyu.Helvum"; }
                 { name = "pavucontrol"; }
+                { name = "Bitwarden"; }
             ];
         }
         {
