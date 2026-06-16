@@ -46,7 +46,7 @@
             versions = {
                 intel-vaapi-driver = "2.4.5";
                 jellyfin-desktop = "2.0.0";
-                yt-dlp = "2026.03.17";
+                yt-dlp = "2026.06.09";
             };
             version-overlay = final: prev: {
                 jellyfin-desktop = prev.jellyfin-desktop.overrideAttrs (old: {
@@ -64,7 +64,7 @@
                         owner = "yt-dlp";
                         repo = "yt-dlp";
                         rev = versions.yt-dlp;
-                        hash = "sha256-A4LUCuKCjpVAOJ8jNoYaC3mRCiKH0/wtcsle0YfZyTA=";
+                        hash = "sha256-ykqTDPzKKIWRGSQmw2esCRKyYqDZKXRYDeba888tkDU=";
                     };
                 });
             };
