@@ -2,9 +2,7 @@
 {
     home = {
         packages = with pkgs; [
-            unstable.bitwarden-desktop
             imv
-            jellyfin-desktop
             jq
             lm_sensors
             mypkgs.freetube
