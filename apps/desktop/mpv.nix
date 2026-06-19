@@ -30,7 +30,7 @@
         config = {
             fullscreen = true;
             gpu-context = "wayland";
-            hwdec = "vaapi";
+            hwdec = "vaapi-copy";
             vo = "gpu";
             volume-max = "100";
             volume = "60";

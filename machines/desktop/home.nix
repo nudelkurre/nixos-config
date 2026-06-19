@@ -284,6 +284,14 @@ in
         };
     };
 
+    programs = {
+        mpv = {
+            config = {
+                vaapi-device = "/dev/dri/renderD129";
+            };
+        };
+    };
+
     services = {
         kdeconnect = {
             enable = true;
