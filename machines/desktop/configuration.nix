@@ -285,8 +285,11 @@
         };
         regreet = {
             cursorTheme = {
-                name = "Bibata-Modern-Ice";
-                package = pkgs.bibata-cursors;
+                name = "Afterglow-Recolored-Catppuccin-Pink";
+                package = pkgs.afterglow-cursors-recolored.override {
+                    themeVariants = [ "Catppuccin" ];
+                    catppuccinColorVariants = [ "Pink" ];
+                };
             };
             enable = true;
             font = {
@@ -294,6 +297,10 @@
                 size = 16;
             };
             settings = {
+                background = {
+                    path = "/etc/greetd/regreet-horizontal-bg";
+                    fit = "Cover";
+                };
                 commands = {
                     reboot = [
                         "systemctl"
@@ -510,6 +517,29 @@
     };
 
     systemd = {
+        services = {
+            regreet-random-bg = {
+                after = [ "basic.target" ];
+                before = [
+                    "greetd.service"
+                    "graphical.target"
+                ];
+                description = "Create link to random wallpaper";
+                serviceConfig = {
+                    ExecStart = pkgs.writeShellScript "random-bg" ''
+                        ln -sf $(find ${pkgs.mypkgs.wallpapers}/share/wallpapers/horizontal | grep -P '(png|jpg|jpeg)' | shuf -n 1) /etc/greetd/regreet-horizontal-bg
+                        ln -sf $(find ${pkgs.mypkgs.wallpapers}/share/wallpapers/vertical | grep -P '(png|jpg|jpeg)' | shuf -n 1) /etc/greetd/regreet-vertical-bg
+                    '';
+                    ExecStop = pkgs.writeShellScript "clean-random-bg" ''
+                        rm /etc/greetd/regreet-horizontal-bg
+                        rm /etc/greetd/regreet-vertical-bg
+                    '';
+                    RemainAfterExit = "yes";
+                    Type = "oneshot";
+                };
+                wantedBy = [ "multi-user.target" ];
+            };
+        };
         settings = {
             Manager = {
                 DefaultTimeoutStopSec = "10s";
