@@ -581,6 +581,13 @@ in
     ];
 
     xdg = {
+        autostart = {
+            enable = true;
+            entries = [
+                "${config.programs.chatterino.package}/share/applications/com.chatterino.chatterino.desktop"
+            ];
+            readOnly = true;
+        };
         configFile = {
             # Force managing mimeapps.list via home manager
             "mimeapps.list" = {
