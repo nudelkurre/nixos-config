@@ -95,7 +95,7 @@
         ];
     };
 
-    fileSystems = 
+    fileSystems =
         let
             options = [
                 "rw"
@@ -105,48 +105,48 @@
             ];
         in
         {
-        "/" = {
-            device = "/dev/disk/by-label/ROOT";
-            fsType = "ext4";
+            "/" = {
+                device = "/dev/disk/by-label/ROOT";
+                fsType = "ext4";
+            };
+            "/boot" = {
+                device = "/dev/disk/by-label/BOOT";
+                fsType = "vfat";
+                options = [ "umask=0077" ];
+            };
+            "/mnt/docker-compose" = {
+                device = "${sharedSettings.serverIP}:/nfs/docker/compose";
+                fsType = "nfs4";
+                options = options;
+            };
+            "/mnt/Manga" = {
+                device = "${sharedSettings.serverIP}:/nfs/Manga";
+                fsType = "nfs4";
+                options = options;
+            };
+            "/mnt/Media" = {
+                device = "${sharedSettings.serverIP}:/nfs/Media";
+                fsType = "nfs4";
+                options = options;
+            };
+            "/mnt/roms" = {
+                device = "${sharedSettings.serverIP}:/nfs/ROMS";
+                fsType = "nfs4";
+                options = options;
+            };
+            "/home/emil/tmp" = {
+                fsType = "tmpfs";
+                options = [
+                    "rw"
+                    "size=10G"
+                    "nodev"
+                    "nosuid"
+                    "noexec"
+                    "uid=1000"
+                    "gid=1000"
+                ];
+            };
         };
-        "/boot" = {
-            device = "/dev/disk/by-label/BOOT";
-            fsType = "vfat";
-            options = [ "umask=0077" ];
-        };
-        "/mnt/docker-compose" = {
-            device = "${sharedSettings.serverIP}:/nfs/docker/compose";
-            fsType = "nfs4";
-            options = options;
-        };
-        "/mnt/Manga" = {
-            device = "${sharedSettings.serverIP}:/nfs/Manga";
-            fsType = "nfs4";
-            options = options;
-        };
-        "/mnt/Media" = {
-            device = "${sharedSettings.serverIP}:/nfs/Media";
-            fsType = "nfs4";
-            options = options;
-        };
-        "/mnt/roms" = {
-            device = "${sharedSettings.serverIP}:/nfs/ROMS";
-            fsType = "nfs4";
-            options = options;
-        };
-        "/home/emil/tmp" = {
-            fsType = "tmpfs";
-            options = [
-                "rw"
-                "size=10G"
-                "nodev"
-                "nosuid"
-                "noexec"
-                "uid=1000"
-                "gid=1000"
-            ];
-        };
-    };
 
     # Set fonts to install
     fonts = {
