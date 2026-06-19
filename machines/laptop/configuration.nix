@@ -429,7 +429,9 @@
         secrets = {
             "wg-quick/laptop/private_key" = { };
             "wg-quick/laptop/preshared_key" = { };
-            "wifi" = { };
+            "wifi" = {
+                owner = "wpa_supplicant";
+            };
         };
     };
 
