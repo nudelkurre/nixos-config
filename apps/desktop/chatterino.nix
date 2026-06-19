@@ -154,10 +154,30 @@ let
     ) accents);
 in
 {
-    home = {
-        file = files;
-        packages = [
-            pkgs.unstable.chatterino2
-        ];
+    options = with lib; {
+        programs.chatterino = {
+            enable = mkOption {
+                type = types.bool;
+                default = false;
+                description = "Enable chatterino";
+            };
+            package = mkOption {
+                type = types.package;
+                default = pkgs.chatterino2;
+                description = "Set package for chatterino";
+            };
+        };
+    };
+    config = {
+        programs.chatterino = {
+            enable = true;
+            package = pkgs.unstable.chatterino2;
+        };
+        home = lib.mkIf config.programs.chatterino.enable{
+            file = files;
+            packages = [
+                config.programs.chatterino.package
+            ];
+        };
     };
 }
