@@ -2,7 +2,11 @@
 {
     programs.bat = {
         config = {
-            style = "numbers,rule";
+            pager = "builtin";
+            paging = "always";
+            set-terminal-title = true;
+            style = "header-filename,numbers,rule";
+            tabs = "4";
             theme = "Catppuccin Frappe";
         };
         enable = true;
