@@ -54,9 +54,10 @@
         };
         package = pkgs.zsh;
         shellAliases = {
-            mv = "mv -v";
+            cat = "bat";
             cp = "cp -v";
             df = "df -h";
+            mv = "mv -v";
         };
     };
 }
