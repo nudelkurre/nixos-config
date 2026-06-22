@@ -597,8 +597,6 @@ let
         xwayland-satellite {
             path "${pkgs.xwayland-satellite}/bin/xwayland-satellite"
         }
-
-        spawn-at-startup "${pkgs.dbus}/bin/dbus-update-activation-environment" "--systemd" "DISPLAY" "WAYLAND_DISPLAY" "SWAYSOCK" "XDG_CURRENT_DESKTOP" "XDG_SESSION_TYPE" "XCURSOR_THEME" "XCURSOR_SIZE"
     '';
 in
 {
