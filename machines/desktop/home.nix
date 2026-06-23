@@ -1,6 +1,7 @@
 {
     pkgs,
     config,
+    osConfig,
     sharedSettings,
     ...
 }:
@@ -278,9 +279,9 @@ in
 
     nix = {
         gc = {
-            automatic = true;
-            dates = "daily";
-            options = "--delete-older-than 7d";
+            automatic = osConfig.nix.gc.automatic;
+            dates = osConfig.nix.gc.dates;
+            options = osConfig.nix.gc.options;
         };
     };
 
