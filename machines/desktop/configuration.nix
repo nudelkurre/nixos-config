@@ -260,6 +260,11 @@
         };
     };
 
+    powerManagement = {
+        enable = true;
+        cpuFreqGovernor = "performance";
+    };
+
     # Programs to enable
     programs = {
         dconf = {
