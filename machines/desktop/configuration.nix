@@ -397,6 +397,9 @@
     services = {
         dbus = {
             enable = true;
+            packages = [
+                pkgs.gcr
+            ];
         };
         flatpak = {
             enable = true;
