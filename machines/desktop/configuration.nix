@@ -412,8 +412,24 @@
         greetd = {
             enable = true;
             settings = {
-                default_session = {
-                    command = "${pkgs.cage}/bin/cage -s -- ${pkgs.regreet}/bin/regreet";
+                default_session = 
+                    let
+                        swayConfig = pkgs.writeText "greetd-sway-config" ''
+                            exec "${config.programs.regreet.package}/bin/regreet; swaymsg exit"
+                            output "DP-1" {
+                                pos 0 0
+                                resolution 2560x1440@144Hz
+                                transform 0
+                            }
+
+                            output "HDMI-A-1" {
+                                disable
+                                power on
+                            }
+                        '';
+                    in
+                    {
+                    command = "${config.programs.sway.package}/bin/sway --config ${swayConfig}";
                 };
             };
         };
