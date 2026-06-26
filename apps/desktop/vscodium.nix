@@ -53,7 +53,7 @@ in
                             };
                         };
                         "nix" = {
-                            "binary" = "${pkgs.nix}/bin/nix";
+                            "binary" = "${pkgs.nixd}/bin/nixd";
                             "flake" = {
                                 "autoArchive" = true;
                             };
