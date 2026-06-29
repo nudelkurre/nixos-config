@@ -5,6 +5,7 @@
         ./gotify-desktop.nix
         ./jellyfin-mpv-shim.nix
         ./kanshi.nix
+        ./psd.nix
         ./udiskie.nix
         ./wallpapers.nix
         ./wlsunset.nix
