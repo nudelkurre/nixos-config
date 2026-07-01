@@ -330,11 +330,16 @@
     security = {
         pam = {
             services = {
-                hyprlock = { };
+                gtklock = { };
                 greetd = {
                     u2fAuth = false;
                 };
-                swaylock = { };
+                login = {
+                    u2fAuth = true;
+                };
+                sudo = {
+                    u2fAuth = true;
+                };
             };
             u2f = {
                 enable = true;
