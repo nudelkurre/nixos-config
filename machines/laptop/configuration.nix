@@ -93,13 +93,33 @@
 
     fileSystems = {
         "/" = {
-            device = "/dev/disk/by-label/ROOT";
-            fsType = "ext4";
+            device = "/dev/mapper/encrypted";
+            fsType = "btrfs";
+            options = [
+                "compress=zstd:5"
+                "subvol=root"
+            ];
         };
         "/boot" = {
             device = "/dev/disk/by-label/BOOT";
             fsType = "vfat";
             options = [ "umask=0077" ];
+        };
+        "/home" = {
+            device = "/dev/mapper/encrypted";
+            fsType = "btrfs";
+            options = [
+                "compress=zstd:10"
+                "subvol=home"
+            ];
+        };
+        "/nix" = {
+            device = "/dev/mapper/encrypted";
+            fsType = "btrfs";
+            options = [
+                "compress=zstd:5"
+                "subvol=nix"
+            ];
         };
         "/mnt/Media" = {
             device = "${sharedSettings.serverIP}:/nfs/Media";
