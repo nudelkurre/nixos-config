@@ -452,8 +452,8 @@
     sops = {
         age = {
             generateKey = true;
-            keyFile = "/home/${sharedSettings.userName}/.config/sops/age/keys.txt";
-            sshKeyPaths = [ "/home/${sharedSettings.userName}/.ssh/id_ed25519" ];
+            keyFile = "/etc/sops/age/keys.txt";
+            sshKeyPaths = [ "/etc/sops/ssh/id_ed25519" ];
         };
         defaultSopsFile = ../../secrets/secrets.yaml;
         defaultSopsFormat = "yaml";
