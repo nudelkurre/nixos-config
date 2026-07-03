@@ -135,9 +135,6 @@ in
             };
             keybindings = {
 
-                # Lock screen
-                "${mod1}+l" = "exec swaylock";
-
                 # kill focused window
                 "${mod3}+F4" = "kill";
 

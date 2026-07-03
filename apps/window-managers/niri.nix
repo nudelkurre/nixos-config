@@ -479,8 +479,6 @@ let
 
             Mod+F2 cooldown-ms=200 { toggle-overview; }
 
-            Mod+L hotkey-overlay-title="Lock screen" { spawn "${pkgs.gtklock}/bin/gtklock" "-f" "-S"; }
-
             Alt+F4 hotkey-overlay-title=null { close-window; }
 
             // Focus windows

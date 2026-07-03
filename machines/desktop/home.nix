@@ -154,6 +154,16 @@ in
             overlay-title = "Reboot";
         }
 
+        # Lock screen
+        {
+            mod = [
+                "Mod4"
+            ];
+            key = "l";
+            program = "${config.programs.gtklock.package}/bin/gtklock --monitor-priority ${config.monitors.primary} --start-hidden";
+            overlay-title = "Lock screen";
+        }
+
         # Open terminal
         {
             mod = [ "Mod4" ];
