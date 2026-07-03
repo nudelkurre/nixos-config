@@ -44,7 +44,7 @@ in
             user.services = {
                 "gtklock-bg" = {
                     Install = {
-                        WantedBy = [ "multi-user.target" ];
+                        WantedBy = [ "graphical-session.target" ];
                     };
                     Service = {
                         ExecStart = pkgs.writeShellScript "random-bg" ''
