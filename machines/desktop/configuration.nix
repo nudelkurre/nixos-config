@@ -405,7 +405,7 @@
             enable = true;
         };
         fwupd = {
-            enable = true;
+            enable = false;
         };
         gnome = {
             gnome-keyring = {
