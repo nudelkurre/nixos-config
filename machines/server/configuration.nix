@@ -232,6 +232,17 @@
         };
     };
 
+    sops = {
+        age = {
+            generateKey = true;
+            keyFile = "/etc/sops/age/keys.txt";
+            sshKeyPaths = [ "/etc/sops/ssh/id_ed25519" ];
+        };
+
+        defaultSopsFile = ../../secrets/server.yaml;
+        defaultSopsFormat = "yaml";
+    };
+
     system = {
         # This option defines the first version of NixOS you have installed on this particular machine,
         # and is used to maintain compatibility with application data (e.g. databases) created on older NixOS versions.

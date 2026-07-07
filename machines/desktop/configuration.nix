@@ -522,6 +522,9 @@
             sshKeyPaths = [ "/home/${sharedSettings.userName}/.ssh/id_ed25519" ];
         };
 
+        defaultSopsFile = ../../secrets/desktop.yaml;
+        defaultSopsFormat = "yaml";
+
         secrets = {
             
         };
