@@ -211,6 +211,7 @@
                     /nfs/ebooks 10.20.0.0/24(rw,sync,no_subtree_check)
                     /nfs/Manga  10.20.0.0/24(rw,sync,no_subtree_check)
                     /nfs/Media  10.20.0.0/24(rw,sync,no_subtree_check)
+                    /nfs/Media  172.18.1.0/24(rw,sync,no_subtree_check)
                     /nfs/ROMS   10.20.0.0/24(rw,sync,no_subtree_check)
                 '';
             };
