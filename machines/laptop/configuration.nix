@@ -455,12 +455,15 @@
             keyFile = "/etc/sops/age/keys.txt";
             sshKeyPaths = [ "/etc/sops/ssh/id_ed25519" ];
         };
-        defaultSopsFile = ../../secrets/secrets.yaml;
-        defaultSopsFormat = "yaml";
-
         secrets = {
-            "wg-quick/laptop/private_key" = { };
-            "wg-quick/laptop/preshared_key" = { };
+            "wg-quick/private_key" = {
+                sopsFile = ../../secrets/laptop.yaml;
+                format = "yaml";
+            };
+            "wg-quick/preshared_key" = {
+                sopsFile = ../../secrets/laptop.yaml;
+                format = "yaml";
+            };
             "wifi" = {
                 owner = "wpa_supplicant";
             };
