@@ -253,6 +253,14 @@
         stateVersion = "23.05"; # Did you read the comment?
     };
 
+    systemd = {
+        settings = {
+            Manager = {
+                DefaultTimeoutStopSec = "10s";
+            };
+        };
+    };
+
     # Set your time zone.
     time = {
         timeZone = sharedSettings.timeZone;
