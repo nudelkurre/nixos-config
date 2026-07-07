@@ -242,6 +242,10 @@
 
         defaultSopsFile = ../../secrets/server.yaml;
         defaultSopsFormat = "yaml";
+
+        secrets = {
+            
+        };
     };
 
     system = {
