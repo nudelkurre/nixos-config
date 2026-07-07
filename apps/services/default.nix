@@ -3,7 +3,6 @@
         ./dunst.nix
         ./gnome-keyring.nix
         ./gotify-desktop.nix
-        ./jellyfin-mpv-shim.nix
         ./kanshi.nix
         ./psd.nix
         ./udiskie.nix
