@@ -309,6 +309,7 @@
                     modules = [
                         ./machines/server/configuration.nix
                         ./machines/server/hardware-configuration-server.nix
+                        sops-nix.nixosModules.sops
                     ];
                     specialArgs = { inherit sharedSettings; };
                 };
