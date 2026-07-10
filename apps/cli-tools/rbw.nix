@@ -1,6 +1,6 @@
-{ pkgs, ... }:
+{ pkgs, lib, config, ... }:
 {
-    home.sessionVariables = {
+    home.sessionVariables = lib.mkIf config.programs.rbw.enable {
         SSH_AUTH_SOCK = "$XDG_RUNTIME_DIR/rbw/ssh-agent-socket";
     };
     programs.rbw = {
