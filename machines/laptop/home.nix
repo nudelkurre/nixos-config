@@ -107,6 +107,15 @@ in
             program = "${pkgs.wireplumber}/bin/wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
         }
 
+        {
+            key = "XF86MonBrightnessDown";
+            program = "${pkgs.brightnessctl}/bin/brightnessctl set 5%-";
+        }
+        {
+            key = "XF86MonBrightnessUp";
+            program = "${pkgs.brightnessctl}/bin/brightnessctl set +5%";
+        }
+
         # Shutdown
         {
             mod = [
