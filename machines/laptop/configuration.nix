@@ -425,20 +425,22 @@
         tlp = {
             enable = true;
             settings = {
-                CPU_BOOST_ON_AC = "1";
+                CPU_BOOST_ON_AC = "0";
                 CPU_BOOST_ON_BAT = "0";
                 CPU_DRIVER_OPMODE_ON_AC = "passive";
                 CPU_DRIVER_OPMODE_ON_BAT = "passive";
                 CPU_SCALING_GOVERNOR_ON_AC = "performance";
                 CPU_SCALING_GOVERNOR_ON_BAT = "schedutil";
-                CPU_SCALING_MAX_FREQ_ON_AC = "2600000";
-                CPU_SCALING_MAX_FREQ_ON_BAT = "2600000";
+                CPU_SCALING_MAX_FREQ_ON_AC = "1700000";
+                CPU_SCALING_MAX_FREQ_ON_BAT = "1700000";
                 CPU_SCALING_MIN_FREQ_ON_AC = "800000";
                 CPU_SCALING_MIN_FREQ_ON_BAT = "800000";
+                CPU_MIN_PERF_ON_AC = 0;
+                CPU_MAX_PERF_ON_AC = 100;
+                CPU_MIN_PERF_ON_BAT = 0;
+                CPU_MAX_PERF_ON_BAT = 100;
                 DEVICES_TO_DISABLE_ON_LAN_CONNECT = "wifi";
                 DEVICES_TO_ENABLE_ON_LAN_CONNECT = "wifi";
-                START_CHARGE_THRESH_BAT0 = "75";
-                STOP_CHARGE_THRESH_BAT0 = "80";
             };
         };
         udisks2 = {
