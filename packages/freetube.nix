@@ -9,11 +9,11 @@
 
 stdenv.mkDerivation rec {
     pname = "freetube";
-    version = "0.24.1";
+    version = "0.25.0";
 
     src = fetchurl {
         url = "https://github.com/FreeTubeApp/FreeTube/releases/download/v${version}-beta/freetube-${version}-beta-amd64.AppImage";
-        hash = "sha256-3jRZ71y7D0ECOcSGdCu01KaA7mmT14CVhNAlZEVtvhk=";
+        hash = "sha256-DjNdP1Pjww2DjuOMsgEqHWIgaf/7KUaAlkvv0UCE/a4=";
     };
 
     passthru.tests = nixosTests.freetube;
@@ -33,7 +33,6 @@ stdenv.mkDerivation rec {
 
         cp -a ${appimageContents}/{locales,resources} $out/share/${pname}
         cp -a ${appimageContents}/freetube.desktop $out/share/applications/${pname}.desktop
-        cp -a ${appimageContents}/usr/share/icons/hicolor/scalable/freetube.svg $out/share/icons/hicolor/scalable/apps
 
         substituteInPlace $out/share/applications/${pname}.desktop \
           --replace 'Exec=AppRun' 'Exec=${pname}'
