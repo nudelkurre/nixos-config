@@ -1,4 +1,7 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
+let
+    monitor = builtins.elemAt (lib.lists.filter (m: m.name == config.monitors.primary) config.monitors.outputs) 0;
+in
 {
     programs.mpv = {
         bindings = {
@@ -34,7 +37,7 @@
             vo = "gpu";
             volume-max = "100";
             volume = "60";
-            ytdl-format = "bv*[height<=1080][vcodec~='^((he|a)vc|h26[45])']+ba/best[height<=1080][vcodec~='^((he|a)vc|h26[45])']";
+            ytdl-format = "bv*[height<=${toString monitor.height}][vcodec~='^((he|a)vc|h26[45])']+ba/best[height<=${toString monitor.height}][vcodec~='^((he|a)vc|h26[45])']";
         };
         enable = true;
         package = pkgs.mpv;
