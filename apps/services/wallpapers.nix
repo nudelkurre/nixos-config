@@ -1,6 +1,7 @@
 {
     pkgs,
     config,
+    osConfig,
     lib,
     ...
 }:
@@ -70,7 +71,7 @@ let
                         }
                     else
                         { };
-            }) (config.monitors.outputs)
+            }) (osConfig.monitors.outputs)
         )
         // builtins.listToAttrs (
             (builtins.map (m: {
@@ -93,7 +94,7 @@ let
                         }
                     else
                         { };
-            }) (config.monitors.outputs))
+            }) (osConfig.monitors.outputs))
         )
     );
     timers = (
@@ -118,11 +119,11 @@ let
                         }
                     else
                         { };
-            }) (config.monitors.outputs)
+            }) (osConfig.monitors.outputs)
         )
     );
     enableSwww = builtins.elem true (
-        builtins.map (m: if m.wallpaper == "awww" then true else false) (config.monitors.outputs)
+        builtins.map (m: if m.wallpaper == "awww" then true else false) (osConfig.monitors.outputs)
     );
     filteredAttrs = lib.filterAttrsRecursive (name: value: value != { });
 in

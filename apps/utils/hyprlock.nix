@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, osConfig, ... }:
 {
     programs.hyprlock = {
         enable = config.wayland.windowManager.hyprland.enable;
@@ -13,7 +13,7 @@
             };
             input-field = [
                 {
-                    monitor = "${config.monitors.primary}";
+                    monitor = "${osConfig.monitors.primary}";
                     size = "500, 50";
                     fail_text = "$FAIL ($ATTEMPTS)";
                     placeholder_text = "Password: ";
@@ -28,7 +28,7 @@
             ];
             label = [
                 {
-                    monitor = "${config.monitors.primary}";
+                    monitor = "${osConfig.monitors.primary}";
                     text = "$TIME";
                     font_family = "${config.fonts.name}";
                     font_size = "${toString (config.fonts.size + 25)}";

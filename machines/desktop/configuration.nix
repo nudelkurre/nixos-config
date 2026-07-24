@@ -206,6 +206,50 @@
         defaultLocale = sharedSettings.locale;
     };
 
+    monitors = {
+        outputs = [
+            {
+                adaptive_sync = "on";
+                bg_style = "fill";
+                name = "DP-1";
+                height = 1440;
+                refreshRate = 144;
+                transform = 0;
+                width = 2560;
+                workspaces = [
+                    "1"
+                    "2"
+                    "3"
+                    "4"
+                    "5"
+                ];
+                x = 0;
+                y = 480;
+                wallpaper = "awww";
+            }
+            {
+                adaptive_sync = "off";
+                bg_style = "fill";
+                name = "HDMI-A-1";
+                height = 1080;
+                refreshRate = 60;
+                transform = 90;
+                width = 1920;
+                workspaces = [
+                    "6"
+                    "7"
+                    "8"
+                    "9"
+                    "10"
+                ];
+                x = 2560;
+                y = 0;
+                wallpaper = "awww";
+            }
+        ];
+        primary = "DP-1";
+    };
+
     # Network settings
     networking = {
         enableIPv6 = sharedSettings.enableIPv6;

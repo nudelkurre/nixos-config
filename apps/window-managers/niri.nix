@@ -104,7 +104,7 @@ let
                             ${backdrop-color}
                         }
             ''
-        ) (config.monitors.outputs)
+        ) (osConfig.monitors.outputs)
     );
 
     workspaceOutput = lib.strings.concatStringsSep "\n" (
@@ -123,7 +123,7 @@ let
                         }
                     ''
                 ) (m.workspaces)
-            ) (config.monitors.outputs)
+            ) (osConfig.monitors.outputs)
         )
     );
 

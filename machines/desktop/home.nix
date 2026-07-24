@@ -160,7 +160,7 @@ in
                 "Mod4"
             ];
             key = "l";
-            program = "${config.programs.gtklock.package}/bin/gtklock --monitor-priority ${config.monitors.primary} --start-hidden";
+            program = "${config.programs.gtklock.package}/bin/gtklock --monitor-priority ${osConfig.monitors.primary} --start-hidden";
             overlay-title = "Lock screen";
         }
 
@@ -242,50 +242,6 @@ in
             overlay-title = "Open rofi";
         }
     ];
-
-    monitors = {
-        outputs = [
-            {
-                adaptive_sync = "on";
-                bg_style = "fill";
-                name = main-monitor;
-                height = 1440;
-                refreshRate = 144;
-                transform = 0;
-                width = 2560;
-                workspaces = [
-                    "1"
-                    "2"
-                    "3"
-                    "4"
-                    "5"
-                ];
-                x = 0;
-                y = 480;
-                wallpaper = "awww";
-            }
-            {
-                adaptive_sync = "off";
-                bg_style = "fill";
-                name = secondary-monitor;
-                height = 1080;
-                refreshRate = 60;
-                transform = 90;
-                width = 1920;
-                workspaces = [
-                    "6"
-                    "7"
-                    "8"
-                    "9"
-                    "10"
-                ];
-                x = 2560;
-                y = 0;
-                wallpaper = "awww";
-            }
-        ];
-        primary = main-monitor;
-    };
 
     nix = {
         gc = {
