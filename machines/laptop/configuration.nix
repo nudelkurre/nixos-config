@@ -1,5 +1,6 @@
 {
     pkgs,
+    lib,
     config,
     sharedSettings,
     ...
@@ -439,8 +440,35 @@
         greetd = {
             enable = true;
             settings = {
-                default_session = {
-                    command = "${pkgs.cage}/bin/cage -s -- ${pkgs.regreet}/bin/regreet";
+                default_session = 
+                    let
+                        outputs = lib.strings.concatStringsSep "\n" (
+                            map (
+                                m:
+                                let
+                                    resolution = "${toString m.width}x${toString m.height}@${toString m.refreshRate}Hz";
+                                in
+                                if m.name == config.monitors.primary then ''
+                                    output "${m.name}" {
+                                        pos 0 0
+                                        resolution ${resolution}
+                                        transform ${toString m.transform}
+                                    }
+                                '' else ''
+                                    output "${m.name}" {
+                                        disable
+                                        power on
+                                    }
+                                ''
+                            ) (config.monitors.outputs)
+                        );
+                        swayConfig = pkgs.writeText "greetd-sway-config" ''
+                            exec "${config.programs.regreet.package}/bin/regreet; swaymsg exit"
+                            ${outputs}
+                        '';
+                    in
+                    {
+                    command = "${config.programs.sway.package}/bin/sway --config ${swayConfig}";
                 };
             };
         };

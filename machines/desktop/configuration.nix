@@ -1,5 +1,6 @@
 {
     pkgs,
+    lib,
     config,
     sharedSettings,
     ...
@@ -461,18 +462,29 @@
             settings = {
                 default_session = 
                     let
+                        outputs = lib.strings.concatStringsSep "\n" (
+                            map (
+                                m:
+                                let
+                                    resolution = "${toString m.width}x${toString m.height}@${toString m.refreshRate}Hz";
+                                in
+                                if m.name == config.monitors.primary then ''
+                                    output "${m.name}" {
+                                        pos 0 0
+                                        resolution ${resolution}
+                                        transform ${toString m.transform}
+                                    }
+                                '' else ''
+                                    output "${m.name}" {
+                                        disable
+                                        power on
+                                    }
+                                ''
+                            ) (config.monitors.outputs)
+                        );
                         swayConfig = pkgs.writeText "greetd-sway-config" ''
                             exec "${config.programs.regreet.package}/bin/regreet; swaymsg exit"
-                            output "DP-1" {
-                                pos 0 0
-                                resolution 2560x1440@144Hz
-                                transform 0
-                            }
-
-                            output "HDMI-A-1" {
-                                disable
-                                power on
-                            }
+                            ${outputs}
                         '';
                     in
                     {
