@@ -1,6 +1,6 @@
-{ pkgs, config, lib, sharedSettings, ... }:
+{ pkgs, config, osConfig, lib, sharedSettings, ... }:
 let
-    main_monitor = builtins.head (lib.filter (output: output.name == config.monitors.primary) config.monitors.outputs);
+    main_monitor = builtins.head (lib.filter (output: output.name == osConfig.monitors.primary) osConfig.monitors.outputs);
     variant = sharedSettings.colors.variant;
 in
 {

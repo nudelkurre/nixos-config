@@ -236,6 +236,7 @@
                         }
                         ./machines/desktop/configuration.nix
                         ./machines/desktop/hardware-configuration-desktop.nix
+                        ./options/nixos.nix
                         sops-nix.nixosModules.sops
                         home-manager.nixosModules.home-manager
                         {
@@ -248,7 +249,7 @@
                                         imports = [
                                             ./apps
                                             ./machines/desktop/home.nix
-                                            ./options.nix
+                                            ./options/home-manager.nix
                                             ngb.outputs.homeManagerModules.ngb
                                             sops-nix.homeManagerModules.sops
                                         ];
@@ -282,6 +283,7 @@
                         }
                         ./machines/laptop/configuration.nix
                         ./machines/laptop/hardware-configuration-laptop.nix
+                        ./options/nixos.nix
                         sops-nix.nixosModules.sops
                         home-manager.nixosModules.home-manager
                         {
@@ -294,7 +296,7 @@
                                         imports = [
                                             ./apps
                                             ./machines/laptop/home.nix
-                                            ./options.nix
+                                            ./options/home-manager.nix
                                             ngb.outputs.homeManagerModules.ngb
                                             sops-nix.homeManagerModules.sops
                                         ];

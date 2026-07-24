@@ -2,6 +2,7 @@
     pkgs,
     lib,
     config,
+    osConfig,
     ...
 }:
 let
@@ -13,7 +14,7 @@ let
                 }");
                 background-size: cover;
             }
-        '') (config.monitors.outputs)
+        '') (osConfig.monitors.outputs)
     );
 in
 {

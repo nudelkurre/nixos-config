@@ -145,7 +145,7 @@ in
                 "Mod4"
             ];
             key = "l";
-            program = "${config.programs.gtklock.package}/bin/gtklock --monitor-priority ${config.monitors.primary} --start-hidden";
+            program = "${config.programs.gtklock.package}/bin/gtklock --monitor-priority ${osConfig.monitors.primary} --start-hidden";
             overlay-title = "Lock screen";
         }
 
@@ -190,50 +190,6 @@ in
             overlay-title = "Open rofi";
         }
     ];
-
-    monitors = {
-        outputs = [
-            {
-                adaptive_sync = "off";
-                background = "${pkgs.mypkgs.wallpapers}/share/wallpapers/wallhaven-ne7jkw.jpg";
-                bg_style = "fill";
-                height = 768;
-                name = "LVDS-1";
-                refreshRate = 60;
-                transform = 0;
-                width = 1366;
-                workspaces = [
-                    "1"
-                    "2"
-                    "3"
-                    "4"
-                    "5"
-                    "6"
-                    "7"
-                    "8"
-                    "9"
-                ];
-                x = 0;
-                y = 0;
-                wallpaper = "awww";
-            }
-            {
-                adaptive_sync = "off";
-                background = "${pkgs.mypkgs.wallpapers}/share/wallpapers/wallhaven-ne7jkw.jpg";
-                bg_style = "fill";
-                name = "HDMI-A-1";
-                height = 720;
-                refreshRate = 60;
-                transform = 0;
-                width = 1280;
-                workspaces = [ "10" ];
-                x = 1366;
-                y = 0;
-                wallpaper = "awww";
-            }
-        ];
-        primary = "LVDS-1";
-    };
 
     nix = {
         gc = {

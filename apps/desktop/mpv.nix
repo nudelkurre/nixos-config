@@ -1,6 +1,6 @@
-{ config, pkgs, lib, ... }:
+{ config, osConfig, pkgs, lib, ... }:
 let
-    monitor = builtins.elemAt (lib.lists.filter (m: m.name == config.monitors.primary) config.monitors.outputs) 0;
+    monitor = builtins.elemAt (lib.lists.filter (m: m.name == osConfig.monitors.primary) osConfig.monitors.outputs) 0;
 in
 {
     programs.mpv = {

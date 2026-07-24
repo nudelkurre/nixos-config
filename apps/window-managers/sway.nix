@@ -240,7 +240,7 @@ in
                                 transform = "${toString m.transform}";
                             };
                         }
-                    ) (config.monitors.outputs)
+                    ) (osConfig.monitors.outputs)
                 )
             );
 
@@ -252,9 +252,9 @@ in
             startup = lib.lists.flatten [
                 { command = "systemctl --user import-environment PATH"; }
                 (
-                    if config.monitors.primary != "" then
+                    if osConfig.monitors.primary != "" then
                         [
-                            { command = "${pkgs.xrandr}/bin/xrandr --output ${config.monitors.primary} --primary"; }
+                            { command = "${pkgs.xrandr}/bin/xrandr --output ${osConfig.monitors.primary} --primary"; }
                         ]
                     else
                         [ ]
@@ -274,7 +274,7 @@ in
                         output = m.name;
                         workspace = w;
                     }) (m.workspaces)
-                ) (config.monitors.outputs)
+                ) (osConfig.monitors.outputs)
             );
         };
         enable = osConfig.programs.sway.enable;

@@ -230,7 +230,7 @@ in
                 "${m.name},${resolution},${position},1,transform,${
                     transform.${toString m.transform}
                 },vrr,${vrr.${m.adaptive_sync}}"
-            ) (config.monitors.outputs);
+            ) (osConfig.monitors.outputs);
 
             plugin = {
                 hy3 = {
@@ -263,7 +263,7 @@ in
             ];
 
             workspace = lib.lists.flatten (
-                map (m: map (w: "name:${w},monitor:${m.name}") (m.workspaces)) (config.monitors.outputs)
+                map (m: map (w: "name:${w},monitor:${m.name}") (m.workspaces)) (osConfig.monitors.outputs)
             );
         };
         systemd = {
