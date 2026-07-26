@@ -552,6 +552,7 @@ in
             enable = true;
             entries = [
                 "${config.programs.chatterino.package}/share/applications/com.chatterino.chatterino.desktop"
+                "${config.programs.rbw.package}/share/applications/rbw-unlock.desktop"
             ];
             readOnly = true;
         };

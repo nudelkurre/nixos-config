@@ -58,6 +58,22 @@
                         hash = "sha256-cbwc11tQL6SaqcQM6vdoKti1/EFb6dRI+vFFkh9mR0E=";
                     };
                 });
+                rbw = prev.rbw.overrideAttrs (old: {
+                    postInstall = (old.postInstall or "") + ''
+                        mkdir -p $out/share/applications
+
+                        cat > $out/share/applications/rbw-unlock.desktop <<'EOF'
+                        [Desktop Entry]
+                        Type=Application
+                        Name=RBW Unlock
+                        Comment=Unlock RBW
+                        Exec=rbw unlock
+                        Icon=bitwarden
+                        Terminal=false
+                        NoDisplay=true
+                        EOF
+                    '';
+                });
                 yt-dlp = prev.yt-dlp.overrideAttrs (old: {
                     version = versions.yt-dlp;
                     src = prev.fetchFromGitHub {

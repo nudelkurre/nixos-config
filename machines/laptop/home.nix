@@ -398,6 +398,13 @@ in
     ];
 
     xdg = {
+        autostart = {
+            enable = true;
+            entries = [
+                "${config.programs.rbw.package}/share/applications/rbw-unlock.desktop"
+            ];
+            readOnly = true;
+        };
         enable = true;
         mimeApps = {
             enable = true;
