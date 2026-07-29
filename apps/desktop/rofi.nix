@@ -25,7 +25,37 @@ in
         };
         location = "center";
         modes = [ "drun" ];
-        package = pkgs.rofi;
+        package = pkgs.rofi.override {
+            rofi-unwrapped = pkgs.rofi-unwrapped.overrideAttrs (old: {
+                postInstall = (old.postInstall or "") + ''
+                    mkdir -p $out/share/applications
+
+                    cat > $out/share/applications/rofi.desktop <<'EOF'
+                    [Desktop Entry]
+                    Encoding=UTF-8
+                    Version=1.0
+                    Type=Application
+                    Terminal=false
+                    Exec=rofi -show
+                    Name=Rofi
+                    Icon=rofi
+                    NoDisplay=true
+                    EOF
+
+                    cat > $out/share/applications/rofi-theme-selector.desktop <<'EOF'
+                    [Desktop Entry]
+                    Encoding=UTF-8
+                    Version=1.0
+                    Type=Application
+                    Terminal=false
+                    Exec=rofi-theme-selector
+                    Name=Rofi Theme Selector
+                    Icon=rofi
+                    NoDisplay=true
+                    EOF
+                '';
+            });
+        };
         terminal = "kitty";
         theme = {
             "*" = {
