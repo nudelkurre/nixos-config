@@ -3,6 +3,7 @@
     home = {
         packages = with pkgs; [
             imv
+            old.jellyfin-desktop
             jq
             lm_sensors
             mypkgs.freetube
