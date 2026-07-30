@@ -4,6 +4,7 @@
     inputs = {
         nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
         nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+        nixpkgs-old.url = "github:NixOS/nixpkgs/nixos-25.11";
         home-manager = {
             url = "github:nix-community/home-manager/release-26.05";
             inputs.nixpkgs.follows = "nixpkgs";
@@ -22,6 +23,7 @@
             self,
             nixpkgs,
             nixpkgs-unstable,
+            nixpkgs-old,
             home-manager,
             ngb,
             sops-nix,
@@ -40,6 +42,11 @@
                     };
                 };
             };
+            overlay-old = final: prev: {
+                old = import nixpkgs-old {
+                    inherit (final.stdenv.hostPlatform) system;
+                };
+            };
             mypkgs-overlay = final: prev: {
                 mypkgs = self.packages.${prev.stdenv.hostPlatform.system};
             };
@@ -49,7 +56,7 @@
                 yt-dlp = "2026.07.04";
             };
             version-overlay = final: prev: {
-                jellyfin-desktop = prev.jellyfin-desktop.overrideAttrs (old: {
+                old.jellyfin-desktop = prev.old.jellyfin-desktop.overrideAttrs (old: {
                     version = versions.jellyfin-desktop;
                     src = prev.fetchFromGitHub {
                         owner = "jellyfin-archive";
@@ -247,6 +254,7 @@
                                 mypkgs-overlay
                                 ngb.overlay
                                 overlay-unstable
+                                overlay-old
                                 version-overlay
                             ];
                         }
