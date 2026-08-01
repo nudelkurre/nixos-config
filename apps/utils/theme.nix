@@ -50,12 +50,11 @@ in
             };
         };
         theme = {
-            name = "Colloid-${color}-${accent}-Compact-Catppuccin";
-            package = pkgs.unstable.colloid-gtk-theme.override {
-                themeVariants = [ "${lib.strings.toLower color}" ];
-                colorVariants = [ "${lib.strings.toLower accent}" ];
-                sizeVariants = [ "compact" ];
-                tweaks = [ "catppuccin" ];
+            name = "catppuccin-${lib.strings.toLower variant}-${lib.strings.toLower color}-compact";
+            package = pkgs.unstable.catppuccin-gtk.override {
+                accents = [ "${lib.strings.toLower color}" ];
+                variant = "${lib.strings.toLower variant}";
+                size = "compact";
             };
         };
         gtk3 = {

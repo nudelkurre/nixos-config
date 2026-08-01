@@ -368,12 +368,11 @@
                 };
             };
             theme = {
-                name = "Colloid-Pink-Dark-Compact-Catppuccin";
-                package = pkgs.unstable.colloid-gtk-theme.override {
-                    themeVariants = [ "pink" ];
-                    colorVariants = [ "dark" ];
-                    sizeVariants = [ "compact" ];
-                    tweaks = [ "catppuccin" ];
+                name = "catppuccin-${sharedSettings.colors.variant}-pink-compact";
+                package = pkgs.unstable.catppuccin-gtk.override {
+                    accents = [ "pink" ];
+                    variant = "${sharedSettings.colors.variant}";
+                    size = "compact";
                 };
             };
         };
