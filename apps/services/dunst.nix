@@ -1,7 +1,7 @@
 { pkgs, config, osConfig, lib, sharedSettings, ... }:
 let
     main_monitor = builtins.head (lib.filter (output: output.name == osConfig.monitors.primary) osConfig.monitors.outputs);
-    variant = sharedSettings.colors.variant;
+    variant = osConfig.theme.variant;
 in
 {
     services.dunst = {
@@ -21,7 +21,7 @@ in
                 ellipsize = "middle";
                 font = "${config.fonts.name} ${toString config.fonts.size}";
                 format = "<b>%s</b>\\n%b";
-                frame_color = sharedSettings.colors.main;
+                frame_color = sharedSettings.colors."${variant}"."${osConfig.theme.color.main}";
                 frame_width = 2;
                 height = "(0, ${toString (builtins.floor (main_monitor.height / 5))})";
                 hide_duplicate_count = false;
@@ -57,7 +57,7 @@ in
             urgency_critical = {
                 background = sharedSettings.colors."${variant}".red;
                 foreground = sharedSettings.colors."${variant}".base;
-                frame_color = sharedSettings.colors.main;
+                frame_color = sharedSettings.colors."${variant}"."${osConfig.theme.color.main}";
                 timeout = 0;
             };
             urgency_low = {
@@ -67,7 +67,7 @@ in
             };
             urgency_normal = {
                 background = sharedSettings.colors."${variant}".base;
-                foreground = sharedSettings.colors.main;
+                foreground = sharedSettings.colors."${variant}"."${osConfig.theme.color.main}";
                 timeout = 30;
             };
         };

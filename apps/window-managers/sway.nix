@@ -78,10 +78,10 @@ in
             bindkeysToCode = false;
             colors = {
                 focused = {
-                    background = "${sharedSettings.colors.secondary}";
-                    border = "${sharedSettings.colors.main}";
-                    childBorder = "${sharedSettings.colors.secondary}";
-                    indicator = "${sharedSettings.colors.main}";
+                    background = "${sharedSettings.colors."${osConfig.theme.variant}"."${osConfig.theme.color.secondary}"}";
+                    border = "${sharedSettings.colors."${osConfig.theme.variant}"."${osConfig.theme.color.main}"}";
+                    childBorder = "${sharedSettings.colors."${osConfig.theme.variant}"."${osConfig.theme.color.secondary}"}";
+                    indicator = "${sharedSettings.colors."${osConfig.theme.variant}"."${osConfig.theme.color.main}"}";
                     text = "#ffffff";
                 };
             };

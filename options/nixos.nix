@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ pkgs, lib, config, ... }:
 with lib;
 {
     options = {
@@ -91,6 +91,83 @@ with lib;
                 example = "mpvpaper";
                 default = "awww";
                 description = "Set default wallpaper service";
+            };
+        };
+        theme = {
+            color = {
+                main = mkOption {
+                    type = types.enum [
+                        "blue"
+                        "flamingo"
+                        "green"
+                        "lavender"
+                        "maroon"
+                        "mauve"
+                        "peach"
+                        "pink"
+                        "red"
+                        "rosewater"
+                        "sapphire"
+                        "sky"
+                        "teal"
+                        "yellow"
+                    ];
+                    default = "blue";
+                    description = "Set theme main color to use";
+                };
+                secondary = mkOption {
+                    type = types.enum [
+                        "blue"
+                        "flamingo"
+                        "green"
+                        "lavender"
+                        "maroon"
+                        "mauve"
+                        "peach"
+                        "pink"
+                        "red"
+                        "rosewater"
+                        "sapphire"
+                        "sky"
+                        "teal"
+                        "yellow"
+                    ];
+                    default = "blue";
+                    description = "Set theme secondary color to use";
+                };
+            };
+            gtk = {
+                name = mkOption {
+                    type = types.str;
+                    default = "catppuccin-${config.theme.variant}-${config.theme.color.main}-${config.theme.gtk.size}";
+                    description = "Name of theme to use";
+                };
+                package = mkOption {
+                    type = types.package;
+                    default = pkgs.unstable.catppuccin-gtk.override {
+                        accents = [ config.theme.color.main ];
+                        variant = config.theme.variant;
+                        size = config.theme.gtk.size;
+                    };
+                };
+                size = mkOption {
+                    type = types.enum [
+                        "standard"
+                        "compact"
+                    ];
+                    default = "standard";
+                    description = "Set size for theme spacing";
+                };
+            };
+            variant = mkOption {
+                type = types.enum [
+                    "latte"
+                    "frappe"
+                    "macchiato"
+                    "mocha"
+                ];
+                default = "latte";
+                description = "Set theme variant of catppuccin";
             };
         };
     };

@@ -1,10 +1,10 @@
-{ config, pkgs, sharedSettings, ... }:
+{ config, osConfig, pkgs, sharedSettings, ... }:
 let
     inherit (config.lib.formats.rasi) mkLiteral;
-    variant = sharedSettings.colors.variant;
+    variant = osConfig.theme.variant;
     text-color = sharedSettings.colors."${variant}".text;
     base-color = sharedSettings.colors."${variant}".base;
-    main-color = sharedSettings.colors.main;
+    main-color = sharedSettings.colors."${variant}"."${osConfig.theme.color.main}";
     overlay-color = sharedSettings.colors."${variant}".overlay0;
 in
 {

@@ -1,15 +1,15 @@
 {
     pkgs,
     config,
+    osConfig,
     lib,
-    sharedSettings,
     ...
 }:
 let
     capitalize = str: if str == "" then "" else lib.strings.toUpper (builtins.substring 0 1 str) + lib.strings.toLower (builtins.substring 1 (builtins.stringLength str - 1) str);
-    color = "Pink";
-    variant = capitalize sharedSettings.colors.variant;
-    accent = if variant == "Latte" then "Light" else "Dark";
+    color = osConfig.theme.color.main;
+    variant = osConfig.theme.variant;
+    accent = if variant == "latte" then "Light" else "Dark";
     darkmode = if accent == "Dark" then true else false;
 in
 {
@@ -31,10 +31,10 @@ in
     gtk = {
         enable = true;
         cursorTheme = {
-            name = "Afterglow-Recolored-Catppuccin-${color}";
+            name = "Afterglow-Recolored-Catppuccin-${capitalize color}";
             package = pkgs.afterglow-cursors-recolored.override {
                 themeVariants = [ "Catppuccin" ];
-                catppuccinColorVariants = [ color ];
+                catppuccinColorVariants = [ (capitalize color) ];
             };
             size = 32;
         };
@@ -50,12 +50,8 @@ in
             };
         };
         theme = {
-            name = "catppuccin-${lib.strings.toLower variant}-${lib.strings.toLower color}-compact";
-            package = pkgs.unstable.catppuccin-gtk.override {
-                accents = [ "${lib.strings.toLower color}" ];
-                variant = "${lib.strings.toLower variant}";
-                size = "compact";
-            };
+            name = osConfig.theme.gtk.name;
+            package = osConfig.theme.gtk.package;
         };
         gtk3 = {
             bookmarks = config.desktop.bookmarks;

@@ -1,6 +1,7 @@
 {
     pkgs,
     config,
+    osConfig,
     sharedSettings,
     lib,
     ...
@@ -227,12 +228,12 @@ in
                     "Status" = "default";
                 };
                 "browser.display.background_color" = {
-                    "Value" = sharedSettings.colors.${sharedSettings.colors.variant}.base;
+                    "Value" = sharedSettings.colors.${osConfig.theme.variant}.base;
                     "Type" = "string";
                     "Status" = "default";
                 };
                 "browser.display.foreground_color" = {
-                    "Value" = sharedSettings.colors.${sharedSettings.colors.variant}.text;
+                    "Value" = sharedSettings.colors.${osConfig.theme.variant}.text;
                     "Type" = "string";
                     "Status" = "default";
                 };

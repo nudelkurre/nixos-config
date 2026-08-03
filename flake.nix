@@ -113,9 +113,6 @@
                 userName = "emil";
                 firefox-version = "firefox";
                 colors = {
-                    variant = "frappe";
-                    main = sharedSettings.colors."${sharedSettings.colors.variant}".pink;
-                    secondary = sharedSettings.colors."${sharedSettings.colors.variant}".blue;
                     latte = {
                         rosewater = "#dc8a78";
                         flamingo = "#dd7878";

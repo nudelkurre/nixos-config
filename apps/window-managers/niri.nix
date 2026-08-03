@@ -155,8 +155,8 @@ let
     cfg.mouse = config.input.mouse;
     cfg.touchpad = config.input.touchpad;
 
-    color1 = "${sharedSettings.colors.main}";
-    color2 = "${sharedSettings.colors.secondary}";
+    color1 = "${sharedSettings.colors."${osConfig.theme.variant}"."${osConfig.theme.color.main}"}";
+    color2 = "${sharedSettings.colors."${osConfig.theme.variant}"."${osConfig.theme.color.secondary}"}";
     opacity_active = "ee";
     opacity_inactive = "33";
     color_angle = "45";

@@ -359,12 +359,8 @@
                 };
             };
             theme = {
-                name = "catppuccin-${sharedSettings.colors.variant}-pink-compact";
-                package = pkgs.unstable.catppuccin-gtk.override {
-                    accents = [ "pink" ];
-                    variant = "${sharedSettings.colors.variant}";
-                    size = "compact";
-                };
+                name = config.theme.gtk.name;
+                package = config.theme.gtk.package;
             };
         };
         steam = {

@@ -2,6 +2,7 @@
     pkgs,
     lib,
     config,
+    osConfig,
     sharedSettings,
     ...
 }:
@@ -9,7 +10,7 @@
     programs.zsh = {
         autosuggestion = {
             enable = true;
-            highlight = "fg=${sharedSettings.colors.main},bold,underline";
+            highlight = "fg=${sharedSettings.colors."${osConfig.theme.variant}"."${osConfig.theme.color.main}"},bold,underline";
             strategy = [
                 "history"
                 "completion"
@@ -44,7 +45,7 @@
                 late
             ];
         localVariables = {
-            PROMPT = "%B%F{green}[%n@%m:%~]$%f%b ";
+            PROMPT = "%B%F{${sharedSettings.colors."${osConfig.theme.variant}".green}}[%n@%m:%~]$%f%b ";
         };
         oh-my-zsh = {
             enable = true;

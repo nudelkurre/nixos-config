@@ -5,6 +5,9 @@
     sharedSettings,
     ...
 }:
+let
+    capitalize = str: if str == "" then "" else lib.strings.toUpper (builtins.substring 0 1 str) + lib.strings.toLower (builtins.substring 1 (builtins.stringLength str - 1) str);
+in
 {
     boot = {
         blacklistedKernelModules = [
@@ -55,10 +58,10 @@
         # Settings for plymouth splash screen
         plymouth = {
             enable = true;
-            theme = "catppuccin-${sharedSettings.colors.variant}";
+            theme = "catppuccin-${config.theme.variant}";
             themePackages = [
                 (pkgs.catppuccin-plymouth.override {
-                    variant = sharedSettings.colors.variant;
+                    variant = config.theme.variant;
                 })
             ];
         };
@@ -335,10 +338,10 @@
         };
         regreet = {
             cursorTheme = {
-                name = "Afterglow-Recolored-Catppuccin-Pink";
+                name = "Afterglow-Recolored-Catppuccin-${capitalize config.theme.color.main}";
                 package = pkgs.afterglow-cursors-recolored.override {
                     themeVariants = [ "Catppuccin" ];
-                    catppuccinColorVariants = [ "Pink" ];
+                    catppuccinColorVariants = [ (capitalize config.theme.color.main) ];
                 };
             };
             enable = true;
@@ -368,12 +371,8 @@
                 };
             };
             theme = {
-                name = "catppuccin-${sharedSettings.colors.variant}-pink-compact";
-                package = pkgs.unstable.catppuccin-gtk.override {
-                    accents = [ "pink" ];
-                    variant = "${sharedSettings.colors.variant}";
-                    size = "compact";
-                };
+                name = config.theme.gtk.name;
+                package = config.theme.gtk.package;
             };
         };
         steam = {
@@ -642,6 +641,17 @@
                 };
             };
         };
+    };
+
+    theme = {
+        color = {
+            main = "pink";
+            secondary = "sky";
+        };
+        gtk = {
+            size = "compact";
+        };
+        variant = "frappe";
     };
 
     # Set your time zone.

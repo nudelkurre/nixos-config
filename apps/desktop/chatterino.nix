@@ -1,12 +1,13 @@
 {
     pkgs,
     config,
+    osConfig,
     lib,
     sharedSettings,
     ...
 }:
 let
-    colors = sharedSettings.colors."${sharedSettings.colors.variant}";
+    colors = sharedSettings.colors."${osConfig.theme.variant}";
     accents = [
         "rosewater"
         "flamingo"
@@ -142,7 +143,7 @@ let
     toJson = pkgs.formats.json { };
     files = lib.listToAttrs (map (color:
         let
-            path = "${config.xdg.dataHome}/chatterino/Themes/${sharedSettings.colors.variant}-${color}.json";
+            path = "${config.xdg.dataHome}/chatterino/Themes/${osConfig.theme.variant}-${color}.json";
         in
         {
             name = path;
