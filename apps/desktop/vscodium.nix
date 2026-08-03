@@ -1,7 +1,7 @@
-{ config, pkgs, lib, sharedSettings, ... }:
+{ config, osConfig, pkgs, lib, ... }:
 let
     capitalize = str: if str == "" then "" else lib.strings.toUpper (builtins.substring 0 1 str) + lib.strings.toLower (builtins.substring 1 (builtins.stringLength str - 1) str);
-    variant = sharedSettings.colors.variant;
+    variant = osConfig.theme.variant;
 in
 {
     programs.vscodium = {

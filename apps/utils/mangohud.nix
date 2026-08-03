@@ -1,8 +1,8 @@
-{ sharedSettings, ... }:
+{ osConfig, sharedSettings, ... }:
 let
-    variant = sharedSettings.colors.variant;
-    main-color = builtins.replaceStrings ["#"] [""] sharedSettings.colors.main;
-    secondary-color = builtins.replaceStrings ["#"] [""] sharedSettings.colors.secondary;
+    variant = osConfig.theme.variant;
+    main-color = builtins.replaceStrings ["#"] [""] sharedSettings.colors."${variant}"."${osConfig.theme.color.main}";
+    secondary-color = builtins.replaceStrings ["#"] [""] sharedSettings.colors."${osConfig.theme.variant}"."${osConfig.theme.color.main}";
     red = builtins.replaceStrings ["#"] [""] sharedSettings.colors."${variant}".red;
     yellow = builtins.replaceStrings ["#"] [""] sharedSettings.colors."${variant}".yellow;
 in
