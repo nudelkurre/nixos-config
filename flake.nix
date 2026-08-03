@@ -299,6 +299,7 @@
                                 mypkgs-overlay
                                 ngb.overlay
                                 overlay-unstable
+                                overlay-old
                                 version-overlay
                             ];
                         }
