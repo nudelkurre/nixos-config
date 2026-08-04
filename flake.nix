@@ -56,6 +56,7 @@
                 yt-dlp = "2026.07.04";
             };
             version-overlay = final: prev: {
+                firefox-esr = pkgs.firefox-esr-153;
                 old.jellyfin-desktop = prev.old.jellyfin-desktop.overrideAttrs (old: {
                     version = versions.jellyfin-desktop;
                     src = prev.fetchFromGitHub {
@@ -111,7 +112,7 @@
                     origin = "pam://yubikey";
                 };
                 userName = "emil";
-                firefox-version = "firefox";
+                firefox-version = "firefox-esr";
                 colors = {
                     latte = {
                         rosewater = "#dc8a78";
