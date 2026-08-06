@@ -34,7 +34,7 @@ in
     fonts = {
         fontconfig = {
             defaultFonts = {
-                emoji = [ "OpenMoji Color" ];
+                emoji = [ "OpenMoji Black" ];
                 monospace = [ "MonaspiceAr Nerd Font Mono" ];
                 sansSerif = [ "MonaspiceAr Nerd Font" ];
                 serif = [ "MonaspiceXe Nerd Font" ];
