@@ -40,7 +40,7 @@ in
                 "Fallback" = false;
             };
             "DontCheckDefaultBrowser" = true;
-            "DownloadDirectory" = "${config.home.homeDirectory}/Downloads";
+            "DownloadDirectory" = "${config.xdg.userDirs.download}";
             "EnableTrackingProtection" = {
                 "Value" = true;
                 "Locked" = true;
@@ -116,6 +116,7 @@ in
                 "SponsoredPocket" = false;
                 "SponsoredStories" = false;
                 "Snippets" = false;
+                "Weather" = false;
                 "Locked" = true;
             };
             "GenerativeAI" = {
@@ -123,7 +124,7 @@ in
                 "Chatbot" = false;
                 "LinkPreviews" = false;
                 "TabGroups" = false;
-                "Locked" = false;
+                "Locked" = true;
             };
             "HardwareAcceleration" = true;
             "Homepage" = {
@@ -132,6 +133,13 @@ in
                 "StartPage" = "homepage-locked";
             };
             "HttpsOnlyMode" = "force_enabled";
+            "IPProtectionAvailable" = false;
+            "LocalNetworkAccess" = {
+                "Enabled" = true;
+                "BlockTrackers" = true;
+                "EnablePrompting" = true;
+                "Locked" = true;
+            };
             "NetworkPrediction" = false;
             "NewTabPage" = true;
             "NoDefaultBookmarks" = true;
@@ -475,6 +483,7 @@ in
             "SearchSuggestEnabled" = false;
             "ShowHomeButton" = false;
             "SkipTermsOfUse" = true;
+            "StartDownloadsInTempDirectory" = true;
             "TranslateEnabled" = false;
             "UserMessaging" = {
                 "WhatsNew" = false;
