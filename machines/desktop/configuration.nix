@@ -323,6 +323,14 @@ in
         };
         gamescope = {
             enable = true;
+            args = [
+                "--output-height 1440" # Monitor resolution
+                "--nested-height 1440" # Game Resolution
+                "--scaler integer"
+                "--fullscreen"
+                "--filter fsr"
+                "--force-grab-cursor"
+            ];
         };
         gnupg = {
             agent = {
@@ -377,17 +385,6 @@ in
         };
         steam = {
             enable = true;
-            gamescopeSession = {
-                args = [
-                    "--output-height 1440" # Monitor resolution
-                    "--nested-height 1440" # Game Resolution
-                    "--scaler integer"
-                    "--fullscreen"
-                    "--filter fsr"
-                    "--force-grab-cursor"
-                ];
-                enable = true;
-            };
         };
         sway = {
             enable = true;
