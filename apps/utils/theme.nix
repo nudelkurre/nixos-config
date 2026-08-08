@@ -72,17 +72,4 @@ in
             theme = config.gtk.theme;
         };
     };
-    qt = {
-        enable = true;
-        platformTheme = {
-            name = "gtk3";
-        };
-        style = {
-            name = "catppuccin-${lib.strings.toLower variant}-${lib.strings.toLower color}";
-            package = pkgs.unstable.catppuccin-kvantum.override {
-                accent = "${lib.strings.toLower color}";
-                variant = "${lib.strings.toLower variant}";
-            };
-        };
-    };
 }
