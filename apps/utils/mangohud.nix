@@ -16,11 +16,11 @@ in
             cpu_temp = true;
             cpu_mhz = true;
             cpu_power = true;
-            gpu_stats = true;
-            gpu_temp = true;
-            gpu_power = true;
-            gpu_name = true;
-            gpu_list = 1; # Set to only use the igpu to fix no temp showing on cpu and not make gpu stutter
+            gpu_stats = false;
+            # gpu_temp = true;
+            # gpu_power = true;
+            # gpu_name = true;
+            # gpu_list = 1; # Set to only use the igpu to fix no temp showing on cpu and not make gpu stutter
             throttling_status = false;
             vram = true;
             ram = true;
