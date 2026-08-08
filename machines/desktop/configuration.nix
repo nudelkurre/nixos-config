@@ -199,6 +199,9 @@ in
             };
             enable = true;
         };
+        uinput = {
+            enable = true;
+        };
         # Drivers for Xbox Series X|S controller
         xpadneo = {
             enable = true;
@@ -545,6 +548,11 @@ in
                 enable = true;
             };
         };
+        sunshine = {
+            enable = true;
+            autoStart = true;
+            openFirewall = true;
+        };
         udev = {
             enable = true;
             packages = [
@@ -673,6 +681,7 @@ in
                     "libvirtd"
                     "kvm"
                     "adbusers"
+                    "uinput"
                 ]; # Enable ‘sudo’ for the user.
                 group = "${sharedSettings.userName}";
                 isNormalUser = true;
