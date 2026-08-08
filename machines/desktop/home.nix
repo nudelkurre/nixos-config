@@ -77,7 +77,6 @@ in
         sessionVariables = {
             EDITOR = "nano";
             MANGADEXDL_CONFIG_ENABLED = "1";
-            PATH = "$HOME/.local/bin:$PATH";
         };
         # This value determines the Home Manager release that your configuration is
         # compatible with. This helps avoid breakage when a new Home Manager release
@@ -559,6 +558,7 @@ in
             ];
             readOnly = true;
         };
+        binHome = "${config.home.homeDirectory}/.local/bin";
         configFile = {
             # Force managing mimeapps.list via home manager
             "mimeapps.list" = {
@@ -617,6 +617,7 @@ in
             };
         };
         enable = true;
+        localBinInPath = true;
         mimeApps = {
             enable = true;
             defaultApplications = {
