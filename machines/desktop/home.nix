@@ -502,7 +502,10 @@ in
                     name = "gamescope";
                     focus = true;
                 }
-                { name = "heroic"; }
+                {
+                    name = "heroic";
+                    focus = true;
+                }
                 { name = "lutris"; }
                 { name = "steam"; }
                 { name = "pcsx2-qt"; }
