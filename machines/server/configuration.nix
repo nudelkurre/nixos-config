@@ -26,6 +26,12 @@
                 ];
             };
         };
+        kernel = {
+            sysctl = {
+                "net.bridge.bridge-nf-call-iptables" = "0";
+                "net.bridge.bridge-nf-call-ip6tables" = "0";
+            };
+        };
         loader = {
             systemd-boot = {
                 enable = false;
