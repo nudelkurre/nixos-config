@@ -259,6 +259,13 @@ in
 
     # Network settings
     networking = {
+        bridges = {
+            br30 = {
+                interfaces = [
+                    "vlan30"
+                ];
+            };
+        };
         enableIPv6 = sharedSettings.enableIPv6;
         firewall = {
             enable = true;
@@ -271,12 +278,23 @@ in
         };
         hostName = "desktop";
         interfaces = {
-            "eth0" = {
+            vlan20 = {
                 useDHCP = true;
             };
         };
         tempAddresses = if config.networking.enableIPv6 then "enabled" else "disabled";
+        useDHCP = false;
         usePredictableInterfaceNames = false;
+        vlans = {
+            vlan20 = {
+                id = 20;
+                interface = "eth0";
+            };
+            vlan30 = {
+                id = 30;
+                interface = "eth0";
+            };
+        };
     };
 
     # Set expreimental flags to use flakes

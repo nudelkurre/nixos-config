@@ -117,6 +117,13 @@
     # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
     # networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
     networking = {
+        bridges = {
+            br30 = {
+                interfaces = [
+                    "vlan30"
+                ];
+            };
+        };
         defaultGateway = "10.10.0.1";
         enableIPv6 = sharedSettings.enableIPv6;
         firewall = {
@@ -158,6 +165,10 @@
         vlans = {
             vlan10 = {
                 id = 10;
+                interface = "eth0";
+            };
+            vlan30 = {
+                id = 30;
                 interface = "eth0";
             };
         };
