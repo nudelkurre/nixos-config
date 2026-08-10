@@ -567,6 +567,75 @@ in
             };
         };
         sunshine = {
+            applications = {
+                apps = [
+                    {
+                        image-path = "desktop.png";
+                        name = "Desktop";
+                    }
+                    {
+                        auto-detach = true;
+                        cmd = "${pkgs.heroic}/bin/heroic --console";
+                        elevated = false;
+                        exclude-global-prep-cmd = false;
+                        exit-timeout = 5;
+                        image-path = "${pkgs.fetchurl {
+                            url = "https://cdn2.steamgriddb.com/grid/e022cb640ae8809689b66b0eb6464305.png";
+                            hash = "sha256-S5FmpmHLK7tp0ikBq4D8Si1VjdzrKhdDhH1SuIZeDzo=";
+                        }}";
+                        name = "Heroic Game Launcher";
+                        output = "";
+                        wait-all = true;
+                    }
+                    {
+                        auto-detach = true;
+                        cmd = "${pkgs.pcsx2}/bin/pcsx2-qt -bigpicture -fullscreen";
+                        elevated = false;
+                        exclude-global-prep-cmd = false;
+                        exit-timeout = 5;
+                        image-path = "${pkgs.fetchurl {
+                            url = "https://cdn2.steamgriddb.com/grid/96418198105e16f6674bf6d045180afc.png";
+                            hash = "sha256-Vcp2NQsPbIqB83AwoCCJoRCyFBS+OyvixDWhT7oyc18=";
+                        }}";
+                        name = "PCSX2";
+                        output = "";
+                        wait-all = true;
+                    }
+                    {
+                        auto-detach = true;
+                        cmd = "${pkgs.ppsspp-sdl}/bin/ppsspp";
+                        elevated = false;
+                        exclude-global-prep-cmd = false;
+                        exit-timeout = 5;
+                        image-path = "${pkgs.fetchurl {
+                            url = "https://cdn2.steamgriddb.com/grid/cf476046d346e8091393001a40a523dc.png";
+                            hash = "sha256-kRSprQGxwambuxGyUhuFhKEMrO6+padfXdAh7xrOYmg=";
+                        }}";
+                        name = "PPSSPP";
+                        output = "";
+                        wait-all = true;
+                    }
+                    {
+                        detached = [
+                            "setsid ${config.programs.steam.package}/bin/steam steam://open/bigpicture"
+                        ];
+                        image-path = "${pkgs.fetchurl {
+                            url = "https://cdn2.steamgriddb.com/grid/39c2966989c4f0091a99eef7f1d09c09.png";
+                            hash = "sha256-YZmRA0mMU6Ez6PxskyNasCspGRMeduh+L7JzZ5NQE6I=";
+                        }}";
+                        name = "Steam Big Picture";
+                        prep-cmd = [
+                            {
+                                do = "";
+                                undo = "setsid ${config.programs.steam.package}/bin/steam steam://close/bigpicture";
+                            }
+                        ];
+                    }
+                ];
+                env = {
+                    PATH = "$(PATH):$(HOME)/.local/bin";
+                };
+            };
             enable = true;
             autoStart = true;
             openFirewall = true;
