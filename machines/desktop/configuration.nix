@@ -176,6 +176,9 @@ in
             initrd = {
                 enable = true;
             };
+            overdrive = {
+                enable = true;
+            };
         };
         bluetooth = {
             enable = true;
@@ -187,6 +190,9 @@ in
                 };
             };
         };
+        firmware = [
+            pkgs.linux-firmware
+        ];
         # Hardware accelerating
         graphics = {
             enable = true;
@@ -513,6 +519,9 @@ in
             };
         };
         gvfs = {
+            enable = true;
+        };
+        lact = {
             enable = true;
         };
         logind = {
