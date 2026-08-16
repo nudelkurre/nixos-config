@@ -362,6 +362,10 @@ in
         hyprland = {
             enable = false;
         };
+        localsend = {
+            enable = true;
+            openFirewall = true;
+        };
         niri = {
             enable = true;
         };
