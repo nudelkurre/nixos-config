@@ -12,7 +12,7 @@
                         WantedBy = [ "graphical-session.target" ];
                     };
                     Service = {
-                        ExecStart = "${pkgs.gotify-desktop}/bin/gotify-desktop";
+                        ExecStart = "${pkgs.unstable.gotify-desktop}/bin/gotify-desktop";
                         Restart = "always";
                         RestartSec = "5s";
                     };
