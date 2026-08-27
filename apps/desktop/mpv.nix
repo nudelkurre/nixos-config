@@ -5,10 +5,10 @@ in
 {
     programs.mpv = {
         bindings = {
-            "WHEEL_UP" = "seek 10";
-            "WHEEL_DOWN" = "seek -10";
-            "Ctrl+WHEEL_UP" = "add volume 5";
-            "Ctrl+WHEEL_DOWN" = "add volume -5";
+            "WHEEL_UP" = "add volume 5";
+            "WHEEL_DOWN" = "add volume -5";
+            "Ctrl+WHEEL_UP" = "seek 10";
+            "Ctrl+WHEEL_DOWN" = "seek -10";
             "Shift+WHEEL_UP" = "add speed 0.5";
             "Shift+WHEEL_DOWN" = "add speed -0.5";
             "UP" = "seek 30";
