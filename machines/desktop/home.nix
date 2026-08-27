@@ -494,7 +494,10 @@ in
         {
             name = "4";
             programs = [
-                { name = ".virt-manager-wrapped"; }
+                {
+                    name = ".virt-manager-wrapped";
+                    focus = true;
+                }
             ];
         }
         {
