@@ -526,11 +526,14 @@ in
         {
             name = "7";
             programs = [
-                { name = "chatterino"; }
-                { name = "com.chatterino.chatterino"; }
-                { name = "discord"; }
-                { name = "Keybase"; }
-                { name = "vesktop"; }
+                {
+                    name = "chatterino";
+                    focus = true;
+                }
+                {
+                    name = "vesktop";
+                    focus = true;
+                }
             ];
         }
         {
