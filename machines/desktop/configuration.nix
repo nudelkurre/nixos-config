@@ -79,6 +79,9 @@ in
 
     # System packages to install
     environment = {
+        sessionVariables = {
+            DRI_PRIME = "1";
+        };
         systemPackages = with pkgs; [
             amdgpu_top
             dnsutils
