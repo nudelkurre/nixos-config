@@ -486,10 +486,10 @@ let
             Mod+Down  { focus-window-down; }
             Mod+Up    { focus-window-up; }
             Mod+Right { focus-column-right; }
-            Mod+WheelScrollUp { focus-window-up; }
-            Mod+WheelScrollDown { focus-window-down; }
-            Mod+MouseForward { focus-column-right; }
-            Mod+MouseBack { focus-column-left; }
+            Mod+MouseForward { focus-window-up; }
+            Mod+MouseBack { focus-window-down; }
+            Mod+WheelScrollUp { focus-column-right; }
+            Mod+WheelScrollDown { focus-column-left; }
 
             // Move windows
             Mod+Shift+Left  { move-column-left; }
