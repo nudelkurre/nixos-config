@@ -40,7 +40,12 @@ in
             ytdl-format = "bv*[height<=${toString monitor.height}][vcodec~='^((he|a)vc|h26[45])']+ba/best[height<=${toString monitor.height}][vcodec~='^((he|a)vc|h26[45])']";
         };
         enable = true;
-        package = pkgs.mpv;
+        package = pkgs.mpv.override {
+            scripts = with pkgs.mpvScripts; [
+                mpris
+                sponsorblock-minimal
+            ];
+        };
         scriptOpts = {
             osc = {
                 barmargin = 0;
@@ -85,10 +90,7 @@ in
                 server = "https://sponsor.ajay.app/api/skipSegments";
             };
         };
-        scripts = with pkgs.mpvScripts; [
-            mpris
-            sponsorblock-minimal
-        ];
+        
     };
     xdg = {
         desktopEntries = {
