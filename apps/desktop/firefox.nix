@@ -588,11 +588,12 @@ in
                         padding: 0px 0px !important;;
                     }
 
-                    #sidebar-main {
+                    sidebar-main {
                         margin-left: -8px !important;
                         margin-right: -8px !important;
                         margin-top: 0px !important;
                         margin-bottom: 0px !important;
+                        width: unset !important;
                     }
 
                     #sidebar-button, #vertical-spacer {
