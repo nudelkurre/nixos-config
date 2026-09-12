@@ -263,10 +263,6 @@ in
     };
 
     services = {
-        kdeconnect = {
-            enable = true;
-            indicator = true;
-        };
         ngb = {
             enable = true;
             settings = {
