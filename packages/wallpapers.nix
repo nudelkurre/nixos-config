@@ -1,6 +1,6 @@
 { stdenvNoCC, fetchurl, ... }:
 let
-    version = "2026-08-28";
+    version = "2026-09-18";
 in
 stdenvNoCC.mkDerivation {
     pname = "wallpapers";
@@ -8,7 +8,7 @@ stdenvNoCC.mkDerivation {
 
     src = fetchurl {
         url = "https://git.nudelkurre.com/nudelkurre/Wallpapers-images/archive/${version}.tar.gz";
-        hash = "sha256-g+R2ug0+e/ak3SEkYgIbEPdu3VpYbkXrixMMOz2PUGA=";
+        hash = "sha256-6BUcbGBJpS869Zw1T9RaiECTIoBzv34rlLSIT02n+00=";
     };
 
     postInstall = ''
