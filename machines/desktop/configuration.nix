@@ -278,12 +278,8 @@ in
         enableIPv6 = sharedSettings.enableIPv6;
         firewall = {
             enable = true;
-            allowedTCPPorts = [
-                1716 # KDE Connect
-            ];
-            allowedUDPPorts = [
-                1716 # KDE Connect
-            ];
+            allowedTCPPorts = [];
+            allowedUDPPorts = [];
         };
         hostName = "desktop";
         interfaces = {
