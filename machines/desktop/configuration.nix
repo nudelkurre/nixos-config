@@ -371,6 +371,9 @@ in
             enable = true;
             openFirewall = true;
         };
+        mango = {
+            enable = true;
+        };
         niri = {
             enable = true;
         };

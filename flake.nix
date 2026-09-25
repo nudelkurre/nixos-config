@@ -9,6 +9,10 @@
             url = "github:nix-community/home-manager/release-26.05";
             inputs.nixpkgs.follows = "nixpkgs";
         };
+        mangowm = {
+            url = "github:mangowm/mango";
+            inputs.nixpkgs.follows = "nixpkgs";
+        };
         ngb = {
             url = "github:nudelkurre/ngb";
         };
@@ -25,6 +29,7 @@
             nixpkgs-unstable,
             nixpkgs-old,
             home-manager,
+            mangowm,
             ngb,
             sops-nix,
             ...
@@ -258,6 +263,7 @@
                         ./options/nixos.nix
                         sops-nix.nixosModules.sops
                         home-manager.nixosModules.home-manager
+                        mangowm.nixosModules.mango
                         {
                             home-manager = {
                                 extraSpecialArgs = { inherit sharedSettings; };
@@ -269,6 +275,7 @@
                                             ./apps
                                             ./machines/desktop/home.nix
                                             ./options/home-manager.nix
+                                            mangowm.hmModules.mango
                                             ngb.outputs.homeManagerModules.ngb
                                             sops-nix.homeManagerModules.sops
                                         ];
