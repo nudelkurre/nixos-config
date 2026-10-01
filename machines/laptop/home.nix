@@ -434,12 +434,6 @@ in
                         "gtk"
                     ];
                 };
-                hyprland = {
-                    default = [
-                        "gtk"
-                        "hyprland"
-                    ];
-                };
                 niri = {
                     default = [
                         "gtk"
@@ -457,7 +451,6 @@ in
             extraPortals = [
                 pkgs.xdg-desktop-portal-gnome
                 pkgs.xdg-desktop-portal-gtk
-                pkgs.xdg-desktop-portal-hyprland
                 pkgs.xdg-desktop-portal-wlr
             ];
             xdgOpenUsePortal = true;

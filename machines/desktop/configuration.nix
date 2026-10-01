@@ -364,9 +364,6 @@ in
                 enableSSHSupport = true;
             };
         };
-        hyprland = {
-            enable = false;
-        };
         localsend = {
             enable = true;
             openFirewall = true;
@@ -439,7 +436,6 @@ in
                 greetd = {
                     u2fAuth = false;
                 };
-                hyprlock = { };
                 login = {
                     u2fAuth = true;
                 };
