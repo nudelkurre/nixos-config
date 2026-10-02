@@ -713,6 +713,11 @@ in
 
     systemd = {
         services = {
+            nix-gc = {
+                serviceConfig = {
+                    ExecStartPost = "/run/current-system/bin/switch-to-configuration boot";
+                };
+            };
             regreet-random-bg = {
                 after = [ "basic.target" ];
                 before = [
