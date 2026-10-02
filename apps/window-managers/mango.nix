@@ -257,6 +257,8 @@ in
                 "SUPER+SHIFT,Down,move_client,down"
                 "SUPER+SHIFT,Left,move_client,left"
                 "SUPER+SHIFT,Right,move_client,right"
+                "SUPER+CTRL,8,scroller_stack,left"
+                "SUPER+CTRL,9,scroller_stack,right"
                 monitor_focus
                 monitor_move
                 "NONE,Print,spawn,${pkgs.grim}/bin/grim -g \"$(${pkgs.slurp}/bin/slurp)\""
