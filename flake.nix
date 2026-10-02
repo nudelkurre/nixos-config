@@ -313,6 +313,7 @@
                         ./options/nixos.nix
                         sops-nix.nixosModules.sops
                         home-manager.nixosModules.home-manager
+                        mangowm.nixosModules.mango
                         {
                             home-manager = {
                                 extraSpecialArgs = { inherit sharedSettings; };
@@ -324,6 +325,7 @@
                                             ./apps
                                             ./machines/laptop/home.nix
                                             ./options/home-manager.nix
+                                            mangowm.hmModules.mango
                                             ngb.outputs.homeManagerModules.ngb
                                             sops-nix.homeManagerModules.sops
                                         ];

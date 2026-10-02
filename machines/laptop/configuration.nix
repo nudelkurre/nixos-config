@@ -328,6 +328,9 @@
                 enableSSHSupport = true;
             };
         };
+        mango = {
+            enable = true;
+        };
         niri = {
             enable = true;
         };
