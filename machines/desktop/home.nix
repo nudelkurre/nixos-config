@@ -68,6 +68,7 @@ in
         };
         homeDirectory = "/home/${sharedSettings.userName}";
         packages = with pkgs; [
+            bitwarden-desktop
             blender
             heroic
             krita
@@ -81,6 +82,7 @@ in
         sessionVariables = {
             EDITOR = "nano";
             MANGADEXDL_CONFIG_ENABLED = "1";
+            SSH_AUTH_SOCK = "${config.home.homeDirectory}/.bitwarden-ssh-agent.sock";
         };
         # This value determines the Home Manager release that your configuration is
         # compatible with. This helps avoid breakage when a new Home Manager release
@@ -567,7 +569,7 @@ in
             enable = true;
             entries = [
                 "${config.programs.chatterino.package}/share/applications/com.chatterino.chatterino.desktop"
-                "${config.programs.rbw.package}/share/applications/rbw-unlock.desktop"
+                "${pkgs.bitwarden-desktop}/share/applications/bitwarden.desktop"
             ];
             readOnly = true;
         };

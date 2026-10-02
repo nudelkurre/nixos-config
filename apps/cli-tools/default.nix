@@ -7,7 +7,6 @@
         ./eza.nix
         ./git.nix
         ./nano.nix
-        ./rbw.nix
         ./ssh.nix
         ./zsh.nix
     ];
