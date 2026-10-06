@@ -80,7 +80,7 @@ let
             map (
                 p:
                 let
-                    name = "appid:${lib.strings.toLower p.name}";
+                    name = "appid:${p.name}";
                     silent = if p.focus then "isopensilent:0" else "isopensilent:1";
                     tag = "tags:${toString workspace_outputs.${w.name}.index}";
                     monitor = "monitor:${workspace_outputs.${w.name}.output}";
