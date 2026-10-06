@@ -99,11 +99,9 @@ let
                 let
                     ws = workspace_outputs.${w}.index;
                     output = m.name;
-                    vertical = if m.transform == 90 || m.transform == 270 then "vertical_" else "";
-                    layout =  "layout_name:${vertical}tile";
-                    scroller_proportion = if vertical == "vertical_" then "0.5" else "1.0";
+                    layout =  "layout_name:scroller";
                 in
-                "id:${toString ws},monitor_name:${output},${layout},scroller_default_proportion:${scroller_proportion}"
+                "id:${toString ws},monitor_name:${output},${layout}"
             ) (m.workspaces)
         ) (osConfig.monitors.outputs)
     );
