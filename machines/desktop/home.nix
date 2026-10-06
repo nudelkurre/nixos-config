@@ -491,7 +491,7 @@ in
             name = "3";
             programs = [
                 {
-                    name = "FreeTube";
+                    name = "freetube";
                     focus = true;
                 }
             ];
@@ -550,7 +550,7 @@ in
             programs = [
                 { name = "org.freedesktop.ryuukyu.Helvum"; }
                 { name = "pavucontrol"; }
-                { name = "Bitwarden"; }
+                { name = "bitwarden"; }
             ];
         }
         {
