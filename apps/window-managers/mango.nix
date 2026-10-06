@@ -216,7 +216,7 @@ in
             scroller_structs = 0;
             scroller_default_proportion = 1.0;
             edge_scroller_pointer_focus = 0;
-            scroller_proportion_preset = "0.33,0.5,1.0";
+            scroller_proportion_preset = "0.5,1.0";
             scroller_ignore_proportion_single = 0;
 
             # Master layout
@@ -260,7 +260,7 @@ in
                 monitor_focus
                 monitor_move
                 "NONE,Print,spawn,${pkgs.grim}/bin/grim -g \"$(${pkgs.slurp}/bin/slurp)\""
-                "SUPER,z,switch_layout"
+                "SUPER,z,zoom"
                 "ALT,s,setkeymode,scratchpad"
                 "ALT,z,setkeymode,layouts"
                 "ALT,x,setkeymode,apps"
@@ -293,6 +293,7 @@ in
                         "NONE,r,setlayout,right_tile"
                         "NONE,s,setlayout,scroller"
                         "NONE,t,setlayout,tile"
+                        "NONE,z,switch_layout"
                         "SHIFT,f,setlayout,vertical_fair"
                         "SHIFT,s,setlayout,vertical_scroller"
                         "SHIFT,t,setlayout,vertical_tile"
