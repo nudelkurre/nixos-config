@@ -80,8 +80,8 @@ let
             map (
                 p:
                 let
-                    name = "appid:${p.name}";
-                    silent = if p.focus then "isopensilent:0" else "isopensilent:1";
+                    name = "app_id:${p.name}";
+                    silent = if p.focus then "is_open_silent:0" else "is_open_silent:1";
                     tag = "tags:${toString workspace_outputs.${w.name}.index}";
                     monitor = "monitor:${workspace_outputs.${w.name}.output}";
                 in
@@ -141,7 +141,7 @@ in
             # Keyboard setting
             xkb_rules_layout = cfg.keyboard.language;
             xkb_rules_variant = cfg.keyboard.variant;
-            numlockon = if cfg.keyboard.numlock then 1 else 0;
+            numlock_on = if cfg.keyboard.numlock then 1 else 0;
 
             # Mouse settings
             mouse_natural_scrolling = if cfg.mouse.natural-scroll then 1 else 0;
@@ -161,7 +161,7 @@ in
 
             # Window focus
             focus_on_activate = 0;
-            sloppyfocus = 1;
+            sloppy_focus = 1;
 
             drag_tile_to_tile = 1;
 
@@ -171,7 +171,7 @@ in
 
             # Border and gaps settings
             no_border_when_single = 0;
-            smartgaps = 0;
+            smart_gaps = 0;
 
             # Animation and blur
             animations = 0;
@@ -180,22 +180,20 @@ in
             shadows = 0;
 
             # Border looks
-            borderpx = config.desktop.borders;
+            border_px = config.desktop.borders;
             border_radius = config.desktop.corner-radius;
-            # gappih = config.desktop.gaps;
-            # gappiv = config.desktop.gaps;
-            gappih = 0;
-            gappiv = 0;
-            gappoh = config.desktop.gaps;
-            gappov = config.desktop.gaps;
+            gap_inner_horizontal = 0;
+            gap_inner_vertical = 0;
+            gap_outer_horizontal = config.desktop.gaps;
+            gap_outer_vertical = config.desktop.gaps;
 
             # Color settings
-            rootcolor = "0x${base-color}ff";
-            bordercolor = "0x${main-color}00";
-            focuscolor = "0x${main-color}ff";
-            dropcolor = "0x${main-color}80";
-            splitcolor = "0x${secondary-color}ff";
-            urgentcolor = "0x${urgent-color}ff";
+            root_color = "0x${base-color}ff";
+            border_color = "0x${main-color}00";
+            focus_color = "0x${main-color}ff";
+            drop_color = "0x${main-color}80";
+            split_color = "0x${secondary-color}ff";
+            urgent_color = "0x${urgent-color}ff";
 
             # Overview colors
             jump_label_decorate_fg_color = "0x${text-color}ff";
@@ -205,8 +203,8 @@ in
             jump_label_decorate_corner_radius = config.desktop.corner-radius;
 
             # Overview settings
-            overviewgappi = 5;
-            overviewgappo = 50;
+            overview_gap_inner = 5;
+            overview_gap_outer = 50;
 
             # List of layouts to cycle between with switch_layout
             circle_layout = "scroller,tile,fair";
@@ -221,20 +219,20 @@ in
 
             # Master layout
             new_is_master = 1;
-            default_mfact = 0.6;
-            default_nmaster = 1;
+            default_master_factor = 0.6;
+            default_master_count = 1;
             center_master_overspread = 0;
             center_when_single_stack = 1;
 
             # Scratchpad settings
             scratchpad_width_ratio=0.95;
             scratchpad_height_ratio=0.95;
-            scratchpadcolor="0x${main-color}ff";
+            scratchpad_color="0x${main-color}ff";
 
             # tag_num = lib.lists.length config.workspaces;
             tag_num = max_tags_num;
 
-            monitorrule = lib.lists.flatten [
+            monitor_rule = lib.lists.flatten [
                 monitor
             ];
 
@@ -268,7 +266,7 @@ in
                 keybinds-multi
             ];
 
-            keymode = {
+            key_mode = {
                 apps = {
                     bind = [
                         "NONE,j,spawn,jellyfin-desktop"
@@ -326,12 +324,13 @@ in
                 "NONE,btn_forward,setkeymode,position"
             ];
 
-            tagrule = lib.lists.flatten [
+            tag_rule = lib.lists.flatten [
                 workspaces
             ];
 
-            windowrule = lib.lists.flatten [
+            window_rule = lib.lists.flatten [
                 windows
+                "app_id:com.chatterino.(chatterino)?,title:(?!Chatterino \d+\.\d+\.\d+).*$,height:0.6,width:0.85"
             ];
         };
         systemd = {
