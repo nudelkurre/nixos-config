@@ -576,6 +576,15 @@ in
             pulse = {
                 enable = true;
             };
+            wireplumber = {
+                extraConfig = {
+                    "10-no-pause-on-sink-removal" = {
+                        "wireplumber.settings" = {
+                            "linking.pause-playback" = false;
+                        };
+                    };
+                };
+            };
         };
         sunshine = {
             applications = {
