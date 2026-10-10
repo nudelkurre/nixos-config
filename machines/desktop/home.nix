@@ -291,6 +291,7 @@ in
                                             "4" = "";
                                             "5" = "";
                                         };
+                                        "use_workspace_ids" = true;
                                     };
                                     "module" = "workspace";
                                 }
@@ -332,12 +333,13 @@ in
                                     "config" = {
                                         "monitor" = secondary-monitor;
                                         "names" = {
-                                            "6" = "";
-                                            "7" = "";
-                                            "8" = "";
-                                            "9" = "";
-                                            "10" = "";
+                                            "1" = "";
+                                            "2" = "";
+                                            "3" = "";
+                                            "4" = "";
+                                            "5" = "";
                                         };
+                                        "use_workspace_ids" = true;
                                     };
                                     "module" = "workspace";
                                 }
