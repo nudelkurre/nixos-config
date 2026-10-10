@@ -663,8 +663,6 @@ in
                 # General
                 min_log_level = 2;
                 system_tray = "disabled";
-                # Audio/Video
-                audio_sink = "alsa_output.usb-SteelSeries_SteelSeries_Arctis_7-00.stereo-game";
                 # Network
                 bind_address = "0.0.0.0";
                 origin_web_ui_allowed = "pc";
