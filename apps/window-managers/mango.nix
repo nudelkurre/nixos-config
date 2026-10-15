@@ -40,7 +40,7 @@ let
     workspace_outputs = builtins.listToAttrs (
         builtins.concatMap (output:
             builtins.genList (i: {
-                name = builtins.elemAt output.workspaces i;
+                name = (builtins.elemAt output.workspaces i).name;
                 value = {
                     index = i + 1;
                     output = output.name;
@@ -97,9 +97,9 @@ let
             map (
                 w:
                 let
-                    ws = workspace_outputs.${w}.index;
+                    ws = workspace_outputs.${w.name}.index;
                     output = m.name;
-                    layout =  "layout_name:scroller";
+                    layout =  "layout_name:${w.layout}";
                 in
                 "id:${toString ws},monitor_name:${output},${layout}"
             ) (m.workspaces)

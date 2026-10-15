@@ -114,7 +114,7 @@ let
                 builtins.map (
                     w:
                     let
-                        ws = w;
+                        ws = w.name;
                         output = m.name;
                     in
                     ''

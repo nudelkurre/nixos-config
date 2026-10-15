@@ -46,12 +46,44 @@ with lib;
                                 example = 1920;
                             };
                             workspaces = mkOption {
-                                type = types.listOf types.str;
+                                type = types.listOf (
+                                    types.submodule {
+                                        options = {
+                                            name = mkOption {
+                                                type = types.str;
+                                                example = "1";
+                                                default = "1";
+                                                description = "Name of workspace";
+                                            };
+                                            layout = mkOption {
+                                                type = types.enum [
+                                                    "tile"
+                                                    "scroller"
+                                                    "monocle"
+                                                    "grid"
+                                                    "deck"
+                                                    "center_tile"
+                                                    "vertical_tile"
+                                                    "right_tile"
+                                                    "vertical_scroller"
+                                                    "vertical_grid"
+                                                    "vertical_deck"
+                                                    "dwindle"
+                                                    "fair"
+                                                    "vertical_fair"
+                                                ];
+                                                example = "scroller";
+                                                default = "tile";
+                                            };
+                                        };
+                                    }
+                                );
+                                description = "Set workspace options";
                                 example = [
-                                    "1"
-                                    "2"
+                                    {name = "1"; layout = "tile";}
+                                    {name = "2"; layout = "scroller";}
                                 ];
-                                default = [ ];
+                                default = [];
                             };
                             x = mkOption {
                                 type = types.int;

@@ -200,15 +200,15 @@
                 transform = 0;
                 width = 1366;
                 workspaces = [
-                    "1"
-                    "2"
-                    "3"
-                    "4"
-                    "5"
-                    "6"
-                    "7"
-                    "8"
-                    "9"
+                    {name = "1";}
+                    {name = "2";}
+                    {name = "3";}
+                    {name = "4";}
+                    {name = "5";}
+                    {name = "6";}
+                    {name = "7";}
+                    {name = "8";}
+                    {name = "9";}
                 ];
                 x = 0;
                 y = 0;
@@ -223,7 +223,9 @@
                 refreshRate = 60;
                 transform = 0;
                 width = 1280;
-                workspaces = [ "10" ];
+                workspaces = [ 
+                    {name = "10";}
+                ];
                 x = 1366;
                 y = 0;
                 wallpaper = "awww";

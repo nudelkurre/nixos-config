@@ -272,7 +272,7 @@ in
                     m:
                     map (w: {
                         output = m.name;
-                        workspace = w;
+                        workspace = w.name;
                     }) (m.workspaces)
                 ) (osConfig.monitors.outputs)
             );

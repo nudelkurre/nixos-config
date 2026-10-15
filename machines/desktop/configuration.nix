@@ -233,11 +233,11 @@ in
                 transform = 0;
                 width = 2560;
                 workspaces = [
-                    "1"
-                    "2"
-                    "3"
-                    "4"
-                    "5"
+                    {name = "1";}
+                    {name = "2"; layout = "right_tile";}
+                    {name = "3"; layout = "monocle";}
+                    {name = "4";}
+                    {name = "5";}
                 ];
                 x = 0;
                 y = 480;
@@ -252,11 +252,11 @@ in
                 transform = 90;
                 width = 1920;
                 workspaces = [
-                    "6"
-                    "7"
-                    "8"
-                    "9"
-                    "10"
+                    {name = "6"; layout = "scroller";}
+                    {name = "7"; layout = "vertical_fair";}
+                    {name = "8";}
+                    {name = "9";}
+                    {name = "10";}
                 ];
                 x = 2560;
                 y = 0;
