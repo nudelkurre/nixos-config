@@ -6,7 +6,13 @@
     ...
 }:
 let
-    capitalize = str: if str == "" then "" else lib.strings.toUpper (builtins.substring 0 1 str) + lib.strings.toLower (builtins.substring 1 (builtins.stringLength str - 1) str);
+    capitalize =
+        str:
+        if str == "" then
+            ""
+        else
+            lib.strings.toUpper (builtins.substring 0 1 str)
+            + lib.strings.toLower (builtins.substring 1 (builtins.stringLength str - 1) str);
 in
 {
     boot = {
@@ -233,11 +239,22 @@ in
                 transform = 0;
                 width = 2560;
                 workspaces = [
-                    {name = "1";}
-                    {name = "2"; layout = "right_tile";}
-                    {name = "3"; layout = "monocle";}
-                    {name = "4";}
-                    {name = "5";}
+                    {
+                        name = "1";
+                    }
+                    {
+                        name = "2";
+                        layout = "right_tile";
+                    }
+                    {
+                        name = "3";
+                    }
+                    {
+                        name = "4";
+                    }
+                    {
+                        name = "5";
+                    }
                 ];
                 x = 0;
                 y = 480;
@@ -252,11 +269,23 @@ in
                 transform = 90;
                 width = 1920;
                 workspaces = [
-                    {name = "6"; layout = "scroller";}
-                    {name = "7"; layout = "vertical_fair";}
-                    {name = "8";}
-                    {name = "9";}
-                    {name = "10";}
+                    {
+                        name = "6";
+                        layout = "scroller";
+                    }
+                    {
+                        name = "7";
+                        layout = "vertical_fair";
+                    }
+                    {
+                        name = "8";
+                    }
+                    {
+                        name = "9";
+                    }
+                    {
+                        name = "10";
+                    }
                 ];
                 x = 2560;
                 y = 0;
@@ -278,8 +307,8 @@ in
         enableIPv6 = sharedSettings.enableIPv6;
         firewall = {
             enable = true;
-            allowedTCPPorts = [];
-            allowedUDPPorts = [];
+            allowedTCPPorts = [ ];
+            allowedUDPPorts = [ ];
         };
         hostName = "desktop";
         interfaces = {
@@ -484,7 +513,7 @@ in
         greetd = {
             enable = true;
             settings = {
-                default_session = 
+                default_session =
                     let
                         outputs = lib.strings.concatStringsSep "\n" (
                             map (
@@ -492,18 +521,21 @@ in
                                 let
                                     resolution = "${toString m.width}x${toString m.height}@${toString m.refreshRate}Hz";
                                 in
-                                if m.name == config.monitors.primary then ''
-                                    output "${m.name}" {
-                                        pos 0 0
-                                        resolution ${resolution}
-                                        transform ${toString m.transform}
-                                    }
-                                '' else ''
-                                    output "${m.name}" {
-                                        disable
-                                        power on
-                                    }
-                                ''
+                                if m.name == config.monitors.primary then
+                                    ''
+                                        output "${m.name}" {
+                                            pos 0 0
+                                            resolution ${resolution}
+                                            transform ${toString m.transform}
+                                        }
+                                    ''
+                                else
+                                    ''
+                                        output "${m.name}" {
+                                            disable
+                                            power on
+                                        }
+                                    ''
                             ) (config.monitors.outputs)
                         );
                         swayConfig = pkgs.writeText "greetd-sway-config" ''
@@ -512,8 +544,8 @@ in
                         '';
                     in
                     {
-                    command = "${config.programs.sway.package}/bin/sway --config ${swayConfig}";
-                };
+                        command = "${config.programs.sway.package}/bin/sway --config ${swayConfig}";
+                    };
             };
         };
         gvfs = {
@@ -703,9 +735,7 @@ in
         defaultSopsFile = ../../secrets/desktop.yaml;
         defaultSopsFormat = "yaml";
 
-        secrets = {
-            
-        };
+        secrets = { };
     };
 
     system = {
