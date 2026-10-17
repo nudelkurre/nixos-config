@@ -788,6 +788,12 @@ in
                     wantedBy = [ "graphical-session.target" ];
                     wants = [ "graphical-session.target" ];
                 };
+                xdg-desktop-portal-wlr = {
+                    path = with pkgs; [
+                        fuzzel
+                        slurp
+                    ];
+                };
             };
         };
     };

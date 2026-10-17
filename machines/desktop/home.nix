@@ -585,6 +585,12 @@ in
                         "gtk"
                     ];
                 };
+                mango = {
+                    default = [
+                        "wlr"
+                        "gtk"
+                    ];
+                };
                 niri = {
                     default = [
                         "gtk"
