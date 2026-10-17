@@ -585,16 +585,6 @@ in
                                 factory = "adapter";
                                 args = {
                                     "factory.name" = "support.null-audio-sink";
-                                    "node.name" = "Null Output";
-                                    "node.description" = "Null Output";
-                                    "media.class" = "Audio/Sink";
-                                    "audio.position" = "FL,FR";
-                                };
-                            }
-                            {
-                                factory = "adapter";
-                                args = {
-                                    "factory.name" = "support.null-audio-sink";
                                     "node.name" = "Null Input";
                                     "node.description" = "Null Input";
                                     "media.class" = "Audio/Source/Virtual";

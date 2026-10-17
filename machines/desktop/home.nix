@@ -398,62 +398,6 @@ in
         };
     };
 
-    systemd.user = {
-        services = {
-            "pw-link" = {
-                Install = {
-                    WantedBy = [ "graphical-session.target" ];
-                };
-                Service =
-                    let
-                        input = [ "Null Output" ];
-                        output = [
-                            "alsa_output.usb-SteelSeries_SteelSeries_Arctis_7-00.stereo-game"
-                            "alsa_output.pci-0000_30_00.6.analog-stereo"
-                        ];
-                        ifInput = (map (i: "\$\(${pkgs.pipewire}/bin/pw-link -i ${i}\)") input);
-                        ifOutput = (map (o: "\$\(${pkgs.pipewire}/bin/pw-link -o ${o}\)") output);
-                        conditional = func: ''
-                            if [[ ${builtins.concatStringsSep " && " (ifInput ++ ifOutput)} ]]; then
-                                ${builtins.concatStringsSep "\t" (builtins.concatMap (i: map (o: func i o) output) input)}
-                            else
-                                exit 1
-                            fi
-                        '';
-                        linkFunc = i: o: ''
-                            ${pkgs.pipewire}/bin/pw-link -w "${i}:monitor_FL" "${o}:playback_FL"
-                            ${pkgs.pipewire}/bin/pw-link -w "${i}:monitor_FR" "${o}:playback_FR"
-                        '';
-                        unlinkFunc = i: o: ''
-                            ${pkgs.pipewire}/bin/pw-link -d "${i}:monitor_FL" "${o}:playback_FL"
-                            ${pkgs.pipewire}/bin/pw-link -d "${i}:monitor_FR" "${o}:playback_FR"
-                        '';
-                    in
-                    {
-                        ExecStart = pkgs.writeShellScript "pw-link" (
-                            if input != [ ] && output != [ ] then
-                                conditional linkFunc
-                            else
-                                throw "input and output must both be non-empty"
-                        );
-                        ExecStop = pkgs.writeShellScript "pw-unlink" (
-                            if input != [ ] && output != [ ] then
-                                conditional unlinkFunc
-                            else
-                                throw "input and output must both be non-empty"
-                        );
-                        Type = "oneshot";
-                        RemainAfterExit = true;
-                        Restart = "on-failure";
-                        RestartSec = "5";
-                    };
-                Unit = {
-                    Description = "Link headset to null sink";
-                };
-            };
-        };
-    };
-
     workspaces = [
         {
             name = "1";
