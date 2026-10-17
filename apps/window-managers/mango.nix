@@ -215,14 +215,20 @@ in
             scroller_default_proportion = 1.0;
             edge_scroller_pointer_focus = 0;
             scroller_proportion_preset = "0.5,1.0";
-            scroller_ignore_proportion_single = 0;
+            scroller_ignore_proportion_single = 1;
 
             # Master layout
             new_is_master = 1;
-            default_master_factor = 0.6;
+            default_master_factor = 0.5;
             default_master_count = 1;
             center_master_overspread = 0;
             center_when_single_stack = 1;
+
+            # Monocle layout
+            monocle_tab_mode = 1;
+            monocle_right_button_close = 0;
+            monocle_no_border = 0;
+            monocle_no_gap = 0;
 
             # Scratchpad settings
             scratchpad_width_ratio=0.95;
