@@ -3,17 +3,17 @@
     fetchurl,
     appimageTools,
     makeWrapper,
-    electron,
+    electron_44,
     nixosTests,
 }:
 
 stdenv.mkDerivation rec {
     pname = "freetube";
-    version = "0.25.3";
+    version = "0.26.0";
 
     src = fetchurl {
         url = "https://github.com/FreeTubeApp/FreeTube/releases/download/v${version}-beta/freetube-${version}-beta-amd64.AppImage";
-        hash = "sha256-dF1GvdtaRecE/ip1wx+4/COnG1Vkqfw+t6z5+N24WjA=";
+        hash = "sha256-7mGARgaw7Tu76cI+jNSYGmOTiQH5u38QbKb6xQxqhrE=";
     };
 
     passthru.tests = nixosTests.freetube;
@@ -41,7 +41,7 @@ stdenv.mkDerivation rec {
     '';
 
     postFixup = ''
-        makeWrapper ${electron}/bin/electron $out/bin/${pname} \
+        makeWrapper ${electron_44}/bin/electron $out/bin/${pname} \
           --add-flags $out/share/${pname}/resources/app.asar \
           --add-flags "\''${NIXOS_OZONE_WL:+\''${WAYLAND_DISPLAY:+--enable-features=UseOzonePlatform --ozone-platform=wayland}}"
     '';
