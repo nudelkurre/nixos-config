@@ -264,13 +264,15 @@ in
                 "SUPER+CTRL,9,scroller_stack,right"
                 monitor_focus
                 monitor_move
-                "NONE,Print,spawn,${pkgs.grim}/bin/grim -g \"$(${pkgs.slurp}/bin/slurp)\""
+                "NONE,Print,spawn_shell,${pkgs.grim}/bin/grim -g \"$(${pkgs.slurp}/bin/slurp)\" - | wl-copy"
+                "SHIFT,Print,spawn,${pkgs.grim}/bin/grim -g \"$(${pkgs.slurp}/bin/slurp)\" ${config.xdg.userDirs.pictures}/Screenshots/$(date +'%Y-%m-%d_%H:%M:%S_grim.png')"
                 "SUPER,z,zoom"
                 "ALT,s,setkeymode,scratchpad"
                 "ALT,z,setkeymode,layouts"
                 "ALT,x,setkeymode,apps"
                 keybinds
                 keybinds-multi
+                "SUPER,code:49,toggle_special_tag"
             ];
 
             key_mode = {
