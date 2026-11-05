@@ -343,6 +343,7 @@ in
             window_rule = lib.lists.flatten [
                 windows
                 "app_id:com.chatterino.(chatterino)?,title:(?!Chatterino \d+\.\d+\.\d+).*$,height:0.6,width:0.85"
+                "app_id:FreeTube-mpv,tags:0"
             ];
         };
         systemd = {
