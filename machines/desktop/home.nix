@@ -1,5 +1,6 @@
 {
     pkgs,
+    lib,
     config,
     osConfig,
     sharedSettings,
@@ -111,15 +112,15 @@ in
         # Controlling media
         {
             key = "XF86AudioPlay";
-            program = "${pkgs.playerctl}/bin/playerctl -i ${browser} play-pause";
+            program = "${pkgs.playerctl}/bin/playerctl -a -i ${lib.strings.removeSuffix "-esr" browser} play-pause";
         }
         {
             key = "XF86AudioNext";
-            program = "${pkgs.playerctl}/bin/playerctl -i ${browser} next";
+            program = "${pkgs.playerctl}/bin/playerctl -a -i ${lib.strings.removeSuffix "-esr" browser} next";
         }
         {
             key = "XF86AudioPrev";
-            program = "${pkgs.playerctl}/bin/playerctl -i ${browser} previous";
+            program = "${pkgs.playerctl}/bin/playerctl -a -i ${lib.strings.removeSuffix "-esr" browser} previous";
         }
 
         # Change volume
