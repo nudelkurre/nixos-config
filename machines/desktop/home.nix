@@ -275,15 +275,14 @@ in
                         "widgets" = {
                             "center" = [
                                 {
-                                    "config" = {
+                                    "windowtitle" = {
                                         "hide_no_focus" = true;
                                     };
-                                    "module" = "windowtitle";
                                 }
                             ];
                             "left" = [
                                 {
-                                    "config" = {
+                                    "workspace" = {
                                         "monitor" = main-monitor;
                                         "names" = {
                                             "1" = "";
@@ -294,33 +293,28 @@ in
                                         };
                                         "use_workspace_ids" = true;
                                     };
-                                    "module" = "workspace";
                                 }
                             ];
                             "right" = [
                                 {
-                                    "config" = {
+                                    "disk" = {
                                         "mountpoint" = "/";
                                     };
-                                    "module" = "disk";
                                 }
                                 {
-                                    "config" = {
+                                    "network" = {
                                         "interface" = "vlan20";
                                     };
-                                    "module" = "network";
                                 }
                                 {
-                                    "config" = { };
-                                    "module" = "volume";
+                                    "volume" = { };
                                 }
                                 {
-                                    "config" = {
+                                    "clock" = {
                                         "show_revealer" = true;
                                         "timeformat_normal" = "%H:%M:%S";
                                         "timeformat_revealer" = "%A %Y-%m-%d";
                                     };
-                                    "module" = "clock";
                                 }
                             ];
                         };
@@ -331,7 +325,7 @@ in
                             "center" = [ ];
                             "left" = [
                                 {
-                                    "config" = {
+                                    "workspace" = {
                                         "monitor" = secondary-monitor;
                                         "names" = {
                                             "1" = "";
@@ -342,37 +336,31 @@ in
                                         };
                                         "use_workspace_ids" = true;
                                     };
-                                    "module" = "workspace";
                                 }
                             ];
                             "right" = [
                                 {
-                                    "config" = { };
-                                    "module" = "bluetooth";
+                                    "bluetooth" = { };
                                 }
                                 {
-                                    "config" = { };
-                                    "module" = "headset";
+                                    "headset" = { };
                                 }
                                 {
-                                    "config" = { };
-                                    "module" = "cpu";
+                                    "cpu" = { };
                                 }
                                 {
-                                    "config" = {
+                                    "weather" = {
                                         "api" = "YR";
                                         "city" = "Västerås";
                                         "icon_size" = 20;
                                         "show_big_icon" = true;
                                     };
-                                    "module" = "weather";
                                 }
                                 {
-                                    "config" = {
+                                    "clock" = {
                                         "timeformat_normal" = "%H:%M:%S";
                                         "timeformat_revealer" = "%Y-%m-%d";
                                     };
-                                    "module" = "clock";
                                 }
                             ];
                         };
