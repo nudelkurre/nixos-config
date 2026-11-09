@@ -461,15 +461,25 @@ in
     security = {
         pam = {
             services = {
-                gtklock = { };
+                gtklock = {
+                    u2f = {
+                        enable = false;
+                    };
+                };
                 greetd = {
-                    u2fAuth = false;
+                    u2f = {
+                        enable = false;
+                    };
                 };
                 login = {
-                    u2fAuth = true;
+                    u2f = {
+                        enable = true;
+                    };
                 };
                 sudo = {
-                    u2fAuth = true;
+                    u2f = {
+                        enable = true;
+                    };
                 };
                 swaylock = { };
             };
