@@ -273,6 +273,7 @@ in
                 keybinds
                 keybinds-multi
                 "SUPER,code:49,toggle_special_tag"
+                "SUPER+SHIFT,code:49,tag_special_tag"
             ];
 
             key_mode = {
