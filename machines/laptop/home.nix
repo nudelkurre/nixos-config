@@ -210,7 +210,7 @@ in
                             "center" = [ ];
                             "left" = [
                                 {
-                                    "config" = {
+                                    "workspace" = {
                                         "monitor" = "LVDS-1";
                                         "names" = {
                                             "1" = "";
@@ -225,50 +225,41 @@ in
                                             "10" = "";
                                         };
                                     };
-                                    "module" = "workspace";
                                 }
                             ];
                             "right" = [
                                 {
-                                    "config" = { };
-                                    "module" = "bluetooth";
+                                    "bluetooth" = { };
                                 }
                                 {
-                                    "config" = {
+                                    "disk" = {
                                         "mountpoint" = "/";
                                     };
-                                    "module" = "disk";
                                 }
                                 {
-                                    "config" = { };
-                                    "module" = "cpu";
+                                    "cpu" = { };
                                 }
                                 {
-                                    "config" = {
+                                    "network" = {
                                         "interface" = "eth0";
                                     };
-                                    "module" = "network";
                                 }
                                 {
-                                    "config" = {
+                                    "network" = {
                                         "interface" = "wlan0";
                                     };
-                                    "module" = "network";
                                 }
                                 {
-                                    "config" = { };
-                                    "module" = "volume";
+                                    "volume" = { };
                                 }
                                 {
-                                    "config" = { };
-                                    "module" = "battery";
+                                    "battery" = { };
                                 }
                                 {
-                                    "config" = {
+                                    "clock" = {
                                         "timeformat_normal" = "%H:%M:%S";
                                         "timeformat_revealer" = "%A %Y-%m-%d";
                                     };
-                                    "module" = "clock";
                                 }
                             ];
                         };

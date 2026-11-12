@@ -294,6 +294,14 @@ in
                                         "use_workspace_ids" = true;
                                     };
                                 }
+
+                                {
+                                    "keymode" = {
+                                        "keymode_icons" = {
+                                            "default" = "";
+                                        };
+                                    };
+                                }
                             ];
                             "right" = [
                                 {
