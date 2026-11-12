@@ -127,15 +127,6 @@ let
 in
 {
     wayland.windowManager.mango = {
-        autostart_sh = ''
-            ${pkgs.writeShellScript "notify_keymode_change" ''
-                ${config.wayland.windowManager.mango.package}/bin/mmsg watch keymode |
-                while IFS= read -r message; do
-                    msg=$(echo $message | ${pkgs.jq}/bin/jq '.keymode')
-                    ${pkgs.libnotify}/bin/notify-send "Mango keymode changed to $msg"
-                done
-            ''} &
-        '';
         enable = true;
         settings = {
             # Keyboard setting
