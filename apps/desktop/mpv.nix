@@ -40,8 +40,8 @@ in
             ytdl-format = "bv*[height<=${toString monitor.height}][vcodec~='^((he|a)vc|h26[45])']+ba/best[height<=${toString monitor.height}][vcodec~='^((he|a)vc|h26[45])']";
         };
         enable = true;
-        package = pkgs.mpv.override {
-            scripts = with pkgs.mpvScripts; [
+        package = pkgs.unstable.mpv.override {
+            scripts = with pkgs.unstable.mpvScripts; [
                 mpris
                 sponsorblock-minimal
             ];
@@ -60,7 +60,6 @@ in
                 hidetimeout = 1500;
                 idlescreen = "yes";
                 layout = "bottombar";
-                livemarkers = "yes";
                 minmousemove = 0;
                 scalefullscreen = 1.0;
                 scalewindowed = 1.0;
