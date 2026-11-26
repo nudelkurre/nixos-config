@@ -55,7 +55,7 @@
             versions = {
                 intel-vaapi-driver = "2.4.5";
                 jellyfin-desktop = "2.0.0";
-                yt-dlp = "2026.10.26";
+                yt-dlp = "2026.11.23";
             };
             version-overlay = final: prev: {
                 firefox-esr = pkgs.firefox-esr-153;
@@ -74,7 +74,7 @@
                         owner = "yt-dlp";
                         repo = "yt-dlp";
                         rev = versions.yt-dlp;
-                        hash = "sha256-0gX99Q45+1L4eH0YK0942DVTq5Wwscq3Qkj+N/EjHek=";
+                        hash = "sha256-BpxnzY9GOs9sTv/ZWAwYiiJS7VfaMtp5HHOtXDAGgc0=";
                     };
                 });
             };
